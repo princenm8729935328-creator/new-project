@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#0d1220" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="description" content="Apex Circuit - a mobile-first 3D racing game built with Three.js." />
+    <title>Apex Circuit</title>
+  </head>
+  <body>
+    <div id="app">
+      <canvas id="game-canvas"></canvas>
+
+      <!-- ============ HUD ============ -->
+      <div id="ui">
+        <div id="hud" class="hud">
+          <div class="hud-row">
+            <div class="stat">
+              <span class="stat-label">Lap</span>
+              <span class="stat-value" id="hud-lap">1<small>/3</small></span>
+            </div>
+            <div class="stat stat-wide">
+              <span class="stat-label">Lap time</span>
+              <span class="stat-value mono" id="hud-lap-time">0:00.00</span>
+            </div>
+            <div class="stat stat-wide">
+              <span class="stat-label">Best</span>
+              <span class="stat-value mono" id="hud-best">--:--.--</span>
+            </div>
+            <button id="btn-pause" class="icon-btn" type="button" aria-label="Pause race">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="7" y="5" width="3.6" height="14" rx="1.2" />
+                <rect x="13.4" y="5" width="3.6" height="14" rx="1.2" />
+              </svg>
+            </button>
+          </div>
+          <div class="hud-row hud-row-sub">
+            <div class="stat stat-ghost">
+              <span class="stat-label">Total</span>
+              <span class="stat-value mono sm" id="hud-total">0:00.00</span>
+            </div>
+            <div id="hud-flash" class="flash" aria-live="polite"></div>
+          </div>
+        </div>
+
+        <!-- ============ Speedometer ============ -->
+        <div id="speedo" class="speedo">
+          <svg viewBox="0 0 120 74" aria-hidden="true">
+            <path class="speedo-track" d="M12 66 A48 48 0 0 1 108 66" />
+            <path id="speedo-fill" class="speedo-fill" d="M12 66 A48 48 0 0 1 108 66" />
+          </svg>
+          <div class="speedo-readout">
+            <span class="mono" id="speedo-value">0</span>
+            <span class="speedo-unit">km/h</span>
+          </div>
+        </div>
+
+        <!-- ============ Touch controls ============ -->
+        <div id="controls" class="controls">
+          <div class="pad pad-left">
+            <button id="btn-left" class="ctrl steer" type="button" aria-label="Steer left">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 4 7 12l8.5 8" /></svg>
+            </button>
+            <button id="btn-right" class="ctrl steer" type="button" aria-label="Steer right">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.5 4 17 12l-8.5 8" /></svg>
+            </button>
+          </div>
+          <div class="pad pad-right">
+            <button id="btn-brake" class="ctrl brake" type="button" aria-label="Brake and reverse">
+              <span>BRAKE</span>
+            </button>
+            <button id="btn-gas" class="ctrl gas" type="button" aria-label="Accelerate">
+              <span>GO</span>
+            </button>
+          </div>
+        </div>
+
+        <div id="countdown" class="countdown"></div>
+
+        <!-- ============ Overlays ============ -->
+        <div id="overlay-start" class="overlay">
+          <div class="panel">
+            <p class="eyebrow">Three.js Grand Prix</p>
+            <h1 class="title">APEX<span>CIRCUIT</span></h1>
+            <p class="sub">3 laps. One track. Beat your best time.</p>
+            <button id="btn-start" class="primary-btn" type="button">START RACE</button>
+            <p class="hint">
+              Touch the on-screen pedals, or use
+              <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> / arrow keys on desktop.
+            </p>
+          </div>
+        </div>
+
+        <div id="overlay-pause" class="overlay hidden">
+          <div class="panel">
+            <p class="eyebrow">Race paused</p>
+            <h2 class="title sm">PAUSED</h2>
+            <div class="btn-row">
+              <button id="btn-resume" class="primary-btn" type="button">RESUME</button>
+              <button id="btn-restart-pause" class="ghost-btn" type="button">RESTART</button>
+            </div>
+            <p class="hint">Press <kbd>Esc</kbd> to resume · <kbd>R</kbd> to restart · <kbd>C</kbd> resets the camera</p>
+          </div>
+        </div>
+
+        <div id="overlay-finish" class="overlay hidden">
+          <div class="panel">
+            <p class="eyebrow">Chequered flag</p>
+            <h2 class="title sm">RACE COMPLETE</h2>
+            <div class="result-grid">
+              <div class="result">
+                <span class="stat-label">Total time</span>
+                <span class="result-value mono" id="result-total">0:00.00</span>
+              </div>
+              <div class="result">
+                <span class="stat-label">Best lap</span>
+                <span class="result-value mono accent" id="result-best">0:00.00</span>
+              </div>
+            </div>
+            <ul class="splits" id="result-splits"></ul>
+            <button id="btn-restart" class="primary-btn" type="button">RACE AGAIN</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="loader" class="loader"><div class="loader-bar"></div></div>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
