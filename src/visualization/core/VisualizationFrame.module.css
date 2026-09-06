@@ -31,6 +31,28 @@
   }
 }
 
+/*
+ * Flow layout: the figure sets its own height. A chart with twenty labelled
+ * rows cannot be cropped into a fixed box and stay readable, so it is allowed
+ * to be as tall as it needs and to scroll sideways on a narrow screen.
+ */
+.flow {
+  aspect-ratio: auto;
+  /* Holds the frame open while the renderer chunk loads. Without it the stage
+     collapsed to nothing, because the loading fallback is absolutely
+     positioned and contributes no height. */
+  min-block-size: 16rem;
+  padding: var(--space-3);
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  touch-action: pan-x pan-y pinch-zoom;
+}
+
+.flow > * {
+  min-width: 20rem;
+}
+
 .fallback {
   position: absolute;
   inset: 0;

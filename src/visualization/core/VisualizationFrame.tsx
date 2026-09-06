@@ -1,9 +1,9 @@
-import { Suspense, lazy, useMemo, useRef, type ReactNode } from 'react';
+import { Suspense, useRef, type ReactNode } from 'react';
 import type { VisualizationId } from '@/content/schema/visualization';
 import { FIDELITY_META } from '@/content/schema/visualization';
 import { formatReference, referenceHref } from '@/content/schema/reference';
 import { getReference } from '@/content/references';
-import { getVisualization } from '@/visualization/registry';
+import { getVisualization, getVisualizationComponent } from '@/visualization/registry';
 import { useReaderPreferences } from '@/app/providers/useReaderPreferences';
 import { cx } from '@/lib/cx';
 import { QUALITY_BUDGETS, meetsQuality } from './quality';
@@ -39,9 +39,10 @@ export function VisualizationFrame({ id, caption }: VisualizationFrameProps): Re
   const size = useElementSize(stageRef);
 
   const registered = getVisualization(id);
-
-  // `lazy` must not be re-created on every render, or React remounts the scene.
-  const Renderer = useMemo(() => (registered ? lazy(registered.load) : null), [registered]);
+  // Cached in the registry by id: creating the lazy component here would give
+  // React a new component type on every render and the frame would suspend for
+  // ever. See `getVisualizationComponent`.
+  const Renderer = getVisualizationComponent(id);
 
   if (!registered || !Renderer) {
     // A spec without a renderer is a content bug, caught by the registry test.
@@ -69,7 +70,7 @@ export function VisualizationFrame({ id, caption }: VisualizationFrameProps): Re
 
       <div
         ref={stageRef}
-        className={styles.stage}
+        className={cx(styles.stage, spec.layout === 'flow' && styles.flow)}
         role="img"
         aria-label={spec.description}
         data-runnable={runnable}

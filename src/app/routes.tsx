@@ -17,6 +17,7 @@ const SectionPage = lazy(() => import('@/features/section/SectionPage'));
 const TopicPage = lazy(() => import('@/features/topic/TopicPage'));
 const MethodPage = lazy(() => import('@/features/method/MethodPage'));
 const NotFoundPage = lazy(() => import('@/features/errors/NotFoundPage'));
+const TimelinePage = lazy(() => import('@/features/timeline/TimelinePage'));
 
 export function AppRoutes(): ReactNode {
   return (
@@ -24,6 +25,14 @@ export function AppRoutes(): ReactNode {
       <Route element={<AppShell />}>
         <Route index element={<HomePage />} />
         <Route path="method" element={<MethodPage />} />
+        {/*
+          The Cosmic Timeline is the one section with a bespoke experience
+          rather than a topic list, so it takes an explicit route ahead of the
+          generic `:sectionSlug` one. Its milestone slug is a route param, which
+          is what makes a milestone shareable.
+        */}
+        <Route path="cosmic-timeline" element={<TimelinePage />} />
+        <Route path="cosmic-timeline/:eventSlug" element={<TimelinePage />} />
         <Route path=":sectionSlug" element={<SectionPage />} />
         <Route path=":sectionSlug/:topicSlug" element={<TopicPage />} />
         <Route path="*" element={<NotFoundPage />} />

@@ -1,0 +1,109 @@
+.wrap {
+  display: grid;
+  gap: var(--space-2);
+  padding-block: var(--space-4);
+}
+
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.label {
+  font-size: var(--step--1);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-eyebrow);
+  font-weight: 600;
+  color: var(--text-tertiary);
+}
+
+.explainToggle {
+  min-block-size: var(--touch-target);
+  padding-inline: var(--space-3);
+  margin-inline-end: calc(var(--space-3) * -1);
+  font-size: var(--step--1);
+  color: var(--text-secondary);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  text-decoration-color: rgb(148 162 192 / 45%);
+}
+
+.explainToggle:hover {
+  color: var(--text-primary);
+}
+
+.track {
+  position: relative;
+  block-size: 26px;
+  border-radius: var(--radius-sm);
+  background: rgb(148 162 192 / 10%);
+  border: 1px solid var(--surface-hairline);
+  overflow: hidden;
+}
+
+.fill {
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: 0;
+  background: linear-gradient(90deg, rgb(143 184 255 / 30%), rgb(255 154 82 / 45%));
+}
+
+.playhead {
+  position: absolute;
+  inset-block: 0;
+  inline-size: 2px;
+  background: #fff;
+  transform: translateX(-1px);
+}
+
+.landmark {
+  position: absolute;
+  inset-block: 0;
+  inline-size: 1px;
+  background: rgb(226 233 246 / 28%);
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-4);
+  font-size: var(--step--1);
+  color: var(--text-tertiary);
+}
+
+.legend li {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.legend li span:last-child {
+  color: var(--text-secondary);
+}
+
+.legendTick {
+  inline-size: 1px;
+  block-size: 0.85em;
+  background: rgb(226 233 246 / 45%);
+}
+
+.readout {
+  font-size: var(--step--1);
+  color: var(--text-tertiary);
+}
+
+.explanation {
+  display: grid;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  background: rgb(14 21 38 / 65%);
+  border: 1px solid var(--surface-hairline);
+  font-size: var(--step--1);
+  line-height: var(--leading-body);
+  color: var(--text-secondary);
+  max-width: var(--measure);
+}

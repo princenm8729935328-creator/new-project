@@ -24,7 +24,17 @@ export interface CosmicTime {
   readonly display?: string;
 }
 
-const SECONDS_PER_YEAR = 31_557_600; // Julian year, the IAU convention.
+export const SECONDS_PER_YEAR = 31_557_600; // Julian year, the IAU convention.
+
+/**
+ * Age of the Universe in years: 13.797 ± 0.023 Gyr, Planck 2018 base-ΛCDM.
+ *
+ * Everything dated "years ago" is converted through this constant, so a revised
+ * measurement moves the whole timeline consistently instead of leaving some
+ * events on an old value.
+ */
+export const UNIVERSE_AGE_YEARS = 13.797e9;
+export const UNIVERSE_AGE_SECONDS = UNIVERSE_AGE_YEARS * SECONDS_PER_YEAR;
 
 export function cosmicTime(
   seconds: number,
@@ -46,6 +56,37 @@ export function cosmicTimeFromYears(
   display?: string,
 ): CosmicTime {
   return cosmicTime(years * SECONDS_PER_YEAR, precision, display);
+}
+
+/**
+ * Convenience for everything dated by looking backwards — which is nearly all
+ * of geology, palaeontology and archaeology. Stores the same `seconds since the
+ * beginning` as every other event, so one axis carries them all.
+ */
+export function cosmicTimeFromYearsAgo(
+  years: number,
+  precision: CosmicTime['precision'],
+  display?: string,
+): CosmicTime {
+  return cosmicTime((UNIVERSE_AGE_YEARS - years) * SECONDS_PER_YEAR, precision, display);
+}
+
+/** Years before the present for a stored cosmic time. */
+export function yearsBeforePresent(time: CosmicTime): number {
+  return UNIVERSE_AGE_YEARS - time.seconds / SECONDS_PER_YEAR;
+}
+
+/**
+ * "4.57 billion years ago", "12,000 years ago" — how a reader actually thinks
+ * about anything after the first stars.
+ */
+export function formatYearsAgo(years: number): string {
+  if (years <= 0) return 'today';
+  if (years >= 1e9) return `${(years / 1e9).toPrecision(3)} billion years ago`;
+  if (years >= 1e6) return `${(years / 1e6).toPrecision(3)} million years ago`;
+  if (years >= 1e4) return `${Math.round(years / 1e3)},000 years ago`;
+  if (years >= 1e3) return `${Math.round(years / 100) / 10} thousand years ago`;
+  return `${Math.round(years)} years ago`;
 }
 
 /**

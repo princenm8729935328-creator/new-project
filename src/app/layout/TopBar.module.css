@@ -5,15 +5,12 @@
   block-size: var(--nav-height);
   display: flex;
   align-items: center;
-  background: rgb(4 6 13 / 72%);
+  /* Solid, not glassy. A translucent bar plus backdrop-filter smeared the
+     article scrolling underneath into a visible grey band across the brand,
+     and repainting a blur on every scroll frame is expensive on a phone. */
+  background: var(--void-950);
   border-block-end: 1px solid var(--surface-hairline);
   padding-block-start: env(safe-area-inset-top);
-}
-
-@supports (backdrop-filter: blur(1px)) {
-  .bar {
-    backdrop-filter: blur(18px) saturate(1.2);
-  }
 }
 
 .inner {

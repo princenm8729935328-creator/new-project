@@ -16,7 +16,7 @@
  *   2. Add its spec to `src/content/visualizations.ts`.
  *   3. Add one line here mapping the id to `() => import('...')`.
  */
-import type { ComponentType } from 'react';
+import { lazy, type ComponentType } from 'react';
 import type { VisualizationId, VisualizationSpec } from '@/content/schema/visualization';
 import { VISUALIZATIONS } from '@/content/visualizations';
 import type { QualityTier } from './core/quality';
@@ -42,10 +42,17 @@ export interface RegisteredVisualization {
 }
 
 /**
- * Loaders by id. Empty until Phase 1 adds the first renderer — the machinery
- * around it (frame, quality tiers, viewport gating) is what exists today.
+ * Loaders by id. Every entry is a dynamic import, so a renderer is fetched only
+ * when a frame using it approaches the viewport.
  */
-const LOADERS: Partial<Record<string, VisualizationLoader>> = {};
+const LOADERS: Partial<Record<string, VisualizationLoader>> = {
+  'primordial-plasma': () => import('./renderers/PrimordialPlasma'),
+  'structure-formation': () => import('./renderers/StructureFormation'),
+  'protoplanetary-disk': () => import('./renderers/ProtoplanetaryDisk'),
+  'oxygen-history': () => import('./renderers/OxygenHistory'),
+  'hominin-tree': () => import('./renderers/HomininTree'),
+  'deep-time-scale': () => import('./renderers/DeepTimeScale'),
+};
 
 const SPECS = new Map<string, VisualizationSpec>(
   VISUALIZATIONS.map((visualization) => [visualization.id, visualization]),
@@ -56,6 +63,35 @@ export function getVisualization(id: VisualizationId): RegisteredVisualization |
   const load = LOADERS[id];
   if (!spec || !load) return undefined;
   return { spec, load };
+}
+
+/**
+ * The lazy component for a visualization, created once and cached forever.
+ *
+ * This has to be module-level, not a `useMemo` in the frame. `lazy()` returns a
+ * new component type on every call, and React treats a new type as a different
+ * component: it unmounts the old one and suspends again. A frame that recreated
+ * its lazy component on each render therefore never escaped its Suspense
+ * fallback — React kept the real element in the tree but hid it with
+ * `display: none !important`, so the figure silently never appeared.
+ *
+ * Caching by id makes the component type stable across renders, across frames
+ * showing the same figure, and across remounts.
+ */
+const COMPONENTS = new Map<string, ComponentType<VisualizationProps>>();
+
+export function getVisualizationComponent(
+  id: VisualizationId,
+): ComponentType<VisualizationProps> | undefined {
+  const cached = COMPONENTS.get(id);
+  if (cached) return cached;
+
+  const load = LOADERS[id];
+  if (!load) return undefined;
+
+  const component = lazy(load);
+  COMPONENTS.set(id, component);
+  return component;
 }
 
 export function getVisualizationSpec(id: VisualizationId): VisualizationSpec | undefined {

@@ -20,6 +20,7 @@ export function visualizationId(id: string): VisualizationId {
 export const VISUALIZATION_FIDELITIES = [
   'data-driven',
   'to-scale',
+  'reconstruction',
   'schematic',
   'artistic',
 ] as const;
@@ -43,9 +44,15 @@ export const FIDELITY_META: Readonly<Record<VisualizationFidelity, FidelityMeta>
     label: 'To scale',
     definition: 'Sizes, distances or times are in correct proportion, as stated in the caption.',
   },
+  reconstruction: {
+    id: 'reconstruction',
+    label: 'Scientific reconstruction',
+    definition:
+      'Built from evidence, but the evidence is incomplete. It shows the best current interpretation, and the parts that are inferred rather than observed are named in the caption.',
+  },
   schematic: {
     id: 'schematic',
-    label: 'Schematic',
+    label: 'Conceptual diagram',
     definition:
       'A diagram of how something works. Proportions are chosen for clarity, not accuracy.',
   },
@@ -80,4 +87,13 @@ export interface VisualizationSpec {
   readonly minimumQuality?: 'low' | 'medium' | 'high';
   /** Whether the reader can manipulate it, as opposed to watching it. */
   readonly interactive: boolean;
+  /**
+   * How the frame sizes the figure.
+   *
+   * `stage` (the default) gives a fixed-aspect viewport — right for animated
+   * scenes, which have no natural height. `flow` lets the figure set its own
+   * height, which is what a chart with twenty labelled rows needs; cropping one
+   * into a 16:10 box would make it unreadable on a phone.
+   */
+  readonly layout?: 'stage' | 'flow';
 }

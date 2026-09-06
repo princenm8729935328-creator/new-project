@@ -1,0 +1,141 @@
+.opening {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-block-size: min(88svh, 46rem);
+  padding-block: var(--space-8);
+}
+
+.inner {
+  display: grid;
+  gap: var(--space-5);
+  max-width: 42rem;
+}
+
+/* Each staged line rises into place. The transform is small on purpose:
+   cinematic here means restrained, not theatrical. */
+.eyebrow,
+.headline,
+.lede,
+.actions,
+.note {
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity var(--duration-cinematic) var(--ease-out),
+    transform var(--duration-cinematic) var(--ease-out);
+}
+
+.eyebrow[data-shown='true'],
+.headline[data-shown='true'],
+.lede[data-shown='true'],
+.actions[data-shown='true'],
+.note[data-shown='true'] {
+  opacity: 1;
+  transform: none;
+}
+
+.eyebrow {
+  font-size: var(--step--1);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-eyebrow);
+  font-weight: 600;
+  color: var(--text-tertiary);
+}
+
+.headline {
+  font-family: var(--font-display);
+  font-size: var(--step-5);
+  line-height: 1.12;
+  letter-spacing: var(--tracking-display);
+  font-weight: 400;
+  text-wrap: balance;
+  color: var(--text-primary);
+}
+
+.lede {
+  font-size: var(--step-1);
+  line-height: var(--leading-snug);
+  color: var(--text-secondary);
+  text-wrap: pretty;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  padding-block-start: var(--space-2);
+}
+
+.primary,
+.secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-block-size: var(--touch-target);
+  padding-inline: var(--space-6);
+  border-radius: var(--radius-pill);
+  font-size: var(--step-0);
+  font-weight: 600;
+  transition:
+    background var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out);
+}
+
+.primary {
+  background: var(--mist-100);
+  color: var(--void-950);
+}
+
+.primary:hover {
+  background: #fff;
+}
+
+.secondary {
+  border: 1px solid var(--surface-hairline-strong);
+  color: var(--text-primary);
+}
+
+.secondary:hover {
+  background: rgb(148 162 192 / 10%);
+}
+
+.note {
+  font-size: var(--step--1);
+  line-height: var(--leading-body);
+  color: var(--text-tertiary);
+  padding-inline-start: var(--space-4);
+  border-inline-start: 2px solid var(--surface-hairline-strong);
+  max-width: var(--measure);
+  transition-delay: 120ms;
+}
+
+.skip {
+  position: absolute;
+  inset-block-end: var(--space-4);
+  inset-inline-end: 0;
+  min-block-size: var(--touch-target);
+  padding-inline: var(--space-4);
+  font-size: var(--step--1);
+  color: var(--text-tertiary);
+}
+
+.skip:hover {
+  color: var(--text-primary);
+}
+
+/* Landscape on a phone: never force the reader to scroll to find the button. */
+@media (orientation: landscape) and (max-height: 30rem) {
+  .opening {
+    min-block-size: auto;
+    padding-block: var(--space-6);
+  }
+
+  .headline {
+    font-size: var(--step-3);
+  }
+
+  .lede {
+    font-size: var(--step-0);
+  }
+}

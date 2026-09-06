@@ -1,18 +1,45 @@
 /**
  * Cosmic timeline data.
  *
- * Empty until Phase 1. The eras and events that populate it are authored here
- * against the schema in `../schema/timeline.ts`, which is already fixed so that
- * content writing and timeline engineering can proceed independently.
+ * Milestones are authored per stretch of history under `events/` and assembled
+ * here in chronological order. Adding a milestone means writing it in the right
+ * file — nothing in the timeline UI enumerates events.
  */
-import type { TimelineEra, TimelineEvent } from '../schema/timeline';
+import type { TimelineEra, TimelineEvent, TimelineEventId } from '../schema/timeline';
+import { TIMELINE_ERAS } from './eras';
+import { EARLY_UNIVERSE_EVENTS } from './events/earlyUniverse';
+import { STARS_AND_EARTH_EVENTS } from './events/starsAndEarth';
+import { LIFE_EVENTS } from './events/life';
+import { HUMAN_EVENTS } from './events/humans';
 
-export const TIMELINE_ERAS: readonly TimelineEra[] = [];
+export { TIMELINE_ERAS, getEra } from './eras';
 
-export const TIMELINE_EVENTS: readonly TimelineEvent[] = [];
+/** Every milestone, oldest first. */
+export const TIMELINE_EVENTS: readonly TimelineEvent[] = [
+  ...EARLY_UNIVERSE_EVENTS,
+  ...STARS_AND_EARTH_EVENTS,
+  ...LIFE_EVENTS,
+  ...HUMAN_EVENTS,
+].sort((a, b) => a.time.seconds - b.time.seconds);
+
+const BY_ID = new Map<TimelineEventId, TimelineEvent>(
+  TIMELINE_EVENTS.map((event) => [event.id, event]),
+);
+const BY_SLUG = new Map(TIMELINE_EVENTS.map((event) => [event.slug, event]));
+
+export function getTimelineEvent(id: TimelineEventId): TimelineEvent | undefined {
+  return BY_ID.get(id);
+}
+
+export function getTimelineEventBySlug(slug: string): TimelineEvent | undefined {
+  return BY_SLUG.get(slug);
+}
 
 export function eventsInEra(eraId: string): readonly TimelineEvent[] {
-  return TIMELINE_EVENTS.filter((event) => event.eraId === eraId).sort(
-    (a, b) => a.time.logSeconds - b.time.logSeconds,
-  );
+  return TIMELINE_EVENTS.filter((event) => event.eraId === eraId);
+}
+
+/** Eras in chronological order. */
+export function orderedEras(): readonly TimelineEra[] {
+  return [...TIMELINE_ERAS].sort((a, b) => a.order - b.order);
 }

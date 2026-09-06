@@ -50,7 +50,13 @@ describe('AppShell', () => {
       'href',
       '/cosmic-timeline',
     );
-    expect(sheetScope.getAllByText(/Not built yet · Phase/)).toHaveLength(14);
+    // The Cosmic Timeline is built; the other thirteen say so plainly.
+    expect(sheetScope.getAllByText(/Not built yet · Phase/)).toHaveLength(13);
+    expect(
+      within(sheetScope.getByRole('link', { name: /Cosmic Timeline/ })).queryByText(
+        /Not built yet/,
+      ),
+    ).toBeNull();
   });
 
   it('lets the reader change reading depth', async () => {

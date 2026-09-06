@@ -1,0 +1,189 @@
+.panel {
+  display: grid;
+  gap: var(--space-6);
+  padding-block: var(--space-6) var(--space-8);
+}
+
+.header {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.when {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-3);
+}
+
+.whenLabel {
+  font-family: var(--font-mono);
+  font-size: var(--step-0);
+  color: var(--section-accent, var(--accent));
+  font-variant-numeric: tabular-nums;
+}
+
+.era {
+  font-size: var(--step--1);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-eyebrow);
+  color: var(--text-tertiary);
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: var(--step-4);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-display);
+  font-weight: 400;
+  text-wrap: balance;
+}
+
+.summary {
+  font-size: var(--step-1);
+  line-height: var(--leading-snug);
+  color: var(--text-secondary);
+  max-width: var(--measure);
+  text-wrap: pretty;
+}
+
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+  padding-block-start: var(--space-2);
+}
+
+.badgeNote {
+  font-size: var(--step--1);
+  color: var(--text-tertiary);
+  max-width: 42ch;
+}
+
+.range {
+  font-size: var(--step--1);
+  color: var(--text-tertiary);
+  font-family: var(--font-mono);
+}
+
+.section {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.sectionTitle {
+  font-size: var(--step--1);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-eyebrow);
+  font-weight: 600;
+  color: var(--text-tertiary);
+}
+
+.prose {
+  font-size: var(--step-0);
+  line-height: var(--leading-body);
+  color: var(--text-secondary);
+  max-width: var(--measure);
+  text-wrap: pretty;
+}
+
+/* Uncertainty is content, not a disclaimer: it gets a marker, not a demotion. */
+.uncertain {
+  padding-inline-start: var(--space-4);
+  border-inline-start: 2px solid color-mix(in oklab, var(--evidence-open) 55%, transparent);
+}
+
+.uncertain .sectionTitle {
+  color: var(--evidence-open);
+}
+
+.figure {
+  margin-block: var(--space-2);
+}
+
+.terms {
+  display: grid;
+  gap: var(--space-3);
+  max-width: var(--measure);
+}
+
+.term dt {
+  font-weight: 600;
+  color: var(--text-primary);
+  font-size: var(--step-0);
+}
+
+.term dd {
+  margin: var(--space-1) 0 0;
+  font-size: var(--step--1);
+  color: var(--text-tertiary);
+  line-height: var(--leading-snug);
+}
+
+.footer {
+  display: grid;
+  gap: var(--space-5);
+  padding-block-start: var(--space-5);
+  border-block-start: 1px solid var(--surface-hairline);
+}
+
+.relatedGroup {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.related {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.relatedLink {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  inline-size: 100%;
+  min-block-size: var(--touch-target);
+  padding: var(--space-3);
+  text-align: start;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--surface-hairline);
+  color: var(--text-primary);
+  font-size: var(--step-0);
+  transition: border-color var(--duration-fast) var(--ease-out);
+}
+
+.relatedLink:hover {
+  border-color: var(--section-accent, var(--surface-hairline-strong));
+}
+
+.relatedWhen {
+  font-size: var(--step--1);
+  color: var(--text-tertiary);
+  font-family: var(--font-mono);
+}
+
+.exploreLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-block-size: var(--touch-target);
+  padding-inline: var(--space-5);
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--section-accent, var(--surface-hairline-strong));
+  color: var(--section-accent, var(--text-primary));
+  text-decoration: none;
+  font-size: var(--step-0);
+  font-weight: 600;
+  justify-self: start;
+}
+
+.exploreLink:hover {
+  background: var(--section-glow, rgb(148 162 192 / 10%));
+}
+
+@media (min-width: 48rem) {
+  .related {
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  }
+}

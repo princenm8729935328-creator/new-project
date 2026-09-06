@@ -12,7 +12,7 @@ import { TOPICS } from './topics';
 import { REFERENCES } from './references';
 import { GLOSSARY } from './glossary';
 import { VISUALIZATIONS } from './visualizations';
-import { TIMELINE_EVENTS } from './timeline';
+import { TIMELINE_ERAS, TIMELINE_EVENTS } from './timeline';
 
 export const LIBRARY: ContentLibrary = {
   sections: SECTIONS,
@@ -21,4 +21,5 @@ export const LIBRARY: ContentLibrary = {
   glossary: GLOSSARY,
   visualizations: VISUALIZATIONS,
   timelineEvents: TIMELINE_EVENTS,
+  timelineEras: TIMELINE_ERAS,
 };

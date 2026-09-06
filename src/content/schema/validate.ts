@@ -14,7 +14,7 @@ import { EVIDENCE_LEVEL_META, isEvidenceLevel } from './evidence';
 import type { GlossaryTerm } from './glossary';
 import type { Reference, ReferenceId } from './reference';
 import type { Section, SectionId } from './section';
-import type { TimelineEvent } from './timeline';
+import type { TimelineEra, TimelineEvent } from './timeline';
 import type { Topic, TopicId } from './topic';
 import type { VisualizationSpec, VisualizationId } from './visualization';
 
@@ -32,6 +32,7 @@ export interface ContentLibrary {
   readonly glossary: readonly GlossaryTerm[];
   readonly visualizations: readonly VisualizationSpec[];
   readonly timelineEvents: readonly TimelineEvent[];
+  readonly timelineEras?: readonly TimelineEra[];
 }
 
 function error(path: string, message: string): ValidationIssue {
@@ -205,6 +206,13 @@ export function validateLibrary(library: ContentLibrary): ValidationIssue[] {
     }
   }
 
+  const eraIds = new Set(library.timelineEras?.map((era) => era.id) ?? []);
+  const eventIds = new Set(library.timelineEvents.map((event) => event.id));
+
+  for (const dupe of duplicates(library.timelineEvents.map((event) => event.slug))) {
+    issues.push(error(`timeline:${dupe}`, 'duplicate timeline event slug'));
+  }
+
   for (const event of library.timelineEvents) {
     const path = `timeline:${event.slug}`;
     if (event.topicId && !topicIds.has(event.topicId)) {
@@ -215,6 +223,54 @@ export function validateLibrary(library: ContentLibrary): ValidationIssue[] {
     }
     if (event.references.length === 0) {
       issues.push(error(path, 'a timeline event must cite a source'));
+    }
+    for (const reference of event.references) {
+      if (!referenceIds.has(reference)) {
+        issues.push(error(path, `cites unknown reference "${reference}"`));
+      }
+    }
+    if (library.timelineEras && !eraIds.has(event.eraId)) {
+      issues.push(error(path, `belongs to unknown era "${event.eraId}"`));
+    }
+    if (event.sectionId && !sectionIds.has(event.sectionId)) {
+      issues.push(error(path, `points at unknown section "${event.sectionId}"`));
+    }
+    if (event.visualizationId && !visualizationIds.has(event.visualizationId)) {
+      issues.push(error(path, `unknown visualization "${event.visualizationId}"`));
+    }
+    for (const term of event.glossaryTerms ?? []) {
+      if (!glossaryIds.has(term)) issues.push(error(path, `unknown glossary term "${term}"`));
+    }
+    for (const related of event.relatedEvents ?? []) {
+      if (!eventIds.has(related)) issues.push(error(path, `unknown related event "${related}"`));
+    }
+
+    // The narrative contract: a milestone that cannot say why it matters or how
+    // we know is not ready to be read.
+    if (event.whatHappened.essential.trim() === '') {
+      issues.push(error(path, 'whatHappened is required'));
+    }
+    if (event.whyItMatters.essential.trim() === '') {
+      issues.push(error(path, 'whyItMatters is required'));
+    }
+    if (event.evidenceBasis.essential.trim() === '') {
+      issues.push(error(path, 'evidenceBasis is required'));
+    }
+    if (event.whenLabel.trim() === '') {
+      issues.push(error(path, 'whenLabel is required'));
+    }
+    // Anything not "established" is, by definition, still being argued about.
+    if (event.evidence !== 'established' && !event.uncertainty) {
+      issues.push(
+        error(path, `a "${event.evidence}" milestone must state what is uncertain about it`),
+      );
+    }
+  }
+
+  for (const era of library.timelineEras ?? []) {
+    const path = `era:${era.id}`;
+    if (era.to.seconds <= era.from.seconds) {
+      issues.push(error(path, 'an era must end after it begins'));
     }
   }
 

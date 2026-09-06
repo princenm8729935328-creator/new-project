@@ -22,7 +22,7 @@ export const SECTIONS: readonly Section[] = [
     accent: 'cosmos',
     order: 1,
     phase: 1,
-    status: 'planned',
+    status: 'published',
     icon: 'timeline',
     timelineSpan: { fromLogSeconds: -43, toLogSeconds: 17.64 },
   },
