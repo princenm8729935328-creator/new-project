@@ -1,18 +1,48 @@
 {
-  "name": "apex-circuit",
+  "name": "cosmos-atlas",
   "private": true,
-  "version": "1.0.0",
+  "version": "0.1.0",
   "type": "module",
-  "description": "A mobile-first 3D racing game built with Three.js and Vite.",
+  "description": "An interactive, cinematic Space & Universe knowledge platform — from the beginning of the Universe to modern humanity.",
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "build": "tsc --build && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --build --force",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "verify": "npm run format:check && npm run lint && npm run typecheck && npm run test && npm run build"
   },
   "dependencies": {
-    "three": "^0.180.0"
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-router-dom": "^7.6.0"
   },
   "devDependencies": {
-    "vite": "^7.0.0"
+    "@eslint/js": "^9.26.0",
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/node": "^22.15.0",
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.0",
+    "@vitejs/plugin-react": "^4.4.1",
+    "eslint": "^9.26.0",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.20",
+    "globals": "^16.1.0",
+    "jsdom": "^26.1.0",
+    "prettier": "^3.5.3",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.32.0",
+    "vite": "^6.3.5",
+    "vitest": "^3.1.3"
   }
 }

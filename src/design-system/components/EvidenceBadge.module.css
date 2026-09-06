@@ -1,0 +1,48 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 0.2em 0.7em;
+  border-radius: var(--radius-pill);
+  font-size: var(--step--1);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  line-height: 1.4;
+  color: var(--evidence-color);
+  background: color-mix(in oklab, var(--evidence-color) 12%, transparent);
+  border: 1px solid color-mix(in oklab, var(--evidence-color) 34%, transparent);
+  white-space: nowrap;
+}
+
+/* Colour alone never carries the meaning — the dot is a redundant cue for the
+   label, and the label is always present. */
+.dot {
+  inline-size: 0.45em;
+  block-size: 0.45em;
+  border-radius: 50%;
+  background: currentcolor;
+  flex: none;
+}
+
+.established {
+  --evidence-color: var(--evidence-established);
+}
+.model {
+  --evidence-color: var(--evidence-model);
+}
+.research {
+  --evidence-color: var(--evidence-research);
+}
+.open {
+  --evidence-color: var(--evidence-open);
+}
+.speculation {
+  --evidence-color: var(--evidence-speculation);
+}
+
+.definition {
+  margin-block-start: var(--space-2);
+  font-size: var(--step--1);
+  color: var(--text-tertiary);
+  max-width: var(--measure);
+}

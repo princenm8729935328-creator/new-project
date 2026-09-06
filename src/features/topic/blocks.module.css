@@ -1,0 +1,139 @@
+.block + .block {
+  margin-block-start: var(--space-5);
+}
+
+.claim {
+  display: grid;
+  gap: var(--space-3);
+  padding-inline-start: var(--space-4);
+  border-inline-start: 2px solid var(--surface-hairline-strong);
+}
+
+.claimStatement {
+  font-size: var(--step-1);
+  line-height: var(--leading-snug);
+  color: var(--text-primary);
+  max-width: var(--measure);
+}
+
+.speculationNote {
+  font-size: var(--step--1);
+  color: var(--text-tertiary);
+  max-width: var(--measure);
+}
+
+.quantityList {
+  display: grid;
+  gap: var(--space-4);
+}
+
+@media (min-width: 40rem) {
+  .quantityList {
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  }
+}
+
+.quantityLabel {
+  font-size: var(--step--1);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-eyebrow);
+  color: var(--text-tertiary);
+}
+
+.quantityValue {
+  font-family: var(--font-display);
+  font-size: var(--step-3);
+  line-height: var(--leading-tight);
+  font-variant-numeric: tabular-nums;
+  margin-block-start: var(--space-1);
+}
+
+.quantityContext {
+  margin-block-start: var(--space-2);
+  font-size: var(--step--1);
+  color: var(--text-tertiary);
+}
+
+.calloutTitle {
+  font-family: var(--font-display);
+  font-size: var(--step-1);
+  margin-block-end: var(--space-2);
+  color: var(--callout-color, var(--text-primary));
+}
+
+.misconception {
+  --callout-color: var(--evidence-open);
+}
+.caution {
+  --callout-color: var(--iron);
+}
+.history {
+  --callout-color: var(--helium);
+}
+.note {
+  --callout-color: var(--section-accent, var(--accent));
+}
+
+.question {
+  font-family: var(--font-display);
+  font-size: var(--step-2);
+  line-height: var(--leading-snug);
+  max-width: var(--measure);
+}
+
+.questionLabel {
+  display: block;
+  margin-block: var(--space-4) var(--space-1);
+  font-size: var(--step--1);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-eyebrow);
+  color: var(--text-tertiary);
+}
+
+.crossLink {
+  display: inline-flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  text-decoration: none;
+  color: var(--text-primary);
+  padding: var(--space-3) 0;
+  min-block-size: var(--touch-target);
+}
+
+.crossLinkRationale {
+  font-size: var(--step--1);
+  color: var(--text-tertiary);
+}
+
+.definitionTerm {
+  font-family: var(--font-display);
+  font-size: var(--step-1);
+}
+
+.definitionBody {
+  margin-block-start: var(--space-2);
+  color: var(--text-secondary);
+  max-width: var(--measure);
+}
+
+.references {
+  display: grid;
+  gap: var(--space-2);
+  font-size: var(--step--1);
+  color: var(--text-tertiary);
+}
+
+.references a {
+  color: var(--text-secondary);
+}
+
+.referenceItem {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-2);
+}
+
+.referenceMarker {
+  font-family: var(--font-mono);
+  color: var(--text-tertiary);
+}

@@ -1,0 +1,79 @@
+/*
+ * The information panel: the platform's one container primitive.
+ *
+ * There is exactly one of these rather than a family of card variants, because
+ * a museum wall does not have eight kinds of frame. Emphasis comes from
+ * typography and space inside the panel, not from a different panel.
+ */
+
+.panel {
+  position: relative;
+  padding: var(--space-5);
+  border-radius: var(--radius-lg);
+  background: var(--surface-panel);
+  border: 1px solid var(--surface-hairline);
+  box-shadow: var(--shadow-panel);
+}
+
+/* Frosted glass, but only where the GPU can afford it. */
+@supports (backdrop-filter: blur(1px)) {
+  :global(:root[data-quality='high']) .panel,
+  :global(:root[data-quality='medium']) .panel {
+    backdrop-filter: blur(14px) saturate(1.1);
+  }
+}
+
+.bare {
+  padding: 0;
+  background: none;
+  border: none;
+  box-shadow: none;
+}
+
+.quiet {
+  background: rgb(14 21 38 / 45%);
+  box-shadow: none;
+}
+
+/* A hairline of the section accent along the top edge, as a quiet identifier. */
+.accented::before {
+  content: '';
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline: var(--space-5);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--section-accent), transparent);
+  opacity: 0.6;
+}
+
+.interactive {
+  display: block;
+  width: 100%;
+  text-align: start;
+  color: inherit;
+  text-decoration: none;
+  transition:
+    border-color var(--duration-base) var(--ease-out),
+    transform var(--duration-base) var(--ease-out);
+}
+
+.interactive:hover {
+  border-color: var(--surface-hairline-strong);
+}
+
+/* Pointer-only lift: on touch this would fire on every tap and feel broken. */
+@media (hover: hover) and (pointer: fine) {
+  .interactive:hover {
+    transform: translateY(-2px);
+  }
+}
+
+.interactive:active {
+  transform: translateY(0);
+}
+
+@media (min-width: 48rem) {
+  .panel {
+    padding: var(--space-6);
+  }
+}

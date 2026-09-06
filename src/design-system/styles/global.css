@@ -1,0 +1,73 @@
+@import '../tokens/tokens.css';
+@import '../tokens/accents.css';
+@import './reset.css';
+@import './typography.css';
+@import './utilities.css';
+
+html {
+  background: var(--surface-base);
+  color-scheme: dark;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--step-0);
+  line-height: var(--leading-body);
+  color: var(--text-primary);
+  background:
+    radial-gradient(120% 80% at 50% -10%, rgb(31 44 77 / 55%) 0%, transparent 60%),
+    radial-gradient(90% 60% at 100% 100%, rgb(22 32 58 / 40%) 0%, transparent 55%),
+    var(--surface-base);
+  background-attachment: fixed;
+  /* Respect the notch and the home indicator on phones. */
+  padding-block-end: env(safe-area-inset-bottom);
+}
+
+#root {
+  isolation: isolate;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+}
+
+/*
+ * Links.
+ *
+ * Underlined in body copy — an underline is the accessible signal, and colour
+ * alone is not. Headings that happen to be links opt out and take the accent on
+ * interaction instead, so a grid of section titles does not read as a list of
+ * blue hyperlinks.
+ */
+a {
+  color: var(--section-accent, var(--accent));
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+  text-decoration-color: color-mix(in oklab, currentcolor 45%, transparent);
+  transition: text-decoration-color var(--duration-fast) var(--ease-out);
+}
+
+a:hover {
+  text-decoration-color: currentcolor;
+}
+
+:where(h1, h2, h3, .ds-title, .ds-heading, .ds-subheading) a {
+  color: inherit;
+  text-decoration: none;
+}
+
+:where(h1, h2, h3, .ds-title, .ds-heading, .ds-subheading) a:hover {
+  color: var(--section-accent, var(--accent));
+}
+
+::selection {
+  background: var(--section-accent, var(--accent));
+  color: var(--accent-contrast);
+}
+
+/* Scrollbars, where they are visible at all, should not break the mood. */
+@supports (scrollbar-color: red blue) {
+  html {
+    scrollbar-color: var(--void-600) transparent;
+    scrollbar-width: thin;
+  }
+}

@@ -1,0 +1,70 @@
+/*
+ * Section accents.
+ *
+ * Each of the fourteen sections carries one accent hue. It is applied by
+ * setting `data-accent` on a container; everything inside then reads
+ * `--section-accent` and `--section-glow` without knowing which section it is
+ * in. That is what keeps section-specific colour out of component code.
+ */
+
+[data-accent] {
+  --section-accent: var(--accent);
+  --section-glow: rgb(99 164 255 / 18%);
+}
+
+[data-accent='cosmos'] {
+  --section-accent: #8fb8ff;
+  --section-glow: rgb(143 184 255 / 18%);
+}
+[data-accent='plasma'] {
+  --section-accent: #ff8fb0;
+  --section-glow: rgb(255 143 176 / 16%);
+}
+[data-accent='ember'] {
+  --section-accent: var(--helium);
+  --section-glow: rgb(255 215 110 / 16%);
+}
+[data-accent='void'] {
+  --section-accent: #b9a7ff;
+  --section-glow: rgb(185 167 255 / 16%);
+}
+[data-accent='gravity'] {
+  --section-accent: #7fd2ff;
+  --section-glow: rgb(127 210 255 / 16%);
+}
+[data-accent='classical'] {
+  --section-accent: #d8c7a0;
+  --section-glow: rgb(216 199 160 / 16%);
+}
+[data-accent='relativity'] {
+  --section-accent: #66e0d4;
+  --section-glow: rgb(102 224 212 / 16%);
+}
+[data-accent='quantum'] {
+  --section-accent: #c48bff;
+  --section-glow: rgb(196 139 255 / 16%);
+}
+[data-accent='terra'] {
+  --section-accent: #5fc9f0;
+  --section-glow: rgb(95 201 240 / 16%);
+}
+[data-accent='life'] {
+  --section-accent: var(--chlorophyll);
+  --section-glow: rgb(127 214 106 / 16%);
+}
+[data-accent='human'] {
+  --section-accent: var(--amber);
+  --section-glow: rgb(255 154 82 / 16%);
+}
+[data-accent='dark'] {
+  --section-accent: #7f8dc4;
+  --section-glow: rgb(127 141 196 / 16%);
+}
+[data-accent='unknown'] {
+  --section-accent: #ff7f9e;
+  --section-glow: rgb(255 127 158 / 16%);
+}
+[data-accent='lexicon'] {
+  --section-accent: var(--mist-300);
+  --section-glow: rgb(188 199 222 / 14%);
+}

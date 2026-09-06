@@ -1,0 +1,152 @@
+/*
+ * Design tokens.
+ *
+ * One layer of primitives (raw values) and one layer of semantic aliases
+ * (roles). Components only ever reference the semantic layer, so a change to
+ * the palette is a change to this file alone.
+ *
+ * The platform is deep-space dark by design — that is the subject matter, not a
+ * theme preference — so there is a single palette rather than a light/dark pair.
+ * A high-contrast variant is a Phase 11 concern and slots in as a `[data-contrast]`
+ * override of the semantic layer only.
+ */
+
+:root {
+  /* ---- Primitives: space ---------------------------------------------- */
+  --void-950: #04060d;
+  --void-900: #070b16;
+  --void-850: #0a0f1e;
+  --void-800: #0e1526;
+  --void-700: #16203a;
+  --void-600: #1f2c4d;
+  --void-500: #2c3c66;
+
+  --mist-100: #f2f5fc;
+  --mist-200: #dde4f2;
+  --mist-300: #bcc7de;
+  --mist-400: #94a2c0;
+  --mist-500: #6d7c9c;
+  --mist-600: #4d5a76;
+
+  /* ---- Primitives: light ------------------------------------------------
+   * Accents are drawn from real astronomical colour associations — hydrogen
+   * alpha, ionised oxygen, blackbody curves — rather than from a UI palette.
+   */
+  --hydrogen: #ff5d73; /* H-alpha red */
+  --oxygen: #4fe0c0; /* O III teal */
+  --helium: #ffd76e; /* warm stellar yellow */
+  --cerulean: #63a4ff; /* hot blue star */
+  --violet: #a97bff; /* high-energy violet */
+  --amber: #ff9a52;
+  --chlorophyll: #7fd66a;
+  --iron: #d0603f;
+
+  /* ---- Semantic: surfaces --------------------------------------------- */
+  --surface-base: var(--void-950);
+  --surface-raised: var(--void-900);
+  --surface-panel: rgb(14 21 38 / 72%);
+  --surface-overlay: rgb(7 11 22 / 92%);
+  --surface-hairline: rgb(148 162 192 / 14%);
+  --surface-hairline-strong: rgb(148 162 192 / 28%);
+
+  /* ---- Semantic: text -------------------------------------------------- */
+  --text-primary: var(--mist-100);
+  --text-secondary: var(--mist-300);
+  --text-tertiary: var(--mist-500);
+  --text-inverse: var(--void-950);
+
+  /* ---- Semantic: interaction ------------------------------------------ */
+  --accent: var(--cerulean);
+  --accent-strong: #8bbcff;
+  --accent-contrast: var(--void-950);
+  --focus-ring: var(--helium);
+
+  /* ---- Semantic: evidence levels ---------------------------------------
+   * These are load-bearing, not decorative: the colour is the reader's cue to
+   * how firmly a statement is known. Hue is always paired with a text label,
+   * never used alone.
+   */
+  --evidence-established: var(--oxygen);
+  --evidence-model: var(--cerulean);
+  --evidence-research: var(--helium);
+  --evidence-open: var(--amber);
+  --evidence-speculation: var(--violet);
+
+  /* ---- Typography ------------------------------------------------------ */
+  --font-display: 'Iowan Old Style', 'Palatino Linotype', Palatino, 'Times New Roman', serif;
+  --font-body: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: ui-monospace, 'SF Mono', 'Cascadia Mono', Menlo, Consolas, monospace;
+
+  /* Fluid scale: min at 360px, max at 1280px. Set once, never overridden
+     per-component, so hierarchy stays consistent across every section. */
+  --step--1: clamp(0.79rem, 0.77rem + 0.11vw, 0.86rem);
+  --step-0: clamp(0.95rem, 0.91rem + 0.19vw, 1.06rem);
+  --step-1: clamp(1.14rem, 1.06rem + 0.35vw, 1.36rem);
+  --step-2: clamp(1.37rem, 1.24rem + 0.57vw, 1.73rem);
+  --step-3: clamp(1.64rem, 1.44rem + 0.88vw, 2.21rem);
+  --step-4: clamp(1.97rem, 1.66rem + 1.32vw, 2.81rem);
+  --step-5: clamp(2.36rem, 1.91rem + 1.94vw, 3.58rem);
+
+  --leading-tight: 1.15;
+  --leading-snug: 1.35;
+  --leading-body: 1.65;
+  --tracking-display: -0.02em;
+  --tracking-eyebrow: 0.16em;
+
+  /* ---- Space: a 4px-based ramp ----------------------------------------- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --space-9: 6rem;
+
+  /* ---- Shape ------------------------------------------------------------ */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-pill: 999px;
+
+  /* ---- Elevation --------------------------------------------------------
+   * Deep space has no ambient light, so depth comes from a dark shadow plus a
+   * faint rim highlight, never from a lighter grey card on a grey background. */
+  --shadow-panel: 0 1px 0 rgb(255 255 255 / 6%) inset, 0 18px 48px rgb(0 0 0 / 55%);
+  --shadow-raised: 0 1px 0 rgb(255 255 255 / 8%) inset, 0 28px 70px rgb(0 0 0 / 65%);
+
+  /* ---- Motion -----------------------------------------------------------
+   * Cinematic means slow and confident, not bouncy. One easing for entrances,
+   * one for exits, one spring-ish curve for direct manipulation. */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in: cubic-bezier(0.7, 0, 0.84, 0);
+  --ease-inout: cubic-bezier(0.65, 0, 0.35, 1);
+  --duration-fast: 140ms;
+  --duration-base: 260ms;
+  --duration-slow: 520ms;
+  --duration-cinematic: 900ms;
+
+  /* ---- Layout ----------------------------------------------------------- */
+  --measure: 68ch; /* reading width cap — the single most important legibility control */
+  --content-max: 1180px;
+  --nav-height: 3.5rem;
+  --touch-target: 44px; /* WCAG 2.2 target size floor; never shrink below this */
+
+  /* ---- Z layers ---------------------------------------------------------- */
+  --z-background: 0;
+  --z-content: 10;
+  --z-sticky: 20;
+  --z-nav: 30;
+  --z-overlay: 40;
+  --z-toast: 50;
+}
+
+/* Ambient motion is gated at the token level so a single attribute switches
+   off decorative animation across every stylesheet at once. */
+:root[data-motion='reduced'] {
+  --duration-fast: 0ms;
+  --duration-base: 0ms;
+  --duration-slow: 0ms;
+  --duration-cinematic: 0ms;
+}

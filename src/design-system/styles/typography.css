@@ -1,0 +1,86 @@
+/*
+ * Typographic system.
+ *
+ * Two families doing two jobs: a serif for display and headings, which reads as
+ * considered and museum-like; a system sans for body and UI, which is fast to
+ * load and native-feeling on a phone. No web font is downloaded — on a mobile
+ * connection a 200 KB font blocks the first thing the reader came for.
+ */
+
+.ds-display {
+  font-family: var(--font-display);
+  font-size: var(--step-5);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-display);
+  font-weight: 400;
+  text-wrap: balance;
+}
+
+.ds-title {
+  font-family: var(--font-display);
+  font-size: var(--step-4);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-display);
+  font-weight: 400;
+  text-wrap: balance;
+}
+
+.ds-heading {
+  font-family: var(--font-display);
+  font-size: var(--step-2);
+  line-height: var(--leading-snug);
+  font-weight: 400;
+  text-wrap: balance;
+}
+
+.ds-subheading {
+  font-family: var(--font-body);
+  font-size: var(--step-1);
+  line-height: var(--leading-snug);
+  font-weight: 600;
+}
+
+/* Small caps label above a heading. Used sparingly — it is the one flourish. */
+.ds-eyebrow {
+  font-family: var(--font-body);
+  font-size: var(--step--1);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-eyebrow);
+  font-weight: 600;
+  color: var(--text-tertiary);
+}
+
+.ds-lede {
+  font-size: var(--step-1);
+  line-height: var(--leading-snug);
+  color: var(--text-secondary);
+  max-width: var(--measure);
+  text-wrap: pretty;
+}
+
+.ds-body {
+  font-size: var(--step-0);
+  line-height: var(--leading-body);
+  color: var(--text-secondary);
+  max-width: var(--measure);
+  text-wrap: pretty;
+}
+
+.ds-caption {
+  font-size: var(--step--1);
+  line-height: var(--leading-snug);
+  color: var(--text-tertiary);
+  max-width: var(--measure);
+}
+
+.ds-mono {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  font-size: 0.95em;
+}
+
+/* Numbers in data panels must not jitter as they animate. */
+.ds-numeric {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum' 1;
+}

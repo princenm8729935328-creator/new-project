@@ -1,0 +1,173 @@
+.bar {
+  position: sticky;
+  inset-block-start: 0;
+  z-index: var(--z-nav);
+  block-size: var(--nav-height);
+  display: flex;
+  align-items: center;
+  background: rgb(4 6 13 / 72%);
+  border-block-end: 1px solid var(--surface-hairline);
+  padding-block-start: env(safe-area-inset-top);
+}
+
+@supports (backdrop-filter: blur(1px)) {
+  .bar {
+    backdrop-filter: blur(18px) saturate(1.2);
+  }
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  inline-size: 100%;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  text-decoration: none;
+  color: var(--text-primary);
+  font-family: var(--font-display);
+  font-size: var(--step-1);
+  letter-spacing: var(--tracking-display);
+}
+
+.brandMark {
+  font-size: var(--step--1);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  font-family: var(--font-body);
+}
+
+.menuButton {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-block-size: var(--touch-target);
+  min-inline-size: var(--touch-target);
+  padding-inline: var(--space-3);
+  justify-content: center;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--surface-hairline);
+  color: var(--text-secondary);
+  font-size: var(--step--1);
+  font-weight: 600;
+}
+
+.menuButton:hover {
+  border-color: var(--surface-hairline-strong);
+  color: var(--text-primary);
+}
+
+/* ---- The navigation sheet ---------------------------------------------- */
+
+.sheet {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-overlay);
+  display: flex;
+  flex-direction: column;
+  background: var(--surface-overlay);
+  padding-block-start: env(safe-area-inset-top);
+  animation: sheet-in var(--duration-base) var(--ease-out);
+}
+
+@supports (backdrop-filter: blur(1px)) {
+  .sheet {
+    backdrop-filter: blur(24px);
+  }
+}
+
+@keyframes sheet-in {
+  from {
+    opacity: 0;
+    transform: translateY(1.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.sheetHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  block-size: var(--nav-height);
+  flex: none;
+}
+
+.sheetBody {
+  flex: 1;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding-block: var(--space-4) var(--space-8);
+}
+
+.sectionList {
+  display: grid;
+  gap: var(--space-1);
+}
+
+.sectionLink {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: baseline;
+  column-gap: var(--space-4);
+  row-gap: var(--space-1);
+  padding: var(--space-3) var(--space-2);
+  min-block-size: var(--touch-target);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  color: var(--text-primary);
+  border-block-end: 1px solid var(--surface-hairline);
+}
+
+.sectionLink:hover,
+.sectionLink[aria-current='page'] {
+  background: rgb(148 162 192 / 8%);
+}
+
+.sectionIndex {
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  color: var(--section-accent, var(--text-tertiary));
+}
+
+.sectionTitle {
+  font-family: var(--font-display);
+  font-size: var(--step-2);
+  line-height: var(--leading-snug);
+}
+
+.sectionTagline {
+  grid-column: 2;
+  font-size: var(--step--1);
+  color: var(--text-tertiary);
+}
+
+.sectionStatus {
+  grid-column: 2;
+  font-size: var(--step--1);
+  color: var(--text-tertiary);
+  font-variant-numeric: tabular-nums;
+}
+
+.controls {
+  margin-block-start: var(--space-6);
+  padding-block-start: var(--space-5);
+  border-block-start: 1px solid var(--surface-hairline);
+  display: grid;
+  gap: var(--space-4);
+}
+
+@media (min-width: 64rem) {
+  .sheetBody .sectionList {
+    grid-template-columns: 1fr 1fr;
+    column-gap: var(--space-6);
+  }
+}

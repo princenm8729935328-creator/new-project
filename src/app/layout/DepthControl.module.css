@@ -1,0 +1,65 @@
+.group {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.legend {
+  font-size: var(--step--1);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-eyebrow);
+  font-weight: 600;
+  color: var(--text-tertiary);
+  padding: 0;
+}
+
+.options {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.option {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-block-size: var(--touch-target);
+  padding-inline: var(--space-4);
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--surface-hairline);
+  color: var(--text-secondary);
+  font-size: var(--step--1);
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    border-color var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out);
+}
+
+.option:hover {
+  border-color: var(--surface-hairline-strong);
+  color: var(--text-primary);
+}
+
+.option input {
+  position: absolute;
+  opacity: 0;
+  inline-size: 1px;
+  block-size: 1px;
+}
+
+.option:has(input:checked) {
+  color: var(--accent-contrast);
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.option:has(input:focus-visible) {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 3px;
+}
+
+.description {
+  font-size: var(--step--1);
+  color: var(--text-tertiary);
+  min-block-size: 2.4em;
+}

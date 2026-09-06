@@ -1,0 +1,41 @@
+.header {
+  display: grid;
+  gap: var(--space-4);
+  padding-block: var(--space-7) var(--space-6);
+  border-block-end: 1px solid var(--surface-hairline);
+}
+
+.section {
+  display: grid;
+  gap: var(--space-4);
+  padding-block-start: var(--space-7);
+}
+
+.levels {
+  display: grid;
+  gap: var(--space-3);
+}
+
+@media (min-width: 48rem) {
+  .levels {
+    grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  }
+}
+
+.levelDefinition {
+  margin-block: var(--space-3) var(--space-2);
+  color: var(--text-secondary);
+  font-size: var(--step-0);
+}
+
+.rules {
+  display: grid;
+  gap: var(--space-3);
+  max-width: var(--measure);
+  color: var(--text-secondary);
+}
+
+.rules li {
+  padding-inline-start: var(--space-4);
+  border-inline-start: 2px solid var(--surface-hairline-strong);
+}

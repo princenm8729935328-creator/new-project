@@ -1,0 +1,96 @@
+.figure {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.stage {
+  position: relative;
+  inline-size: 100%;
+  /* Portrait-friendly by default; landscape and wide viewports override. */
+  aspect-ratio: 4 / 5;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background:
+    radial-gradient(100% 80% at 50% 0%, rgb(31 44 77 / 45%), transparent 70%), var(--void-900);
+  border: 1px solid var(--surface-hairline);
+  /* Stops a drag inside a canvas from scrolling the page behind it. */
+  touch-action: none;
+}
+
+@media (min-width: 40rem) {
+  .stage {
+    aspect-ratio: 16 / 10;
+  }
+}
+
+@media (orientation: landscape) and (max-height: 30rem) {
+  .stage {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+.fallback {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-5);
+  text-align: center;
+  font-size: var(--step--1);
+  color: var(--text-tertiary);
+}
+
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-3);
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: var(--step-1);
+  line-height: var(--leading-snug);
+}
+
+.fidelity {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 0.2em 0.7em;
+  border-radius: var(--radius-pill);
+  font-size: var(--step--1);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--text-secondary);
+  background: rgb(148 162 192 / 10%);
+  border: 1px solid var(--surface-hairline-strong);
+  white-space: nowrap;
+}
+
+/* An artistic impression gets a louder marker than a data plot, because that is
+   the one a reader is most likely to mistake for a photograph. */
+.artistic {
+  color: var(--evidence-speculation);
+  border-color: color-mix(in oklab, var(--evidence-speculation) 40%, transparent);
+  background: color-mix(in oklab, var(--evidence-speculation) 12%, transparent);
+}
+
+.caption {
+  font-size: var(--step--1);
+  line-height: var(--leading-snug);
+  color: var(--text-tertiary);
+  max-width: var(--measure);
+}
+
+.sources {
+  font-size: var(--step--1);
+  color: var(--text-tertiary);
+}
+
+.sources a {
+  color: var(--text-secondary);
+}
