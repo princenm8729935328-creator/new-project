@@ -88,7 +88,13 @@ const keptHead = [
   ...(head.match(/<script\b[^>]*>[\s\S]*?<\/script>/gi) ?? []),
 ].join('\n');
 
-const single = `${keptHead}\n${bodyMatch[1].trim()}\n`;
+// The site's own <title> carries a tagline after a dash, which reads well in a
+// browser tab but badly in a gallery of pages. Published builds get the bare
+// product name; the tagline belongs in the publish description.
+const single = `${keptHead}\n${bodyMatch[1].trim()}\n`.replace(
+  /<title>[\s\S]*?<\/title>/i,
+  '<title>Cosmos Atlas</title>',
+);
 
 // The application script is the whole point of the file; make its absence loud.
 if (!/<script[^>]*type="module"[^>]*>[\s\S]*createRoot/.test(single)) {
