@@ -1,5 +1,5 @@
-import { useCallback, useEffect, useState, type ReactNode } from 'react';
-import { Link, useNavigate, useNavigationType, useParams } from 'react-router-dom';
+import { useCallback, useEffect, useRef, useState, type ReactNode } from 'react';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useReaderPreferences } from '@/app/providers/useReaderPreferences';
 import { DepthControl } from '@/app/layout/DepthControl';
 import { getEra } from '@/content/timeline';
@@ -26,36 +26,59 @@ import styles from './TimelinePage.module.css';
 export default function TimelinePage(): ReactNode {
   const { eventSlug } = useParams();
   const navigate = useNavigate();
-  const navigationType = useNavigationType();
   const { depth, quality, reducedMotion } = useReaderPreferences();
 
   const journey = useTimelineJourney(eventSlug, reducedMotion);
-  const { current, position, index, events, goToIndex, goToSlug, scrubTo } = journey;
+  const { current, position, index, events, travelling, goToIndex, goToSlug, scrubTo } = journey;
 
   // The opening is shown only when the reader arrives without a milestone in
   // the URL — a shared link goes straight to its milestone.
   const [started, setStarted] = useState(() => Boolean(eventSlug));
 
+  /*
+   * URL ⇄ journey synchronisation.
+   *
+   * The two effects below push in opposite directions, so the second one has to
+   * be able to tell an echo of the first's own write from a navigation the
+   * reader caused — otherwise it reads the URL that was just written, one
+   * render before the journey and the URL agree, as a request to travel, and
+   * cancels the travel already in flight.
+   *
+   * Two guards do it, and both are needed:
+   *
+   *   1. While a travel animation is running the journey is authoritative, so
+   *      an incoming URL is ignored outright. During an animation the URL
+   *      genuinely lags the journey by a render or more, and a lagging URL is
+   *      indistinguishable by value from a reader navigating backwards.
+   *   2. Outside an animation, any slug this page has itself written is still
+   *      ignored, because the router can deliver the same value across several
+   *      renders while the journey keeps moving.
+   *
+   * Two earlier attempts failed, and both failure modes are worth recording.
+   * Using React Router's navigation type (skip REPLACE) works under history
+   * routing and silently breaks under hash routing — which the published
+   * single-file build uses — because hash history reports its own replaces as
+   * POP. Consuming each recorded write on first delivery breaks too: the second
+   * delivery of the same value finds nothing recorded and cancels the travel.
+   */
+  const ownWrites = useRef<Set<string>>(new Set(eventSlug ? [eventSlug] : []));
+
   // Journey → URL. `replace` so travelling 36 milestones does not leave 36
-  // entries in the history stack — and so that every URL this page writes is
-  // distinguishable, by navigation type, from one the reader caused.
+  // entries in the history stack.
   useEffect(() => {
     if (!started) return;
     if (current.slug === eventSlug) return;
+    ownWrites.current.add(current.slug);
     navigate(`/cosmic-timeline/${current.slug}`, { replace: true });
   }, [started, current.slug, eventSlug, navigate]);
 
   // URL → journey, for a shared link, the back button, or a hash typed by hand.
-  //
-  // The REPLACE check is what keeps the two effects from fighting. Without it,
-  // this effect sees the URL the effect above just wrote — one render before
-  // the journey and the URL agree — reads it as the reader asking to go
-  // somewhere, and cancels the travel that is still in flight.
   useEffect(() => {
     if (!eventSlug || eventSlug === current.slug) return;
-    if (navigationType === 'REPLACE') return;
+    if (travelling) return;
+    if (ownWrites.current.has(eventSlug)) return;
     goToSlug(eventSlug, false);
-  }, [eventSlug, navigationType, current.slug, goToSlug]);
+  }, [eventSlug, current.slug, travelling, goToSlug]);
 
   const begin = useCallback(() => {
     setStarted(true);
