@@ -4,10 +4,10 @@ An interactive, cinematic Space & Universe knowledge platform — the history of
 the Universe from its earliest describable moment to modern humanity, alongside
 the physical laws that explain it.
 
-**Current status: Phases 0–2 complete.** The foundation, the Cosmic Timeline
-(36 cited milestones) and Universe & Cosmology (17 topics, 13 figures) are
-built. The remaining twelve sections say plainly, on their own pages, that they
-are not built yet.
+**Current status: Phases 0–3 complete.** The foundation, the Cosmic Timeline
+(36 cited milestones), Universe & Cosmology (17 topics, 13 figures) and
+Gravity & Newton (15 topics, 14 figures) are built. The remaining ten sections
+say plainly, on their own pages, that they are not built yet.
 
 See [PROJECT_PLAN.md](./PROJECT_PLAN.md) for the full architecture and roadmap.
 
@@ -33,13 +33,13 @@ Requires Node 20+.
 | --------------------------- | ------------------------------------------------------------------------------ |
 | Content schema + validator  | Built, tested. Citation and evidence rules are enforced in CI.                 |
 | Section registry (14 areas) | Built. Routes, navigation and home cards all derive from it.                   |
-| Reference pool              | 14 real primary sources, seeded.                                               |
-| Glossary                    | 10 terms, seeded.                                                              |
+| Reference pool              | 95 real primary sources.                                                       |
+| Glossary                    | 17 terms.                                                                      |
 | Design system               | Tokens, typography, `Panel`, `EvidenceBadge`, `PhaseNotice`, atmosphere layer. |
-| Visualization architecture  | Frame, registry, quality tiers, gated frame loop. No renderers yet.            |
+| Visualization architecture  | Frame, registry, quality tiers, gated frame loop. 27 renderers.                |
 | App shell                   | Routing, navigation sheet, reading-depth control, error boundary.              |
 | Pages                       | Home, Section, Topic, Method, Not found.                                       |
-| Tests                       | 32, across content validation, units and component behaviour.                  |
+| Tests                       | 120, across content validation, units, pages and scientific-accuracy checks.   |
 
 ## The three commitments
 

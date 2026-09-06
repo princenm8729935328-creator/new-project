@@ -77,7 +77,7 @@ export const SECTIONS: readonly Section[] = [
     accent: 'gravity',
     order: 5,
     phase: 3,
-    status: 'planned',
+    status: 'published',
     icon: 'gravity',
   },
   {
@@ -90,7 +90,7 @@ export const SECTIONS: readonly Section[] = [
     accent: 'classical',
     order: 6,
     phase: 3,
-    status: 'planned',
+    status: 'published',
     icon: 'newton',
   },
   {

@@ -61,6 +61,22 @@ const LOADERS: Partial<Record<string, VisualizationLoader>> = {
   'cosmic-composition': () => import('./renderers/CosmicComposition'),
   'expansion-history': () => import('./renderers/ExpansionHistory'),
   'observable-universe': () => import('./renderers/ObservableUniverse'),
+
+  // Phase 3 — Gravity & Newton
+  'inverse-square-law': () => import('./renderers/InverseSquareLaw'),
+  'gravity-lab': () => import('./renderers/GravityLab'),
+  'free-fall-lab': () => import('./renderers/FreeFallLab'),
+  'surface-gravity-worlds': () => import('./renderers/SurfaceGravityWorlds'),
+  'orbit-lab': () => import('./renderers/OrbitLab'),
+  'escape-velocity-chart': () => import('./renderers/EscapeVelocityChart'),
+  'tides-diagram': () => import('./renderers/TidesDiagram'),
+  'gravity-well': () => import('./renderers/GravityWell'),
+  'first-law-track': () => import('./renderers/FirstLawTrack'),
+  'second-law-lab': () => import('./renderers/SecondLawLab'),
+  'third-law-pairs': () => import('./renderers/ThirdLawPairs'),
+  'newton-cannon': () => import('./renderers/NewtonCannon'),
+  'moon-test': () => import('./renderers/MoonTest'),
+  'mercury-precession': () => import('./renderers/MercuryPrecession'),
 };
 
 const SPECS = new Map<string, VisualizationSpec>(

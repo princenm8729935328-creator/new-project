@@ -85,6 +85,63 @@ export const GLOSSARY: readonly GlossaryTerm[] = [
       'The formation of atomic nuclei from lighter ones — in the first minutes of the Universe (Big Bang nucleosynthesis) and, later and continuously, inside stars.',
     references: [referenceId('planck-2018-vi')],
   },
+  {
+    id: glossaryTermId('inertia'),
+    term: 'Inertia',
+    short:
+      'The resistance of an object to any change in its motion. Mass is the measure of it: the same push changes a heavy object’s velocity less than a light one’s.',
+    references: [referenceId('newton-1687-principia')],
+  },
+  {
+    id: glossaryTermId('net-force'),
+    term: 'Net force',
+    aliases: ['resultant force'],
+    short:
+      'The single force equivalent to all the forces acting on an object added together as vectors. Only the net force changes an object’s motion; balanced forces leave the motion unchanged without being absent.',
+    symbol: 'ΣF',
+    unit: 'newton (N)',
+    references: [referenceId('newton-1687-principia')],
+  },
+  {
+    id: glossaryTermId('gravitational-constant'),
+    term: 'Gravitational constant',
+    aliases: ['big G', 'Newton’s constant'],
+    short:
+      'The constant of proportionality in Newton’s law of gravitation, 6.67430 × 10⁻¹¹ m³ kg⁻¹ s⁻². It sets how strong gravity is, and it is the least precisely known of the fundamental constants.',
+    symbol: 'G',
+    unit: 'm³ kg⁻¹ s⁻²',
+    references: [referenceId('codata-2018'), referenceId('cavendish-1798')],
+  },
+  {
+    id: glossaryTermId('free-fall'),
+    term: 'Free fall',
+    short:
+      'Motion under gravity alone, with no other force acting. An object in free fall has no sensation of weight — which is why astronauts float in orbit even though Earth’s gravity there is nearly as strong as at the ground.',
+    references: [referenceId('galileo-1638-two-new-sciences')],
+  },
+  {
+    id: glossaryTermId('equivalence-principle'),
+    term: 'Equivalence principle',
+    short:
+      'The observed fact that all objects fall with the same acceleration regardless of their mass or composition — equivalently, that gravitational mass and inertial mass are the same quantity. It is the starting point of general relativity.',
+    references: [referenceId('touboul-2022-microscope'), referenceId('einstein-1916-gr')],
+  },
+  {
+    id: glossaryTermId('escape-velocity'),
+    term: 'Escape velocity',
+    short:
+      'The minimum speed at which an unpowered object must leave a body’s surface to never fall back, ignoring atmosphere and every other body. It depends on the body’s mass and radius, not on the escaping object’s mass.',
+    symbol: 'v_e',
+    unit: 'm/s',
+    references: [referenceId('vallado-2013-astrodynamics')],
+  },
+  {
+    id: glossaryTermId('tidal-force'),
+    term: 'Tidal force',
+    short:
+      'Not a separate force, but the *difference* in gravitational pull across an extended object. It stretches the object along the line to the attracting body and squeezes it at right angles — which is why the Earth has two tidal bulges, not one.',
+    references: [referenceId('agnew-2015-earth-tides')],
+  },
 ];
 
 const BY_ID = new Map(GLOSSARY.map((term) => [term.id, term]));

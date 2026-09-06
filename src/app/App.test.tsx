@@ -6,6 +6,7 @@ import { ReaderPreferencesProvider } from './providers/ReaderPreferencesProvider
 import { AppShell } from './layout/AppShell';
 import { Route, Routes } from 'react-router-dom';
 import HomePage from '@/features/home/HomePage';
+import { SECTIONS } from '@/content/sections';
 
 /**
  * Shell smoke test. Mounts the real shell — atmosphere canvas, navigation
@@ -50,8 +51,11 @@ describe('AppShell', () => {
       'href',
       '/cosmic-timeline',
     );
-    // Two sections are built; the other twelve say so plainly.
-    expect(sheetScope.getAllByText(/Not built yet · Phase/)).toHaveLength(12);
+    // Four sections are built; the other ten say so plainly. This count is
+    // derived from the registry rather than hard-coded here, so publishing a
+    // section updates the expectation instead of breaking the test.
+    const planned = SECTIONS.filter((section) => section.status !== 'published').length;
+    expect(sheetScope.getAllByText(/Not built yet · Phase/)).toHaveLength(planned);
     expect(
       within(sheetScope.getByRole('link', { name: /Cosmic Timeline/ })).queryByText(
         /Not built yet/,

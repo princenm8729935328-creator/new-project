@@ -67,8 +67,15 @@ export default function CmbFluctuations({ quality, width, height }: Visualizatio
     // Rendered at reduced resolution and scaled up: the field is smooth, so
     // full-resolution evaluation would burn phone battery for no visible gain.
     const cellSize = quality === 'low' ? 4 : 2;
-    const w = Math.round(width * dpr);
-    const h = Math.round(height * dpr);
+    // The frame measures the whole stage, but this canvas occupies only the
+    // part above the controls. Sizing the backing store from the stage gives it
+    // a different aspect ratio from its CSS box, which stretches every circle
+    // into an ellipse — so measure the canvas itself and fall back to the
+    // stage only before layout has happened.
+    const cssWidth = canvas.clientWidth || width;
+    const cssHeight = canvas.clientHeight || height;
+    const w = Math.round(cssWidth * dpr);
+    const h = Math.round(cssHeight * dpr);
     if (canvas.width !== w || canvas.height !== h) {
       canvas.width = w;
       canvas.height = h;

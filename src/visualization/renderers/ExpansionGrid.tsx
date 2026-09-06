@@ -74,8 +74,15 @@ export default function ExpansionGrid({
     const context = canvas?.getContext('2d');
     if (!canvas || !context || width === 0 || height === 0) return;
 
-    const w = Math.round(width * dpr);
-    const h = Math.round(height * dpr);
+    // The frame measures the whole stage, but this canvas occupies only the
+    // part above the controls. Sizing the backing store from the stage gives it
+    // a different aspect ratio from its CSS box, which stretches every circle
+    // into an ellipse — so measure the canvas itself and fall back to the
+    // stage only before layout has happened.
+    const cssWidth = canvas.clientWidth || width;
+    const cssHeight = canvas.clientHeight || height;
+    const w = Math.round(cssWidth * dpr);
+    const h = Math.round(cssHeight * dpr);
     if (canvas.width !== w || canvas.height !== h) {
       canvas.width = w;
       canvas.height = h;

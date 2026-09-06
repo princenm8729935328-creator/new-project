@@ -8,9 +8,10 @@ This document is the architectural contract for the project. It is written to
 be read before writing code, and to be corrected when reality disagrees with
 it.
 
-**Status: Phases 0–2 complete.** The foundation, the Cosmic Timeline (36 cited
-milestones) and Universe & Cosmology (17 topics, 13 figures) are built. The
-remaining twelve sections are labelled as unbuilt in the interface.
+**Status: Phases 0–3 complete.** The foundation, the Cosmic Timeline (36 cited
+milestones), Universe & Cosmology (17 topics, 13 figures) and Gravity & Newton
+(15 topics, 14 figures) are built. The remaining ten sections are labelled as
+unbuilt in the interface.
 
 ---
 
@@ -629,12 +630,32 @@ Scale navigation from the observable Universe down to a cluster. Renderers:
 scale explorer genuinely needs it.
 _Depends on: 1._
 
-### Phase 3 — Gravity & Newton
+### Phase 3 — Gravity & Newton ✅ complete
 
-The three laws, universal gravitation, orbits, tides, escape velocity, and an
-honest account of where Newton stops being accurate. Renderer: `OrbitSimulator`
-— the first genuinely interactive laboratory, with reader-set masses and
-velocities.
+Two published sections, fifteen topics, fourteen figures.
+
+**Gravity** (10 topics): what gravity is; the law of universal gravitation term
+by term; mass, weight and the two kinds of mass; free fall; surface gravity;
+orbits; escape velocity; tides; planetary systems; the limits of the Newtonian
+model. **Newton's Laws** (5 topics): the vocabulary of force, mass and
+acceleration, then one page per law, then the Moon test that unified terrestrial
+and celestial mechanics.
+
+The interactive laboratories the plan called for were built as several focused
+figures rather than one `OrbitSimulator`: `GravityLab` (F = Gm₁m₂/r² with live
+masses and separation, and presets labelled by provenance), `OrbitLab`
+(velocity-Verlet two-body sandbox with an analytically computed trajectory
+classification), `NewtonCannon`, `FreeFallLab` (quadratic drag switchable),
+`SecondLawLab`, `FirstLawTrack`, `ThirdLawPairs`, `TidesDiagram`,
+`InverseSquareLaw`, `GravityWell`, `EscapeVelocityChart`,
+`SurfaceGravityWorlds`, `MoonTest` and `MercuryPrecession`. Every one declares
+its model assumptions in its spec caption; none is presented as a simulation of
+anything it does not simulate.
+
+The section ends by naming, with citations, exactly where Newtonian gravity
+fails — Mercury's perihelion, light deflection, gravitational time dilation,
+strong fields — without attempting to explain general relativity, which is
+Phase 4.
 _Depends on: 1. Independent of 2._
 
 ### Phase 4 — Einstein & Relativity

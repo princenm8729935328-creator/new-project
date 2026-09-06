@@ -855,6 +855,212 @@ export const REFERENCES: readonly Reference[] = [
     supports:
       'An independent distance-ladder calibration giving a value between the CMB and SH0ES results.',
   },
+
+  // ---- Added for Phase 3 (Gravity & Newton) -------------------------------
+
+  {
+    id: referenceId('galileo-1638-two-new-sciences'),
+    kind: 'book',
+    authors: 'Galilei, G.',
+    year: 1638,
+    title: 'Discorsi e Dimostrazioni Matematiche intorno a due nuove scienze',
+    source: 'Elzevir, Leiden',
+    supports:
+      'The argument and inclined-plane experiments showing that bodies of different weight fall with the same acceleration when resistance is removed, and that fall is uniformly accelerated.',
+  },
+  {
+    id: referenceId('kepler-1609-astronomia-nova'),
+    kind: 'book',
+    authors: 'Kepler, J.',
+    year: 1609,
+    title: 'Astronomia Nova',
+    source: 'Heidelberg',
+    supports:
+      'The elliptical orbit of Mars and the equal-areas law — the empirical regularities Newton later derived from the inverse-square law.',
+  },
+  {
+    id: referenceId('cavendish-1798'),
+    kind: 'journal-article',
+    authors: 'Cavendish, H.',
+    year: 1798,
+    title: 'Experiments to Determine the Density of the Earth',
+    source: 'Philosophical Transactions of the Royal Society of London 88, 469',
+    doi: '10.1098/rstl.1798.0022',
+    supports:
+      'The torsion-balance measurement of the gravitational attraction between laboratory masses, from which G and the mass of the Earth follow.',
+  },
+  {
+    id: referenceId('nasa-planetary-factsheet'),
+    kind: 'agency-page',
+    authors: 'Williams, D. R. (NASA Goddard Space Flight Center)',
+    year: 2024,
+    title: 'Planetary Fact Sheet',
+    source: 'NASA Space Science Data Coordinated Archive',
+    url: 'https://nssdc.gsfc.nasa.gov/planetary/factsheet/',
+    accessed: '2026-09-06',
+    supports:
+      'Masses, radii, surface gravities, escape velocities and orbital parameters for the Sun, planets and Moon.',
+  },
+  {
+    id: referenceId('iau-2015-nominal-constants'),
+    kind: 'journal-article',
+    authors: 'Mamajek, E. E. et al.',
+    year: 2015,
+    title:
+      'IAU 2015 Resolution B3 on Recommended Nominal Conversion Constants for Selected Solar and Planetary Properties',
+    source: 'Proceedings of the IAU / arXiv',
+    arxiv: '1510.07674',
+    supports:
+      'Nominal values of the solar and terrestrial gravitational parameters GM, which are known far more precisely than either G or the masses separately.',
+  },
+  {
+    id: referenceId('nasa-apollo15-feather-drop'),
+    kind: 'agency-page',
+    authors: 'NASA (Apollo 15 crew; Scott, D. R.)',
+    year: 1971,
+    title: 'Apollo 15 Hammer and Feather Drop',
+    source: 'NASA Space Science Data Coordinated Archive',
+    url: 'https://nssdc.gsfc.nasa.gov/planetary/lunar/apollo_15_feather_drop.html',
+    accessed: '2026-09-06',
+    supports:
+      'A hammer and a falcon feather released together on the Moon reaching the surface together, in a vacuum, on film.',
+  },
+  {
+    id: referenceId('touboul-2022-microscope'),
+    kind: 'journal-article',
+    authors: 'Touboul, P. et al. (MICROSCOPE Collaboration)',
+    year: 2022,
+    title: 'MICROSCOPE Mission: Final Results of the Test of the Equivalence Principle',
+    source: 'Physical Review Letters 129, 121102',
+    doi: '10.1103/PhysRevLett.129.121102',
+    supports:
+      'The most precise test of the universality of free fall: two test masses of different composition fall alike to better than one part in 10^15.',
+  },
+  {
+    id: referenceId('williams-2012-lunar-laser'),
+    kind: 'journal-article',
+    authors: 'Williams, J. G., Turyshev, S. G. & Boggs, D. H.',
+    year: 2012,
+    title: 'Lunar laser ranging tests of the equivalence principle',
+    source: 'Classical and Quantum Gravity 29, 184004',
+    doi: '10.1088/0264-9381/29/18/184004',
+    arxiv: '1203.2150',
+    supports:
+      'Centimetre-level ranging to retroreflectors on the Moon, testing the equivalence principle for massive bodies and constraining departures from Newtonian gravity.',
+  },
+  {
+    id: referenceId('park-2017-mercury-precession'),
+    kind: 'journal-article',
+    authors: 'Park, R. S. et al.',
+    year: 2017,
+    title: "Precession of Mercury's Perihelion from Ranging to the MESSENGER Spacecraft",
+    source: 'The Astronomical Journal 153, 121',
+    doi: '10.3847/1538-3881/aa5be2',
+    supports:
+      "The measured excess precession of Mercury's perihelion, 42.9799 ± 0.0009 arcseconds per century, matching general relativity.",
+  },
+  {
+    id: referenceId('will-2014-confrontation'),
+    kind: 'review',
+    authors: 'Will, C. M.',
+    year: 2014,
+    title: 'The Confrontation between General Relativity and Experiment',
+    source: 'Living Reviews in Relativity 17, 4',
+    doi: '10.12942/lrr-2014-4',
+    arxiv: '1403.7377',
+    supports:
+      'A systematic review of where Newtonian gravity is sufficient, the size of the leading relativistic corrections, and the experiments that measure them.',
+  },
+  {
+    id: referenceId('dyson-1920-eclipse'),
+    kind: 'journal-article',
+    authors: 'Dyson, F. W., Eddington, A. S. & Davidson, C.',
+    year: 1920,
+    title:
+      "A Determination of the Deflection of Light by the Sun's Gravitational Field, from Observations Made at the Total Eclipse of May 29, 1919",
+    source: 'Philosophical Transactions of the Royal Society A 220, 291',
+    doi: '10.1098/rsta.1920.0009',
+    supports:
+      'The eclipse measurement of starlight deflection, roughly twice the value a Newtonian corpuscular calculation gives.',
+  },
+  {
+    id: referenceId('pound-rebka-1960'),
+    kind: 'journal-article',
+    authors: 'Pound, R. V. & Rebka, G. A.',
+    year: 1960,
+    title: 'Apparent Weight of Photons',
+    source: 'Physical Review Letters 4, 337',
+    doi: '10.1103/PhysRevLett.4.337',
+    supports:
+      'The first laboratory measurement of gravitational frequency shift, over a 22.5 m tower.',
+  },
+  {
+    id: referenceId('chou-2010-optical-clocks'),
+    kind: 'journal-article',
+    authors: 'Chou, C. W., Hume, D. B., Rosenband, T. & Wineland, D. J.',
+    year: 2010,
+    title: 'Optical Clocks and Relativity',
+    source: 'Science 329, 1630',
+    doi: '10.1126/science.1192720',
+    supports:
+      'Gravitational time dilation measured over a height difference of 33 centimetres in a single laboratory.',
+  },
+  {
+    id: referenceId('ashby-2003-gps'),
+    kind: 'review',
+    authors: 'Ashby, N.',
+    year: 2003,
+    title: 'Relativity in the Global Positioning System',
+    source: 'Living Reviews in Relativity 6, 1',
+    doi: '10.12942/lrr-2003-1',
+    supports:
+      'The size of the relativistic clock corrections GPS must apply, and what the system would do without them.',
+  },
+  {
+    id: referenceId('agnew-2015-earth-tides'),
+    kind: 'review',
+    authors: 'Agnew, D. C.',
+    year: 2015,
+    title: 'Earth Tides',
+    source: 'Treatise on Geophysics, 2nd edition, Volume 3, 151–178',
+    doi: '10.1016/B978-0-444-53802-4.00058-0',
+    supports:
+      'The tidal potential and the differential-acceleration origin of the two bulges; the relative size of the lunar and solar tidal forcing.',
+  },
+  {
+    id: referenceId('noaa-tides-tutorial'),
+    kind: 'agency-page',
+    authors: 'NOAA National Ocean Service',
+    year: 2024,
+    title: 'Tides and Water Levels: What Causes Tides?',
+    source: 'NOAA Ocean Service Education',
+    url: 'https://oceanservice.noaa.gov/education/tutorial_tides/',
+    accessed: '2026-09-06',
+    supports:
+      'Spring and neap tides, tidal ranges, and why observed tides at a coast depend heavily on local basin shape.',
+  },
+  {
+    id: referenceId('vallado-2013-astrodynamics'),
+    kind: 'book',
+    authors: 'Vallado, D. A.',
+    year: 2013,
+    title: 'Fundamentals of Astrodynamics and Applications, 4th edition',
+    source: 'Microcosm Press / Springer',
+    supports:
+      'The two-body problem, orbital energy and the vis-viva equation, conic-section trajectories, and escape conditions.',
+  },
+  {
+    id: referenceId('cgpm-1901-standard-gravity'),
+    kind: 'agency-page',
+    authors: 'General Conference on Weights and Measures (CGPM), 3rd meeting',
+    year: 1901,
+    title: 'Declaration on the unit of mass and on the definition of standard gravity',
+    source: 'Bureau International des Poids et Mesures (BIPM)',
+    url: 'https://www.bipm.org/en/committees/cg/cgpm/3-1901/resolution-2',
+    accessed: '2026-09-06',
+    supports:
+      'The conventional value of standard gravity, 9.80665 m/s², adopted by definition rather than measured.',
+  },
 ];
 
 const BY_ID = new Map(REFERENCES.map((reference) => [reference.id, reference]));
