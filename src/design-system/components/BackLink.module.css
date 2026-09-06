@@ -1,0 +1,54 @@
+/*
+ * The back control.
+ *
+ * Deliberately quiet: a hairline pill that reads as navigation furniture rather
+ * than a call to action. It sits above the page title, where a reader's thumb
+ * naturally lands on a phone, and it clears the 44px target floor including the
+ * chevron so the whole thing is tappable, not just the text.
+ */
+
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-block-size: var(--touch-target);
+  padding-inline: var(--space-4) var(--space-5);
+  /* Pulled left so the chevron aligns with the text column above and below. */
+  margin-inline-start: calc(var(--space-4) * -1);
+  border-radius: var(--radius-pill);
+  color: var(--text-secondary);
+  font-size: var(--step--1);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  transition:
+    color var(--duration-fast) var(--ease-out),
+    background var(--duration-fast) var(--ease-out);
+}
+
+.back:hover {
+  color: var(--text-primary);
+  background: rgb(148 162 192 / 10%);
+}
+
+.back:active {
+  background: rgb(148 162 192 / 16%);
+}
+
+.chevron {
+  inline-size: 1em;
+  block-size: 1em;
+  flex: none;
+  transition: transform var(--duration-fast) var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .back:hover .chevron {
+    transform: translateX(-2px);
+  }
+}
+
+.label {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

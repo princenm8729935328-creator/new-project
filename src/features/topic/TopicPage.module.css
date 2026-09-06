@@ -51,3 +51,7 @@
     grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
   }
 }
+
+.depthRow {
+  padding-block: var(--space-5) 0;
+}

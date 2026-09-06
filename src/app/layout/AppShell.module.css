@@ -48,3 +48,26 @@
     padding-block: var(--space-8) var(--space-9);
   }
 }
+
+/* Creator credit: quiet by design — a line of small caps in the footer, at the
+   same weight as the surrounding legal-ish text, not a signature block. */
+.credit {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.creator {
+  font-size: var(--step--1);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  opacity: 0.75;
+}
+
+@media (min-width: 48rem) {
+  .credit {
+    align-items: flex-end;
+    text-align: end;
+  }
+}

@@ -10,6 +10,7 @@
 export const EVIDENCE_LEVELS = [
   'established',
   'model',
+  'inference',
   'active-research',
   'open-question',
   'speculation',
@@ -49,6 +50,14 @@ export const EVIDENCE_LEVEL_META: Readonly<Record<EvidenceLevel, EvidenceLevelMe
       'A well-tested framework that explains and predicts the evidence. Strongly supported, but a model of reality rather than a direct observation of it.',
     minReferences: 1,
     token: 'model',
+  },
+  inference: {
+    id: 'inference',
+    label: 'Inference',
+    definition:
+      'Not measured directly. Calculated or deduced from things that were measured, using physics that is itself well tested — so it is only as firm as the assumptions it rests on.',
+    minReferences: 1,
+    token: 'inference',
   },
   'active-research': {
     id: 'active-research',

@@ -1,0 +1,141 @@
+/*
+ * Shared control surface for interactive figures.
+ *
+ * One stylesheet rather than one per renderer: the controls under every figure
+ * should be identical, because a reader who learns to drive one has learned to
+ * drive all of them. Every target here clears the 44px floor, and the slider
+ * is a native `input[type=range]` so it works with touch, mouse, keyboard and
+ * assistive technology without any custom event handling.
+ */
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  inline-size: 100%;
+  block-size: 100%;
+}
+
+.canvas {
+  inline-size: 100%;
+  flex: 1;
+  min-block-size: 0;
+  display: block;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-2) var(--space-3);
+  flex: none;
+  background: rgb(4 6 13 / 55%);
+  border-block-start: 1px solid var(--surface-hairline);
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-block-size: var(--touch-target);
+  min-inline-size: 4.5rem;
+  padding-inline: var(--space-3);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--surface-hairline-strong);
+  color: var(--text-primary);
+  font-size: var(--step--1);
+  font-weight: 600;
+  flex: none;
+}
+
+.button:hover:not(:disabled) {
+  background: rgb(148 162 192 / 12%);
+}
+
+.button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.sliderLabel {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  min-inline-size: 0;
+  /* The slider owns horizontal drags; the page keeps vertical ones. */
+  touch-action: pan-y;
+}
+
+.slider {
+  inline-size: 100%;
+  min-block-size: var(--touch-target);
+  accent-color: var(--section-accent, var(--accent));
+  cursor: pointer;
+}
+
+.readout {
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  color: var(--text-secondary);
+  font-variant-numeric: tabular-nums;
+  flex: none;
+  min-inline-size: 4.5rem;
+  text-align: end;
+}
+
+/* A row of toggle buttons, for figures that switch layers rather than scrub. */
+.toggles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  background: rgb(4 6 13 / 55%);
+  border-block-start: 1px solid var(--surface-hairline);
+}
+
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-block-size: var(--touch-target);
+  padding-inline: var(--space-4);
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--surface-hairline);
+  color: var(--text-secondary);
+  font-size: var(--step--1);
+  font-weight: 600;
+}
+
+.toggle[aria-pressed='true'] {
+  color: var(--accent-contrast);
+  background: var(--section-accent, var(--accent));
+  border-color: transparent;
+}
+
+/* Figures that are a chart plus controls, rather than a canvas plus controls. */
+.chartStack {
+  display: flex;
+  flex-direction: column;
+  inline-size: 100%;
+  gap: var(--space-2);
+}
+
+@media (max-width: 26rem) {
+  .readout {
+    display: none;
+  }
+}
+
+/* Explanatory line under a figure whose markers are selectable. */
+.epochDetail {
+  padding: var(--space-3);
+  font-size: var(--step--1);
+  line-height: var(--leading-body);
+  color: var(--text-secondary);
+  background: rgb(4 6 13 / 55%);
+  border-block-start: 1px solid var(--surface-hairline);
+  min-block-size: 5.5em;
+}
+
+.epochDetail strong {
+  color: var(--text-primary);
+}

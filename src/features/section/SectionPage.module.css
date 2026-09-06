@@ -34,3 +34,64 @@
   display: grid;
   gap: var(--space-3);
 }
+
+.backRow {
+  padding-block-start: var(--space-4);
+}
+
+.count {
+  font-size: var(--step--1);
+  color: var(--text-tertiary);
+}
+
+/* The topic list is a journey, so it is an ordered list with visible numbers
+   rather than a grid of identical cards. */
+.topicLink {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: var(--space-4);
+  row-gap: var(--space-1);
+  padding: var(--space-4) var(--space-2);
+  min-block-size: var(--touch-target);
+  border-radius: var(--radius-md);
+  border-block-end: 1px solid var(--surface-hairline);
+  text-decoration: none;
+  color: var(--text-primary);
+  transition: background var(--duration-fast) var(--ease-out);
+}
+
+.topicLink:hover {
+  background: rgb(148 162 192 / 7%);
+}
+
+.topicIndex {
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  color: var(--section-accent);
+  padding-block-start: 0.25em;
+}
+
+.topicTitle {
+  font-family: var(--font-display);
+  font-size: var(--step-2);
+  line-height: var(--leading-snug);
+}
+
+.topicSubtitle {
+  grid-column: 2;
+  font-size: var(--step--1);
+  color: var(--section-accent);
+}
+
+.topicSummary {
+  grid-column: 2;
+  font-size: var(--step--1);
+  line-height: var(--leading-body);
+  color: var(--text-tertiary);
+  max-width: var(--measure);
+}
+
+.depth {
+  padding-block-start: var(--space-5);
+  border-block-start: 1px solid var(--surface-hairline);
+}

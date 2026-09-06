@@ -30,6 +30,9 @@
 .model {
   --evidence-color: var(--evidence-model);
 }
+.inference {
+  --evidence-color: var(--evidence-inference);
+}
 .research {
   --evidence-color: var(--evidence-research);
 }

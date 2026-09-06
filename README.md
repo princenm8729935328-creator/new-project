@@ -4,10 +4,10 @@ An interactive, cinematic Space & Universe knowledge platform — the history of
 the Universe from its earliest describable moment to modern humanity, alongside
 the physical laws that explain it.
 
-**Current status: Phase 0 (Foundation).** The architecture, design system,
-content model and application shell are built and tested. **No section content
-has been written, and the Cosmic Timeline has not been built.** Every section in
-the app says so on its own page.
+**Current status: Phases 0–2 complete.** The foundation, the Cosmic Timeline
+(36 cited milestones) and Universe & Cosmology (17 topics, 13 figures) are
+built. The remaining twelve sections say plainly, on their own pages, that they
+are not built yet.
 
 See [PROJECT_PLAN.md](./PROJECT_PLAN.md) for the full architecture and roadmap.
 

@@ -42,7 +42,10 @@ export function AppShell(): ReactNode {
             An educational project. Every scientific statement is labelled with its evidence level
             and cited — see <Link to="/method">how this platform handles accuracy</Link>.
           </p>
-          <p>Under active construction. Sections marked as planned are not built yet.</p>
+          <p className={styles.credit}>
+            <span>Under active construction. Sections marked as planned are not built yet.</span>
+            <span className={styles.creator}>Munna — The Übermensch</span>
+          </p>
         </div>
       </footer>
     </div>

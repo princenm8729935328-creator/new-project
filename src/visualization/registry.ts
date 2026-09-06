@@ -52,6 +52,15 @@ const LOADERS: Partial<Record<string, VisualizationLoader>> = {
   'oxygen-history': () => import('./renderers/OxygenHistory'),
   'hominin-tree': () => import('./renderers/HomininTree'),
   'deep-time-scale': () => import('./renderers/DeepTimeScale'),
+
+  // Phase 2 — Universe & Cosmology
+  'expansion-grid': () => import('./renderers/ExpansionGrid'),
+  'cooling-history': () => import('./renderers/CoolingHistory'),
+  'cmb-fluctuations': () => import('./renderers/CmbFluctuations'),
+  'rotation-curve': () => import('./renderers/RotationCurve'),
+  'cosmic-composition': () => import('./renderers/CosmicComposition'),
+  'expansion-history': () => import('./renderers/ExpansionHistory'),
+  'observable-universe': () => import('./renderers/ObservableUniverse'),
 };
 
 const SPECS = new Map<string, VisualizationSpec>(

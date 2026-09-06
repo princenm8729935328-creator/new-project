@@ -91,3 +91,17 @@
   font-size: var(--step--1);
   color: var(--text-tertiary);
 }
+
+/* Creator credit on the hero: one small line under the lede, deliberately
+   understated so it reads as a byline rather than a banner. */
+.creator {
+  margin-block-start: var(--space-5);
+  font-size: var(--step--1);
+  color: var(--text-tertiary);
+  letter-spacing: 0.02em;
+}
+
+.creator span {
+  color: var(--text-secondary);
+  font-weight: 600;
+}

@@ -68,6 +68,7 @@
    */
   --evidence-established: var(--oxygen);
   --evidence-model: var(--cerulean);
+  --evidence-inference: #9ec5f5;
   --evidence-research: var(--helium);
   --evidence-open: var(--amber);
   --evidence-speculation: var(--violet);

@@ -24,6 +24,9 @@ export default function HomePage(): ReactNode {
           it, and the improbable chain that ends with something able to ask about it. Every
           statement is marked with how firmly it is known, and cited.
         </p>
+        <p className={styles.creator}>
+          Made by <span>Munna — The Übermensch</span>
+        </p>
         <div className={styles.heroMeta}>
           <Link to="/cosmic-timeline" className={styles.pill}>
             Start at the beginning

@@ -20,19 +20,19 @@ export interface DepthMeta {
 export const DEPTH_META: Readonly<Record<DepthLevel, DepthMeta>> = {
   essential: {
     id: 'essential',
-    label: 'Essential',
+    label: 'Quick',
     description: 'The idea in plain language, no mathematics.',
     rank: 0,
   },
   detailed: {
     id: 'detailed',
-    label: 'Detailed',
+    label: 'Standard',
     description: 'The mechanism, the evidence, and why scientists accept it.',
     rank: 1,
   },
   technical: {
     id: 'technical',
-    label: 'Technical',
+    label: 'Deep',
     description: 'Formal statements, equations, and quantitative detail.',
     rank: 2,
   },

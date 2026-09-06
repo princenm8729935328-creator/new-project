@@ -2,10 +2,11 @@ import type { ReactNode } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { getSectionBySlug } from '@/content/sections';
 import { getTopicsForSection } from '@/content/topics';
-import { Panel } from '@/design-system/components/Panel';
+import { BackLink } from '@/design-system/components/BackLink';
 import { PhaseNotice } from '@/design-system/components/PhaseNotice';
 import { useReaderPreferences } from '@/app/providers/useReaderPreferences';
 import { resolveDepthText } from '@/content/schema/depth';
+import { DepthControl } from '@/app/layout/DepthControl';
 import NotFoundPage from '@/features/errors/NotFoundPage';
 import styles from './SectionPage.module.css';
 
@@ -27,6 +28,10 @@ export default function SectionPage(): ReactNode {
 
   return (
     <div className="ds-container" data-accent={section.accent}>
+      <nav className={styles.backRow} aria-label="Breadcrumb">
+        <BackLink fallbackTo="/" label="Back to all sections" />
+      </nav>
+
       <header className={styles.header}>
         <span className={styles.index}>Section {String(section.order).padStart(2, '0')}</span>
         <h1 className={`ds-title ${styles.title}`}>{section.title}</h1>
@@ -36,18 +41,36 @@ export default function SectionPage(): ReactNode {
 
       <div className={styles.body}>
         {topics.length > 0 ? (
-          <ul className={styles.topicList}>
-            {topics.map((topic) => (
-              <li key={topic.id}>
-                <Panel as="article">
-                  <h2 className="ds-subheading">
-                    <Link to={`/${section.slug}/${topic.slug}`}>{topic.title}</Link>
-                  </h2>
-                  <p className="ds-body">{resolveDepthText(topic.summary, depth)}</p>
-                </Panel>
-              </li>
-            ))}
-          </ul>
+          <>
+            <p className={styles.count}>
+              {topics.length} topics, in reading order. Each one states its evidence level and cites
+              its sources.
+            </p>
+            {/*
+              A numbered list, because the order genuinely carries information:
+              this section is a journey from what the model claims through to
+              what is still unknown, and reading it in sequence is the point.
+            */}
+            <ol className={styles.topicList}>
+              {topics.map((topic, index) => (
+                <li key={topic.id}>
+                  <Link to={`/${section.slug}/${topic.slug}`} className={styles.topicLink}>
+                    <span className={styles.topicIndex}>{String(index + 1).padStart(2, '0')}</span>
+                    <span className={styles.topicTitle}>{topic.title}</span>
+                    {topic.subtitle && (
+                      <span className={styles.topicSubtitle}>{topic.subtitle}</span>
+                    )}
+                    <span className={styles.topicSummary}>
+                      {resolveDepthText(topic.summary, depth)}
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ol>
+            <div className={styles.depth}>
+              <DepthControl />
+            </div>
+          </>
         ) : (
           <PhaseNotice
             status={section.status}

@@ -50,8 +50,8 @@ describe('AppShell', () => {
       'href',
       '/cosmic-timeline',
     );
-    // The Cosmic Timeline is built; the other thirteen say so plainly.
-    expect(sheetScope.getAllByText(/Not built yet · Phase/)).toHaveLength(13);
+    // Two sections are built; the other twelve say so plainly.
+    expect(sheetScope.getAllByText(/Not built yet · Phase/)).toHaveLength(12);
     expect(
       within(sheetScope.getByRole('link', { name: /Cosmic Timeline/ })).queryByText(
         /Not built yet/,
@@ -64,7 +64,7 @@ describe('AppShell', () => {
     renderShell();
 
     await user.click(screen.getByRole('button', { name: 'Explore' }));
-    const technical = screen.getByRole('radio', { name: 'Technical' });
+    const technical = screen.getByRole('radio', { name: 'Deep' });
     expect(technical).not.toBeChecked();
 
     await user.click(technical);

@@ -8,8 +8,9 @@ This document is the architectural contract for the project. It is written to
 be read before writing code, and to be corrected when reality disagrees with
 it.
 
-**Status: Phase 0 (Foundation) complete. No section content has been written.
-The Cosmic Timeline has not been built.**
+**Status: Phases 0–2 complete.** The foundation, the Cosmic Timeline (36 cited
+milestones) and Universe & Cosmology (17 topics, 13 figures) are built. The
+remaining twelve sections are labelled as unbuilt in the interface.
 
 ---
 

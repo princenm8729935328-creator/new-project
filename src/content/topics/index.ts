@@ -2,17 +2,15 @@
  * Topic registry.
  *
  * Topics are written per section under `src/content/topics/<section-slug>/` and
- * re-exported here. The array is empty until Phase 1: no section has published
- * content yet, and the UI reflects that honestly rather than rendering stubs.
- *
- * When a section's content lands, add `import { COSMIC_TIMELINE_TOPICS } from
- * './cosmic-timeline'` and spread it into `TOPICS`. Nothing else changes —
- * routing, search, the knowledge graph and validation all read from here.
+ * re-exported here. Adding a section's content is one import and one spread —
+ * routing, search, the knowledge graph and validation all read from this array,
+ * and none of them needs to know a new section exists.
  */
 import type { Topic, TopicId } from '../schema/topic';
 import type { SectionId } from '../schema/section';
+import { UNIVERSE_TOPICS } from './universe';
 
-export const TOPICS: readonly Topic[] = [];
+export const TOPICS: readonly Topic[] = [...UNIVERSE_TOPICS];
 
 const BY_ID = new Map<TopicId, Topic>(TOPICS.map((topic) => [topic.id, topic]));
 

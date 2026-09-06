@@ -5,6 +5,8 @@ import { getTopicBySlug, getTopicById } from '@/content/topics';
 import { useReaderPreferences } from '@/app/providers/useReaderPreferences';
 import { resolveDepthText } from '@/content/schema/depth';
 import { Panel } from '@/design-system/components/Panel';
+import { BackLink } from '@/design-system/components/BackLink';
+import { DepthControl } from '@/app/layout/DepthControl';
 import NotFoundPage from '@/features/errors/NotFoundPage';
 import { BlockList } from './BlockRenderer';
 import { ReferenceList } from './ReferenceList';
@@ -33,7 +35,7 @@ export default function TopicPage(): ReactNode {
   return (
     <article className="ds-container" data-accent={section.accent}>
       <nav className={styles.breadcrumb} aria-label="Breadcrumb">
-        <Link to={`/${section.slug}`}>{section.title}</Link>
+        <BackLink fallbackTo={`/${section.slug}`} label={`Back to ${section.title}`} />
       </nav>
 
       <header className={styles.header}>
@@ -44,6 +46,12 @@ export default function TopicPage(): ReactNode {
           <p className="ds-caption">Last checked against sources on {topic.reviewedOn}.</p>
         )}
       </header>
+
+      {/* Depth sits above the article, not in the footer: the reader should
+          choose how deep they want to go before reading, not after. */}
+      <div className={styles.depthRow}>
+        <DepthControl />
+      </div>
 
       <div className={styles.body}>
         <BlockList blocks={topic.blocks} depth={depth} />
