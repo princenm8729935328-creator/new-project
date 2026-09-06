@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState, type ReactNode } from 'react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useNavigationType, useParams } from 'react-router-dom';
 import { useReaderPreferences } from '@/app/providers/useReaderPreferences';
 import { DepthControl } from '@/app/layout/DepthControl';
 import { getEra } from '@/content/timeline';
@@ -26,6 +26,7 @@ import styles from './TimelinePage.module.css';
 export default function TimelinePage(): ReactNode {
   const { eventSlug } = useParams();
   const navigate = useNavigate();
+  const navigationType = useNavigationType();
   const { depth, quality, reducedMotion } = useReaderPreferences();
 
   const journey = useTimelineJourney(eventSlug, reducedMotion);
@@ -35,21 +36,26 @@ export default function TimelinePage(): ReactNode {
   // the URL — a shared link goes straight to its milestone.
   const [started, setStarted] = useState(() => Boolean(eventSlug));
 
-  // Keep the URL in step with the journey, without stacking history entries:
-  // travelling through 37 milestones should not require 37 taps of Back.
+  // Journey → URL. `replace` so travelling 36 milestones does not leave 36
+  // entries in the history stack — and so that every URL this page writes is
+  // distinguishable, by navigation type, from one the reader caused.
   useEffect(() => {
     if (!started) return;
-    if (current.slug !== eventSlug) {
-      navigate(`/cosmic-timeline/${current.slug}`, { replace: true });
-    }
+    if (current.slug === eventSlug) return;
+    navigate(`/cosmic-timeline/${current.slug}`, { replace: true });
   }, [started, current.slug, eventSlug, navigate]);
 
-  // A milestone opened from elsewhere (a link, the back button) moves the axis.
+  // URL → journey, for a shared link, the back button, or a hash typed by hand.
+  //
+  // The REPLACE check is what keeps the two effects from fighting. Without it,
+  // this effect sees the URL the effect above just wrote — one render before
+  // the journey and the URL agree — reads it as the reader asking to go
+  // somewhere, and cancels the travel that is still in flight.
   useEffect(() => {
-    if (eventSlug && eventSlug !== current.slug) goToSlug(eventSlug, false);
-    // Only react to URL changes; journey changes are handled by the effect above.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [eventSlug]);
+    if (!eventSlug || eventSlug === current.slug) return;
+    if (navigationType === 'REPLACE') return;
+    goToSlug(eventSlug, false);
+  }, [eventSlug, navigationType, current.slug, goToSlug]);
 
   const begin = useCallback(() => {
     setStarted(true);

@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
-import { render, screen, waitFor, within } from '@testing-library/react';
+import { act, render, screen, waitFor, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { MemoryRouter, Route, Routes } from 'react-router-dom';
+import { MemoryRouter, Route, Routes, RouterProvider, createMemoryRouter } from 'react-router-dom';
 import { ReaderPreferencesProvider } from '@/app/providers/ReaderPreferencesProvider';
 import { TIMELINE_EVENTS } from '@/content/timeline';
 import TimelinePage from './TimelinePage';
@@ -95,6 +95,39 @@ describe('travelling the timeline', () => {
       'An asteroid ends the Cretaceous',
     );
     expect(screen.queryByRole('button', { name: /Begin at the beginning/ })).toBeNull();
+  });
+
+  /**
+   * Regression test. The URL-sync effect used to overwrite an incoming URL
+   * change before the journey had moved, so opening a shared milestone link
+   * from an already-open timeline bounced the reader straight back.
+   */
+  it('follows the URL when it changes underneath an open timeline', async () => {
+    const router = createMemoryRouter(
+      [
+        { path: 'cosmic-timeline', element: <TimelinePage /> },
+        { path: 'cosmic-timeline/:eventSlug', element: <TimelinePage /> },
+      ],
+      { initialEntries: ['/cosmic-timeline/dark-ages'] },
+    );
+
+    render(
+      <ReaderPreferencesProvider>
+        <RouterProvider router={router} />
+      </ReaderPreferencesProvider>,
+    );
+    expect(screen.getByRole('heading', { level: 2 })).toHaveTextContent('The Dark Ages');
+
+    await act(async () => {
+      await router.navigate('/cosmic-timeline/hominin-bush');
+    });
+
+    await waitFor(() =>
+      expect(screen.getByRole('heading', { level: 2 })).toHaveTextContent(
+        'Many human species at once',
+      ),
+    );
+    expect(router.state.location.pathname).toBe('/cosmic-timeline/hominin-bush');
   });
 
   it('exposes the axis as a keyboard-operable slider', async () => {
