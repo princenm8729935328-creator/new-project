@@ -138,7 +138,7 @@ export const RELATIVITY_FRONTIER_TOPICS: readonly Topic[] = [
         title: 'This page stops here on purpose',
         text: {
           essential:
-            'What is above is the relativity a reader needs: where the horizon radius comes from, what the horizon is, and why the centre is not described. How black holes form, how they spin, what accretion discs and jets do, Hawking radiation, and the information problem all belong to the Stars, Galaxies & Black Holes section — which has not been written yet, and is not being summarised here in a paragraph.',
+            'What is above is the relativity a reader needs: where the horizon radius comes from, what the horizon is, and why the centre is not described. How black holes form, how they spin, what accretion discs and jets do, Hawking radiation, and the information problem all belong to the Black Holes section, and are not being summarised here in a paragraph.',
         },
       },
     ],

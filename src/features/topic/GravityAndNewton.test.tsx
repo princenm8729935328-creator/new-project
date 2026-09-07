@@ -156,7 +156,7 @@ describe('scientific accuracy in the rendered Phase 3 pages', () => {
   it('points at relativity without pretending to have explained it', () => {
     renderAt('/gravity/limits-of-newtonian-gravity');
     expect(screen.getByText('What comes next')).toBeVisible();
-    expect(screen.getByText(/has not been written yet/)).toBeVisible();
+    expect(screen.getByText(/it is the subject of the Relativity section/)).toBeVisible();
   });
 
   it('does not let the third law collapse into “the forces cancel”', () => {

@@ -93,6 +93,22 @@ const LOADERS: Partial<Record<string, VisualizationLoader>> = {
   'gr-orbit-precession': () => import('./renderers/GrOrbitPrecession'),
   'gravitational-wave': () => import('./renderers/GravitationalWave'),
   'schwarzschild-radius': () => import('./renderers/SchwarzschildRadius'),
+
+  // Phase 5 — Black Holes
+  'gravitational-collapse': () => import('./renderers/GravitationalCollapse'),
+  'black-hole-anatomy': () => import('./renderers/BlackHoleAnatomy'),
+  'escape-cone': () => import('./renderers/EscapeCone'),
+  'infalling-clock': () => import('./renderers/InfallingClock'),
+  'photon-orbits': () => import('./renderers/PhotonOrbits'),
+  'black-hole-shadow': () => import('./renderers/BlackHoleShadow'),
+  'accretion-disc': () => import('./renderers/AccretionDisc'),
+  'relativistic-jet': () => import('./renderers/RelativisticJet'),
+  'frame-dragging': () => import('./renderers/FrameDragging'),
+  'tidal-stretching': () => import('./renderers/TidalStretching'),
+  'black-hole-mass-scale': () => import('./renderers/BlackHoleMassScale'),
+  'binary-inspiral': () => import('./renderers/BinaryInspiral'),
+  'merger-waveform': () => import('./renderers/MergerWaveform'),
+  'hawking-temperature': () => import('./renderers/HawkingTemperature'),
 };
 
 const SPECS = new Map<string, VisualizationSpec>(

@@ -177,16 +177,19 @@ describe('the relativistic foundations for black holes', () => {
     ).toBeVisible();
   });
 
-  it('says explicitly that the full Black Holes section is not being built here', () => {
+  it('keeps the deeper black-hole material out of this page and points at its own section', () => {
     renderAt('/relativity/black-hole-foundations');
     expect(screen.getByText('This page stops here on purpose')).toBeVisible();
-    expect(screen.getByText(/which has not been written yet/)).toBeVisible();
+    expect(screen.getByText(/belong to the Black Holes section/)).toBeVisible();
   });
 
-  it('leaves the Black Holes section marked as unbuilt', () => {
-    expect(getSectionBySlug('black-holes')?.status).toBe('planned');
+  // Phase 4 left this section unbuilt on purpose; Phase 5 built it. The
+  // assertion moved with it rather than being deleted, so the boundary between
+  // "foundations" and "the section itself" is still guarded.
+  it('now has a published Black Holes section to hand off to', () => {
+    expect(getSectionBySlug('black-holes')?.status).toBe('published');
     renderAt('/black-holes');
-    expect(screen.getByText('Not built yet')).toBeInTheDocument();
+    expect(screen.queryByText('Not built yet')).not.toBeInTheDocument();
   });
 });
 

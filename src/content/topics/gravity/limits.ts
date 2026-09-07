@@ -210,7 +210,7 @@ export const GRAVITY_LIMIT_TOPICS: readonly Topic[] = [
         title: 'What comes next',
         text: {
           essential:
-            'Every failure listed above has the same resolution: gravity is not a force reaching across space, but the geometry of spacetime itself, with mass and energy determining the shape and everything else following the straightest available path. That is general relativity, and it is the subject of the next section of this platform — which has not been written yet. This page deliberately stops at naming the problems rather than sketching the solution badly.',
+            'Every failure listed above has the same resolution: gravity is not a force reaching across space, but the geometry of spacetime itself, with mass and energy determining the shape and everything else following the straightest available path. That is general relativity, and it is the subject of the Relativity section of this platform. This page deliberately stops at naming the problems rather than sketching the solution badly.',
         },
         references: [referenceId('einstein-1916-gr')],
       },

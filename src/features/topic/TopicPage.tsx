@@ -2,6 +2,7 @@ import type { ReactNode } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { getSectionBySlug, getSectionById } from '@/content/sections';
 import { getTopicBySlug, getTopicById } from '@/content/topics';
+import { getRecap } from '@/content/recaps';
 import { useReaderPreferences } from '@/app/providers/useReaderPreferences';
 import { resolveDepthText } from '@/content/schema/depth';
 import { Panel } from '@/design-system/components/Panel';
@@ -10,6 +11,7 @@ import { DepthControl } from '@/app/layout/DepthControl';
 import NotFoundPage from '@/features/errors/NotFoundPage';
 import { BlockList } from './BlockRenderer';
 import { ReferenceList } from './ReferenceList';
+import { TopicRecapSection } from './TopicRecap';
 import styles from './TopicPage.module.css';
 
 /**
@@ -28,6 +30,7 @@ export default function TopicPage(): ReactNode {
 
   if (!section || !topic) return <NotFoundPage />;
 
+  const recap = getRecap(topic.id);
   const related = (topic.related ?? [])
     .map(getTopicById)
     .filter((candidate): candidate is NonNullable<typeof candidate> => candidate !== undefined);
@@ -56,6 +59,11 @@ export default function TopicPage(): ReactNode {
       <div className={styles.body}>
         <BlockList blocks={topic.blocks} depth={depth} />
       </div>
+
+      {/* Synthesis, then a comprehension check. Placed after the article and
+          before the citations and onward links: the reading is over, and what
+          follows is consolidation rather than more material. */}
+      {recap && <TopicRecapSection recap={recap} depth={depth} />}
 
       {topic.furtherReading && topic.furtherReading.length > 0 && (
         <section className={styles.further}>

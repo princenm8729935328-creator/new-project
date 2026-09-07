@@ -12,6 +12,14 @@ import type { ContentBlock } from './blocks';
 import { blockReferences } from './blocks';
 import { EVIDENCE_LEVEL_META, isEvidenceLevel } from './evidence';
 import type { GlossaryTerm } from './glossary';
+import {
+  correctOption,
+  RECAP_MAX_OPTIONS,
+  RECAP_MAX_QUESTIONS,
+  RECAP_MIN_OPTIONS,
+  RECAP_MIN_QUESTIONS,
+  type RecapsByTopic,
+} from './recap';
 import type { Reference, ReferenceId } from './reference';
 import type { Section, SectionId } from './section';
 import type { TimelineEra, TimelineEvent } from './timeline';
@@ -33,6 +41,8 @@ export interface ContentLibrary {
   readonly visualizations: readonly VisualizationSpec[];
   readonly timelineEvents: readonly TimelineEvent[];
   readonly timelineEras?: readonly TimelineEra[];
+  /** Keyed by topic id; every published topic must have one. */
+  readonly recaps?: RecapsByTopic;
 }
 
 function error(path: string, message: string): ValidationIssue {
@@ -185,6 +195,79 @@ export function validateLibrary(library: ContentLibrary): ValidationIssue[] {
 
     if (topic.status === 'published' && topic.blocks.length === 0) {
       issues.push(error(path, 'a published topic cannot be empty'));
+    }
+
+    // Every published topic closes with a synthesis and a comprehension check.
+    // This is checked here rather than left to editorial discipline because a
+    // topic that quietly ships without one is invisible until a reader reaches
+    // the bottom of the page and finds nothing.
+    if (library.recaps && topic.status === 'published') {
+      const recap = library.recaps[topic.id];
+      if (!recap) {
+        issues.push(error(path, 'a published topic needs a recap (summary + questions)'));
+      } else {
+        if (recap.summary.essential.trim() === '') {
+          issues.push(error(`${path}/recap`, 'the recap summary is empty'));
+        }
+        if (
+          recap.questions.length < RECAP_MIN_QUESTIONS ||
+          recap.questions.length > RECAP_MAX_QUESTIONS
+        ) {
+          issues.push(
+            error(
+              `${path}/recap`,
+              `expected ${RECAP_MIN_QUESTIONS}–${RECAP_MAX_QUESTIONS} questions, found ${recap.questions.length}`,
+            ),
+          );
+        }
+        for (const dupe of duplicates(recap.questions.map((question) => question.id))) {
+          issues.push(error(`${path}/recap`, `duplicate question id "${dupe}"`));
+        }
+        recap.questions.forEach((question, index) => {
+          const questionPath = `${path}/recap/question:${question.id || index}`;
+          if (question.prompt.trim() === '') {
+            issues.push(error(questionPath, 'a question needs a prompt'));
+          }
+          if (question.explanation.trim() === '') {
+            issues.push(error(questionPath, 'a question needs a “why” explanation'));
+          }
+          if (
+            question.options.length < RECAP_MIN_OPTIONS ||
+            question.options.length > RECAP_MAX_OPTIONS
+          ) {
+            issues.push(
+              error(
+                questionPath,
+                `expected ${RECAP_MIN_OPTIONS}–${RECAP_MAX_OPTIONS} options, found ${question.options.length}`,
+              ),
+            );
+          }
+          const correct = question.options.filter((option) => option.correct === true);
+          if (correct.length !== 1) {
+            issues.push(
+              error(questionPath, `expected exactly one correct option, found ${correct.length}`),
+            );
+          }
+          if (!correctOption(question)) {
+            issues.push(error(questionPath, 'no option is marked correct'));
+          }
+          for (const dupe of duplicates(question.options.map((option) => option.id))) {
+            issues.push(error(questionPath, `duplicate option id "${dupe}"`));
+          }
+          for (const option of question.options) {
+            if (option.text.trim() === '') {
+              issues.push(error(questionPath, `option "${option.id}" has no text`));
+            }
+          }
+        });
+      }
+    }
+  }
+
+  // A recap pointing at a topic that does not exist is dead content.
+  for (const key of Object.keys(library.recaps ?? {})) {
+    if (!topicIds.has(key as TopicId)) {
+      issues.push(error(`recap:${key}`, 'recap for a topic that does not exist'));
     }
   }
 

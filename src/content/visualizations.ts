@@ -597,4 +597,205 @@ export const VISUALIZATIONS: readonly VisualizationSpec[] = [
     minimumQuality: 'low',
     layout: 'flow',
   },
+
+  // --- Phase 5 — Black Holes ----------------------------------------------
+  {
+    id: visualizationId('gravitational-collapse'),
+    title: 'A core with nothing holding it up',
+    fidelity: 'schematic',
+    runtime: 'canvas2d',
+    interactive: true,
+    caption:
+      'A conceptual diagram of the last stage of a massive star. The support slider is the content: while support is above the threshold the core finds an equilibrium radius and stops, and below it the contraction runs away and the horizon appears. Neither the timescale nor the sizes are real — a stellar core collapses in seconds and the horizon is tens of kilometres across, against a star of a million. No hydrodynamics is being solved; the radius follows a prescribed curve chosen to make the two outcomes distinguishable.',
+    description:
+      'An animated diagram of a stellar core losing its support. A glowing sphere representing the core shrinks as its support is removed. With the support slider held high, the shrinking slows and stops at a stable radius, labelled as a white dwarf or neutron star. With the slider below the threshold, the shrinking accelerates instead of stopping, the surface passes through a dashed circle marking the Schwarzschild radius, and a black disc with a thin bright rim replaces the sphere. As the surface approaches that circle, light emitted from it is shown reddening and dimming, illustrating that a distant observer never sees the crossing complete.',
+    references: [
+      referenceId('oppenheimer-snyder-1939'),
+      referenceId('chandrasekhar-1931'),
+      referenceId('penrose-1965-singularities'),
+    ],
+    minimumQuality: 'low',
+  },
+  {
+    id: visualizationId('black-hole-anatomy'),
+    title: 'The radii that matter',
+    fidelity: 'to-scale',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'The characteristic radii of a black hole, drawn in correct proportion to one another and computed from the exact expressions rather than sketched. Radial distances are in units of the gravitational radius GM/c², so the figure holds for a black hole of any mass. The spin slider recomputes the horizon and the innermost stable circular orbit from the Kerr solution, and the ergosphere appears as spin rises. What is not shown is the interior: the region inside the horizon is drawn blank because general relativity does not describe it reliably.',
+    description:
+      'A cross-section through a black hole showing concentric regions, with radii measured in gravitational radii. From the outside in: the innermost stable circular orbit, the inner edge of any accretion disc, at six gravitational radii for a non-rotating black hole; the photon sphere at three, where light can orbit; and the event horizon at two. The ergosphere is drawn as a flattened region touching the horizon at the poles and bulging at the equator. Moving the spin slider from zero toward the maximum shrinks the horizon, shrinks the innermost stable circular orbit dramatically from six gravitational radii to about one, and expands the ergosphere. The interior of the horizon is left blank and labelled as not described by the theory.',
+    references: [
+      referenceId('schwarzschild-1916'),
+      referenceId('kerr-1963'),
+      referenceId('hartle-2003-gravity'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('escape-cone'),
+    title: 'Where the way out runs out',
+    fidelity: 'schematic',
+    runtime: 'canvas2d',
+    interactive: true,
+    caption:
+      'A conceptual diagram of light cones tipping toward a black hole. The half-angle of the escape cone is computed from the standard expression for the Schwarzschild geometry, so the way it narrows with radius and closes exactly at the horizon is the real result rather than an artistic choice. The cones are drawn far larger than any meaningful scale, and the reference row beneath is spaced evenly for legibility rather than placed on a radial axis — at a shared scale the cones would overlap into an unreadable pile.',
+    description:
+      'An animated diagram showing light cones at a series of distances from a black hole. Far away, each cone opens symmetrically: a flash of light there can travel outward as easily as inward. Closer in, the cones tilt toward the black hole and the outward-going side becomes narrower, so escaping requires being aimed within an increasingly tight cone. At 1.5 Schwarzschild radii — the photon sphere — exactly half the directions escape. Closer in, the escaping set narrows to a cone about straight up: 62 degrees at 1.2 radii, 21 degrees at 1.02, and zero at the horizon itself, where no outward direction remains at all. A slider moves the selected radius and a row of reference cones beneath shows the same quantity at five fixed distances, each labelled with its half-angle.',
+    references: [referenceId('misner-thorne-wheeler-1973'), referenceId('hartle-2003-gravity')],
+    minimumQuality: 'low',
+  },
+  {
+    id: visualizationId('infalling-clock'),
+    title: 'Two clocks, two stories',
+    fidelity: 'data-driven',
+    runtime: 'canvas2d',
+    interactive: true,
+    caption:
+      'A clock falling toward a black hole, with the elapsed time on the falling clock and on a distant clock both computed from the Schwarzschild geometry. The divergence between them is the real prediction: the falling clock crosses the horizon after a finite, short interval of its own time, while the distant clock runs away to infinity. The redshift of the light leaving the falling clock is computed from the same expressions. The infall is slowed enormously for viewing and the sizes are not to scale.',
+    description:
+      'An animated comparison of two clocks. One falls freely toward a black hole from rest at a chosen starting radius; the other stays far away. As the falling clock descends, its face is shown ticking normally from its own point of view and reaching the horizon after a short, finite interval. The distant clock’s reading, shown alongside, climbs ever faster and never reaches the crossing moment. Light from the falling clock is drawn shifting from white toward deep red and dimming as it descends, so the image seen from far away fades to nothing rather than being seen to cross. A readout gives both elapsed times and the redshift factor at the current radius.',
+    references: [referenceId('hartle-2003-gravity'), referenceId('gravity-2018-s2-redshift')],
+    minimumQuality: 'low',
+  },
+  {
+    id: visualizationId('photon-orbits'),
+    title: 'Fire light past a black hole',
+    fidelity: 'data-driven',
+    runtime: 'canvas2d',
+    interactive: true,
+    caption:
+      'Photon trajectories integrated from the null geodesic equation of the Schwarzschild geometry, not drawn by hand. The impact parameter slider sets how close each ray is aimed; the capture threshold at b = √27 GM/c² emerges from the integration rather than being imposed. Rays close to the threshold loop one or more times near the photon sphere before escaping, which is the effect that produces the bright ring in a black-hole image. The radial scale is in gravitational radii and no attempt is made to show the black hole at a realistic angular size.',
+    description:
+      'An interactive diagram in which beams of light are fired past a black hole at a chosen distance. A slider sets the impact parameter, measured in gravitational radii. Rays aimed far away are deflected only slightly. Rays aimed closer bend sharply. At an impact parameter of about 5.2 gravitational radii the ray winds around the photon sphere several times before escaping in an almost arbitrary direction, and just below that value it spirals in and is captured. Dashed circles mark the event horizon at two gravitational radii and the photon sphere at three. A readout gives the deflection angle and states whether the ray escaped or was captured.',
+    references: [referenceId('hartle-2003-gravity'), referenceId('eht-2019-v-physical-origin')],
+    minimumQuality: 'low',
+  },
+  {
+    id: visualizationId('black-hole-shadow'),
+    title: 'What a telescope would see',
+    fidelity: 'schematic',
+    runtime: 'canvas2d',
+    interactive: true,
+    caption:
+      'A conceptual diagram of a black-hole image. The shadow radius, the photon ring radius and the ratio between them are computed from the Schwarzschild geometry and are correct; the background star field, the brightness of the ring and the Doppler asymmetry across it are illustrative rather than a radiative-transfer calculation. This is not a reproduction of the Event Horizon Telescope images and is not derived from their data. The dark centre is the shadow, which is substantially larger than the event horizon — the horizon itself is marked separately and has never been imaged.',
+    description:
+      'A diagram of the appearance of a black hole against a background of stars. A dark central disc — the shadow — is surrounded by a thin bright ring of light that has been bent around the black hole on its way to the viewer. Background stars near the edge of the shadow are visibly displaced and duplicated by lensing. A toggle overlays the true size of the event horizon, which is noticeably smaller than the dark region, and a second toggle adds an accretion disc, whose far side appears lifted above and below the black hole because light from behind is bent over the top. A note states that the dark region is a lensing shadow and not a photograph of a horizon.',
+    references: [referenceId('eht-2019-v-physical-origin'), referenceId('eht-2019-m87')],
+    minimumQuality: 'low',
+  },
+  {
+    id: visualizationId('accretion-disc'),
+    title: 'Why infalling gas glows',
+    fidelity: 'schematic',
+    runtime: 'canvas2d',
+    interactive: true,
+    caption:
+      'A conceptual diagram of an accretion disc. The orbital speeds follow the Keplerian 1/√r profile and the colour follows the thin-disc temperature profile T ∝ r^(−3/4), so the differential rotation and the inward temperature rise are the real relationships. Everything else is illustrative: the disc is drawn far thicker than a real thin disc, the inward drift is enormously accelerated, and no radiative transfer is computed. The inner edge is placed at the innermost stable circular orbit, which is where the spin slider acts.',
+    description:
+      'An animated diagram of gas orbiting a black hole in a flat disc. Inner rings visibly circulate faster than outer rings, following the Keplerian relationship. Colour indicates temperature: the outer disc is deep red, the middle orange and yellow, the inner edge white-hot. Individual parcels of gas are shown drifting slowly inward as friction removes their angular momentum, brightening as they go, and disappearing at the inner edge. A spin slider moves the inner edge inward, and a readout reports the corresponding efficiency with which rest mass is converted into radiation — from about 6% for a non-rotating black hole to roughly 32% at the highest spin realistic accretion is thought to reach, against 0.7% for hydrogen fusion.',
+    references: [referenceId('shakura-sunyaev-1973'), referenceId('remillard-mcclintock-2006')],
+    minimumQuality: 'low',
+  },
+  {
+    id: visualizationId('relativistic-jet'),
+    title: 'A jet, and why only one is bright',
+    fidelity: 'schematic',
+    runtime: 'canvas2d',
+    interactive: true,
+    caption:
+      'A conceptual diagram of a relativistic jet. The brightness ratio between the approaching and receding jets is computed from the standard relativistic beaming expression for a given speed and viewing angle, so the asymmetry and how it changes with the sliders are quantitatively right. The geometry, the collimation and the knot structure are illustrative, and no magnetohydrodynamics is being solved. Real jets extend thousands of light years — millions of times the scale drawn here.',
+    description:
+      'An animated diagram of twin jets emerging from the poles of a spinning black hole, with an accretion disc between them. Bright knots travel outward along both jets at close to the speed of light. A speed slider and a viewing-angle slider control the geometry; as the speed rises and the jet tilts toward the viewer, the approaching jet brightens dramatically and the receding one fades almost to invisibility, which is why images of real sources usually show only one. A readout gives the brightness ratio between the two jets and the apparent transverse speed, which exceeds the speed of light for small viewing angles without anything actually travelling that fast.',
+    references: [referenceId('blandford-znajek-1977'), referenceId('eht-2019-m87')],
+    minimumQuality: 'low',
+  },
+  {
+    id: visualizationId('frame-dragging'),
+    title: 'Spacetime dragged around',
+    fidelity: 'schematic',
+    runtime: 'canvas2d',
+    interactive: true,
+    caption:
+      'A conceptual diagram of frame dragging around a rotating black hole. The angular velocity imparted to a zero-angular-momentum observer follows the Kerr expression, so the way the dragging strengthens inward and with spin is the real relationship; the ergosphere boundary is computed from the same solution. The test particles, the grid and the scale are illustrative. Around the Earth the same effect amounts to about 37 milliarcseconds per year, which is what Gravity Probe B measured.',
+    description:
+      'An animated diagram of test particles placed around a spinning black hole, each one released with no angular momentum — that is, not orbiting at all. Despite this, every particle is carried around the black hole, faster the closer it lies, because spacetime itself is being dragged. A spin slider changes the rotation rate: at zero the particles fall straight in, and as spin rises they are swept into tighter spirals. The ergosphere is drawn as a flattened surface outside the horizon, bulging at the equator and touching the horizon at the poles, and inside it a marker shows that no particle can be held stationary no matter how it is propelled.',
+    references: [referenceId('kerr-1963'), referenceId('everitt-2011-gravity-probe-b')],
+    minimumQuality: 'low',
+  },
+  {
+    id: visualizationId('tidal-stretching'),
+    title: 'Why small black holes are worse',
+    fidelity: 'data-driven',
+    runtime: 'canvas2d',
+    interactive: true,
+    caption:
+      'Tidal acceleration across a two-metre body, computed from the Newtonian tidal expression 2GMΔr/r³ evaluated along the fall — which agrees with the general-relativistic tidal curvature component to well within the precision shown here. The result at the horizon scales as one over the square of the mass, which is why the mass slider reverses the intuition: a ten-solar-mass black hole is already lethal about 27 horizon radii out, while a supermassive one is survivable at the horizon itself. The figure of the falling body is illustrative and its distortion is exaggerated.',
+    description:
+      'An interactive diagram of a body falling toward a black hole, with a mass slider spanning from ten solar masses to ten billion. A readout gives the tidal acceleration across a two-metre body at the current distance, and marks the distance at which that acceleration reaches the roughly one thousand g at which a human body would be pulled apart. For a ten-solar-mass black hole that distance is about 810 kilometres, some 27 times the horizon radius, so disruption happens well before the horizon. For a black hole of billions of solar masses the tidal acceleration at the horizon is smaller than Earth’s gravity, so the crossing would be physically unremarkable. The falling figure is drawn stretched along the direction of fall and squeezed across it, in proportion to the computed value.',
+    references: [referenceId('misner-thorne-wheeler-1973'), referenceId('hartle-2003-gravity')],
+    minimumQuality: 'low',
+  },
+  {
+    id: visualizationId('black-hole-mass-scale'),
+    title: 'Eight orders of magnitude',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: false,
+    caption:
+      'Measured masses of real black holes, plotted on a logarithmic scale, with each horizon radius computed from the same measured mass. Every entry is an object with a published dynamical, gravitational-wave or interferometric mass measurement; nothing here is representative or invented. The uncertainties on individual masses are omitted for legibility and are given in the sources.',
+    description:
+      'A logarithmic comparison of black-hole masses spanning from a few solar masses to billions. At the light end: the neutron-star limit at about 2.3 solar masses, marking where black holes can begin; Cygnus X-1 at about 21 solar masses, measured from its companion star’s orbit; and the components of GW150914 at 36 and 29 solar masses, measured from gravitational waves. In the middle: the remnant of GW190521 at about 142 solar masses, the first securely measured intermediate-mass black hole. At the heavy end: Sagittarius A star at the centre of the Milky Way, 4.3 million solar masses, from three decades of stellar orbits; and M87 star at 6.5 billion solar masses, from Event Horizon Telescope imaging. Each entry also shows the corresponding horizon radius, from about 30 kilometres across for a stellar-mass black hole to about 38 billion kilometres across for M87 star, roughly four times the diameter of Neptune’s orbit.',
+    references: [
+      referenceId('remillard-mcclintock-2006'),
+      referenceId('ligo-2016-gw150914'),
+      referenceId('abbott-2020-gw190521'),
+      referenceId('eht-2019-m87'),
+      referenceId('gravity-2020-schwarzschild-precession'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('binary-inspiral'),
+    title: 'Two black holes running out of orbit',
+    fidelity: 'schematic',
+    runtime: 'canvas2d',
+    interactive: true,
+    caption:
+      'A conceptual diagram of an inspiral. The orbital separation follows the leading-order quadrupole result, in which the separation shrinks as the fourth root of the time remaining, so the acceleration into the merger is the real relationship rather than a chosen easing curve. The timescale is compressed by many orders of magnitude, the black holes are drawn far larger than their horizons relative to the orbit, and the emitted waves are drawn as visible ripples, which they are not.',
+    description:
+      'An animated diagram of two black holes orbiting each other. Their separation shrinks slowly at first and then with increasing speed as energy is carried away by gravitational waves, drawn as expanding spiral ripples in a background grid. In the final moments the orbit shrinks and the orbital frequency rises steeply; the two horizons touch and merge into a single, larger, briefly distorted horizon which then settles into a smooth sphere. A mass-ratio slider changes the relative sizes of the two black holes, and a readout gives the orbital separation in units of the final horizon radius and the number of orbits remaining.',
+    references: [referenceId('ligo-2016-gw150914'), referenceId('einstein-1916-gr')],
+    minimumQuality: 'low',
+  },
+  {
+    id: visualizationId('merger-waveform'),
+    title: 'Inspiral, merger, ringdown',
+    fidelity: 'schematic',
+    runtime: 'canvas2d',
+    interactive: true,
+    caption:
+      'A conceptual diagram of a merger waveform. The inspiral portion is computed from the leading-order post-Newtonian frequency evolution and the ringdown from an exponentially damped sinusoid, with the chirp mass and remnant properties set by the mass sliders; the merger itself is interpolated, because computing it genuinely requires numerical relativity. This is not LIGO data and does not reproduce any specific event, though the default slider positions give a signal comparable to GW150914.',
+    description:
+      'An interactive waveform showing the three phases of a black-hole merger. During the inspiral, the wave oscillates with steadily rising frequency and amplitude — the chirp. At merger the amplitude peaks sharply. During the ringdown the signal decays away within a few cycles as the newly formed black hole settles. The three phases are labelled and shaded separately. Two sliders set the masses of the merging black holes; increasing them lowers the frequency and shortens the visible signal, while making them more unequal reduces the amplitude. A readout gives the chirp mass, the final remnant mass, the energy radiated in solar masses, and the peak frequency.',
+    references: [referenceId('ligo-2016-gw150914'), referenceId('abbott-2023-gwtc3')],
+    minimumQuality: 'low',
+  },
+  {
+    id: visualizationId('hawking-temperature'),
+    title: 'Colder than empty space',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Hawking temperature and evaporation time computed exactly from Hawking’s expressions, T = ħc³/8πGMk_B and an evaporation time scaling as the cube of the mass, plotted against the measured cosmic microwave background temperature of 2.725 K. The crossing point is the content: every known black hole lies far to the right of it, meaning it absorbs more from the microwave background than it emits and therefore grows rather than evaporating. Hawking radiation is a theoretical prediction and has never been observed.',
+    description:
+      'A logarithmic chart of Hawking temperature against black-hole mass, spanning from asteroid-mass hypothetical black holes to the supermassive black hole in M87. Temperature falls steeply as mass rises. A horizontal line marks the cosmic microwave background at 2.725 kelvin. Every real black hole marked on the chart — a stellar-mass example, Sagittarius A star, and M87 star — lies far below that line, at temperatures between 10 to the minus 8 and 10 to the minus 17 kelvin, meaning each absorbs far more energy than it radiates. Only a hypothetical black hole below about 10 to the power 22 kilograms, with a horizon smaller than a proton, would be warmer than its surroundings today. A second readout gives the predicted evaporation time for the selected mass, which for one solar mass is about 10 to the power 67 years against a present cosmic age of 1.4 times 10 to the power 10 years.',
+    references: [referenceId('hawking-1975-radiation'), referenceId('fixsen-2009-cmb-temperature')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
 ];

@@ -84,13 +84,15 @@ describe('scientific accuracy in the rendered pages', () => {
   it('labels inflation as active research and states its prediction is undetected', () => {
     renderTopic('/universe/inflation');
     expect(screen.getAllByText('Active research').length).toBeGreaterThan(0);
-    expect(screen.getByText(/has not been detected/i)).toBeInTheDocument();
+    expect(screen.getAllByText(/has not been detected/i).length).toBeGreaterThan(0);
     expect(screen.getByText(/Why this page says “proposal”, not “fact”/)).toBeInTheDocument();
   });
 
   it('says no dark-matter particle has been detected', () => {
     renderTopic('/universe/dark-matter');
-    expect(screen.getByText(/No dark-matter particle has ever been detected/i)).toBeInTheDocument();
+    expect(
+      screen.getAllByText(/No dark-matter particle has ever been detected/i).length,
+    ).toBeGreaterThan(0);
     expect(
       screen.getByText(/What “dark matter exists” does and does not mean/),
     ).toBeInTheDocument();
@@ -103,7 +105,7 @@ describe('scientific accuracy in the rendered pages', () => {
 
   it('distinguishes the observable Universe from the whole Universe', () => {
     renderTopic('/universe/observable-universe');
-    expect(screen.getByText(/may be infinite/i)).toBeInTheDocument();
+    expect(screen.getAllByText(/may be infinite/i).length).toBeGreaterThan(0);
     expect(screen.getByText(/“How big is the Universe\?”/)).toBeInTheDocument();
   });
 

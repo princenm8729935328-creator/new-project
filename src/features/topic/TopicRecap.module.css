@@ -1,0 +1,192 @@
+/*
+ * Topic summary and comprehension check.
+ *
+ * Deliberately quiet. This is the last thing on a long page, and it has to read
+ * as part of the article rather than as a quiz widget bolted onto the end — so
+ * it borrows the same hairline rules, spacing scale and accent as every other
+ * section of the topic, and adds no chrome of its own beyond what the states
+ * need.
+ */
+
+.recap {
+  display: grid;
+  gap: var(--space-6);
+  padding-block-start: var(--space-7);
+  margin-block-start: var(--space-6);
+  border-block-start: 1px solid var(--surface-hairline);
+}
+
+.summary {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.summaryBody {
+  padding-inline-start: var(--space-4);
+  border-inline-start: 2px solid var(--section-accent, var(--accent));
+}
+
+.check {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.intro {
+  font-size: var(--step--1);
+  color: var(--text-tertiary);
+  max-width: var(--measure);
+}
+
+.questions {
+  display: grid;
+  gap: var(--space-5);
+}
+
+.question {
+  display: grid;
+  gap: var(--space-3);
+  max-width: var(--measure);
+}
+
+.prompt {
+  font-size: var(--step-0);
+  font-weight: 600;
+  line-height: var(--leading-snug);
+  color: var(--text-primary);
+}
+
+.index {
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  color: var(--section-accent, var(--accent));
+  margin-inline-end: var(--space-2);
+}
+
+.options {
+  display: grid;
+  gap: var(--space-2);
+}
+
+/*
+ * One button per option. Before an answer it is a plain, uniform target — no
+ * colour, no hint, nothing that would give the answer away. Afterwards the
+ * chosen one and the correct one are marked, and the rest fade back.
+ */
+.option {
+  display: grid;
+  grid-template-columns: 1.5rem 1fr;
+  align-items: start;
+  gap: var(--space-3);
+  inline-size: 100%;
+  min-block-size: var(--touch-target);
+  padding: var(--space-3) var(--space-4);
+  text-align: start;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--surface-hairline);
+  color: var(--text-secondary);
+  font-size: var(--step-0);
+  line-height: var(--leading-snug);
+  transition:
+    border-color var(--duration-fast) var(--ease-out),
+    background var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out);
+}
+
+.option:hover:not(:disabled) {
+  border-color: var(--surface-hairline-strong);
+  color: var(--text-primary);
+  background: rgb(148 162 192 / 6%);
+}
+
+.option:disabled {
+  cursor: default;
+}
+
+.marker {
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  line-height: 1.5;
+  color: var(--text-tertiary);
+}
+
+/* Revealed states. */
+.option[data-state='correct'] {
+  border-color: color-mix(in oklab, var(--evidence-established) 55%, transparent);
+  background: color-mix(in oklab, var(--evidence-established) 10%, transparent);
+  color: var(--text-primary);
+}
+
+.option[data-state='correct'] .marker {
+  color: var(--evidence-established);
+}
+
+.option[data-state='wrong'] {
+  border-color: color-mix(in oklab, var(--iron) 60%, transparent);
+  background: color-mix(in oklab, var(--iron) 10%, transparent);
+  color: var(--text-primary);
+}
+
+.option[data-state='wrong'] .marker {
+  color: var(--iron);
+}
+
+.option[data-state='muted'] {
+  opacity: 0.5;
+}
+
+.verdict {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  font-size: var(--step--1);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.verdict[data-correct='true'] {
+  color: var(--evidence-established);
+}
+
+.verdict[data-correct='false'] {
+  color: var(--iron);
+}
+
+.why {
+  display: grid;
+  gap: var(--space-2);
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  background: rgb(14 21 38 / 55%);
+  border: 1px solid var(--surface-hairline);
+}
+
+.whyLabel {
+  font-size: var(--step--1);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-eyebrow);
+  font-weight: 600;
+  color: var(--text-tertiary);
+}
+
+.whyBody {
+  font-size: var(--step-0);
+  line-height: var(--leading-body);
+  color: var(--text-secondary);
+}
+
+.reset {
+  justify-self: start;
+  min-block-size: var(--touch-target);
+  padding-inline: var(--space-4);
+  margin-inline-start: calc(var(--space-4) * -1);
+  font-size: var(--step--1);
+  font-weight: 600;
+  color: var(--text-tertiary);
+  border-radius: var(--radius-pill);
+}
+
+.reset:hover {
+  color: var(--text-primary);
+  background: rgb(148 162 192 / 10%);
+}

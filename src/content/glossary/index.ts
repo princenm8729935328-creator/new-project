@@ -196,6 +196,62 @@ export const GLOSSARY: readonly GlossaryTerm[] = [
     unit: 'm',
     references: [referenceId('schwarzschild-1916')],
   },
+
+  // --- Black holes -------------------------------------------------------
+  {
+    id: glossaryTermId('singularity'),
+    term: 'Singularity',
+    short:
+      'A place where the equations of general relativity give infinite values and stop describing anything. It marks the boundary of the theory’s validity rather than a known physical object; describing what is really there would require a quantum theory of gravity.',
+    references: [referenceId('penrose-1965-singularities')],
+  },
+  {
+    id: glossaryTermId('photon-sphere'),
+    term: 'Photon sphere',
+    short:
+      'The radius at which gravity bends light strongly enough that a photon can orbit the black hole. For a non-rotating black hole it lies at 1.5 times the Schwarzschild radius. The orbit is unstable, so light there either falls in or escapes.',
+    symbol: 'r_ph',
+    unit: 'm',
+    references: [referenceId('eht-2019-v-physical-origin')],
+  },
+  {
+    id: glossaryTermId('accretion-disc'),
+    term: 'Accretion disc',
+    aliases: ['accretion disk'],
+    short:
+      'A flattened, orbiting disc of gas spiralling toward a compact object. Friction and turbulence heat it to millions of kelvin, making it one of the brightest sources in the Universe — the light comes from the disc, never from the black hole itself.',
+    references: [referenceId('shakura-sunyaev-1973')],
+  },
+  {
+    id: glossaryTermId('ergosphere'),
+    term: 'Ergosphere',
+    short:
+      'The region outside a rotating black hole’s event horizon within which spacetime is dragged around so strongly that nothing can remain still relative to distant stars. Energy can be extracted from it, unlike from inside the horizon.',
+    references: [referenceId('kerr-1963')],
+  },
+  {
+    id: glossaryTermId('frame-dragging'),
+    term: 'Frame dragging',
+    aliases: ['Lense–Thirring effect'],
+    short:
+      'The twisting of spacetime by a rotating mass, which drags nearby inertial frames around with it. Measured around the Earth by Gravity Probe B; overwhelming near a rapidly spinning black hole.',
+    references: [referenceId('everitt-2011-gravity-probe-b'), referenceId('kerr-1963')],
+  },
+  {
+    id: glossaryTermId('hawking-radiation'),
+    term: 'Hawking radiation',
+    short:
+      'Thermal radiation predicted to be emitted by a black-hole horizon by quantum field theory in curved spacetime. Its temperature is inversely proportional to mass, making it far too faint to detect for any known astrophysical black hole. It has never been observed.',
+    references: [referenceId('hawking-1975-radiation')],
+  },
+  {
+    id: glossaryTermId('spaghettification'),
+    term: 'Spaghettification',
+    aliases: ['tidal stretching'],
+    short:
+      'Stretching along the direction of fall and squeezing across it, caused by the difference in gravitational acceleration between the near and far parts of an extended body. Near a black hole the effect grows as 1/r³, so smaller black holes are more lethal at the horizon than large ones.',
+    references: [referenceId('misner-thorne-wheeler-1973')],
+  },
 ];
 
 const BY_ID = new Map(GLOSSARY.map((term) => [term.id, term]));
