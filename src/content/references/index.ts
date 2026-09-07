@@ -1061,6 +1061,240 @@ export const REFERENCES: readonly Reference[] = [
     supports:
       'The conventional value of standard gravity, 9.80665 m/s², adopted by definition rather than measured.',
   },
+
+  // ---- Added for Phase 4 (Einstein & Relativity) --------------------------
+
+  {
+    id: referenceId('einstein-1905-sr'),
+    kind: 'journal-article',
+    authors: 'Einstein, A.',
+    year: 1905,
+    title: 'Zur Elektrodynamik bewegter Körper',
+    source: 'Annalen der Physik 322, 891',
+    doi: '10.1002/andp.19053221004',
+    supports:
+      'The two postulates of special relativity, the relativity of simultaneity, time dilation and length contraction.',
+  },
+  {
+    id: referenceId('einstein-1905-inertia'),
+    kind: 'journal-article',
+    authors: 'Einstein, A.',
+    year: 1905,
+    title: 'Ist die Trägheit eines Körpers von seinem Energieinhalt abhängig?',
+    source: 'Annalen der Physik 323, 639',
+    doi: '10.1002/andp.19053231314',
+    supports: 'The equivalence of mass and energy, later written E = mc².',
+  },
+  {
+    id: referenceId('michelson-morley-1887'),
+    kind: 'journal-article',
+    authors: 'Michelson, A. A. & Morley, E. W.',
+    year: 1887,
+    title: 'On the Relative Motion of the Earth and the Luminiferous Ether',
+    source: 'American Journal of Science s3-34, 333',
+    doi: '10.2475/ajs.s3-34.203.333',
+    supports:
+      'The null result for motion of the Earth through a light-carrying medium, at a sensitivity far above the expected effect.',
+  },
+  {
+    id: referenceId('minkowski-1952-space-and-time'),
+    kind: 'book',
+    authors: 'Minkowski, H.',
+    year: 1952,
+    title: 'Space and Time (1908 address), in The Principle of Relativity',
+    source: 'Dover Publications, New York',
+    supports:
+      'The unification of space and time into one four-dimensional geometry, and the invariant spacetime interval.',
+  },
+  {
+    id: referenceId('schwarzschild-1916'),
+    kind: 'journal-article',
+    authors: 'Schwarzschild, K.',
+    year: 1916,
+    title: 'Über das Gravitationsfeld eines Massenpunktes nach der Einsteinschen Theorie',
+    source:
+      'Sitzungsberichte der Königlich Preussischen Akademie der Wissenschaften, 189 (English translation, arXiv)',
+    arxiv: 'physics/9905030',
+    supports:
+      'The first exact solution of the Einstein field equations, and the radius that now bears his name.',
+  },
+  {
+    id: referenceId('frisch-smith-1963-muons'),
+    kind: 'journal-article',
+    authors: 'Frisch, D. H. & Smith, J. H.',
+    year: 1963,
+    title: 'Measurement of the Relativistic Time Dilation Using μ-Mesons',
+    source: 'American Journal of Physics 31, 342',
+    doi: '10.1119/1.1969508',
+    supports:
+      'Cosmic-ray muons surviving the trip from a mountain top to sea level in numbers that only time dilation explains.',
+  },
+  {
+    id: referenceId('bailey-1977-muon-lifetime'),
+    kind: 'journal-article',
+    authors: 'Bailey, J. et al.',
+    year: 1977,
+    title:
+      'Measurements of relativistic time dilatation for positive and negative muons in a circular orbit',
+    source: 'Nature 268, 301',
+    doi: '10.1038/268301a0',
+    supports:
+      'Muon lifetime dilated by a factor of 29.3 in a storage ring, agreeing with special relativity to 2 parts in 1000.',
+  },
+  {
+    id: referenceId('hafele-keating-1972'),
+    kind: 'journal-article',
+    authors: 'Hafele, J. C. & Keating, R. E.',
+    year: 1972,
+    title: 'Around-the-World Atomic Clocks: Observed Relativistic Time Gains',
+    source: 'Science 177, 168',
+    doi: '10.1126/science.177.4044.168',
+    supports:
+      'Caesium clocks flown around the world disagreeing with clocks left behind, by the predicted number of nanoseconds.',
+  },
+  {
+    id: referenceId('delva-2018-galileo-redshift'),
+    kind: 'journal-article',
+    authors: 'Delva, P. et al.',
+    year: 2018,
+    title: 'Gravitational Redshift Test Using Eccentric Galileo Satellites',
+    source: 'Physical Review Letters 121, 231101',
+    doi: '10.1103/PhysRevLett.121.231101',
+    supports:
+      'The gravitational redshift confirmed to about 2 parts in 100,000 using two satellites accidentally launched into eccentric orbits.',
+  },
+  {
+    id: referenceId('bertotti-2003-cassini'),
+    kind: 'journal-article',
+    authors: 'Bertotti, B., Iess, L. & Tortora, P.',
+    year: 2003,
+    title: 'A test of general relativity using radio links with the Cassini spacecraft',
+    source: 'Nature 425, 374',
+    doi: '10.1038/nature01997',
+    supports:
+      'The Shapiro delay of radio signals passing the Sun, constraining the PPN parameter γ to 1 within 2.3 × 10⁻⁵.',
+  },
+  {
+    id: referenceId('everitt-2011-gravity-probe-b'),
+    kind: 'journal-article',
+    authors: 'Everitt, C. W. F. et al.',
+    year: 2011,
+    title: 'Gravity Probe B: Final Results of a Space Experiment to Test General Relativity',
+    source: 'Physical Review Letters 106, 221101',
+    doi: '10.1103/PhysRevLett.106.221101',
+    supports:
+      'Direct measurement of the geodetic effect and of frame dragging by the rotating Earth.',
+  },
+  {
+    id: referenceId('walsh-1979-twin-quasar'),
+    kind: 'journal-article',
+    authors: 'Walsh, D., Carswell, R. F. & Weymann, R. J.',
+    year: 1979,
+    title: '0957+561 A, B: twin quasistellar objects or gravitational lens?',
+    source: 'Nature 279, 381',
+    doi: '10.1038/279381a0',
+    supports: 'The first identified gravitational lens: one quasar seen twice.',
+  },
+  {
+    id: referenceId('hulse-taylor-1975'),
+    kind: 'journal-article',
+    authors: 'Hulse, R. A. & Taylor, J. H.',
+    year: 1975,
+    title: 'Discovery of a pulsar in a binary system',
+    source: 'The Astrophysical Journal 195, L51',
+    doi: '10.1086/181708',
+    supports:
+      'The binary pulsar PSR B1913+16, the first system to show orbital decay by gravitational radiation.',
+  },
+  {
+    id: referenceId('weisberg-huang-2016-binary-pulsar'),
+    kind: 'journal-article',
+    authors: 'Weisberg, J. M. & Huang, Y.',
+    year: 2016,
+    title: 'Relativistic Measurements from Timing the Binary Pulsar PSR B1913+16',
+    source: 'The Astrophysical Journal 829, 55',
+    doi: '10.3847/0004-637X/829/1/55',
+    arxiv: '1606.02744',
+    supports:
+      'Forty years of orbital decay matching the general-relativistic prediction to about 0.2%.',
+  },
+  {
+    id: referenceId('abbott-2017-gw170817'),
+    kind: 'journal-article',
+    authors: 'Abbott, B. P. et al. (LIGO Scientific Collaboration and Virgo Collaboration)',
+    year: 2017,
+    title: 'GW170817: Observation of Gravitational Waves from a Binary Neutron Star Inspiral',
+    source: 'Physical Review Letters 119, 161101',
+    doi: '10.1103/PhysRevLett.119.161101',
+    supports:
+      'Gravitational waves and light from the same event, constraining the speed of gravity to that of light.',
+  },
+  {
+    id: referenceId('abbott-2023-gwtc3'),
+    kind: 'journal-article',
+    authors: 'Abbott, R. et al. (LIGO–Virgo–KAGRA Collaboration)',
+    year: 2023,
+    title:
+      'GWTC-3: Compact Binary Coalescences Observed by LIGO and Virgo during the Second Part of the Third Observing Run',
+    source: 'Physical Review X 13, 041039',
+    doi: '10.1103/PhysRevX.13.041039',
+    arxiv: '2111.03606',
+    supports: 'The catalogue of gravitational-wave detections through the third observing run.',
+  },
+  {
+    id: referenceId('gravity-2018-s2-redshift'),
+    kind: 'journal-article',
+    authors: 'GRAVITY Collaboration',
+    year: 2018,
+    title:
+      'Detection of the gravitational redshift in the orbit of the star S2 near the Galactic centre massive black hole',
+    source: 'Astronomy & Astrophysics 615, L15',
+    doi: '10.1051/0004-6361/201833718',
+    supports:
+      'Gravitational redshift measured in the orbit of a star passing close to the Milky Way’s central black hole.',
+  },
+  {
+    id: referenceId('eht-2022-sgr-a'),
+    kind: 'journal-article',
+    authors: 'Event Horizon Telescope Collaboration',
+    year: 2022,
+    title:
+      'First Sagittarius A* Event Horizon Telescope Results. I. The Shadow of the Supermassive Black Hole in the Center of the Milky Way',
+    source: 'The Astrophysical Journal Letters 930, L12',
+    doi: '10.3847/2041-8213/ac6674',
+    supports:
+      'Horizon-scale imaging of the black hole at the centre of our own galaxy, with a shadow of the size general relativity predicts.',
+  },
+  {
+    id: referenceId('taylor-wheeler-1992-spacetime'),
+    kind: 'book',
+    authors: 'Taylor, E. F. & Wheeler, J. A.',
+    year: 1992,
+    title: 'Spacetime Physics: Introduction to Special Relativity, 2nd edition',
+    source: 'W. H. Freeman, New York',
+    supports:
+      'The spacetime interval, light cones, proper time, and the standard worked treatments of the twin and pole–barn problems.',
+  },
+  {
+    id: referenceId('hartle-2003-gravity'),
+    kind: 'book',
+    authors: 'Hartle, J. B.',
+    year: 2003,
+    title: 'Gravity: An Introduction to Einstein’s General Relativity',
+    source: 'Addison-Wesley, San Francisco',
+    supports:
+      'Geodesics, the Schwarzschild solution, gravitational redshift, light deflection and perihelion precession.',
+  },
+  {
+    id: referenceId('misner-thorne-wheeler-1973'),
+    kind: 'book',
+    authors: 'Misner, C. W., Thorne, K. S. & Wheeler, J. A.',
+    year: 1973,
+    title: 'Gravitation',
+    source: 'W. H. Freeman, San Francisco',
+    supports:
+      'The field equations, tidal curvature, and the standard reference treatment of general relativity.',
+  },
 ];
 
 const BY_ID = new Map(REFERENCES.map((reference) => [reference.id, reference]));

@@ -396,4 +396,205 @@ export const VISUALIZATIONS: readonly VisualizationSpec[] = [
     minimumQuality: 'low',
     layout: 'flow',
   },
+
+  // ---- Phase 4: Einstein & Relativity -------------------------------------
+
+  {
+    id: visualizationId('light-clock'),
+    title: 'The light clock',
+    fidelity: 'schematic',
+    runtime: 'canvas2d',
+    interactive: true,
+    caption:
+      'A conceptual diagram of where time dilation comes from. Two identical clocks tick by bouncing a light pulse between mirrors; one is at rest and one is moving. Because the light in the moving clock has to travel a longer, diagonal path at the same speed, it ticks more slowly — and the ratio of the two tick rates is exactly the Lorentz factor, computed live rather than drawn by hand. The mirrors, the pulse and the separation are illustrative sizes; a real light clock a metre tall ticks about 150 million times a second.',
+    description:
+      'An interactive diagram of two light clocks side by side. In the stationary clock a pulse bounces straight up and down between two mirrors. In the moving clock, drawn travelling to the right, the same pulse traces a zig-zag: it must cover a longer diagonal path between the same two mirrors, and because its speed is fixed it takes longer. A speed slider changes how fast the second clock moves; as the speed rises the diagonal lengthens, the moving clock visibly falls behind, and a readout gives the Lorentz factor and the accumulated difference in elapsed time between the two clocks.',
+    references: [referenceId('einstein-1905-sr')],
+    minimumQuality: 'low',
+  },
+  {
+    id: visualizationId('lorentz-factor'),
+    title: 'How fast is fast enough to matter?',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'The Lorentz factor γ = 1/√(1 − v²/c²), plotted exactly. This is the whole of special relativity’s quantitative content in one curve: it is what multiplies time dilation, length contraction and relativistic energy. The point of the figure is the shape — γ stays within a fraction of a percent of 1 for every speed a human has travelled, and only runs away when v is a substantial fraction of c. Marked speeds are real values; the curve is the formula, not a fit to data.',
+    description:
+      'A chart of the Lorentz factor against speed as a fraction of the speed of light. The curve sits almost exactly at 1 across the left three quarters of the plot, reaches 1.15 at half light speed, 2.29 at 0.9c, 7.09 at 0.99c, and rises steeply towards infinity as the speed approaches c. Reference speeds are marked along the bottom: a passenger jet at 0.0000008c, the International Space Station at 0.000026c, the Parker Solar Probe at 0.00064c, and a muon in a storage ring at 0.9994c. A slider selects a speed and reads out the Lorentz factor, the time dilation, the length contraction and the kinetic energy as a multiple of the rest energy.',
+    references: [referenceId('einstein-1905-sr'), referenceId('codata-2018')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('simultaneity-train'),
+    title: 'Two lightning strikes, two answers',
+    fidelity: 'schematic',
+    runtime: 'canvas2d',
+    interactive: true,
+    caption:
+      'Einstein’s train, drawn in both frames. Switch between them: on the platform the two flashes are emitted at the same moment and reach the platform observer together; in the train’s own frame the same two flashes reach the traveller at different moments, so they cannot have been simultaneous. Neither observer is mistaken and no experiment can settle which is right — that is the point. The train is drawn at a large fraction of light speed and at a size that makes the light travel visible; the light pulses move at the same drawn speed in both frames, which is the one thing the figure gets literally right.',
+    description:
+      'An animated diagram of a train passing a platform. In the platform frame, lightning strikes both ends of the train at the same instant; the two light pulses travel inward at equal speed and arrive together at an observer standing midway along the platform. Switching to the train frame, the same two pulses still travel at the same speed, but the traveller in the middle of the carriage is moving towards one of them: the pulse from the front arrives first and the pulse from the rear arrives later. A readout states, for each frame, whether the two strikes were simultaneous, and notes that both descriptions are correct.',
+    references: [referenceId('einstein-1905-sr')],
+    minimumQuality: 'low',
+  },
+  {
+    id: visualizationId('length-contraction'),
+    title: 'A shorter journey, or a longer life?',
+    fidelity: 'schematic',
+    runtime: 'canvas2d',
+    interactive: true,
+    caption:
+      'The muon problem, told from both sides, with the numbers computed live from the Lorentz factor. In the Earth’s frame the atmosphere is 15 km thick and the muon survives the trip because its clock runs slow. In the muon’s own frame its life is the usual 2.2 microseconds, but the atmosphere is rushing past contracted to a fraction of that thickness. Both frames give the same answer for the one thing that can be checked — whether the muon reaches the ground. Sizes are illustrative; the contraction factor and the survival fraction are calculated.',
+    description:
+      'An interactive diagram in two panels. In the Earth frame, a column of atmosphere 15 kilometres tall stands still while a muon descends through it, and a clock attached to the muon ticks slowly. In the muon frame, the muon is at rest with a normally ticking clock while the whole atmosphere rushes upward past it, flattened along the direction of motion. A speed slider changes the muon’s velocity; at 0.999 of light speed the atmosphere contracts from 15 kilometres to about 670 metres, and a readout gives the contracted thickness, the dilated lifetime and the fraction of muons expected to survive the descent in each description — which always agree.',
+    references: [referenceId('frisch-smith-1963-muons'), referenceId('einstein-1905-sr')],
+    minimumQuality: 'low',
+  },
+  {
+    id: visualizationId('mass-energy'),
+    title: 'What a kilogram is worth',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'E = mc² evaluated on a logarithmic energy scale, with real comparisons. Every value is arithmetic on measured quantities — the mass you choose times the square of the defined speed of light — set against published energy figures for familiar events. The scale is logarithmic because the numbers span twenty orders of magnitude. Note what the equation does not say: converting mass to energy completely requires antimatter, and no ordinary process comes close.',
+    description:
+      'A logarithmic energy scale with a slider that sets a mass from one microgram to one tonne, showing the energy that mass would release if converted entirely. Marked reference points include the chemical energy of burning one kilogram of petrol, the daily energy use of a household, the Hiroshima bomb at about 15 kilotonnes, and the Sun’s output in one second. One gram of matter fully converted sits at about 90 terajoules, comparable to a 21-kilotonne explosion; one kilogram sits at 9 times 10 to the sixteenth joules. A note states that fission releases about 0.1 percent of the available mass-energy and chemical burning about a billionth.',
+    references: [referenceId('einstein-1905-inertia'), referenceId('codata-2018')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('spacetime-diagram'),
+    title: 'The spacetime diagram, and what a boost does to it',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A Minkowski diagram with an exact Lorentz boost applied by the slider. Time runs up, space runs across, and light travels along the diagonals. As the boost changes, worldlines and lines of constant time tilt — different observers disagree about which events are simultaneous, and about how far apart things are — but two things never move: the light cone, and the spacetime interval between any pair of events, which is printed live so it can be checked. The axes are scaled so that light travels at 45 degrees; that choice is a convention, not a measurement.',
+    description:
+      'An interactive spacetime diagram. Time runs vertically and space horizontally, with two diagonal lines at 45 degrees forming the light cone through the origin. Three events are plotted, together with the worldline of a stationary observer and of a moving one. A boost slider changes the reference frame: the moving observer’s worldline and their lines of simultaneity tilt towards the light cone, and events that lined up horizontally before no longer do. Throughout, the light cone stays fixed at 45 degrees and the computed spacetime interval between the marked events stays constant, which is displayed as a number that does not change as the slider moves.',
+    references: [
+      referenceId('minkowski-1952-space-and-time'),
+      referenceId('taylor-wheeler-1992-spacetime'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('equivalence-lift'),
+    title: 'The lift you cannot see out of',
+    fidelity: 'schematic',
+    runtime: 'canvas2d',
+    interactive: true,
+    caption:
+      'Einstein’s lift, side by side. On the left a sealed box sits on a planet; on the right an identical box accelerates through empty space at the same rate. Every mechanical experiment inside gives the same result in both, which is the equivalence principle. The horizontal light beam bends in the accelerating box for a reason that needs no gravity at all — the box moves up while the light crosses — and the principle then demands that it bend in the gravitational box too. The bending is exaggerated by an enormous factor: over a two-metre box on Earth a light beam drops about 10⁻¹⁶ metres.',
+    description:
+      'An animated diagram of two identical sealed rooms shown side by side. The left room rests on the surface of a planet; the right room is far from any mass and accelerates upward at 9.8 metres per second squared. In both, a released ball falls to the floor along the same curve, and a person stands with the same apparent weight. A light beam is then fired horizontally across each room: in the accelerating room it visibly strikes the far wall below the height it was emitted at, because the room has moved up while the light crossed. The same bend is drawn in the gravitational room, and a note states that the equivalence principle requires it and that the real deflection over a room-sized box is far too small to see.',
+    references: [referenceId('einstein-1916-gr'), referenceId('hartle-2003-gravity')],
+    minimumQuality: 'low',
+  },
+  {
+    id: visualizationId('spacetime-curvature'),
+    title: 'Mass changes the geometry',
+    fidelity: 'schematic',
+    runtime: 'canvas2d',
+    interactive: true,
+    caption:
+      'A conceptual diagram of curvature, and one that has to be read carefully. The grid is a two-dimensional stand-in for four-dimensional spacetime; the deformation shown is the spatial part alone, and for planets and stars the part that actually produces almost all of the gravity you feel is the curvature of *time*, which cannot be drawn as a dent. Above all, nothing here is rolling downhill: the classic rubber-sheet picture explains gravity by quietly assuming a second, downward gravity pulling the ball into the dip. The grid spacing and the depth are chosen for visibility and correspond to no scale.',
+    description:
+      'An interactive diagram of a grid representing spacetime, with a mass placed on it. Rings that are equally far apart in the geometry bunch together close to the mass and return to an even spacing far away. A slider changes how compact the body is, with presets for a black hole, a neutron star and a diffuse star: the same mass squeezed smaller produces far stronger curvature close in while leaving the distant grid unchanged. A prominent note states that this is a two-dimensional analogy, that the curvature of time rather than of space accounts for nearly all everyday gravity, and that nothing in the picture is rolling downhill.',
+    references: [referenceId('einstein-1916-gr'), referenceId('misner-thorne-wheeler-1973')],
+    minimumQuality: 'low',
+  },
+  {
+    id: visualizationId('geodesic-sphere'),
+    title: 'Straight lines that meet',
+    fidelity: 'schematic',
+    runtime: 'canvas2d',
+    interactive: true,
+    caption:
+      'What "straightest possible path" means when the geometry is curved, demonstrated on the one curved surface everybody already knows. Two travellers set off from the equator heading due north, perfectly parallel, each going as straight as they can. Neither ever turns, and yet they meet at the pole. On a sphere that is geometry; in general relativity the same thing happens in spacetime, and we call the convergence gravity. The sphere is a two-dimensional analogy for a four-dimensional geometry, and the paths are computed as true great circles rather than drawn by hand.',
+    description:
+      'An animated diagram of a globe. Two markers start side by side on the equator and travel due north along great circles, the straightest paths available on a sphere. Neither ever turns, yet the distance between them shrinks steadily and they meet at the north pole. A slider changes their starting separation, and a readout tracks the gap closing. A note contrasts this with a flat map, on which two parallel northward lines never meet, and states that the convergence is a property of the geometry rather than of any force acting sideways on the travellers.',
+    references: [referenceId('hartle-2003-gravity'), referenceId('misner-thorne-wheeler-1973')],
+    minimumQuality: 'low',
+  },
+  {
+    id: visualizationId('gravitational-time-dilation'),
+    title: 'Where clocks run slow',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Clock rate against distance from a mass, computed from the Schwarzschild factor √(1 − 2GM/rc²) with measured masses and radii. The vertical scale is the fractional slowing, and it has to be logarithmic: at the Earth’s surface a clock loses about 7 parts in 10¹⁰, at the Sun’s surface about 2 parts in 10⁶, and at a neutron star’s surface roughly 20 percent. The curve is exact within the model; the model assumes a non-rotating, uncharged spherical mass, which real bodies only approximate.',
+    description:
+      'A chart of how much slower a clock runs, plotted against distance from a body’s centre on logarithmic axes. Curves are shown for the Earth, the Sun and a typical neutron star. Marked points give the measured cases: a GPS satellite at 20,200 kilometres altitude, where the clock runs fast by 45 microseconds per day relative to the ground; the Earth’s surface; the Sun’s surface; and the surface of a neutron star, where the slowing reaches about 20 percent. Each curve rises steeply close in and flattens towards zero far away. A note marks the radius at which the slowing would become total, which for ordinary bodies lies far inside them.',
+    references: [
+      referenceId('schwarzschild-1916'),
+      referenceId('ashby-2003-gps'),
+      referenceId('nasa-planetary-factsheet'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('gravitational-lensing'),
+    title: 'Light takes the bent path',
+    fidelity: 'schematic',
+    runtime: 'canvas2d',
+    interactive: true,
+    caption:
+      'A conceptual diagram of gravitational lensing. Rays from a single distant source pass a mass at different distances and are deflected by an angle proportional to 1/b, the closest approach — that scaling is the real general-relativistic result, and it is what the drawn rays follow. Everything else is exaggerated: real deflections are measured in arcseconds, so at this scale the bending would be invisible. Move the source behind the mass and the images merge into a ring, which is what is actually seen when the alignment is close enough.',
+    description:
+      'An animated diagram of light from a distant source passing a massive object on its way to an observer. Rays that pass close to the mass are bent more strongly than rays passing further out, following the inverse relationship general relativity predicts. Because two different paths reach the observer, the source appears in two places at once rather than one. Dragging the source sideways moves the two images and changes their brightness; bringing the source into line directly behind the mass merges them into a complete ring around it. A readout gives the deflection angle for the drawn geometry and, separately, the real deflection of starlight grazing the Sun, 1.75 arcseconds.',
+    references: [referenceId('dyson-1920-eclipse'), referenceId('walsh-1979-twin-quasar')],
+    minimumQuality: 'low',
+  },
+  {
+    id: visualizationId('gr-orbit-precession'),
+    title: 'Newton’s orbit and Einstein’s, side by side',
+    fidelity: 'data-driven',
+    runtime: 'canvas2d',
+    interactive: true,
+    caption:
+      'Two orbits integrated at once from the same starting conditions: one under the plain Newtonian inverse-square force, one with the leading general-relativistic correction added. The Newtonian ellipse closes exactly; the corrected one does not, and the precession is an output of the integration rather than a rotation applied by hand. The correction slider multiplies the relativistic term: at ×1 the drawn orbit is Mercury’s real behaviour, and precesses by 0.104 arcseconds per orbit — far too little to see, which is why the slider exists. The bodies are not to scale and the timescale is compressed.',
+    description:
+      'An animated comparison of two orbits around the same star, drawn from identical starting conditions. The first is computed from Newtonian gravity alone and traces an ellipse that closes perfectly on itself, orbit after orbit. The second adds the leading relativistic correction and traces an ellipse whose closest point creeps a little further around with every circuit, so the accumulated path becomes a rosette. A slider multiplies the strength of the relativistic term; at its true value the two orbits are visually identical and the readout reports a precession of 0.104 arcseconds per orbit, equal to the measured 42.98 arcseconds per century for Mercury.',
+    references: [referenceId('park-2017-mercury-precession'), referenceId('hartle-2003-gravity')],
+    minimumQuality: 'low',
+  },
+  {
+    id: visualizationId('gravitational-wave'),
+    title: 'What a passing gravitational wave does',
+    fidelity: 'schematic',
+    runtime: 'canvas2d',
+    interactive: true,
+    caption:
+      'A conceptual diagram of a passing wave. The ring of free test masses is stretched along one axis and squeezed along the other, then the other way round — the pattern is correct for the two polarisations general relativity allows, and switching between them is what the toggle does. The amplitude is exaggerated by about twenty orders of magnitude: GW150914 stretched LIGO’s four-kilometre arms by roughly 4 × 10⁻¹⁸ metres, a small fraction of the diameter of a proton. The chirp underneath is computed from the leading-order inspiral formula, not plotted from LIGO data.',
+    description:
+      'An animated diagram of a ring of free-floating test masses with a gravitational wave passing through them, travelling into the screen. The ring stretches horizontally while squeezing vertically, returns to a circle, then stretches vertically while squeezing horizontally, repeating. A toggle switches to the second polarisation, in which the same stretching and squeezing happens along the diagonals instead. Below the ring, a waveform shows the characteristic chirp of two objects spiralling together: the frequency and the amplitude both climb steeply until the moment of merger, after which the signal stops. A note gives the real amplitude of the first detection and states that the drawn distortion is exaggerated enormously.',
+    references: [referenceId('ligo-2016-gw150914'), referenceId('einstein-1916-gr')],
+    minimumQuality: 'low',
+  },
+  {
+    id: visualizationId('schwarzschild-radius'),
+    title: 'How small would it have to be?',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'The Schwarzschild radius r = 2GM/c² computed for real objects from their measured masses, set against their actual sizes. The comparison is the content: every ordinary object is enormously larger than its Schwarzschild radius, which is why nothing here is a black hole. The radius is a real prediction of the Schwarzschild solution for a non-rotating uncharged mass; it is not a claim that any of these objects could be compressed that far, and this figure says nothing about what happens inside one.',
+    description:
+      'A comparison of each object’s actual radius with the radius it would need to be compressed to in order to become a black hole. A person of 70 kilograms would need to be compressed to 10 to the power minus 25 metres, far smaller than a proton. The Earth would need to be compressed to about 9 millimetres, and the Sun to about 3 kilometres, roughly one two-hundred-thousandth of its present radius. The stellar-mass black hole of GW150914 and the supermassive black holes at the centres of the Milky Way and M87 are shown as the cases where the object really is inside its own Schwarzschild radius, with radii of about 190 kilometres, 12.7 million kilometres and 19 billion kilometres respectively.',
+    references: [
+      referenceId('schwarzschild-1916'),
+      referenceId('nasa-planetary-factsheet'),
+      referenceId('eht-2022-sgr-a'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
 ];

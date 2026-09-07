@@ -11,8 +11,14 @@ import type { SectionId } from '../schema/section';
 import { UNIVERSE_TOPICS } from './universe';
 import { GRAVITY_TOPICS } from './gravity';
 import { NEWTON_TOPICS } from './newton';
+import { RELATIVITY_TOPICS } from './relativity';
 
-export const TOPICS: readonly Topic[] = [...UNIVERSE_TOPICS, ...GRAVITY_TOPICS, ...NEWTON_TOPICS];
+export const TOPICS: readonly Topic[] = [
+  ...UNIVERSE_TOPICS,
+  ...GRAVITY_TOPICS,
+  ...NEWTON_TOPICS,
+  ...RELATIVITY_TOPICS,
+];
 
 const BY_ID = new Map<TopicId, Topic>(TOPICS.map((topic) => [topic.id, topic]));
 

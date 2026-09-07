@@ -4,10 +4,11 @@ An interactive, cinematic Space & Universe knowledge platform — the history of
 the Universe from its earliest describable moment to modern humanity, alongside
 the physical laws that explain it.
 
-**Current status: Phases 0–3 complete.** The foundation, the Cosmic Timeline
-(36 cited milestones), Universe & Cosmology (17 topics, 13 figures) and
-Gravity & Newton (15 topics, 14 figures) are built. The remaining ten sections
-say plainly, on their own pages, that they are not built yet.
+**Current status: Phases 0–4 complete.** The foundation, the Cosmic Timeline
+(36 cited milestones), Universe & Cosmology (17 topics, 13 figures), Gravity &
+Newton (15 topics, 14 figures) and Einstein & Relativity (17 topics, 14
+figures) are built. The remaining nine sections say plainly, on their own
+pages, that they are not built yet.
 
 See [PROJECT_PLAN.md](./PROJECT_PLAN.md) for the full architecture and roadmap.
 
@@ -33,13 +34,13 @@ Requires Node 20+.
 | --------------------------- | ------------------------------------------------------------------------------ |
 | Content schema + validator  | Built, tested. Citation and evidence rules are enforced in CI.                 |
 | Section registry (14 areas) | Built. Routes, navigation and home cards all derive from it.                   |
-| Reference pool              | 95 real primary sources.                                                       |
-| Glossary                    | 17 terms.                                                                      |
+| Reference pool              | 116 real primary sources.                                                      |
+| Glossary                    | 24 terms.                                                                      |
 | Design system               | Tokens, typography, `Panel`, `EvidenceBadge`, `PhaseNotice`, atmosphere layer. |
-| Visualization architecture  | Frame, registry, quality tiers, gated frame loop. 27 renderers.                |
+| Visualization architecture  | Frame, registry, quality tiers, gated frame loop. 41 renderers.                |
 | App shell                   | Routing, navigation sheet, reading-depth control, error boundary.              |
 | Pages                       | Home, Section, Topic, Method, Not found.                                       |
-| Tests                       | 120, across content validation, units, pages and scientific-accuracy checks.   |
+| Tests                       | 164, across content validation, units, pages and scientific-accuracy checks.   |
 
 ## The three commitments
 

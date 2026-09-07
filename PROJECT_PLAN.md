@@ -8,10 +8,10 @@ This document is the architectural contract for the project. It is written to
 be read before writing code, and to be corrected when reality disagrees with
 it.
 
-**Status: Phases 0–3 complete.** The foundation, the Cosmic Timeline (36 cited
-milestones), Universe & Cosmology (17 topics, 13 figures) and Gravity & Newton
-(15 topics, 14 figures) are built. The remaining ten sections are labelled as
-unbuilt in the interface.
+**Status: Phases 0–4 complete.** The foundation, the Cosmic Timeline (36 cited
+milestones), Universe & Cosmology (17 topics, 13 figures), Gravity & Newton
+(15 topics, 14 figures) and Einstein & Relativity (17 topics, 14 figures) are
+built. The remaining nine sections are labelled as unbuilt in the interface.
 
 ---
 
@@ -658,12 +658,39 @@ strong fields — without attempting to explain general relativity, which is
 Phase 4.
 _Depends on: 1. Independent of 2._
 
-### Phase 4 — Einstein & Relativity
+### Phase 4 — Einstein & Relativity ✅ complete
 
-Special then general relativity; simultaneity, time dilation, equivalence,
-curvature, and the confirming experiments. Renderer: `SpacetimeGrid`. Reuses
-`OrbitSimulator` for the Newton/Einstein comparison — precession shown, not
-asserted.
+One published section, seventeen topics, fourteen figures.
+
+Special relativity first, because curvature is curvature _of spacetime_ and
+spacetime has to be built before it can be bent: the speed-of-light problem,
+the two postulates, simultaneity, time dilation, length contraction,
+mass–energy, and Minkowski geometry. Then general relativity: the equivalence
+principle, curvature, geodesics, gravitational time dilation, lensing and
+Mercury. Then the frontier: the relativistic foundations a later Black Holes
+section needs, gravitational waves, the experimental record, and what general
+relativity explains that Newtonian gravity cannot.
+
+Figures: `LightClock`, `LorentzFactor`, `SimultaneityTrain` (both frames, with
+the strike times related by an actual Lorentz transformation),
+`LengthContraction` (the muon problem computed independently in each frame and
+shown to agree), `MassEnergy`, `SpacetimeDiagram` (an exact boost, with the
+invariant interval printed so it can be checked), `EquivalenceLift`,
+`SpacetimeCurvature`, `GeodesicSphere`, `GravitationalTimeDilation`,
+`GravitationalLensing` (the point-mass lens equation solved, not sketched),
+`GrOrbitPrecession`, `GravitationalWave` and `SchwarzschildRadius`.
+
+The `SpacetimeGrid` the plan called for was built as `SpacetimeCurvature`, and
+deliberately not as a rubber sheet: it draws rings of equal _proper_ separation
+from the Schwarzschild geometry, and says on the canvas itself that nothing is
+rolling downhill and that everyday gravity is mostly curvature of time. The
+Newton/Einstein comparison was built as its own figure rather than by reusing
+the Phase 3 orbit lab, because it needs both orbits integrated simultaneously
+from identical initial conditions.
+
+The black-hole page establishes the Schwarzschild radius, the horizon and the
+singularity-as-breakdown, and stops there — formation, accretion, spin, Hawking
+radiation and the information problem belong to Phase 5.
 _Depends on: 3._
 
 ### Phase 5 — Stars, Galaxies & Black Holes

@@ -142,6 +142,60 @@ export const GLOSSARY: readonly GlossaryTerm[] = [
       'Not a separate force, but the *difference* in gravitational pull across an extended object. It stretches the object along the line to the attracting body and squeezes it at right angles — which is why the Earth has two tidal bulges, not one.',
     references: [referenceId('agnew-2015-earth-tides')],
   },
+  {
+    id: glossaryTermId('lorentz-factor'),
+    term: 'Lorentz factor',
+    aliases: ['gamma factor'],
+    short:
+      'The number that says how strongly relativistic effects apply at a given speed: γ = 1/√(1 − v²/c²). It is 1.000005 at 0.003c, 1.15 at half light speed, and grows without limit as the speed approaches c.',
+    symbol: 'γ',
+    references: [referenceId('einstein-1905-sr')],
+  },
+  {
+    id: glossaryTermId('proper-time'),
+    term: 'Proper time',
+    short:
+      'The time measured by a clock carried along a particular path through spacetime — the time that thing itself experiences. Different paths between the same two events carry different proper times, which is the whole content of the twin puzzle.',
+    symbol: 'τ',
+    references: [referenceId('taylor-wheeler-1992-spacetime')],
+  },
+  {
+    id: glossaryTermId('simultaneity'),
+    term: 'Relativity of simultaneity',
+    short:
+      'Two events that happen at the same moment for one observer happen at different moments for another moving relative to the first. There is no universal "now" that everyone shares.',
+    references: [referenceId('einstein-1905-sr')],
+  },
+  {
+    id: glossaryTermId('light-cone'),
+    term: 'Light cone',
+    short:
+      'The set of all points in spacetime that a flash of light from one event can reach, and that could have reached it. Nothing carrying information can leave its own light cone, which is why the cone — not distance alone — defines what can cause what.',
+    references: [referenceId('minkowski-1952-space-and-time')],
+  },
+  {
+    id: glossaryTermId('geodesic'),
+    term: 'Geodesic',
+    short:
+      'The straightest possible path through a curved geometry — the closest thing to a straight line that the geometry allows. In general relativity a freely falling object follows a geodesic of spacetime, with no force acting on it at all.',
+    references: [referenceId('hartle-2003-gravity')],
+  },
+  {
+    id: glossaryTermId('gravitational-wave'),
+    term: 'Gravitational wave',
+    short:
+      'A ripple in the geometry of spacetime, produced when massive objects accelerate asymmetrically, and travelling at the speed of light. Passing through matter it stretches it one way and squeezes it the other, by a fraction of its size far smaller than an atomic nucleus.',
+    references: [referenceId('ligo-2016-gw150914')],
+  },
+  {
+    id: glossaryTermId('schwarzschild-radius'),
+    term: 'Schwarzschild radius',
+    short:
+      'The radius at which a given mass, if compressed inside it, would form a black hole: r = 2GM/c². For the Sun it is about 3 km; for the Earth about 9 mm. It marks where an event horizon would be, not the size of any ordinary object.',
+    symbol: 'r_s',
+    unit: 'm',
+    references: [referenceId('schwarzschild-1916')],
+  },
 ];
 
 const BY_ID = new Map(GLOSSARY.map((term) => [term.id, term]));

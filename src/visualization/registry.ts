@@ -77,6 +77,22 @@ const LOADERS: Partial<Record<string, VisualizationLoader>> = {
   'newton-cannon': () => import('./renderers/NewtonCannon'),
   'moon-test': () => import('./renderers/MoonTest'),
   'mercury-precession': () => import('./renderers/MercuryPrecession'),
+
+  // Phase 4 — Einstein & Relativity
+  'light-clock': () => import('./renderers/LightClock'),
+  'lorentz-factor': () => import('./renderers/LorentzFactor'),
+  'simultaneity-train': () => import('./renderers/SimultaneityTrain'),
+  'length-contraction': () => import('./renderers/LengthContraction'),
+  'mass-energy': () => import('./renderers/MassEnergy'),
+  'spacetime-diagram': () => import('./renderers/SpacetimeDiagram'),
+  'equivalence-lift': () => import('./renderers/EquivalenceLift'),
+  'spacetime-curvature': () => import('./renderers/SpacetimeCurvature'),
+  'geodesic-sphere': () => import('./renderers/GeodesicSphere'),
+  'gravitational-time-dilation': () => import('./renderers/GravitationalTimeDilation'),
+  'gravitational-lensing': () => import('./renderers/GravitationalLensing'),
+  'gr-orbit-precession': () => import('./renderers/GrOrbitPrecession'),
+  'gravitational-wave': () => import('./renderers/GravitationalWave'),
+  'schwarzschild-radius': () => import('./renderers/SchwarzschildRadius'),
 };
 
 const SPECS = new Map<string, VisualizationSpec>(
