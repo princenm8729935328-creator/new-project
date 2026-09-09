@@ -75,8 +75,10 @@ export const GLOSSARY: readonly GlossaryTerm[] = [
   {
     id: glossaryTermId('superposition'),
     term: 'Superposition',
+    aliases: ['quantum superposition'],
     short:
-      'A quantum system’s ability to be described by a combination of states at once, producing interference effects that no single definite state could explain.',
+      'A state written as a combination of other states with complex coefficients. It does not mean the system secretly already has one of those values, and it is not "being in two places at once" — it means the amplitudes add, and interference is the evidence that they do.',
+    references: [referenceId('sakurai-2020-modern-qm')],
   },
   {
     id: glossaryTermId('nucleosynthesis'),
@@ -251,6 +253,104 @@ export const GLOSSARY: readonly GlossaryTerm[] = [
     short:
       'Stretching along the direction of fall and squeezing across it, caused by the difference in gravitational acceleration between the near and far parts of an extended body. Near a black hole the effect grows as 1/r³, so smaller black holes are more lethal at the horizon than large ones.',
     references: [referenceId('misner-thorne-wheeler-1973')],
+  },
+
+  // --- Quantum physics ---------------------------------------------------
+  {
+    id: glossaryTermId('quantum-state'),
+    term: 'Quantum state',
+    short:
+      'The complete description of what can be known about a quantum system. It is not a list of properties the system has; it is the thing from which the probability of every possible measurement outcome is computed.',
+    symbol: '|ψ⟩',
+    references: [referenceId('sakurai-2020-modern-qm')],
+  },
+  {
+    id: glossaryTermId('wavefunction'),
+    term: 'Wavefunction',
+    short:
+      'The quantum state written as a function of position. Its squared magnitude gives the probability density for finding the particle at each place — the wavefunction itself is not a physical wave you could measure directly.',
+    symbol: 'ψ(x)',
+    references: [referenceId('born-1926-probability')],
+  },
+  {
+    id: glossaryTermId('probability-amplitude'),
+    term: 'Probability amplitude',
+    short:
+      'A complex number attached to each way an outcome can happen. Amplitudes for indistinguishable paths are added and then squared, which is why they can cancel — the source of interference, and the reason quantum probability is not ordinary probability.',
+    references: [referenceId('born-1926-probability')],
+  },
+  {
+    id: glossaryTermId('planck-constant'),
+    term: 'Planck constant',
+    short:
+      'The constant that sets the scale of quantum effects, exactly 6.62607015 × 10⁻³⁴ J·s since the 2019 SI redefinition. Where an action is large compared with h, classical physics is an excellent approximation.',
+    symbol: 'h',
+    unit: 'J·s',
+    references: [referenceId('codata-2018'), referenceId('planck-1901-radiation')],
+  },
+  {
+    id: glossaryTermId('observable'),
+    term: 'Observable',
+    short:
+      'A measurable quantity, represented in quantum mechanics by a Hermitian operator. Its eigenvalues are the possible results; two observables whose operators do not commute cannot both have sharp values in the same state.',
+    references: [referenceId('sakurai-2020-modern-qm')],
+  },
+  {
+    id: glossaryTermId('spin'),
+    term: 'Spin',
+    short:
+      'An intrinsic angular momentum carried by particles, quantised in units of ħ/2. Nothing is physically rotating: spin is a property with no classical counterpart, and it is what divides all particles into fermions and bosons.',
+    symbol: 's',
+    references: [referenceId('stern-gerlach-1922')],
+  },
+  {
+    id: glossaryTermId('entanglement'),
+    term: 'Entanglement',
+    short:
+      'A joint state of two or more systems that cannot be written as a state for each one separately. Measurements on the parts are correlated more strongly than any local pre-arranged agreement allows — and no message can be sent this way.',
+    references: [referenceId('bell-1964'), referenceId('hensen-2015-loophole-free')],
+  },
+  {
+    id: glossaryTermId('decoherence'),
+    term: 'Decoherence',
+    short:
+      'The rapid loss of interference when a system becomes entangled with its environment. It explains why large objects look classical without adding anything to the theory — and by itself it does not say why a single outcome occurs.',
+    references: [referenceId('zurek-2003-decoherence')],
+  },
+  {
+    id: glossaryTermId('quantum-tunnelling'),
+    term: 'Quantum tunnelling',
+    short:
+      'The passage of a particle through a barrier it does not have the energy to climb. The wavefunction decays exponentially inside the barrier rather than stopping, so a small amplitude survives on the far side.',
+    references: [referenceId('gamow-1928-alpha-decay')],
+  },
+  {
+    id: glossaryTermId('quantum-field'),
+    term: 'Quantum field',
+    short:
+      'A quantum system with a value at every point of spacetime. Particles are its quantised excitations: one electron is one unit of excitation of the electron field, which is why all electrons are identical.',
+    references: [referenceId('peskin-schroeder-1995')],
+  },
+  {
+    id: glossaryTermId('vacuum-state'),
+    term: 'Vacuum state',
+    short:
+      'The lowest-energy state of a quantum field — the state with no particles. It is not empty in the sense of having nothing happening: field observables have non-zero variance in it, which has measurable consequences.',
+    references: [referenceId('peskin-schroeder-1995')],
+  },
+  {
+    id: glossaryTermId('planck-scale'),
+    term: 'Planck scale',
+    short:
+      'The scale built from G, c and ħ alone: about 1.6 × 10⁻³⁵ m and 1.2 × 10¹⁹ GeV. It is where quantum effects on gravity are expected to become unavoidable, and it is roughly 10¹⁵ times beyond current collider energies.',
+    references: [referenceId('codata-2018'), referenceId('kiefer-2012-quantum-gravity')],
+  },
+  {
+    id: glossaryTermId('gauge-symmetry'),
+    term: 'Gauge symmetry',
+    short:
+      'A redundancy in how a field is described that, when required to hold independently at every point, forces the existence of specific force-carrying fields. The Standard Model’s three interactions all arise this way.',
+    references: [referenceId('peskin-schroeder-1995')],
   },
 ];
 

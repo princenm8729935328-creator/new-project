@@ -109,6 +109,31 @@ const LOADERS: Partial<Record<string, VisualizationLoader>> = {
   'binary-inspiral': () => import('./renderers/BinaryInspiral'),
   'merger-waveform': () => import('./renderers/MergerWaveform'),
   'hawking-temperature': () => import('./renderers/HawkingTemperature'),
+
+  // Phase 6 — Quantum Physics
+  'blackbody-spectrum': () => import('./renderers/BlackbodySpectrum'),
+  'photoelectric-effect': () => import('./renderers/PhotoelectricEffect'),
+  'atomic-energy-levels': () => import('./renderers/AtomicEnergyLevels'),
+  'double-slit-buildup': () => import('./renderers/DoubleSlitBuildup'),
+  'decoherence-visibility': () => import('./renderers/DecoherenceVisibility'),
+  'quantum-spin-superposition': () => import('./renderers/QuantumSpinSuperposition'),
+  'wavepacket-uncertainty': () => import('./renderers/WavepacketUncertainty'),
+  'quantum-harmonic-oscillator': () => import('./renderers/QuantumHarmonicOscillator'),
+  'quantum-tunnelling': () => import('./renderers/QuantumTunnelling'),
+  'entanglement-correlations': () => import('./renderers/EntanglementCorrelations'),
+  'bell-test': () => import('./renderers/BellTest'),
+  'atomic-orbitals': () => import('./renderers/AtomicOrbitals'),
+  'energy-bands': () => import('./renderers/EnergyBands'),
+  'field-excitations': () => import('./renderers/FieldExcitations'),
+  'standard-model-chart': () => import('./renderers/StandardModelChart'),
+  'quantum-vacuum-fluctuations': () => import('./renderers/QuantumVacuumFluctuations'),
+  'planck-scale': () => import('./renderers/PlanckScale'),
+  'string-vibrations': () => import('./renderers/StringVibrations'),
+  'proper-time-paths': () => import('./renderers/ProperTimePaths'),
+  'clock-comparison': () => import('./renderers/ClockComparison'),
+  'primordial-fluctuations': () => import('./renderers/PrimordialFluctuations'),
+  'interpretation-map': () => import('./renderers/InterpretationMap'),
+  'quantum-scale-ladder': () => import('./renderers/QuantumScaleLadder'),
 };
 
 const SPECS = new Map<string, VisualizationSpec>(

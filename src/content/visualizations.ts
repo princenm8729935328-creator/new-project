@@ -798,4 +798,408 @@ export const VISUALIZATIONS: readonly VisualizationSpec[] = [
     minimumQuality: 'low',
     layout: 'flow',
   },
+
+  // ---------------------------------------------------------------------------
+  // Phase 6 — Quantum Physics
+  //
+  // Quantum figures carry a particular risk: it is very easy to draw something
+  // that looks quantum — glowing orbs, sparkles, particles winking in and out —
+  // and teaches the reader something false. Every figure below therefore plots
+  // a quantity that is actually computed from the theory's own expressions, and
+  // every caption names which of those numbers are measured, which are exact
+  // results of the mathematics, and which are neither.
+  // ---------------------------------------------------------------------------
+  {
+    id: visualizationId('blackbody-spectrum'),
+    title: 'The curve classical physics could not draw',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Both curves are computed exactly, from Planck’s law and from the Rayleigh–Jeans law that classical physics predicts, at whatever temperature the slider is set to. Nothing is fitted or stylised: the classical curve really does run off the top of the chart at short wavelengths, and that divergence is the failure that forced the quantum. The measured spectrum of the cosmic microwave background is marked because it is the most precise blackbody ever recorded.',
+    description:
+      'A chart of emitted power against wavelength. The Planck curve rises from zero, peaks, and falls away — a smooth hump whose position moves to shorter wavelengths as the temperature slider rises, following Wien’s law. The classical Rayleigh–Jeans curve tracks it closely at long wavelengths but then climbs without limit toward short wavelengths, leaving the frame entirely. A readout gives the peak wavelength and the total radiated power, which rises as the fourth power of temperature. Markers show the Sun’s surface at 5772 kelvin, an incandescent filament at 2800 kelvin, a human body at 310 kelvin, and the cosmic microwave background at 2.725 kelvin.',
+    references: [
+      referenceId('planck-1901-radiation'),
+      referenceId('fixsen-2009-cmb-temperature'),
+      referenceId('mather-1994-cobe-firas'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('photoelectric-effect'),
+    title: 'Brightness does not help',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'The straight line is Einstein’s relation eV_stop = hf − φ, computed with the CODATA value of Planck’s constant and the measured work function of the chosen metal. The slope of that line is h/e and nothing else, which is how Millikan measured Planck’s constant from an experiment about electrons. The intensity control is the point: increasing it changes how many electrons come out and never changes the energy of any one of them.',
+    description:
+      'A chart of the stopping voltage needed to hold electrons back, plotted against the frequency of the light. The data lie on a straight line that crosses zero at the threshold frequency and rises with a slope equal to Planck’s constant divided by the electron charge. Below the threshold no electrons are emitted at all, no matter how bright the light. A metal selector switches between caesium, sodium, zinc and platinum, shifting the whole line sideways by the difference in work function. An intensity slider changes the emitted current shown in a side gauge — more electrons — while leaving the stopping voltage completely unmoved.',
+    references: [
+      referenceId('einstein-1905-photoelectric'),
+      referenceId('millikan-1916-photoelectric'),
+      referenceId('codata-2018'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('atomic-energy-levels'),
+    title: 'Why hydrogen has a barcode',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Hydrogen energy levels computed from E_n = −13.606 eV / n², and the emitted wavelengths from the difference between any two of them. Every wavelength shown is a real measured spectral line to the precision drawn. The levels are plotted on their true energy scale, which is why they crowd together toward the ionisation limit rather than being evenly spaced — a detail most textbook diagrams lose.',
+    description:
+      'A ladder of hydrogen energy levels drawn at their true relative energies: the ground state far below, then levels bunching closer and closer toward the ionisation limit at zero. Selecting an upper and a lower level draws an arrow between them and adds the corresponding line to a spectrum strip beneath, at its true wavelength and colour. The Lyman series lands in the ultraviolet, the Balmer series produces the four visible hydrogen lines at 656, 486, 434 and 410 nanometres, and the Paschen series falls in the infrared. Transitions that do not exist cannot be selected, which is the point: the spectrum is a barcode because the levels are discrete.',
+    references: [referenceId('bohr-1913-atom'), referenceId('codata-2018')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('double-slit-buildup'),
+    title: 'One detection at a time',
+    fidelity: 'schematic',
+    runtime: 'canvas2d',
+    interactive: true,
+    caption:
+      'A conceptual diagram of the double-slit result. The probability distribution across the screen is computed exactly, from the standard two-slit expression with a single-slit envelope, and each dot is a pseudorandom sample drawn from that distribution. No particle is simulated travelling anywhere: there is no trajectory in the theory to draw, and inventing one would be the misconception this figure exists to remove. The slit spacing and wavelength are set for legibility, and the buildup is compressed from hours into seconds.',
+    description:
+      'An animated diagram of a detection screen behind two slits. Dots appear one at a time at apparently random positions — the first few show no pattern at all. As hundreds and then thousands accumulate, interference fringes emerge from the scatter. A which-path control adds a detector at the slits; when it is on, the fringes are replaced by two plain bands, and the accumulated pattern is the simple sum of what each slit alone would give. A rate slider changes how fast detections arrive, and a counter reports the total. The figure never draws a particle in flight between the source and the screen.',
+    references: [
+      referenceId('tonomura-1989-single-electron'),
+      referenceId('jonsson-1961-electron-diffraction'),
+    ],
+    minimumQuality: 'low',
+  },
+  {
+    id: visualizationId('decoherence-visibility'),
+    title: 'Interference fades as information leaks',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Fringe visibility plotted against the which-path distinguishability available in the environment, on Englert’s exact inequality V² + D² ≤ 1. The trade-off is quantitative, not a matter of interpretation: the quantum-mechanical bound is a theorem, and experiments sit on it. This is what "observation destroys interference" actually means — an entangling interaction that records which path was taken, whether or not anyone reads the record.',
+    description:
+      'A chart with which-path distinguishability on the horizontal axis and fringe visibility on the vertical. A quarter-circle marks the boundary V² + D² = 1; the region above it is forbidden by quantum mechanics. A slider moves a marker along the boundary, and a fringe pattern beside the chart shows the corresponding interference: at zero distinguishability the fringes have full contrast, at full distinguishability they are flat. Reference points mark real experiments in which interference survived for objects as large as sixty-carbon fullerenes and, later, molecules of over 25,000 atomic mass units, because those objects were isolated well enough that the environment learned nothing about which path they took.',
+    references: [
+      referenceId('englert-1996-duality'),
+      referenceId('zurek-2003-decoherence'),
+      referenceId('arndt-1999-fullerene'),
+      referenceId('fein-2019-massive-interference'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('quantum-spin-superposition'),
+    title: 'A superposition is not a mixture',
+    fidelity: 'data-driven',
+    runtime: 'canvas2d',
+    interactive: true,
+    caption:
+      'Spin-½ measurement statistics computed exactly from the Born rule: the probability of "up" along an analyser at angle θ to the state direction is cos²(θ/2). The figure runs the numbers rather than illustrating them, so the readout can be checked against the formula. A superposition of up and down is drawn as a definite direction pointing somewhere else — because that is what it is — never as a particle that is secretly up or down and we have not looked yet. The two are experimentally different, and the sequential-analyser control shows why.',
+    description:
+      'An interactive Stern–Gerlach arrangement. Atoms leave a source, pass through an analyser at an adjustable angle, and land in one of exactly two spots — never anywhere between them, however the angle is set. A histogram accumulates the counts, and a readout compares the running fraction against the predicted cos²(θ/2). A second analyser can be switched on after the first: rotated to the same axis it passes everything, rotated ninety degrees it splits the beam evenly again, which is only possible if the first measurement did not simply reveal a value that was already there. A Bloch-sphere inset shows the state as an arrow with a definite direction, with the measurement axis drawn beside it.',
+    references: [referenceId('stern-gerlach-1922'), referenceId('sakurai-2020-modern-qm')],
+    minimumQuality: 'low',
+  },
+  {
+    id: visualizationId('wavepacket-uncertainty'),
+    title: 'Narrow in one graph, wide in the other',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A Gaussian wavepacket and its exact Fourier transform, plotted together. The product of the two widths is computed and displayed; for a Gaussian it sits exactly on the bound σₓσ_p = ħ/2, and no setting of the slider can push it below. That is the content: the uncertainty relation is a property of the Fourier pair, present before any measuring instrument is introduced. It is not a statement about clumsy apparatus disturbing a particle that secretly had both values.',
+    description:
+      'Two charts side by side. The upper one shows the probability density in position, a bell curve whose width the slider controls. The lower one shows the probability density in momentum, computed as the Fourier transform of the first. Squeezing the position curve to a spike makes the momentum curve spread across the whole frame, and spreading the position curve out narrows the momentum curve to a spike. A readout gives both standard deviations and their product in units of the reduced Planck constant, which stays pinned at 0.50 for every slider position. A worked example converts the same relation into everyday numbers: an electron confined to a region the size of an atom, about 0.1 nanometres, must have a momentum spread corresponding to a speed of roughly 580 kilometres per second, which is why atoms do not collapse.',
+    references: [
+      referenceId('heisenberg-1927-uncertainty'),
+      referenceId('kennard-1927-uncertainty'),
+      referenceId('griffiths-2018-quantum'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('quantum-harmonic-oscillator'),
+    title: 'Solving the equation gives a ladder',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'The exact stationary states of the quantum harmonic oscillator, computed from the Hermite-polynomial solutions of the Schrödinger equation, drawn on their own energy levels inside the potential. The evenly spaced ladder E_n = (n + ½)ħω is not an assumption fed in; it is what falls out when you demand that the solution stay finite far from the well. The lowest level sits above the bottom of the well, and cannot be lowered — that residual ½ħω is the zero-point energy, and it has measurable consequences.',
+    description:
+      'A parabolic potential well with horizontal lines drawn across it at the allowed energies, evenly spaced. Selecting a level draws the corresponding wavefunction along that line: the ground state is a single hump, the first excited state has one node, and higher states oscillate more, with the probability piling up near the classical turning points as the level rises. A toggle switches between the wavefunction and its square, the probability density. The lowest line is highlighted to show it lies half a quantum above the bottom of the well rather than at it. Alongside, the classical prediction of a continuous range of energies, including zero, is drawn for comparison.',
+    references: [referenceId('schrodinger-1926-equation'), referenceId('griffiths-2018-quantum')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('quantum-tunnelling'),
+    title: 'Through a wall it cannot climb',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Transmission probability through a rectangular barrier, computed from the exact expression for the Schrödinger equation rather than from an approximation, for whatever barrier height, width and particle energy the sliders are set to. The exponential sensitivity to width is the real relationship and is the reason a scanning tunnelling microscope can resolve single atoms: change the gap by one atomic diameter and the current changes by about an order of magnitude.',
+    description:
+      'A particle wave approaching a rectangular energy barrier taller than the particle’s own energy. Inside the barrier the wave does not oscillate but decays exponentially; beyond it, a smaller wave continues with the original wavelength. Three sliders set the particle energy, the barrier height and the barrier width. A readout gives the transmission probability, which falls by orders of magnitude for small increases in width — the classical prediction is exactly zero for every setting where the energy is below the barrier. Worked cases are marked: an alpha particle escaping a uranium nucleus, where a probability of about 10 to the minus 39 per approach still gives a half-life of billions of years because the particle attempts the barrier around 10 to the power 21 times a second; and the tunnelling gap in a scanning tunnelling microscope.',
+    references: [
+      referenceId('gamow-1928-alpha-decay'),
+      referenceId('binnig-rohrer-1982-stm'),
+      referenceId('griffiths-2018-quantum'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('entanglement-correlations'),
+    title: 'Perfectly correlated, and useless for sending anything',
+    fidelity: 'data-driven',
+    runtime: 'canvas2d',
+    interactive: true,
+    caption:
+      'Measurement outcomes for an entangled pair, sampled from the exact quantum prediction for the singlet state: the correlation between two analysers at angle θ apart is −cos θ, and the result at either detector alone is 50/50 regardless of what the other analyser is set to. Both facts are computed, not asserted. The second is why entanglement cannot carry a signal: Alice cannot see anything in her own data that depends on Bob’s setting, so there is nothing for her to read.',
+    description:
+      'Two detectors, drawn far apart, each receiving one member of an entangled pair. Each has its own angle control. Outcomes stream in as paired rows of plus and minus signs. Three running readouts update: the fraction of plus results at the left detector, which stays at one half whatever either angle is set to; the same at the right detector, likewise one half; and the correlation between the two columns, which swings from perfect anti-correlation at equal angles through zero at ninety degrees to perfect correlation at one hundred and eighty. A caption line states the consequence directly: changing your own detector angle changes nothing whatsoever in the other detector’s local record, which is why no message can be sent this way, at any speed.',
+    references: [
+      referenceId('epr-1935'),
+      referenceId('bell-1964'),
+      referenceId('sakurai-2020-modern-qm'),
+    ],
+    minimumQuality: 'low',
+  },
+  {
+    id: visualizationId('bell-test'),
+    title: 'Where local realism runs out of room',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'The CHSH quantity S computed as a function of the analyser angles, against the bound of 2 that any local hidden-variable theory must respect and the quantum maximum of 2√2 ≈ 2.828. The bound is a theorem about a class of theories, the curve is an exact quantum prediction, and the marked points are published experimental results — three different kinds of claim, which is why they are drawn differently. Experiments have exceeded 2 by many standard deviations with the main loopholes closed simultaneously.',
+    description:
+      'A chart of the CHSH quantity S against the analyser angle setting. A horizontal line at S = 2 marks the limit of every local hidden-variable theory. The quantum prediction curve rises above it over a broad range of angles, peaking at 2 times the square root of 2, about 2.828, at the optimal setting of 22.5 degrees. Measured values are plotted as points with error bars: Aspect and colleagues in 1982, and the loophole-free experiments from 2015 onward that closed the detection and locality loopholes in the same run. All lie above the classical bound. A note states plainly what the result rules out — that the outcomes were fixed in advance by local properties carried by the particles — and what it does not: it does not permit faster-than-light signalling, and it does not by itself select any one interpretation of quantum mechanics.',
+    references: [
+      referenceId('bell-1964'),
+      referenceId('chsh-1969'),
+      referenceId('aspect-1982-bell'),
+      referenceId('hensen-2015-loophole-free'),
+      referenceId('big-bell-test-2018'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('atomic-orbitals'),
+    title: 'What an electron in an atom actually looks like',
+    fidelity: 'data-driven',
+    runtime: 'canvas2d',
+    interactive: true,
+    caption:
+      'Electron probability density for hydrogen, computed from the exact analytic solutions of the Schrödinger equation for each quantum-number set, sampled on a plane through the nucleus. The shapes and the node positions are results of the mathematics, not artistic choices. The brightness is the probability of finding the electron there if you look — it is not a picture of a smeared-out electron, and there is no orbit anywhere in it.',
+    description:
+      'A density map of the electron probability distribution in a hydrogen atom, with a selector for the orbital. The 1s state is a single spherical cloud densest at the nucleus. The 2s state has a bright core, a dark spherical shell where the probability is exactly zero, and an outer cloud. The 2p states are two lobes on opposite sides of a nodal plane. The 3d states show four lobes or a lobe-and-ring form. A radial plot beside the map shows the probability of finding the electron at each distance, peaking for the ground state at the Bohr radius of 52.9 picometres. The number of nodes visible always equals n minus one, as the solutions require.',
+    references: [
+      referenceId('schrodinger-1926-equation'),
+      referenceId('born-1926-probability'),
+      referenceId('griffiths-2018-quantum'),
+    ],
+    minimumQuality: 'low',
+  },
+  {
+    id: visualizationId('energy-bands'),
+    title: 'From levels in one atom to bands in a solid',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A conceptual diagram of band formation: the broadening of discrete levels into bands as atoms are brought together is drawn illustratively, not computed from a real band-structure calculation. The band gaps quoted for real materials are measured room-temperature values and are correct. The consequence is the point — whether a material conducts, insulates or does neither is decided by a gap of a few electronvolts, which is why silicon runs the world and diamond does not.',
+    description:
+      'On the left, the discrete energy levels of a single isolated atom. Moving a slider brings more atoms together; each level splits into as many closely spaced levels as there are atoms, and by the time there are enough atoms to count as a solid the levels have merged into continuous bands separated by gaps. On the right, four real materials are compared on the same energy scale: copper, whose highest occupied band is only partly filled so electrons move freely and it conducts; germanium with a gap of 0.67 electronvolts and silicon with 1.12, small enough that a modest amount of energy can push electrons across, which is what makes a semiconductor controllable; and diamond with a gap of about 5.5 electronvolts, far beyond what room-temperature energy can supply, so it insulates and is transparent to visible light.',
+    references: [referenceId('madelung-2004-semiconductors'), referenceId('pauli-1925-exclusion')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('field-excitations'),
+    title: 'A particle as an excitation of a field',
+    fidelity: 'schematic',
+    runtime: 'canvas2d',
+    interactive: true,
+    caption:
+      'A conceptual diagram of the field picture, not a quantum field theory calculation — no field equations are being solved and nothing here is a simulation. It illustrates one specific idea: in the modern account the fundamental object is a field filling all of space, and a particle is a discrete, quantised excitation of it. That is why every electron in the Universe is identical: they are excitations of the same field, and there is nothing else about them to differ in.',
+    description:
+      'An animated diagram of a field drawn as a flexible sheet stretched across the frame. At rest it is smooth. Adding energy raises a travelling ripple in it — and the amplitude control cannot produce a ripple of arbitrary size: it steps between allowed values, because the field’s excitations are quantised. Each allowed step is labelled as one particle, two particles, and so on. A second sheet beneath represents a different field, and a coupling control lets an excitation in one raise an excitation in the other, which is how the diagram represents interaction. A note states that the sheet, the height and the ripple shape are visual devices for a mathematical structure that has no picture, and that the real fields have values that are operators, not heights.',
+    references: [referenceId('peskin-schroeder-1995'), referenceId('pdg-2024')],
+    minimumQuality: 'low',
+  },
+  {
+    id: visualizationId('standard-model-chart'),
+    title: 'Everything the Standard Model contains',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Every measured mass, charge and spin is taken from the Particle Data Group’s current review; nothing is representative or rounded beyond the digits shown. The chart is complete for the Standard Model, and the gaps are drawn as deliberately as the entries: the model has no dark matter candidate, no explanation of the mass pattern, no account of gravity, and it predicted neutrinos to be massless — which experiment has shown they are not.',
+    description:
+      'A chart of the seventeen Standard Model particle types arranged in the usual blocks: six quarks in three generations, six leptons in three generations, the four force-carrying gauge bosons, and the Higgs boson. Selecting any entry shows its measured mass, electric charge, spin and the year it was confirmed. The mass scale spans more than eleven orders of magnitude, from neutrinos below 0.8 electronvolts to the top quark at 172.6 giga-electronvolts, with no explanation in the theory for why the values fall where they do. A panel lists what the chart does not contain: dark matter, dark energy, gravity, the origin of neutrino mass, and the matter–antimatter asymmetry.',
+    references: [
+      referenceId('pdg-2024'),
+      referenceId('atlas-2012-higgs'),
+      referenceId('cms-2012-higgs'),
+      referenceId('super-k-1998-oscillation'),
+      referenceId('sno-2002-solar-neutrinos'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('quantum-vacuum-fluctuations'),
+    title: 'What the vacuum actually does',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'The Casimir force between two mirrors, computed exactly from the standard expression and plotted against the measured results. Deliberately, this figure does not draw particles appearing and disappearing in empty space: that popular image comes from reading Feynman diagrams as if they were photographs, and it is not what the theory says the vacuum contains. What the theory does say is that the vacuum is the lowest-energy state of the fields and that its properties depend on the boundaries you impose — and that is a measured effect, not a story.',
+    description:
+      'A chart of the attractive force per unit area between two parallel conducting plates, against their separation, on logarithmic axes. The predicted curve falls as the fourth power of the separation. Measured points from precision experiments lie on it. A slider sets the separation; a readout converts the result into everyday terms — at 10 nanometres the pressure is roughly one atmosphere, at 1 micrometre it is about 1.3 millipascal, a hundred million times weaker. Beside the chart, a diagram shows the physical reason: between the plates only field modes that fit between them are allowed, while outside all modes are, and the imbalance pushes the plates together. A note explains that the same zero-point energy, taken naively as a source of gravity, over-predicts the observed dark energy density by many tens of orders of magnitude — the largest unexplained discrepancy in physics.',
+    references: [
+      referenceId('lamoreaux-1997-casimir'),
+      referenceId('peskin-schroeder-1995'),
+      referenceId('weinberg-1989-cc-problem'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('planck-scale'),
+    title: 'Where both theories are needed at once',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'The Planck length, time, mass and energy computed from G, ħ and c alone, with the reach of experiment marked beside them. They are the only combinations of those three constants with the right dimensions, which is what makes them significant — and also all that makes them significant. No experiment has ever probed the Planck scale; the highest-energy collisions ever produced fall short of the Planck energy by about fifteen orders of magnitude. Nothing is known to happen there. It is where the existing theories stop making sense together.',
+    description:
+      'A logarithmic ladder of length scales running from the Planck length at 1.6 times 10 to the minus 35 metres up to the observable Universe at 10 to the power 26 metres — sixty-one orders of magnitude. Rungs mark a proton at 10 to the minus 15 metres, an atom at 10 to the minus 10, a virus, a human, the Earth, the Solar System and the observable Universe. A shaded band shows the range experiments have actually reached: the Large Hadron Collider probes down to roughly 10 to the minus 20 metres. The gap between that band and the Planck length is drawn to scale on the logarithmic axis and is enormous. Parallel readouts give the Planck time of 5.4 times 10 to the minus 44 seconds, the Planck mass of 22 micrograms, and the Planck energy of 1.2 times 10 to the power 19 giga-electronvolts.',
+    references: [referenceId('codata-2018'), referenceId('kiefer-2012-quantum-gravity')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('string-vibrations'),
+    title: 'One object, many modes',
+    fidelity: 'schematic',
+    runtime: 'canvas2d',
+    interactive: true,
+    caption:
+      'A conceptual diagram of the single idea string theory starts from: that one kind of object vibrating in different modes could give rise to what look like different particles. The standing waves drawn here are the ordinary classical modes of a loop, computed correctly — but they are an analogy, not a calculation in string theory, which requires ten dimensions and a quantised relativistic string that cannot be drawn. String theory is a serious research programme with real mathematical results. It has no experimental confirmation, and no experiment has yet distinguished it from alternatives.',
+    description:
+      'An animated diagram of a closed loop vibrating. A mode selector steps through the standing-wave patterns the loop supports: the fundamental, then one with two nodes, three, and so on, each labelled with its frequency as a multiple of the fundamental. A note draws the analogy explicitly — that a violin string produces different notes from one string, and that string theory proposes an analogous relationship between vibrational modes and particle species. A second note is equally explicit about the limits: the loop drawn here is a classical loop in two dimensions, the real proposal involves six additional compactified dimensions and objects at the Planck scale, roughly 10 to the power 15 times smaller than anything the Large Hadron Collider can resolve, and no version of the theory has been experimentally tested.',
+    references: [
+      referenceId('polchinski-1998-string-theory'),
+      referenceId('susskind-2003-landscape'),
+    ],
+    minimumQuality: 'low',
+  },
+  {
+    id: visualizationId('proper-time-paths'),
+    title: 'Two routes between the same two events',
+    fidelity: 'data-driven',
+    runtime: 'canvas2d',
+    interactive: true,
+    caption:
+      'Elapsed proper time computed exactly from the Minkowski metric along each worldline, in units where the speed of light is one. The result is not an illusion or a trick of perspective: the two clocks really do read different numbers when they are brought back together, and the difference is the integral of dτ along each path. The straight worldline always wins, which is the geometric content of the twin puzzle. Speeds are drawn as a large fraction of light speed so the effect is visible.',
+    description:
+      'A spacetime diagram with time running upward and space across. Two worldlines connect the same starting and ending events: one straight, belonging to a clock that stays put, and one bent, belonging to a clock that travels out and comes back. A handle lets the bend be dragged further out, raising the travelling clock’s speed. Two clock faces run alongside, and the travelling one visibly falls behind. A readout gives both elapsed proper times and their ratio, together with the speed as a fraction of light speed. The straight path is highlighted as the one with the greatest elapsed time — the opposite of the shortest-distance intuition from ordinary geometry, and a direct consequence of the minus sign in the spacetime interval.',
+    references: [
+      referenceId('minkowski-1952-space-and-time'),
+      referenceId('taylor-wheeler-1992-spacetime'),
+      referenceId('hafele-keating-1972'),
+    ],
+    minimumQuality: 'low',
+  },
+  {
+    id: visualizationId('clock-comparison'),
+    title: 'Measured disagreements between real clocks',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: false,
+    caption:
+      'Every entry is a published measurement of two real clocks disagreeing, or an engineering correction that would break a working system if it were omitted. This is the evidence that there is no single universal clock — not even one for the Earth. It is why the platform does not say time is an illusion and does not say time is absolute: what the measurements show is that elapsed time depends on the path a clock takes and on where it sits in a gravitational field, by amounts that were predicted before they were measured.',
+    description:
+      'A logarithmic chart of fractional clock-rate differences, spanning about fifteen orders of magnitude. At the large end: GPS satellite clocks, which run about 38 microseconds per day faster than clocks on the ground once both effects are combined, a fractional difference of about 4 parts in 10 to the power 10 — uncorrected, positions would drift by roughly 10 kilometres a day. Then the Hafele–Keating flights of 1971, which measured differences of tens of nanoseconds after circumnavigating the Earth. Then optical clocks raised by 33 centimetres in a single laboratory, showing a measurable difference of about 4 parts in 10 to the power 17. At the small end: a difference measured across a height of one millimetre inside a single strontium clock, about 1.1 parts in 10 to the power 19. Each entry is annotated with the year, the measured value and the source.',
+    references: [
+      referenceId('hafele-keating-1972'),
+      referenceId('ashby-2003-gps'),
+      referenceId('chou-2010-optical-clocks'),
+      referenceId('bothwell-2022-redshift'),
+      referenceId('ludlow-2015-optical-clocks'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('primordial-fluctuations'),
+    title: 'A quantum origin, inferred from a measured tilt',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'The primordial power spectrum P(k) ∝ k^(n_s−1) drawn with the measured value n_s = 0.9649 ± 0.0042 from Planck, against the exactly scale-invariant n_s = 1 that would show as a flat line. The measurement is real and precise. The inference drawn from it — that these fluctuations began as quantum fluctuations stretched by inflation — is a well-motivated theoretical account that fits the data, not a direct observation. The distinguishing prediction, primordial gravitational waves, has been searched for and not found.',
+    description:
+      'A chart of the primordial power spectrum against scale, on logarithmic axes. A horizontal dashed line marks exact scale invariance, in which fluctuations have the same amplitude at every scale. The measured spectrum is drawn as a very slightly tilted line just below it, with a shaded band for the uncertainty on the tilt. A slider varies the spectral index, and the shaded region marking the Planck measurement shows how narrowly it is constrained: the exactly flat case sits about eight standard deviations away and is excluded. A second panel gives the honest status of the interpretation: the small tilt is what simple inflationary models predict, which is a genuine success; but inflation is a class of models rather than a single theory, its energy scale is unknown, and the tensor-to-scalar ratio r remains below 0.036 with no detection — so the quantum origin of structure is a strongly supported inference, not a settled fact.',
+    references: [
+      referenceId('planck-2018-vi'),
+      referenceId('planck-2018-x-inflation'),
+      referenceId('mukhanov-chibisov-1981'),
+      referenceId('bicep-keck-2021'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('interpretation-map'),
+    title: 'Same predictions, different stories',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A conceptual comparison, not a ranking and not a scoreboard. Every interpretation listed reproduces the standard predictions of quantum mechanics in the regimes tested so far — that is what makes them interpretations rather than rival theories. The final column is the one that matters: no experiment has distinguished between them. Some variants make different predictions and have been narrowed or excluded by experiment, and where that is the case it is stated.',
+    description:
+      'A comparison of the main interpretations of quantum mechanics — Copenhagen and its modern descendants, many-worlds, de Broglie–Bohm pilot-wave theory, spontaneous-collapse models such as GRW, and QBism and other epistemic readings. For each, four properties are shown: whether the wavefunction is taken to be a real physical object or a bookkeeping device; whether collapse is a physical process, an emergent appearance, or absent; whether the underlying dynamics is deterministic; and what has to be given up. Selecting one expands a short account of what it says and what it costs. A footer states the current position plainly: as of today no experiment distinguishes these from one another, spontaneous-collapse models are the exception because they predict small deviations and experiments have squeezed their parameter space without ruling the class out, and the measurement problem is unresolved rather than solved.',
+    references: [
+      referenceId('everett-1957'),
+      referenceId('bohm-1952'),
+      referenceId('grw-1986'),
+      referenceId('zurek-2003-decoherence'),
+      referenceId('bell-1964'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('quantum-scale-ladder'),
+    title: 'How far up the scale quantum behaviour has been shown',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: false,
+    caption:
+      'Every marker is a published experiment in which quantum interference or entanglement was actually demonstrated at that scale, plotted against a logarithmic mass axis. The chart answers a real question honestly: quantum mechanics has no known size limit written into it, but the demonstrated range currently stops with molecules of around 25,000 atomic mass units. Everything above that is untested, not disproved — and the reason larger objects behave classically is decoherence, which is understood and calculable, not a boundary where the theory switches off.',
+    description:
+      'A logarithmic ladder of mass, from a single electron at 9.1 times 10 to the minus 31 kilograms up to a human. Markers show where quantum behaviour has been directly demonstrated: single electrons in the 1961 and 1989 double-slit experiments, neutrons, atoms, sixty-carbon fullerene molecules in 1999, and oligoporphyrin molecules of over 25,000 atomic mass units and 2,000 atoms in 2019 — the current record for matter-wave interference. Above the last marker the ladder continues, unmarked, through a virus, a dust grain, and a human, with the region labelled as untested rather than excluded. A note gives the reason larger objects do not show interference: the decoherence time falls extraordinarily fast with size and with coupling to the environment, so a dust grain in air loses coherence in far less than the time it would take to cross an apparatus.',
+    references: [
+      referenceId('jonsson-1961-electron-diffraction'),
+      referenceId('tonomura-1989-single-electron'),
+      referenceId('arndt-1999-fullerene'),
+      referenceId('fein-2019-massive-interference'),
+      referenceId('zurek-2003-decoherence'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
 ];

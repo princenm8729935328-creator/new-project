@@ -116,7 +116,7 @@ export const SECTIONS: readonly Section[] = [
     accent: 'quantum',
     order: 8,
     phase: 6,
-    status: 'planned',
+    status: 'published',
     icon: 'quantum',
   },
   {

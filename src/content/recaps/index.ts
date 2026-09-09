@@ -18,6 +18,7 @@ import { GRAVITY_RECAPS } from './gravity';
 import { NEWTON_RECAPS } from './newton';
 import { RELATIVITY_RECAPS } from './relativity';
 import { BLACK_HOLE_RECAPS } from './blackHoles';
+import { QUANTUM_RECAPS } from './quantum';
 
 export const RECAPS: RecapsByTopic = {
   ...UNIVERSE_RECAPS,
@@ -25,6 +26,7 @@ export const RECAPS: RecapsByTopic = {
   ...NEWTON_RECAPS,
   ...RELATIVITY_RECAPS,
   ...BLACK_HOLE_RECAPS,
+  ...QUANTUM_RECAPS,
 };
 
 export function getRecap(id: TopicId): TopicRecap | undefined {

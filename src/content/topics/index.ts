@@ -13,6 +13,7 @@ import { GRAVITY_TOPICS } from './gravity';
 import { NEWTON_TOPICS } from './newton';
 import { RELATIVITY_TOPICS } from './relativity';
 import { BLACK_HOLE_TOPICS } from './blackHoles';
+import { QUANTUM_TOPICS } from './quantum';
 
 export const TOPICS: readonly Topic[] = [
   ...UNIVERSE_TOPICS,
@@ -20,6 +21,7 @@ export const TOPICS: readonly Topic[] = [
   ...NEWTON_TOPICS,
   ...RELATIVITY_TOPICS,
   ...BLACK_HOLE_TOPICS,
+  ...QUANTUM_TOPICS,
 ];
 
 const BY_ID = new Map<TopicId, Topic>(TOPICS.map((topic) => [topic.id, topic]));
