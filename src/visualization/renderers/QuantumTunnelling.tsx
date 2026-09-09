@@ -56,11 +56,12 @@ const PLOT_L = 16;
 const PLOT_R = W - 16;
 const PLOT_T = 40;
 const PLOT_B = H - 82;
-const MID = (PLOT_T + PLOT_B) / 2;
-
-/** The frame spans this many nanometres of space. */
+/** The frame spans this many nanometres of space, and this many eV of energy. */
 const SPAN_NM = 3;
+const SPAN_EV = 13;
 const xOf = (nm: number): number => PLOT_L + ((nm + SPAN_NM / 2) / SPAN_NM) * (PLOT_R - PLOT_L);
+/** Energy axis, so "not enough energy to climb" is something you can see. */
+const yOf = (ev: number): number => PLOT_B - (ev / SPAN_EV) * (PLOT_B - PLOT_T);
 
 export default function QuantumTunnelling(_props: VisualizationProps): ReactNode {
   const [energy, setEnergy] = useState(3);
@@ -73,29 +74,41 @@ export default function QuantumTunnelling(_props: VisualizationProps): ReactNode
   const kappa = K_PER_NM * Math.sqrt(Math.max(barrier - energy, 0));
 
   const half = width / 2;
-  const scale = 26;
+  const scale = 16;
+  /** The wave rides on the electron's own energy level. */
+  const mid = yOf(energy);
+  /** Slowed from the true wavenumber so the curve is sampled, not aliased. */
+  const drawK = kOut * 2;
+
+  /**
+   * The transmitted wave is often thousands of times smaller than the incident
+   * one, which is the physics and is also invisible. So it is drawn twice: once
+   * at true relative amplitude, and once magnified by a factor the figure states.
+   */
+  const magnification = amplitude > 0 ? Math.min(1e6, Math.max(1, 0.75 / amplitude)) : 1;
 
   /** Left of the barrier: incident plus reflected, so a standing pattern. */
-  const left = Array.from({ length: 90 }, (_, index) => {
-    const nm = -SPAN_NM / 2 + ((-half + SPAN_NM / 2) * index) / 89;
-    const value = Math.cos(kOut * nm * 6) * (1 - 0.45 * amplitude) + 0.15 * Math.sin(kOut * nm * 6);
-    return `${index === 0 ? 'M' : 'L'}${xOf(nm).toFixed(2)},${(MID - value * scale).toFixed(2)}`;
+  const left = Array.from({ length: 140 }, (_, index) => {
+    const nm = -SPAN_NM / 2 + ((-half + SPAN_NM / 2) * index) / 139;
+    const value = Math.cos(drawK * nm) * (1 - 0.45 * amplitude) + 0.15 * Math.sin(drawK * nm);
+    return `${index === 0 ? 'M' : 'L'}${xOf(nm).toFixed(2)},${(mid - value * scale).toFixed(2)}`;
   }).join(' ');
 
   /** Inside: no oscillation at all, just exponential decay. */
-  const inside = Array.from({ length: 50 }, (_, index) => {
-    const nm = -half + (width * index) / 49;
+  const inside = Array.from({ length: 60 }, (_, index) => {
+    const nm = -half + (width * index) / 59;
     const decay = Math.exp(-kappa * (nm + half));
-    const value = (1 - 0.45 * amplitude) * (over ? Math.cos(kOut * nm * 6) : decay);
-    return `${index === 0 ? 'M' : 'L'}${xOf(nm).toFixed(2)},${(MID - value * scale).toFixed(2)}`;
+    const value = (1 - 0.45 * amplitude) * (over ? Math.cos(drawK * nm) : decay);
+    return `${index === 0 ? 'M' : 'L'}${xOf(nm).toFixed(2)},${(mid - value * scale).toFixed(2)}`;
   }).join(' ');
 
   /** Right of the barrier: the original wavelength, a smaller amplitude. */
-  const right = Array.from({ length: 90 }, (_, index) => {
-    const nm = half + ((SPAN_NM / 2 - half) * index) / 89;
-    const value = amplitude * Math.cos(kOut * (nm - half) * 6);
-    return `${index === 0 ? 'M' : 'L'}${xOf(nm).toFixed(2)},${(MID - value * scale).toFixed(2)}`;
-  }).join(' ');
+  const rightAt = (gain: number): string =>
+    Array.from({ length: 140 }, (_, index) => {
+      const nm = half + ((SPAN_NM / 2 - half) * index) / 139;
+      const value = amplitude * gain * Math.cos(drawK * (nm - half));
+      return `${index === 0 ? 'M' : 'L'}${xOf(nm).toFixed(2)},${(mid - value * scale).toFixed(2)}`;
+    }).join(' ');
 
   return (
     <div className={styles.chartStack}>
@@ -121,15 +134,15 @@ export default function QuantumTunnelling(_props: VisualizationProps): ReactNode
         {/* The barrier itself, height drawn against the particle energy. */}
         <rect
           x={xOf(-half)}
-          y={PLOT_T}
+          y={yOf(barrier)}
           width={xOf(half) - xOf(-half)}
-          height={PLOT_B - PLOT_T}
-          fill="rgba(255,143,110,0.14)"
-          stroke="rgba(255,143,110,0.5)"
+          height={PLOT_B - yOf(barrier)}
+          fill="rgba(255,143,110,0.16)"
+          stroke="rgba(255,143,110,0.55)"
         />
         <text
           x={(xOf(-half) + xOf(half)) / 2}
-          y={PLOT_T - 6}
+          y={yOf(barrier) - 5}
           textAnchor="middle"
           fontSize={8}
           fill="rgba(255,143,110,0.95)"
@@ -137,10 +150,44 @@ export default function QuantumTunnelling(_props: VisualizationProps): ReactNode
           barrier {barrier.toFixed(1)} eV
         </text>
 
-        <line x1={PLOT_L} x2={PLOT_R} y1={MID} y2={MID} stroke="rgba(148,162,192,0.2)" />
+        {/* The electron's energy level, drawn across the frame: below the top of
+            the barrier, this is the height it cannot classically reach. */}
+        <line
+          x1={PLOT_L}
+          x2={PLOT_R}
+          y1={mid}
+          y2={mid}
+          stroke="rgba(148,162,192,0.3)"
+          strokeDasharray="4 3"
+        />
+        <text x={PLOT_L + 2} y={mid - 22} fontSize={7.5} fill="rgba(148,162,192,0.85)">
+          electron energy {energy.toFixed(1)} eV
+        </text>
+
         <path d={left} fill="none" stroke="#66e0d4" strokeWidth={1.8} />
         <path d={inside} fill="none" stroke="#ffd66e" strokeWidth={1.8} strokeDasharray="3 2" />
-        <path d={right} fill="none" stroke="#a97bff" strokeWidth={1.8} />
+        <path d={rightAt(1)} fill="none" stroke="#a97bff" strokeWidth={1.8} />
+        {magnification > 1.5 && (
+          <>
+            <path
+              d={rightAt(magnification)}
+              fill="none"
+              stroke="rgba(169,123,255,0.45)"
+              strokeWidth={1.2}
+              strokeDasharray="3 3"
+            />
+            <text
+              x={PLOT_R - 2}
+              y={mid - 26}
+              textAnchor="end"
+              fontSize={7.5}
+              fill="rgba(169,123,255,0.9)"
+            >
+              dashed: transmitted wave magnified ×
+              {magnification > 999 ? magnification.toExponential(0) : magnification.toFixed(0)}
+            </text>
+          </>
+        )}
 
         <text x={PLOT_L + 4} y={PLOT_B + 14} fontSize={7.5} fill="#66e0d4">
           incoming + reflected
@@ -156,9 +203,6 @@ export default function QuantumTunnelling(_props: VisualizationProps): ReactNode
         </text>
         <text x={PLOT_R - 4} y={PLOT_B + 14} textAnchor="end" fontSize={7.5} fill="#a97bff">
           transmitted
-        </text>
-        <text x={PLOT_L + 4} y={PLOT_B + 26} fontSize={7.5} fill="rgba(148,162,192,0.75)">
-          electron energy {energy.toFixed(1)} eV
         </text>
       </svg>
 

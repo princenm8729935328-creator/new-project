@@ -58,6 +58,8 @@ export default function PhotoelectricEffect(_props: VisualizationProps): ReactNo
   /** Photocurrent is proportional to photon arrival rate, and to nothing else. */
   const current = emitting ? intensity : 0;
   const wavelengthNm = (2.99792458e8 / frequency) * 1e9;
+  /** Where the line reaches the top of the voltage axis, so it stops inside the box. */
+  const lineEndF = Math.min(F_MAX, (V_MAX + workFunction) / H_OVER_E);
 
   return (
     <div className={styles.chartStack}>
@@ -149,21 +151,22 @@ export default function PhotoelectricEffect(_props: VisualizationProps): ReactNo
         {/* The Einstein line, drawn only where electrons actually come out. */}
         <line
           x1={xOf(thresholdF)}
-          x2={xOf(F_MAX)}
+          x2={xOf(lineEndF)}
           y1={yOf(0)}
-          y2={yOf(H_OVER_E * F_MAX - workFunction)}
+          y2={yOf(H_OVER_E * lineEndF - workFunction)}
           stroke="#66e0d4"
           strokeWidth={2}
         />
         <circle cx={xOf(thresholdF)} cy={yOf(0)} r={3.5} fill="#ffd66e" />
         <text
-          x={xOf(thresholdF) + 5}
+          x={xOf(thresholdF) - 5}
           y={yOf(0) - 6}
+          textAnchor="end"
           fontSize={7.5}
           fill="#ffd66e"
           fontFamily="system-ui, sans-serif"
         >
-          threshold f₀ = φ/h
+          f₀ = φ/h
         </text>
 
         {/* The reader's setting. */}

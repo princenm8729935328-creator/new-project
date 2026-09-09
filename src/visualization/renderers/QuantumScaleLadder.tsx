@@ -135,8 +135,13 @@ export default function QuantumScaleLadder(_props: VisualizationProps): ReactNod
           height={yOf(RECORD_KG) - AXIS_T}
           fill="rgba(148,162,192,0.09)"
         />
-        <text x={AXIS_X + 12} y={yOf(RECORD_KG) - 8} fontSize={7.5} fill="rgba(148,162,192,0.85)">
-          above here: untested, not excluded
+        {/* Placed in the empty stretch between the dust grain and the virus:
+            at the band's own edge it collided with the virus row's readout. */}
+        <text x={AXIS_X + 14} y={yOf(1e-15)} fontSize={7.5} fill="rgba(148,162,192,0.85)">
+          above the shaded band:
+        </text>
+        <text x={AXIS_X + 14} y={yOf(1e-15) + 11} fontSize={7.5} fill="rgba(148,162,192,0.85)">
+          untested, not excluded
         </text>
 
         <line x1={AXIS_X} x2={AXIS_X} y1={AXIS_T} y2={AXIS_B} stroke="rgba(148,162,192,0.4)" />

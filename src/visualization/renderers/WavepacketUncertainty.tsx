@@ -24,7 +24,7 @@ const W = 380;
 const H = 300;
 const PAD_L = 34;
 const PAD_R = W - 12;
-const TOP_T = 34;
+const TOP_T = 44;
 const TOP_B = 146;
 const BOT_T = 178;
 const BOT_B = 268;
@@ -84,7 +84,7 @@ export default function WavepacketUncertainty(_props: VisualizationProps): React
           fill="rgba(148,162,192,0.9)"
           fontFamily="system-ui, sans-serif"
         >
-          One state, described two ways. Squeeze either curve and the other spreads.
+          One state, two descriptions. Squeeze one, the other spreads.
         </text>
         <text x={10} y={26} fontSize={8} fill="rgba(148,162,192,0.72)">
           the lower curve is the exact Fourier transform of the upper one
@@ -105,7 +105,7 @@ export default function WavepacketUncertainty(_props: VisualizationProps): React
           stroke="#66e0d4"
           strokeWidth={2}
         />
-        <text x={PAD_L} y={TOP_T - 4} fontSize={8.5} fill="#66e0d4">
+        <text x={PAD_L} y={TOP_T - 6} fontSize={8} fill="#66e0d4">
           probability in position |ψ(x)|²
         </text>
         <text

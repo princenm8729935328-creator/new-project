@@ -93,15 +93,18 @@ export default function FieldExcitations({
         baseY - 26 * scale,
       );
 
-      // The allowed amplitude steps, drawn as a small ladder.
+      // The allowed amplitude steps, drawn as a small ladder. Right-aligned:
+      // left-aligned at this x the label ran off the edge of the canvas.
       for (let step = 0; step <= 3; step += 1) {
         const y = baseY + 24 * scale + step * 5 * scale;
         context.fillStyle = step <= n ? sheet.colour : 'rgba(148,162,192,0.25)';
-        context.fillRect(w - 46 * scale, y, 12 * scale, 2 * scale);
+        context.fillRect(w - 22 * scale, y, 12 * scale, 2 * scale);
       }
       context.fillStyle = 'rgba(148,162,192,0.7)';
       context.font = `${7.5 * scale}px system-ui, sans-serif`;
-      context.fillText('allowed steps', w - 46 * scale, baseY + 20 * scale);
+      context.textAlign = 'right';
+      context.fillText('allowed steps', w - 10 * scale, baseY + 20 * scale);
+      context.textAlign = 'left';
     });
 
     if (coupled) {

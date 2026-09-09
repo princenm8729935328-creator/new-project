@@ -142,8 +142,9 @@ export default function ClockComparison(_props: VisualizationProps): ReactNode {
                 fill={active ? '#ffd66e' : '#66e0d4'}
               />
               <text
-                x={xOf(item.fraction) + 6}
+                x={xOf(item.fraction) + (xOf(item.fraction) > AXIS_R - 40 ? -6 : 6)}
                 y={y + 9}
+                textAnchor={xOf(item.fraction) > AXIS_R - 40 ? 'end' : 'start'}
                 fontSize={7}
                 fill="rgba(148,162,192,0.8)"
                 fontFamily="ui-monospace, monospace"

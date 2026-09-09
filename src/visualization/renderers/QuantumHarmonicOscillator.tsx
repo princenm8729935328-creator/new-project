@@ -68,8 +68,11 @@ export default function QuantumHarmonicOscillator(_props: VisualizationProps): R
   const wave = Array.from({ length: 181 }, (_, index) => {
     const x = -X_HALF + (2 * X_HALF * index) / 180;
     const value = psi(n, x);
-    const plotted = density ? value * value * 2.4 : value * 1.5;
-    const y = yOf(energy) - plotted * ((PLOT_B - PLOT_T) / E_MAX) * 1.5;
+    // Scaled so the curve peaks about 0.85 of a level spacing above its own
+    // line: any larger and one state covers three rungs of the ladder it is
+    // supposed to sit on.
+    const plotted = density ? value * value * 1.5 : value * 1.13;
+    const y = yOf(energy) - plotted * ((PLOT_B - PLOT_T) / E_MAX);
     return `${index === 0 ? 'M' : 'L'}${xOf(x).toFixed(2)},${y.toFixed(2)}`;
   }).join(' ');
 
@@ -179,7 +182,7 @@ export default function QuantumHarmonicOscillator(_props: VisualizationProps): R
         >
           dashed lines: classical turning points
         </text>
-        <text x={12} y={PLOT_T - 6} fontSize={8} fill="rgba(148,162,192,0.8)">
+        <text x={12} y={PLOT_T + 8} fontSize={8} fill="rgba(148,162,192,0.8)">
           energy, ħω
         </text>
       </svg>

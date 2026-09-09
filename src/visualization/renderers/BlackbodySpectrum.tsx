@@ -79,7 +79,9 @@ function curvePath(temperature: number, law: (l: number, t: number) => number): 
       pen = false;
       continue;
     }
-    const y = yOf(10 ** Math.min(logValue, LOG_B_MAX + 0.6));
+    // Deliberately not clamped: a clip path cuts the divergent classical curve
+    // off at the top edge, which is what "runs off the chart" should look like.
+    const y = yOf(10 ** Math.min(logValue, LOG_B_MAX + 12));
     parts.push(`${pen ? 'L' : 'M'}${xOf(lambda).toFixed(2)},${y.toFixed(2)}`);
     pen = true;
   }
@@ -106,6 +108,11 @@ export default function BlackbodySpectrum(_props: VisualizationProps): ReactNode
         style={{ width: '100%', height: 'auto' }}
         role="presentation"
       >
+        <defs>
+          <clipPath id="blackbody-plot">
+            <rect x={PLOT_L} y={PLOT_T} width={PLOT_R - PLOT_L} height={PLOT_B - PLOT_T} />
+          </clipPath>
+        </defs>
         <text
           x={10}
           y={14}
@@ -132,7 +139,7 @@ export default function BlackbodySpectrum(_props: VisualizationProps): ReactNode
         />
         <text
           x={(xOf(3.8e-7) + xOf(7.4e-7)) / 2}
-          y={PLOT_T - 4}
+          y={PLOT_B - 4}
           textAnchor="middle"
           fontSize={7.5}
           fill="rgba(200,180,255,0.9)"
@@ -197,13 +204,15 @@ export default function BlackbodySpectrum(_props: VisualizationProps): ReactNode
         <line x1={PLOT_L} x2={PLOT_R} y1={PLOT_B} y2={PLOT_B} stroke="rgba(148,162,192,0.35)" />
         <line x1={PLOT_L} x2={PLOT_L} y1={PLOT_T} y2={PLOT_B} stroke="rgba(148,162,192,0.35)" />
 
-        <path
-          d={curvePath(temperature, rayleighJeans)}
-          fill="none"
-          stroke="#ff8f6e"
-          strokeWidth={1.6}
-        />
-        <path d={curvePath(temperature, planck)} fill="none" stroke="#66e0d4" strokeWidth={2} />
+        <g clipPath="url(#blackbody-plot)">
+          <path
+            d={curvePath(temperature, rayleighJeans)}
+            fill="none"
+            stroke="#ff8f6e"
+            strokeWidth={1.6}
+          />
+          <path d={curvePath(temperature, planck)} fill="none" stroke="#66e0d4" strokeWidth={2} />
+        </g>
 
         {/* Where the Planck curve peaks: Wien's displacement law. */}
         <circle cx={xOf(peak)} cy={yOf(planck(peak, temperature))} r={4} fill="#ffd66e" />

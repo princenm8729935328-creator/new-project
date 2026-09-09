@@ -93,7 +93,7 @@ export default function EnergyBands(_props: VisualizationProps): ReactNode {
           Levels become bands; the gap decides what the material does
         </text>
         <text x={LEFT_L} y={34} fontSize={8} fill="rgba(148,162,192,0.75)">
-          conceptual: broadening drawn, not calculated
+          conceptual broadening
         </text>
         <text x={RIGHT_L} y={34} fontSize={8} fill="#ffd66e">
           measured band gaps
@@ -229,14 +229,8 @@ export default function EnergyBands(_props: VisualizationProps): ReactNode {
           stroke="rgba(255,214,110,0.8)"
           strokeWidth={1}
         />
-        <text
-          x={RIGHT_R}
-          y={PLOT_B - 34}
-          textAnchor="end"
-          fontSize={7}
-          fill="rgba(255,214,110,0.9)"
-        >
-          kT at room temperature = 0.026 eV
+        <text x={RIGHT_L + 6} y={PLOT_B - 34} fontSize={7} fill="rgba(255,214,110,0.9)">
+          kT = 0.026 eV
         </text>
       </svg>
 

@@ -95,7 +95,7 @@ export default function DecoherenceVisibility(_props: VisualizationProps): React
           d={`${boundary} L${xOf(1)},${yOf(1)} L${xOf(0)},${yOf(1)} Z`}
           fill="rgba(255,143,110,0.09)"
         />
-        <text x={xOf(0.12)} y={yOf(0.93)} fontSize={7.5} fill="rgba(255,143,110,0.95)">
+        <text x={xOf(0.55)} y={yOf(0.93)} fontSize={7.5} fill="rgba(255,143,110,0.95)">
           impossible
         </text>
 
@@ -134,7 +134,7 @@ export default function DecoherenceVisibility(_props: VisualizationProps): React
         >
           which-path information D
         </text>
-        <text x={PLOT_L - 34} y={PLOT_T - 6} fontSize={8} fill="rgba(148,162,192,0.8)">
+        <text x={PLOT_L - 34} y={PLOT_T + 8} fontSize={8} fill="rgba(148,162,192,0.8)">
           visibility V
         </text>
 

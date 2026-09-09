@@ -89,7 +89,7 @@ export default function QuantumVacuumFluctuations(_props: VisualizationProps): R
         />
         <text
           x={(xOf(MEASURED_MIN) + xOf(MEASURED_MAX)) / 2}
-          y={PLOT_T + 11}
+          y={PLOT_B - 6}
           textAnchor="middle"
           fontSize={7}
           fill="rgba(255,214,110,0.95)"
@@ -139,12 +139,10 @@ export default function QuantumVacuumFluctuations(_props: VisualizationProps): R
               fontFamily="ui-monospace, monospace"
             >
               1e{decade}
+              {decade === 6 ? ' Pa' : ''}
             </text>
           </g>
         ))}
-        <text x={12} y={PLOT_T - 6} fontSize={8} fill="rgba(148,162,192,0.8)">
-          pascals
-        </text>
 
         {/* One atmosphere, for a sense of scale. */}
         <line
@@ -155,13 +153,7 @@ export default function QuantumVacuumFluctuations(_props: VisualizationProps): R
           stroke="rgba(255,143,110,0.6)"
           strokeDasharray="4 3"
         />
-        <text
-          x={PLOT_R - 2}
-          y={yOf(101325) - 4}
-          textAnchor="end"
-          fontSize={7}
-          fill="rgba(255,143,110,0.9)"
-        >
+        <text x={PLOT_L + 2} y={yOf(101325) - 4} fontSize={7} fill="rgba(255,143,110,0.9)">
           1 atmosphere
         </text>
 
@@ -176,7 +168,7 @@ export default function QuantumVacuumFluctuations(_props: VisualizationProps): R
         />
 
         {/* Why: modes that fit, against modes that do not. */}
-        <text x={252} y={PLOT_T - 6} fontSize={8} fill="rgba(148,162,192,0.85)">
+        <text x={252} y={PLOT_T + 8} fontSize={8} fill="rgba(148,162,192,0.85)">
           modes that fit
         </text>
         <line

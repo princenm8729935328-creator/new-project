@@ -107,7 +107,7 @@ const PARTICLES: readonly Particle[] = [
     note: 'Its long-lived mesons are where matter–antimatter asymmetry is most precisely studied.',
   },
   {
-    symbol: 'νₑ',
+    symbol: 'νe',
     name: 'electron neutrino',
     massEv: 0.8,
     massLabel: '< 0.8 eV',
@@ -120,7 +120,7 @@ const PARTICLES: readonly Particle[] = [
     note: 'The Standard Model predicted neutrinos to be exactly massless. Oscillation experiments showed they are not — the clearest known failure of the theory.',
   },
   {
-    symbol: 'ν_μ',
+    symbol: 'νμ',
     name: 'muon neutrino',
     massEv: 0.8,
     massLabel: '< 0.8 eV',
@@ -133,7 +133,7 @@ const PARTICLES: readonly Particle[] = [
     note: 'Neutrinos change type as they travel, which is only possible if they have mass.',
   },
   {
-    symbol: 'ν_τ',
+    symbol: 'ντ',
     name: 'tau neutrino',
     massEv: 0.8,
     massLabel: '< 0.8 eV',

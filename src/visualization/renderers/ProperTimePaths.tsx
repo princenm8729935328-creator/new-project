@@ -59,8 +59,15 @@ export default function ProperTimePaths({
     const top = 26 * scale;
     const bottom = h - 26 * scale;
     const stayX = left + (right - left) * 0.28;
+    /**
+     * One pixel scale for both axes, so a 45° line really is a light ray. With
+     * separate scales the travelling worldline was drawn outside the light cone
+     * at high speed — a picture of faster-than-light travel, which is exactly
+     * the thing the diagram must not show.
+     */
+    const halfTime = (bottom - top) / 2;
     /** Half the coordinate time is spent going out; x = v × t. */
-    const turnX = stayX + speed * (right - left) * 0.6;
+    const turnX = stayX + speed * halfTime;
 
     context.strokeStyle = 'rgba(148,162,192,0.3)';
     context.lineWidth = 1;
@@ -87,10 +94,13 @@ export default function ProperTimePaths({
     context.setLineDash([3 * scale, 3 * scale]);
     context.beginPath();
     context.moveTo(stayX, bottom);
-    context.lineTo(stayX + (bottom - top) * 0.6, bottom - (bottom - top) * 0.6);
+    context.lineTo(stayX + 2 * halfTime, top);
     context.moveTo(stayX, bottom);
-    context.lineTo(stayX - (bottom - top) * 0.6, bottom - (bottom - top) * 0.6);
+    context.lineTo(stayX - 2 * halfTime, top);
     context.stroke();
+    context.fillStyle = 'rgba(255,214,110,0.75)';
+    context.textAlign = 'left';
+    context.fillText('light', stayX + halfTime * 0.9, bottom - halfTime * 1.05);
     context.setLineDash([]);
 
     // The stay-at-home worldline: straight up.
@@ -105,7 +115,7 @@ export default function ProperTimePaths({
     context.strokeStyle = '#ff8f6e';
     context.beginPath();
     context.moveTo(stayX, bottom);
-    context.lineTo(turnX, (bottom + top) / 2);
+    context.lineTo(turnX, bottom - halfTime);
     context.lineTo(stayX, top);
     context.stroke();
 

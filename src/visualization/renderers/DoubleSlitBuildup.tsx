@@ -23,8 +23,8 @@ import styles from './controls.module.css';
  */
 
 /** Slit separation and slit width, in units of wavelength × distance. */
-const FRINGE_SCALE = 26;
-const ENVELOPE_SCALE = 5.5;
+const FRINGE_SCALE = 15;
+const ENVELOPE_SCALE = 3.4;
 
 /** Relative probability of a detection at screen coordinate u ∈ [−1, 1]. */
 function intensity(u: number, whichPath: boolean): number {
@@ -71,7 +71,7 @@ export default function DoubleSlitBuildup({
   const dpr = Math.min(window.devicePixelRatio || 1, budget.maxPixelRatio);
 
   const [whichPath, setWhichPath] = useState(false);
-  const [rate, setRate] = useState(120);
+  const [rate, setRate] = useState(320);
   const [count, setCount] = useState(0);
 
   /** Accepted detections, as (u across the screen, v along it). */

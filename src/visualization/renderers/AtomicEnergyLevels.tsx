@@ -23,19 +23,19 @@ const HC_EV_NM = 1239.8419844;
 const energyOf = (n: number): number => -RY / (n * n);
 
 const W = 380;
-const H = 330;
+const H = 286;
 const LADDER_L = 46;
 const LADDER_R = 236;
 const LADDER_T = 34;
-const LADDER_B = 236;
+const LADDER_B = 196;
 
 /** Energy axis: the true scale, ground state at the bottom, zero at the top. */
 const yOf = (eV: number): number =>
   LADDER_B - ((eV - energyOf(1)) / (0 - energyOf(1))) * (LADDER_B - LADDER_T);
 
-const LEVELS = [1, 2, 3, 4, 5, 6, 7, 8];
+const LEVELS = [1, 2, 3, 4, 5, 6];
 
-const SPECTRUM_T = 262;
+const SPECTRUM_T = 224;
 const SPECTRUM_H = 26;
 const VIS_MIN = 380;
 const VIS_MAX = 740;
@@ -142,17 +142,19 @@ export default function AtomicEnergyLevels(_props: VisualizationProps): ReactNod
                 stroke={active ? '#66e0d4' : 'rgba(148,162,192,0.4)'}
                 strokeWidth={active ? 2 : 1}
               />
-              <text
-                x={LADDER_L - 4}
-                y={y + 3}
-                textAnchor="end"
-                fontSize={7.5}
-                fill={active ? '#66e0d4' : 'rgba(148,162,192,0.75)'}
-                fontFamily="ui-monospace, monospace"
-              >
-                n={n}
-              </text>
-              {(n <= 4 || active) && (
+              {(n <= 3 || active) && (
+                <text
+                  x={LADDER_L - 4}
+                  y={y + 3}
+                  textAnchor="end"
+                  fontSize={7.5}
+                  fill={active ? '#66e0d4' : 'rgba(148,162,192,0.75)'}
+                  fontFamily="ui-monospace, monospace"
+                >
+                  n={n}
+                </text>
+              )}
+              {(n <= 3 || active) && (
                 <text
                   x={LADDER_R + 4}
                   y={y + 3}
@@ -166,6 +168,16 @@ export default function AtomicEnergyLevels(_props: VisualizationProps): ReactNod
             </g>
           );
         })}
+
+        <text
+          x={LADDER_R + 4}
+          y={yOf(energyOf(5)) + 3}
+          fontSize={7}
+          fill="rgba(148,162,192,0.55)"
+          fontFamily="system-ui, sans-serif"
+        >
+          n = 4, 5, 6 …
+        </text>
 
         {/* The selected transition. */}
         <line
@@ -258,7 +270,7 @@ export default function AtomicEnergyLevels(_props: VisualizationProps): ReactNod
               className={styles.slider}
               type="range"
               min={lower + 1}
-              max={8}
+              max={6}
               step={1}
               value={safeUpper}
               onChange={(event) => setUpper(Number(event.target.value))}

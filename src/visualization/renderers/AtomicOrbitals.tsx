@@ -50,7 +50,7 @@ const ORBITALS: readonly Orbital[] = [
     n: 1,
     l: 0,
     angular: () => 1,
-    extent: 8,
+    extent: 5,
     note: 'The ground state: spherical, densest at the nucleus, with no nodes anywhere. The most likely distance to find the electron is one Bohr radius, 52.9 picometres.',
   },
   {
@@ -59,7 +59,7 @@ const ORBITALS: readonly Orbital[] = [
     n: 2,
     l: 0,
     angular: () => 1,
-    extent: 20,
+    extent: 12,
     note: 'Still spherical, but with one radial node — a spherical shell where the probability is exactly zero, with electron density on both sides of it. Nothing crosses that shell; it is simply where the wavefunction changes sign.',
   },
   {
@@ -68,7 +68,7 @@ const ORBITALS: readonly Orbital[] = [
     n: 2,
     l: 1,
     angular: (cosTheta) => cosTheta,
-    extent: 20,
+    extent: 12,
     note: 'Two lobes with a nodal plane through the nucleus. The electron has angular momentum here, but there is still no orbit: the density is static, and the lobes are where a detection is likely, not a path.',
   },
   {
@@ -77,7 +77,7 @@ const ORBITALS: readonly Orbital[] = [
     n: 3,
     l: 1,
     angular: (cosTheta) => cosTheta,
-    extent: 40,
+    extent: 25,
     note: 'Two lobes again, now with an extra radial node inside them — n − 1 = 2 nodes in total, one angular and one radial, exactly as the solutions require.',
   },
   {
@@ -86,7 +86,7 @@ const ORBITALS: readonly Orbital[] = [
     n: 3,
     l: 2,
     angular: (cosTheta, sinTheta) => sinTheta * cosTheta,
-    extent: 44,
+    extent: 22,
     note: 'A four-lobed shape with two nodal planes. These are the orbitals whose directional shape gives transition-metal chemistry its geometry — why complexes are octahedral rather than shapeless.',
   },
 ];
@@ -149,24 +149,24 @@ export default function AtomicOrbitals({ quality, width, height }: Visualization
     buffer.height = grid;
     buffer.getContext('2d')?.putImageData(image, 0, 0);
 
-    const size = Math.min(w, h) * 0.86;
-    const left = w * 0.32 - size / 2 + w * 0.04;
+    const size = Math.min(w * 0.56, h * 0.88);
+    const left = Math.max(4, w * 0.3 - size / 2);
     const top = (h - size) / 2;
     context.imageSmoothingEnabled = true;
-    context.drawImage(buffer, Math.max(4, left), top, size, size);
+    context.drawImage(buffer, left, top, size, size);
 
     // The nucleus, and the scale.
     const scaleFont = h / 240;
     context.fillStyle = 'rgba(255,214,110,0.95)';
     context.beginPath();
-    context.arc(Math.max(4, left) + size / 2, top + size / 2, 1.8 * scaleFont, 0, Math.PI * 2);
+    context.arc(left + size / 2, top + size / 2, 1.8 * scaleFont, 0, Math.PI * 2);
     context.fill();
     context.font = `${9 * scaleFont}px system-ui, sans-serif`;
     context.textAlign = 'left';
     context.fillStyle = 'rgba(148,162,192,0.85)';
     context.fillText(
       `${(2 * half * 52.9).toFixed(0)} pm across`,
-      Math.max(4, left),
+      left,
       top + size + 12 * scaleFont,
     );
 

@@ -31,7 +31,7 @@ const INTERPRETATIONS: readonly Interpretation[] = [
   {
     name: 'Copenhagen-style',
     wavefunction: 'a tool',
-    collapse: 'a postulate',
+    collapse: 'postulated',
     deterministic: 'no',
     cost: 'leaves "measurement" undefined',
     detail:
@@ -41,7 +41,7 @@ const INTERPRETATIONS: readonly Interpretation[] = [
   {
     name: 'Many-worlds',
     wavefunction: 'real',
-    collapse: 'never happens',
+    collapse: 'never',
     deterministic: 'yes',
     cost: 'must explain where probabilities come from',
     detail:
@@ -50,8 +50,8 @@ const INTERPRETATIONS: readonly Interpretation[] = [
   },
   {
     name: 'Pilot wave (de Broglie–Bohm)',
-    wavefunction: 'real, and guides particles',
-    collapse: 'never happens',
+    wavefunction: 'real, guiding',
+    collapse: 'never',
     deterministic: 'yes',
     cost: 'explicitly non-local',
     detail:
@@ -61,7 +61,7 @@ const INTERPRETATIONS: readonly Interpretation[] = [
   {
     name: 'Spontaneous collapse (GRW-type)',
     wavefunction: 'real',
-    collapse: 'a physical process',
+    collapse: 'physical',
     deterministic: 'no',
     cost: 'adds new constants; makes new predictions',
     detail:
@@ -69,9 +69,9 @@ const INTERPRETATIONS: readonly Interpretation[] = [
     testable: true,
   },
   {
-    name: 'Epistemic readings (QBism and others)',
-    wavefunction: 'an agent’s information',
-    collapse: 'updating a belief',
+    name: 'Epistemic (QBism and others)',
+    wavefunction: 'information',
+    collapse: 'belief update',
     deterministic: 'n/a',
     cost: 'says little about what exists',
     detail:
@@ -108,7 +108,7 @@ export default function InterpretationMap(_props: VisualizationProps): ReactNode
           fill="rgba(148,162,192,0.9)"
           fontFamily="system-ui, sans-serif"
         >
-          Interpretations of quantum mechanics — same predictions, different stories
+          Interpretations: same predictions, different stories
         </text>
         <text x={10} y={26} fontSize={8} fill="rgba(148,162,192,0.72)">
           not a ranking: no experiment distinguishes them

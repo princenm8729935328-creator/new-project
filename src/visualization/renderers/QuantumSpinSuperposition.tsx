@@ -85,6 +85,7 @@ export default function QuantumSpinSuperposition({
     context.textAlign = 'center';
     context.fillText('|↑⟩', bx, by - br - 4 * scale);
     context.fillText('|↓⟩', bx, by + br + 10 * scale);
+    context.fillText('prepared state', bx, by + br + 36 * scale);
 
     // The prepared state: a definite direction, drawn straight up.
     context.strokeStyle = '#66e0d4';
@@ -116,12 +117,13 @@ export default function QuantumSpinSuperposition({
     context.strokeStyle = 'rgba(148,162,192,0.5)';
     context.lineWidth = 1.4 * scale;
     context.beginPath();
-    context.moveTo(w * 0.3, by);
+    context.moveTo(bx + br + 8 * scale, by);
     context.lineTo(ax, by);
     context.stroke();
 
     context.fillStyle = 'rgba(148,162,192,0.85)';
     context.textAlign = 'left';
+    context.fillText('atoms →', bx + br + 14 * scale, by - 6 * scale);
     context.fillText('analyser', ax - 12 * scale, by - 24 * scale);
     context.strokeStyle = 'rgba(169,123,255,0.9)';
     context.lineWidth = 2 * scale;
