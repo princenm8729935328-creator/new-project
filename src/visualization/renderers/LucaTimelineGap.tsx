@@ -21,7 +21,7 @@ export default function LucaTimelineGap(_props: VisualizationProps): ReactNode {
 
   return (
     <Stack>
-      <Figure height={182}>
+      <Figure height={188}>
         <rect x={LEFT} y={Y - 8} width={W} height={16} rx={3} fill={C.panel} />
         <rect
           x={x(ORIGIN)}
@@ -63,12 +63,12 @@ export default function LucaTimelineGap(_props: VisualizationProps): ReactNode {
         {[0.16, 0.24, 0.3, 0.38].map((s, i) => (
           <path
             key={s}
-            d={`M${x(s)},${Y + 8} L${x(s + 0.05 + i * 0.01)},${Y + 34 + i * 9}`}
+            d={`M${x(s)},${Y + 8} L${x(s + 0.05 + i * 0.01)},${Y + 30 + i * 7}`}
             stroke="rgba(255,143,110,0.6)"
             strokeWidth={1.3}
           />
         ))}
-        <text x={x(0.27)} y={Y + 78} textAnchor="middle" fontSize={8.5} fill={C.hot}>
+        <text x={x(0.27)} y={Y + 64} textAnchor="middle" fontSize={8.5} fill={C.hot}>
           other lineages — real life, no survivors, no fossils
         </text>
 
@@ -101,7 +101,7 @@ export default function LucaTimelineGap(_props: VisualizationProps): ReactNode {
           Bacteria
         </text>
 
-        <text x={190} y={172} textAnchor="middle" fontSize={8.5} fill={C.dim}>
+        <text x={190} y={180} textAnchor="middle" fontSize={8.5} fill={C.dim}>
           LUCA is the most recent common ancestor of survivors, not the first organism
         </text>
       </Figure>

@@ -101,11 +101,14 @@ export default function LifeEnvironmentFeedback(_props: VisualizationProps): Rea
             </g>
           );
         })}
-        <text x={CX} y={CY + 2} textAnchor="middle" fontSize={18} fill={colour}>
+        <text x={CX} y={CY + 7} textAnchor="middle" fontSize={20} fill={colour}>
           {loop.sign}
         </text>
-        <text x={CX} y={CY + 16} textAnchor="middle" fontSize={8} fill={C.dim}>
-          {loop.sign === '+' ? 'self-amplifying' : 'self-correcting'}
+        {/* The sign caption used to sit inside the ring at CY + 16, which is
+            exactly where the two horizontal node labels are drawn. Moved to the
+            corner, where it cannot collide with anything. */}
+        <text x={16} y={14} fontSize={8.5} fill={C.dim}>
+          {loop.sign === '+' ? 'self-amplifying loop' : 'self-correcting loop'}
         </text>
 
         <text x={20} y={168} fontSize={8.5} fill={C.dim}>

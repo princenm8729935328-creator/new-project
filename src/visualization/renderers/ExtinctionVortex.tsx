@@ -26,12 +26,12 @@ export default function ExtinctionVortex(_props: VisualizationProps): ReactNode 
   ];
 
   const CX = 190;
-  const CY = 88;
-  const R = 54;
+  const CY = 84;
+  const R = 50;
 
   return (
     <Stack>
-      <Figure height={188}>
+      <Figure height={198}>
         <circle
           cx={CX}
           cy={CY}
@@ -46,13 +46,18 @@ export default function ExtinctionVortex(_props: VisualizationProps): ReactNode 
           const a = -Math.PI / 2 + (i / stages.length) * Math.PI * 2;
           const x = CX + Math.cos(a) * R;
           const y = CY + Math.sin(a) * R;
+          // Labels go radially outward, with the two on the horizontal set
+          // beside their node. Centring all four underneath put the side
+          // labels across each other and across the risk bar below.
+          const onSide = Math.abs(y - CY) < 12;
+          const left = x < CX;
           return (
             <g key={s}>
               <circle cx={x} cy={y} r={5} fill={C.hot} opacity={0.6 + risk * 0.4} />
               <text
-                x={x}
-                y={y < CY ? y - 10 : y + 16}
-                textAnchor="middle"
+                x={onSide ? x + (left ? -9 : 9) : x}
+                y={onSide ? y + 3 : y < CY ? y - 10 : y + 16}
+                textAnchor={onSide ? (left ? 'end' : 'start') : 'middle'}
                 fontSize={8}
                 fill="rgba(233,238,247,0.92)"
               >
@@ -65,16 +70,16 @@ export default function ExtinctionVortex(_props: VisualizationProps): ReactNode 
           ↻
         </text>
 
-        <rect x={20} y={158} width={340} height={12} rx={6} fill="rgba(148,162,192,0.18)" />
+        <rect x={20} y={172} width={340} height={12} rx={6} fill="rgba(148,162,192,0.18)" />
         <rect
           x={20}
-          y={158}
+          y={172}
           width={Math.max(340 * risk, 4)}
           height={12}
           rx={6}
           fill={risk > 0.6 ? C.hot : risk > 0.3 ? C.warm : C.life}
         />
-        <text x={20} y={152} fontSize={8.5} fill={C.dim}>
+        <text x={20} y={166} fontSize={8.5} fill={C.dim}>
           modelled extinction risk over 100 years
         </text>
       </Figure>

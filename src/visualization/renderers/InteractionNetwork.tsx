@@ -16,7 +16,7 @@ const NODES: readonly Node[] = [
   { id: 'mite', label: 'gut microbes', x: 82, y: 144, colour: C.water, r: 12 },
   { id: 'bird', label: 'birds', x: 298, y: 44, colour: C.hot, r: 13 },
   { id: 'fungus', label: 'fungal disease', x: 300, y: 148, colour: C.deep, r: 12 },
-  { id: 'wasp', label: 'parasitic wasp', x: 190, y: 176, colour: C.deep, r: 11 },
+  { id: 'wasp', label: 'parasitic wasp', x: 190, y: 166, colour: C.deep, r: 11 },
   { id: 'other', label: 'other pollinators', x: 190, y: 22, colour: C.faint, r: 11 },
 ];
 
@@ -53,7 +53,7 @@ export default function InteractionNetwork(_props: VisualizationProps): ReactNod
 
   return (
     <Stack>
-      <Network nodes={NODES} edges={EDGES} height={198} onPick={setPick} faded={faded} />
+      <Network nodes={NODES} edges={EDGES} height={206} onPick={setPick} faded={faded} />
       <Note>{DETAIL[pick]}</Note>
     </Stack>
   );

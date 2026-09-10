@@ -97,25 +97,31 @@ export default function LifeNonlifeGradient(_props: VisualizationProps): ReactNo
 
         <rect x={LEFT} y={Y - 7} width={W} height={14} rx={7} fill="url(#lng)" opacity={0.55} />
 
-        {RUNGS.map((r) => (
-          <g key={r.name}>
-            <circle
-              cx={x(r.at)}
-              cy={Y}
-              r={r === nearest ? 6 : 3.4}
-              fill={r === nearest ? '#fff' : 'rgba(233,238,247,0.7)'}
-            />
-            <text
-              x={x(r.at)}
-              y={r.at % 0.32 < 0.1 ? Y - 16 : Y + 22}
-              textAnchor="middle"
-              fontSize={7.6}
-              fill={r === nearest ? '#fff' : C.faint}
-            >
-              {r.name}
-            </text>
-          </g>
-        ))}
+        {RUNGS.map((r) => {
+          // The end labels are anchored to the ends of the track rather than
+          // centred on them, or the first one runs off the left edge.
+          const atStart = r.at <= 0.001;
+          const atEnd = r.at >= 0.999;
+          return (
+            <g key={r.name}>
+              <circle
+                cx={x(r.at)}
+                cy={Y}
+                r={r === nearest ? 6 : 3.4}
+                fill={r === nearest ? '#fff' : 'rgba(233,238,247,0.7)'}
+              />
+              <text
+                x={x(r.at)}
+                y={r.at % 0.32 < 0.1 ? Y - 16 : Y + 22}
+                textAnchor={atStart ? 'start' : atEnd ? 'end' : 'middle'}
+                fontSize={7.6}
+                fill={r === nearest ? '#fff' : C.faint}
+              >
+                {r.name}
+              </text>
+            </g>
+          );
+        })}
 
         <text x={190} y={150} textAnchor="middle" fontSize={8.5} fill={C.warm}>
           there is no tick mark here that everyone agrees on

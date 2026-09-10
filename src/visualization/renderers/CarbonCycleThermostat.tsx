@@ -48,11 +48,11 @@ export default function CarbonCycleThermostat(_props: VisualizationProps): React
   const H = 208;
   const pw = 380 - LEFT - 14;
   const ph = H - TOP - 40;
-  const px = (v: number): number => LEFT + ((Math.log10(v) + 1) / 3.4) * pw;
+  const px = (v: number): number => LEFT + ((Math.log10(v) + 2) / 5) * pw;
   const py = (t: number): number => TOP + ph - ((t - 258) / 60) * ph;
 
   const curve = Array.from({ length: 90 }, (_, i) => {
-    const c = 10 ** (-1 + (i / 89) * 3.4);
+    const c = 10 ** (-2 + (i / 89) * 5);
     return `${i === 0 ? 'M' : 'L'}${px(c).toFixed(2)},${py(tempFor(c)).toFixed(2)}`;
   }).join(' ');
 
@@ -89,7 +89,7 @@ export default function CarbonCycleThermostat(_props: VisualizationProps): React
             </text>
           </g>
         ))}
-        {[0.1, 1, 10, 100, 1000].map((c) => (
+        {[0.01, 0.1, 1, 10, 100, 1000].map((c) => (
           <g key={c}>
             <line x1={px(c)} x2={px(c)} y1={TOP} y2={TOP + ph} stroke={C.grid} />
             <text

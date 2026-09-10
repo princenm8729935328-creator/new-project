@@ -51,9 +51,13 @@ export default function TeleonomyVsTeleology(_props: VisualizationProps): ReactN
             <text x={190} y={40} textAnchor="middle" fontSize={9} fill={C.life}>
               causation runs forward
             </text>
-            <text x={190} y={146} textAnchor="middle" fontSize={8.5} fill={C.dim}>
-              the heart has its function because of what happened before, not because of what it
-              will do
+            {/* Two elements, not one wrapped string: SVG text does not wrap,
+                so the single line ran past both edges of the figure. */}
+            <text x={190} y={140} textAnchor="middle" fontSize={8.5} fill={C.dim}>
+              the heart has its function because of what happened before,
+            </text>
+            <text x={190} y={152} textAnchor="middle" fontSize={8.5} fill={C.dim}>
+              not because of what it will do
             </text>
           </g>
         ) : (

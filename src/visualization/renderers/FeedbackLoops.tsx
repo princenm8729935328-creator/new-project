@@ -60,8 +60,8 @@ export default function FeedbackLoops(_props: VisualizationProps): ReactNode {
   if (!loop) return null;
 
   const CX = 190;
-  const CY = 92;
-  const R = 62;
+  const CY = 88;
+  const R = 58;
   const positions = loop.nodes.map((_, i) => {
     const a = -Math.PI / 2 + (i / loop.nodes.length) * Math.PI * 2;
     return [CX + Math.cos(a) * R, CY + Math.sin(a) * R] as const;
@@ -69,7 +69,7 @@ export default function FeedbackLoops(_props: VisualizationProps): ReactNode {
 
   return (
     <Stack>
-      <Figure height={182}>
+      <Figure height={192}>
         <circle
           cx={CX}
           cy={CY}
@@ -98,24 +98,31 @@ export default function FeedbackLoops(_props: VisualizationProps): ReactNode {
             />
           );
         })}
-        {positions.map((p, i) => (
-          <g key={loop.nodes[i]}>
-            <circle cx={p[0]} cy={p[1]} r={5} fill={loop.colour} />
-            <text
-              x={p[0]}
-              y={p[1] + (p[1] < CY ? -11 : 17)}
-              textAnchor="middle"
-              fontSize={8.5}
-              fill="rgba(233,238,247,0.95)"
-            >
-              {loop.nodes[i]}
-            </text>
-          </g>
-        ))}
-        <text x={CX} y={CY - 4} textAnchor="middle" fontSize={22} fill={loop.colour}>
+        {positions.map((p, i) => {
+          // Labels are placed radially outward. Nodes on the horizontal get a
+          // side anchor rather than being centred underneath, which is what
+          // used to collide with the caption at the centre of the ring.
+          const onSide = Math.abs(p[1] - CY) < 12;
+          const left = p[0] < CX;
+          return (
+            <g key={loop.nodes[i]}>
+              <circle cx={p[0]} cy={p[1]} r={5} fill={loop.colour} />
+              <text
+                x={onSide ? p[0] + (left ? -9 : 9) : p[0]}
+                y={onSide ? p[1] + 3 : p[1] + (p[1] < CY ? -11 : 17)}
+                textAnchor={onSide ? (left ? 'end' : 'start') : 'middle'}
+                fontSize={8.5}
+                fill="rgba(233,238,247,0.95)"
+              >
+                {loop.nodes[i]}
+              </text>
+            </g>
+          );
+        })}
+        <text x={CX} y={CY + 8} textAnchor="middle" fontSize={22} fill={loop.colour}>
           {loop.sign}
         </text>
-        <text x={CX} y={CY + 12} textAnchor="middle" fontSize={8.5} fill={C.dim}>
+        <text x={CX} y={178} textAnchor="middle" fontSize={9} fill={C.dim}>
           {loop.sign === '+' ? 'self-amplifying' : 'self-correcting'}
         </text>
       </Figure>

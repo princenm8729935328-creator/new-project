@@ -12,13 +12,15 @@ import { C, Figure, Note, Stack, ToggleRow } from './lifeKit';
 
 const VIEWS = ['What water was doing', 'How limbs appeared'] as const;
 
+// Kept short deliberately: the right-hand column is 168 units wide, and longer
+// phrases ran off the edge of the figure. The full account is in the note.
 const SERVICES: readonly (readonly [string, string])[] = [
-  ['holds the body up', 'skeleton and muscle strong enough for gravity'],
+  ['holds the body up', 'skeleton and muscle to resist gravity'],
   ['keeps everything wet', 'waterproof skin, cuticle, or shell'],
   ['delivers dissolved oxygen', 'lungs or tracheae'],
-  ['carries away waste', 'kidneys concentrating urine to save water'],
-  ['carries eggs and sperm together', 'internal fertilisation, or the amniotic egg'],
-  ['buffers temperature', 'behaviour, insulation, or tolerance of swings'],
+  ['carries away waste', 'kidneys that concentrate urine'],
+  ['carries eggs and sperm together', 'internal fertilisation, amniotic eggs'],
+  ['buffers temperature', 'behaviour, insulation, tolerance'],
 ];
 
 const STEPS: readonly (readonly [string, string])[] = [
@@ -53,7 +55,7 @@ export default function MoveToLand(_props: VisualizationProps): ReactNode {
                   rx={3}
                   fill="rgba(111,179,255,0.16)"
                 />
-                <text x={20} y={37 + i * 28} fontSize={8} fill="rgba(233,238,247,0.9)">
+                <text x={20} y={37 + i * 28} fontSize={7.5} fill="rgba(233,238,247,0.9)">
                   {had}
                 </text>
                 <path
@@ -69,7 +71,7 @@ export default function MoveToLand(_props: VisualizationProps): ReactNode {
                   rx={3}
                   fill="rgba(197,143,106,0.16)"
                 />
-                <text x={208} y={37 + i * 28} fontSize={8} fill="rgba(233,238,247,0.9)">
+                <text x={208} y={37 + i * 28} fontSize={7.5} fill="rgba(233,238,247,0.9)">
                   {need}
                 </text>
               </g>

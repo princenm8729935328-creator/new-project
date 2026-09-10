@@ -18,7 +18,7 @@ export default function ReplayTheTape(_props: VisualizationProps): ReactNode {
 
   return (
     <Stack>
-      <Figure height={186}>
+      <Figure height={194}>
         {view === 0 ? (
           <g>
             <text x={16} y={16} fontSize={9} fill={C.dim}>
@@ -48,7 +48,7 @@ export default function ReplayTheTape(_props: VisualizationProps): ReactNode {
                 </g>
               );
             })}
-            <text x={244} y={190} textAnchor="middle" fontSize={8.5} fill={C.life}>
+            <text x={240} y={188} textAnchor="middle" fontSize={8.5} fill={C.life}>
               at ~31,500 generations, one population learned to eat citrate
             </text>
           </g>

@@ -31,7 +31,7 @@ export default function NichePartitioning(_props: VisualizationProps): ReactNode
   const TOP = 26;
   const HT = 122;
   const LEFT = 96;
-  const W = 240;
+  const W = 272;
 
   return (
     <Stack>
@@ -58,9 +58,17 @@ export default function NichePartitioning(_props: VisualizationProps): ReactNode
                 height={h}
                 rx={3}
                 fill={w.colour}
-                opacity={view === 0 ? 0.6 : 0.3}
+                opacity={view === 0 ? 0.75 : 0.4}
               />
-              <text x={LEFT + W + 6} y={y + h / 2 + 3} fontSize={7.5} fill={w.colour}>
+              {/* Inside the band rather than beside it: "Black-throated
+                  green" set to the right of a 240-wide band ran past the
+                  viewBox edge. */}
+              <text
+                x={LEFT + 8 + (view === 0 ? 0 : i * 3)}
+                y={y + h / 2 + 3}
+                fontSize={8}
+                fill="rgba(9,16,14,0.92)"
+              >
                 {w.name}
               </text>
             </g>

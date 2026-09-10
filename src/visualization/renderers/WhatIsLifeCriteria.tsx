@@ -69,20 +69,22 @@ export default function WhatIsLifeCriteria(_props: VisualizationProps): ReactNod
   const LEFT = 82;
   const COL = (380 - LEFT - 10) / CRITERIA.length;
   const ROW = 22;
-  const TOP = 44;
+  const TOP = 48;
 
   return (
     <Stack>
       <Figure height={TOP + CASES.length * ROW + 12}>
+        {/* Headers sit flat rather than rotated. Slanted headers ran their tails
+            down into the first row of marks; the columns are wide enough to
+            take the words horizontally. */}
         {CRITERIA.map((c, i) => (
           <text
             key={c}
             x={LEFT + COL * i + COL / 2}
-            y={38}
-            textAnchor="end"
-            fontSize={8}
+            y={32}
+            textAnchor="middle"
+            fontSize={7}
             fill={C.dim}
-            transform={`rotate(-38 ${LEFT + COL * i + COL / 2} 38)`}
           >
             {c}
           </text>
