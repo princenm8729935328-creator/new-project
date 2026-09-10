@@ -116,8 +116,10 @@ export default function StringVibrations({
   useEffect(draw, [draw]);
 
   return (
-    <div className={styles.stack}>
-      <canvas ref={canvasRef} className={styles.canvas} />
+    // Flow layout: the caption under this figure is long enough that, in the
+    // fixed-aspect stage, it left the canvas no height at all on a phone.
+    <div className={styles.chartStack}>
+      <canvas ref={canvasRef} className={styles.flowCanvas} />
       <div className={styles.controlRows}>
         <div className={styles.controlRow}>
           <span className={styles.controlName}>Mode</span>

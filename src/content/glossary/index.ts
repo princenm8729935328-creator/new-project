@@ -352,6 +352,221 @@ export const GLOSSARY: readonly GlossaryTerm[] = [
       'A redundancy in how a field is described that, when required to hold independently at every point, forces the existence of specific force-carrying fields. The Standard Model’s three interactions all arise this way.',
     references: [referenceId('peskin-schroeder-1995')],
   },
+  // ---------------------------------------------------------------------------
+  // Phase 5 — Stars & Galaxies
+  // ---------------------------------------------------------------------------
+  {
+    id: glossaryTermId('luminosity'),
+    term: 'Luminosity',
+    short:
+      'The total power a star radiates in all directions, across all wavelengths — energy per second, not brightness as seen from Earth. Apparent brightness depends on distance; luminosity does not.',
+    symbol: 'L',
+    unit: 'watts (or solar luminosities, L☉ = 3.828 × 10²⁶ W)',
+    references: [referenceId('iau-2015-nominal-constants')],
+  },
+  {
+    id: glossaryTermId('effective-temperature'),
+    term: 'Effective temperature',
+    aliases: ['surface temperature'],
+    short:
+      'The temperature of the ideal blackbody that would radiate the same power per unit area as the star does. A star has no solid surface, so this is a defined quantity rather than a temperature you could touch.',
+    symbol: 'T_eff',
+    unit: 'kelvin',
+    references: [referenceId('pecaut-mamajek-2013-stellar-scale')],
+  },
+  {
+    id: glossaryTermId('hydrostatic-equilibrium'),
+    term: 'Hydrostatic equilibrium',
+    short:
+      'The condition in which the outward pressure gradient at every depth inside a star balances the inward weight of the material above it. A star that satisfies it neither collapses nor expands.',
+    references: [referenceId('eddington-1926-internal-constitution')],
+  },
+  {
+    id: glossaryTermId('main-sequence'),
+    term: 'Main sequence',
+    short:
+      'The long phase of a star’s life during which it fuses hydrogen into helium in its core. Most stars are on it at any moment, because it lasts far longer than anything that follows.',
+    references: [referenceId('gaia-2018-hr-diagram')],
+  },
+  {
+    id: glossaryTermId('hr-diagram'),
+    term: 'Hertzsprung–Russell diagram',
+    aliases: ['HR diagram', 'colour–magnitude diagram'],
+    short:
+      'A plot of stellar luminosity against surface temperature. Stars do not fill it evenly: they cluster into a diagonal main sequence, a giant branch and a white-dwarf sequence, and those groupings are what stellar evolution has to explain.',
+    references: [referenceId('gaia-2018-hr-diagram')],
+  },
+  {
+    id: glossaryTermId('molecular-cloud'),
+    term: 'Molecular cloud',
+    short:
+      'A cold, dense region of interstellar gas — mostly molecular hydrogen, around 10 to 20 kelvin — where gravity can overcome pressure and stars form. Dust inside it blocks visible light, which is why these regions look like dark patches.',
+    references: [referenceId('draine-2011-ism')],
+  },
+  {
+    id: glossaryTermId('protostar'),
+    term: 'Protostar',
+    short:
+      'A collapsing clump of cloud material that already shines from the heat of its own contraction but has not yet started sustained hydrogen fusion in its core.',
+    references: [referenceId('mckee-ostriker-2007-star-formation')],
+  },
+  {
+    id: glossaryTermId('interstellar-medium'),
+    term: 'Interstellar medium',
+    aliases: ['ISM'],
+    short:
+      'The gas and dust between the stars of a galaxy. It is the material stars form out of, and the material stars return enriched when they die.',
+    references: [referenceId('draine-2011-ism')],
+  },
+  {
+    id: glossaryTermId('metallicity'),
+    term: 'Metallicity',
+    short:
+      'In astronomy, the proportion of a star’s material heavier than helium. "Metal" here means every element from lithium upward, including carbon, oxygen and nitrogen — a usage with nothing to do with chemistry’s metals.',
+    symbol: 'Z',
+    references: [referenceId('asplund-2021-solar-composition')],
+  },
+  {
+    id: glossaryTermId('degeneracy-pressure'),
+    term: 'Degeneracy pressure',
+    short:
+      'A pressure arising because identical fermions cannot share a quantum state, so compressing them forces some into high-momentum states. It does not depend on temperature, which is why a cooling white dwarf does not shrink.',
+    relatedTerms: [glossaryTermId('spin')],
+    references: [referenceId('chandrasekhar-1931')],
+  },
+  {
+    id: glossaryTermId('chandrasekhar-limit'),
+    term: 'Chandrasekhar limit',
+    short:
+      'The maximum mass a white dwarf can have and still be held up by electron degeneracy pressure — about 1.4 solar masses for a typical carbon–oxygen composition. Above it, no stable white dwarf exists.',
+    symbol: 'M_Ch',
+    references: [referenceId('chandrasekhar-1931')],
+  },
+  {
+    id: glossaryTermId('white-dwarf'),
+    term: 'White dwarf',
+    short:
+      'The exposed, cooling core left behind by a low- or intermediate-mass star: roughly the mass of the Sun in the volume of the Earth, supported by electron degeneracy pressure rather than by fusion.',
+    references: [referenceId('pons-2005-white-dwarf-cooling')],
+  },
+  {
+    id: glossaryTermId('neutron-star'),
+    term: 'Neutron star',
+    short:
+      'The remnant of a massive star’s collapsed core: about 1.4 to 2 solar masses within a radius of roughly 11 to 13 kilometres, supported by neutron degeneracy pressure and the strong nuclear force.',
+    references: [referenceId('ozel-freire-2016-neutron-stars')],
+  },
+  {
+    id: glossaryTermId('pulsar'),
+    term: 'Pulsar',
+    short:
+      'A rotating, magnetised neutron star whose beamed radiation sweeps past Earth once per rotation, producing pulses of extraordinary regularity.',
+    references: [referenceId('hewish-1968-pulsar')],
+  },
+  {
+    id: glossaryTermId('supernova'),
+    term: 'Supernova',
+    aliases: ['supernovae'],
+    short:
+      'The explosive destruction or disruption of a star. Core-collapse supernovae end massive stars when their iron cores implode; thermonuclear (Type Ia) supernovae destroy white dwarfs pushed past stability.',
+    references: [referenceId('woosley-2002-massive-stars')],
+  },
+  {
+    id: glossaryTermId('binding-energy'),
+    term: 'Binding energy per nucleon',
+    short:
+      'The energy released per proton or neutron when a nucleus is assembled from free nucleons. It peaks near iron-56 and nickel-62, which is why fusion releases energy below iron and costs energy above it.',
+    references: [referenceId('audi-2021-atomic-mass')],
+  },
+  {
+    id: glossaryTermId('r-process'),
+    term: 'r-process',
+    aliases: ['rapid neutron capture'],
+    short:
+      'Rapid neutron capture: nuclei absorb neutrons far faster than they can beta-decay, building very heavy elements. Neutron-star mergers are a confirmed site; whether some supernovae also contribute is still being worked out.',
+    references: [referenceId('watson-2019-kilonova-strontium')],
+  },
+  {
+    id: glossaryTermId('s-process'),
+    term: 's-process',
+    aliases: ['slow neutron capture'],
+    short:
+      'Slow neutron capture: nuclei absorb neutrons slowly enough that unstable ones decay between captures. It happens mainly in asymptotic giant branch stars and produces roughly half the elements heavier than iron.',
+    references: [referenceId('herwig-2005-agb')],
+  },
+  {
+    id: glossaryTermId('initial-mass-function'),
+    term: 'Initial mass function',
+    aliases: ['IMF'],
+    short:
+      'The distribution of masses with which stars are born. It is steeply weighted toward low masses: for every star above 10 solar masses, hundreds of smaller ones form.',
+    references: [referenceId('kroupa-2001-imf')],
+  },
+  {
+    id: glossaryTermId('stellar-population'),
+    term: 'Stellar population',
+    aliases: ['Population I', 'Population II', 'Population III'],
+    short:
+      'A grouping of stars by metallicity and age. Population I stars are metal-rich and young, Population II metal-poor and old, and Population III the hypothesised first generation formed from pristine gas — never yet observed individually.',
+    references: [referenceId('beers-christlieb-2005-metal-poor')],
+  },
+  {
+    id: glossaryTermId('galactic-halo'),
+    term: 'Galactic halo',
+    short:
+      'The roughly spherical region surrounding a galaxy’s disk, containing old stars, globular clusters, hot diffuse gas, and — inferred from dynamics — most of the galaxy’s mass in the form of dark matter.',
+    references: [referenceId('bland-hawthorn-gerhard-2016-milky-way')],
+  },
+  {
+    id: glossaryTermId('agn'),
+    term: 'Active galactic nucleus',
+    aliases: ['AGN', 'quasar'],
+    short:
+      'A galactic centre whose supermassive black hole is accreting rapidly enough to outshine the rest of the galaxy. The energy it releases can heat and expel surrounding gas.',
+    references: [referenceId('fabian-2012-agn-feedback')],
+  },
+  {
+    id: glossaryTermId('standard-candle'),
+    term: 'Standard candle',
+    short:
+      'An object whose intrinsic luminosity can be determined independently, so that its apparent brightness gives its distance. Cepheid variables and Type Ia supernovae are the principal examples.',
+    references: [referenceId('leavitt-1912-cepheids')],
+  },
+  {
+    id: glossaryTermId('parallax'),
+    term: 'Parallax',
+    short:
+      'The small annual shift in a nearby star’s apparent position caused by Earth’s motion around the Sun. It is the only direct geometric measurement of stellar distance, and the foundation of every rung above it.',
+    symbol: 'p',
+    unit: 'arcseconds',
+    references: [referenceId('bessel-1838-parallax'), referenceId('gaia-2021-edr3-parallax')],
+  },
+  {
+    id: glossaryTermId('parsec'),
+    term: 'Parsec',
+    short:
+      'The distance at which one astronomical unit subtends one arcsecond — about 3.26 light-years. Defined so that distance in parsecs is one divided by the parallax in arcseconds.',
+    symbol: 'pc',
+    unit: 'distance',
+    references: [referenceId('iau-2015-nominal-constants')],
+  },
+  {
+    id: glossaryTermId('spectroscopy'),
+    term: 'Spectroscopy',
+    short:
+      'Spreading light into its component wavelengths and reading the pattern of bright and dark lines. It reveals what an object is made of, how hot it is, how fast it is moving, and often how massive it is.',
+    references: [
+      referenceId('fraunhofer-1817-lines'),
+      referenceId('payne-1925-stellar-atmospheres'),
+    ],
+  },
+  {
+    id: glossaryTermId('protoplanetary-disk'),
+    term: 'Protoplanetary disk',
+    short:
+      'The rotating disk of gas and dust left around a young star after its formation. Planets are built from its material, and rings and gaps have now been imaged directly in many such disks.',
+    references: [referenceId('andrews-2018-dsharp')],
+  },
 ];
 
 const BY_ID = new Map(GLOSSARY.map((term) => [term.id, term]));

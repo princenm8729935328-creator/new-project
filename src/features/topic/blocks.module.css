@@ -118,6 +118,11 @@
 
 .references {
   display: grid;
+  /* An auto track is at least as wide as its widest item's min-content, so a
+     long citation inside a narrow quantity column widened the track instead of
+     wrapping. Capping the track lets the text wrap, which is what a reference
+     list in a side column has to do. */
+  grid-template-columns: minmax(0, 1fr);
   gap: var(--space-2);
   font-size: var(--step--1);
   color: var(--text-tertiary);
@@ -125,11 +130,21 @@
 
 .references a {
   color: var(--text-secondary);
+  /*
+   * A DOI is one unbreakable token, and some are long enough to exceed a
+   * narrow column on their own — which, in a grid track, widens the track
+   * rather than wrapping, and pushes the whole page sideways. Breaking inside
+   * the token is the lesser evil: a wrapped DOI is still copyable, a
+   * horizontally scrolling page is not still readable.
+   */
+  overflow-wrap: anywhere;
 }
 
 .referenceItem {
   display: grid;
-  grid-template-columns: auto 1fr;
+  /* `minmax(0, 1fr)` rather than `1fr`: a grid track's default minimum is its
+     min-content width, so one long word would otherwise set the column. */
+  grid-template-columns: auto minmax(0, 1fr);
   gap: var(--space-2);
 }
 

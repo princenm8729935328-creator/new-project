@@ -51,6 +51,12 @@ export const VISUALIZATIONS: readonly VisualizationSpec[] = [
       'A conceptual diagram of planet formation. Orbital speeds follow the correct relationship with distance — inner material orbits faster — but everything else is illustrative. The planets are drawn enormously oversized relative to their orbits, gaps open in seconds rather than millions of years, and no accretion physics is simulated.',
     description:
       'An animated diagram viewed at a shallow angle. A bright young star sits at the centre of a flattened, rotating disc of dust grains. Inner grains circle faster than outer ones. Over time, four bodies grow along the disc and sweep clear gaps around their orbits, leaving distinct rings of remaining dust.',
+    // Sources added when Phase 5 began reusing this figure; the caption and
+    // description are exactly as their author left them.
+    references: [
+      referenceId('andrews-2018-dsharp'),
+      referenceId('drazkowska-2023-planet-formation'),
+    ],
     minimumQuality: 'low',
   },
   {
@@ -1105,6 +1111,7 @@ export const VISUALIZATIONS: readonly VisualizationSpec[] = [
       referenceId('susskind-2003-landscape'),
     ],
     minimumQuality: 'low',
+    layout: 'flow',
   },
   {
     id: visualizationId('proper-time-paths'),
@@ -1198,6 +1205,705 @@ export const VISUALIZATIONS: readonly VisualizationSpec[] = [
       referenceId('arndt-1999-fullerene'),
       referenceId('fein-2019-massive-interference'),
       referenceId('zurek-2003-decoherence'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+
+  // ---------------------------------------------------------------------------
+  // Phase 5 — Stars & Galaxies
+  //
+  // The recurring risk in this section is the pretty astronomy picture that
+  // teaches nothing. Every figure below therefore either plots a computed
+  // physical relationship, or is explicitly labelled a conceptual diagram and
+  // says in its caption which parts are illustrative. None of them is a
+  // rendering of what a telescope would see.
+  // ---------------------------------------------------------------------------
+  {
+    id: visualizationId('hydrostatic-equilibrium'),
+    title: 'The balance that is a star',
+    fidelity: 'schematic',
+    runtime: 'canvas2d',
+    interactive: true,
+    caption:
+      'A conceptual diagram of the balance between gravity and pressure. The restoring behaviour is real — perturb a stable star and it returns — but no stellar structure equations are being integrated here, and the response time is compressed from thousands of years to seconds. The arrows are drawn proportional to the imbalance at each moment, so their relative lengths carry the argument.',
+    description:
+      'An interactive diagram of a star in cross-section, with inward gravity arrows and outward pressure arrows at several depths. A slider disturbs the balance: pushing toward gravity makes the star contract, which heats the interior and lengthens the pressure arrows until the contraction stops and reverses. Pushing the other way makes it expand, cool, and settle back. A readout reports the current core temperature and radius relative to equilibrium, and the star always returns to the same state — which is the point of the figure.',
+    references: [referenceId('eddington-1926-internal-constitution')],
+    minimumQuality: 'low',
+  },
+  {
+    id: visualizationId('stellar-structure'),
+    title: 'How energy gets out of a star',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A conceptual cross-section. The zone boundaries are taken from standard stellar models for each mass, so the switch between radiative and convective interiors around 1.3 solar masses is a real model result. The relative sizes are drawn to scale within each star, but the stars are not drawn to scale against each other, and the convection cells are illustrative rather than computed.',
+    description:
+      'A cutaway of stellar interiors for three masses. A 0.3 solar mass red dwarf is fully convective throughout. The Sun has a radiative interior out to about 70 percent of its radius and a convective outer envelope. A 5 solar mass star has the arrangement reversed — a convective core, because the CNO cycle concentrates energy generation in a small central volume, surrounded by a radiative envelope. Labels mark the core where fusion occurs, the radiative zone where photons random-walk outward, and the convective zone where hot material physically rises.',
+    references: [
+      referenceId('eddington-1926-internal-constitution'),
+      referenceId('christensen-dalsgaard-2002-helioseismology'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('molecular-cloud-collapse'),
+    title: 'A cloud fragments as it falls',
+    fidelity: 'schematic',
+    runtime: 'canvas2d',
+    interactive: true,
+    caption:
+      'A conceptual diagram of gravitational collapse and fragmentation. No hydrodynamics is solved; the fragmentation follows the Jeans criterion evaluated at each step, so the fact that smaller regions become unstable as density rises is the real physical relationship. The timescale is compressed from millions of years to seconds, and the particle count is thousands of times too low.',
+    description:
+      'An animated diagram beginning with a diffuse cloud of cold gas. A temperature slider controls how effectively the gas can cool. With cooling on, gravity wins: the cloud contracts, and as it densifies it splits into several independently collapsing clumps, each brightening into a protostar. With cooling off, the cloud’s pressure holds it up and nothing forms. A readout gives the current density and the corresponding Jeans mass — the minimum mass that can collapse — which falls as the density rises, which is why one cloud produces many stars.',
+    references: [referenceId('mckee-ostriker-2007-star-formation'), referenceId('draine-2011-ism')],
+    minimumQuality: 'low',
+  },
+  {
+    id: visualizationId('gravitational-heating'),
+    title: 'Losing energy makes it hotter',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Gravitational energy, thermal energy and total energy for a contracting self-gravitating sphere, computed from the virial theorem. The counterintuitive result — that radiating energy away raises the internal temperature — is not an approximation but a consequence of 2K + U = 0 for any such system in equilibrium. The curve stops where degeneracy would take over, which is where the argument stops applying.',
+    description:
+      'A chart with radius shrinking to the right. Three curves are plotted: gravitational potential energy falling steeply negative, thermal energy rising, and total energy falling. As the sphere contracts, exactly half the released gravitational energy becomes heat and half is radiated away, so the object grows hotter while its total energy decreases. A slider moves along the contraction and a readout gives the internal temperature and the Kelvin–Helmholtz timescale — which for the Sun is about 31 million years, the answer nineteenth-century physics obtained for the Sun’s age and the reason that answer had to be wrong.',
+    references: [referenceId('eddington-1926-internal-constitution')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('stellar-thermostat'),
+    title: 'A star regulating itself',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Nuclear energy generation rate against core temperature, computed with the standard power-law approximations: the proton–proton chain scaling as roughly T⁴ near solar conditions and the CNO cycle as roughly T¹⁷. The steepness is what makes the feedback loop work, and the crossover near 1.3 solar masses is a real model result. Absolute rates are normalised to solar conditions rather than computed from cross-sections.',
+    description:
+      'A chart of energy generation rate against core temperature on logarithmic axes, with two curves: the shallow proton–proton chain and the very steep CNO cycle, crossing at around 17 million kelvin. A slider perturbs the core temperature away from equilibrium and the diagram traces the response — a temperature excess produces a large energy surge, which expands and cools the core, returning it to the starting point. A readout reports the fractional change in energy output for the chosen temperature change, showing that a 5 percent rise roughly doubles the CNO rate while raising the proton–proton rate by about 20 percent.',
+    references: [
+      referenceId('bethe-1939-energy-production'),
+      referenceId('bahcall-2005-solar-neutrinos'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('proton-proton-chain'),
+    title: 'Four protons become one helium nucleus',
+    fidelity: 'schematic',
+    runtime: 'canvas2d',
+    interactive: true,
+    caption:
+      'A conceptual diagram of the pp-I chain. The particles, the reaction order and the energy released at each step are correct; the spatial arrangement, the sizes and the timing are entirely illustrative. Real reaction timescales differ by more than twenty orders of magnitude between the first step and the last, which cannot be shown at any single pace — the figure states the true waiting times in a readout instead.',
+    description:
+      'An animated three-step diagram. First, two protons fuse into deuterium, emitting a positron and a neutrino — the step that requires a proton to convert into a neutron, and which a given proton in the Sun’s core waits billions of years for. Second, deuterium captures a proton to form helium-3, releasing a gamma ray, which takes about a second. Third, two helium-3 nuclei combine into helium-4, returning two protons. A step control walks through the sequence, and a readout gives the energy released and the characteristic waiting time for each step, together with the total of 26.73 MeV of which about 0.6 MeV escapes as neutrinos.',
+    references: [referenceId('bethe-1939-energy-production'), referenceId('audi-2021-atomic-mass')],
+    minimumQuality: 'low',
+  },
+  {
+    id: visualizationId('cno-cycle'),
+    title: 'Carbon as a catalyst',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A conceptual diagram of the CNO-I cycle. The reaction sequence, the nuclei involved and the energy released are correct. The circular layout is a visual device — nothing physically travels in a circle — and the relative step timings are not represented, since the beta decays take minutes while the proton captures take far longer.',
+    description:
+      'A ring diagram of six nuclei: carbon-12 captures a proton to become nitrogen-13, which beta-decays to carbon-13, which captures a proton to become nitrogen-14, then oxygen-15, which decays to nitrogen-15, which captures a final proton and splits into carbon-12 plus helium-4. Stepping around the ring highlights each reaction with its energy release. The key point is marked explicitly: the carbon is returned unchanged at the end, so it is a catalyst rather than a fuel, and the net reaction is the same as the proton–proton chain — four protons into one helium nucleus.',
+    references: [referenceId('bethe-1939-energy-production'), referenceId('borexino-2020-cno')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('mass-luminosity-relation'),
+    title: 'Ten times brighter for twice the mass',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Published masses and luminosities for named stars whose masses are determined dynamically — from binary orbits, and from eclipses where the system is eclipsing — rather than read off a model. The plotted power law is the standard broken approximation shown as a guide; the exponent genuinely varies from about 2.3 at the bottom of the main sequence to about 3.5 in the middle and flatter still at the top, so a single value is a convenience rather than a law.',
+    description:
+      'A logarithmic chart of luminosity against mass, with measured stars plotted as points spanning roughly 0.1 to 12 solar masses and seven orders of magnitude in luminosity. A power-law line with slope about 3.5 runs through them. A mass slider reports the corresponding luminosity and the resulting main-sequence lifetime, making the compounding explicit: ten times the mass gives roughly 3,000 times the luminosity and about one three-hundredth of the lifetime. The deviation from a single power law at both ends of the mass range is visible in the data.',
+    references: [
+      referenceId('torres-2010-eclipsing-binaries'),
+      referenceId('eddington-1926-internal-constitution'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('hr-diagram'),
+    title: 'Stars do not fill this diagram evenly',
+    fidelity: 'data-driven',
+    runtime: 'canvas2d',
+    interactive: true,
+    caption:
+      'A Hertzsprung–Russell diagram populated from the empirical spectral-type sequence for main-sequence stars, plus the giant branch and white dwarf sequence at their measured positions. The point density reflects the stellar initial mass function rather than an observed sample, so the shape of the populated regions is real while the exact counts are illustrative. Temperature increases leftward, following the century-old convention.',
+    description:
+      'A scatter of stars plotted by luminosity against surface temperature. They do not fill the plane: most lie along a diagonal band from hot and bright at the upper left to cool and faint at the lower right — the main sequence — with a separate clump of cool but luminous red giants at the upper right and a sparse sequence of hot but faint white dwarfs at the lower left. Markers identify the Sun, Sirius, Betelgeuse, Proxima Centauri and Sirius B. A control highlights lines of constant radius, which run diagonally and show that a red giant is luminous despite its low temperature purely because it is enormous.',
+    references: [
+      referenceId('gaia-2018-hr-diagram'),
+      referenceId('pecaut-mamajek-2013-stellar-scale'),
+    ],
+    minimumQuality: 'low',
+  },
+  {
+    id: visualizationId('stellar-evolution-tracks'),
+    title: 'Where a star goes when it leaves the main sequence',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Evolutionary tracks through the Hertzsprung–Russell diagram, following published model grids for solar metallicity. These are computed trajectories, not observed paths — no star has been watched moving along one, since the timescales are millions to billions of years. The tracks are drawn schematically between the model anchor points, and the elapsed times shown at each stage are the model values.',
+    description:
+      'Evolutionary tracks for stars of 1, 5 and 25 solar masses, animated from the main sequence onward. The one-solar-mass track climbs the red giant branch, loops through core helium burning, ascends the asymptotic giant branch and then turns sharply left and down as the envelope is lost and a white dwarf is exposed. The five-solar-mass track crosses the diagram rapidly to become a red giant. The twenty-five-solar-mass track moves nearly horizontally to the supergiant region and ends at core collapse. A play control advances the tracks, and a readout gives the elapsed time and current burning stage.',
+    references: [referenceId('choi-2016-mist')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('red-giant-expansion'),
+    title: 'The core shrinks; the star swells',
+    fidelity: 'schematic',
+    runtime: 'canvas2d',
+    interactive: true,
+    caption:
+      'A conceptual diagram of the giant-branch mirror behaviour. The radius and luminosity change together according to the Stefan–Boltzmann law, so the relationship between surface temperature, radius and brightness is computed rather than drawn. The core is shown enormously oversized — at the same scale as the envelope it would be invisible — and the timescale is compressed from hundreds of millions of years.',
+    description:
+      'An animated cross-section of a star making the transition from main sequence to red giant. As the animation runs, the inert helium core contracts and brightens while a burning shell around it intensifies, and the envelope expands by a factor of over a hundred while its surface cools from yellow-white to deep red. Orbit markers for Mercury, Venus and Earth are drawn at true relative scale so the envelope’s growth can be judged against them. A readout gives the current radius in solar radii, the surface temperature, and the luminosity, showing that a hundredfold radius increase with a halving of temperature raises luminosity roughly six hundredfold.',
+    references: [referenceId('choi-2016-mist'), referenceId('herwig-2005-agb')],
+    minimumQuality: 'low',
+  },
+  {
+    id: visualizationId('onion-shell-burning'),
+    title: 'The last days of a massive star',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A conceptual cross-section of the advanced burning stages. The layer ordering, the fuels and the burning durations come from stellar evolution models and are real results; the layer thicknesses are drawn for legibility and are wildly unrepresentative, since the iron core occupies a tiny fraction of the star’s radius while the hydrogen envelope occupies almost all of it. This structure has never been observed — it is inferred from models.',
+    description:
+      'A cutaway of a massive star shortly before collapse, showing nested shells: hydrogen burning at the outside, then helium, carbon, neon, oxygen and silicon, with an inert iron core at the centre. Selecting a layer reports its fuel, its products, the temperature at which it burns and how long that stage lasts — from millions of years for hydrogen down to about a day for silicon. A logarithmic timeline beside the diagram makes the acceleration visible: the last four stages together occupy less time than a single year.',
+    references: [referenceId('woosley-2002-massive-stars')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('binding-energy-curve'),
+    title: 'The curve that explains why stars die',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Binding energy per nucleon computed directly from measured atomic masses in the AME2020 evaluation. Nothing is fitted or smoothed. The peak at nickel-62, with iron-58 and iron-56 within 0.005 percent of it, is a measured fact about nuclear physics — and it is the reason fusion releases energy below iron, fission releases energy above it, and a massive star with an iron core has run out of options.',
+    description:
+      'A chart of binding energy per nucleon against mass number, rising steeply from hydrogen through helium and carbon, peaking in the iron-group region near mass 56 to 62, and declining slowly toward uranium. Individual nuclei are marked: hydrogen-1 at zero, helium-4 at 7.07 MeV, carbon-12 at 7.68, iron-56 at 8.790, nickel-62 at 8.795 and uranium-238 at 7.57. Selecting any two nuclei shows the energy released or absorbed by converting one into the other, making explicit that reactions toward the peak release energy and reactions away from it cost energy. A shaded region marks the fusion side and the fission side of the peak.',
+    references: [referenceId('audi-2021-atomic-mass')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('element-origins'),
+    title: 'Which stars made which elements',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A periodic table coloured by dominant production site, using the element-by-element attributions computed in a published galactic chemical evolution model. These are model results rather than direct measurements: the yields come from stellar models, weighted by an initial mass function and integrated over galactic history, then checked against observed abundance patterns. Individual percentages carry real uncertainty, and nitrogen and the heaviest elements are actively debated.',
+    description:
+      'A periodic table in which each element is coloured by where most of it was made: Big Bang nucleosynthesis for hydrogen, helium and a little lithium; dying low- and intermediate-mass stars for much of the carbon and nitrogen; core-collapse supernovae for oxygen, neon, magnesium and silicon; thermonuclear supernovae for roughly half the iron; and rapid neutron capture, in neutron-star mergers, for gold, platinum, uranium and their neighbours. Selecting an element gives its dominant sources with approximate percentages and a note on how confident the attribution is. A legend states plainly that these are computed contributions, not measurements of individual atoms.',
+    references: [
+      referenceId('kobayashi-2020-origin-of-elements'),
+      referenceId('b2fh-1957'),
+      referenceId('cyburt-2016-bbn'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('core-collapse'),
+    title: 'A second that ends a star',
+    fidelity: 'schematic',
+    runtime: 'canvas2d',
+    interactive: true,
+    caption:
+      'A conceptual diagram of core collapse. The sequence — collapse, bounce at nuclear density, shock stall, neutrino heating, revival — follows the leading model, and the energy split of roughly 99 percent into neutrinos is a robust result confirmed by SN 1987A. No hydrodynamics or neutrino transport is being computed. The explosion mechanism itself remains an active research problem, and this figure shows the leading model rather than an established fact.',
+    description:
+      'An animated sequence in five stages. The iron core collapses inward at a quarter of the speed of light. The centre reaches nuclear density and stiffens abruptly, launching a shock wave outward. The shock stalls within milliseconds as it spends its energy disintegrating infalling iron. A flood of neutrinos streams outward, a small fraction of which is reabsorbed behind the shock, and convective plumes carry that heat where it is needed. The revived shock breaks out and destroys the star. A stage control steps through the sequence, and an energy readout shows the split between neutrinos, kinetic energy and light — 99 percent, 1 percent and 0.01 percent.',
+    references: [referenceId('janka-2012-explosion-mechanism'), referenceId('hirata-1987-sn1987a')],
+    minimumQuality: 'low',
+  },
+  {
+    id: visualizationId('remnant-outcomes'),
+    title: 'What a star leaves behind',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'The mapping from a star’s birth mass to its final remnant, drawn from stellar evolution models. The boundaries are approximate and the middle range is genuinely uncertain — recent modelling suggests the mapping is not even monotonic, with masses that explode interleaved among masses that collapse quietly. The uncertainty is drawn as a shaded band rather than hidden behind a sharp line.',
+    description:
+      'A horizontal axis of initial stellar mass from 0.08 to 100 solar masses, divided into regions by outcome. Below about 0.08 solar masses, no star forms at all — a brown dwarf. Up to about 8 solar masses, a carbon–oxygen white dwarf. Between roughly 8 and 20, a neutron star. Above that, black holes become increasingly likely, with a shaded band marking where the outcome depends on metallicity, rotation, mass loss and binary history. A second axis shows the remnant mass, which does not rise smoothly with initial mass. A note records the red supergiant problem: pre-explosion images have not found the high-mass progenitors that single-star models predict.',
+    references: [referenceId('smartt-2009-progenitors'), referenceId('woosley-2002-massive-stars')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('neutron-star-density'),
+    title: 'A star’s mass in the space of a city',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Density compared across objects on a logarithmic scale, computed from measured masses and radii. The neutron star value uses the NICER mass and radius determination for PSR J0030+0451. The comparison is exact arithmetic; what is illustrative is the drawing of the neutron star beside a city outline, which is drawn to scale in diameter only.',
+    description:
+      'A logarithmic density comparison spanning twenty-two orders of magnitude: air at about 1.2 kg per cubic metre, water at 1,000, lead at 11,340, the Sun’s core at 150,000, a white dwarf at around 10⁹, an atomic nucleus at 2.7 × 10¹⁷, and a neutron star at several times that. Beside it, a neutron star of about 24 kilometres diameter is drawn against a city street grid at the same scale. A readout converts the selected density into an everyday comparison — a sugar-cube volume of neutron star material weighing roughly as much as all of humanity.',
+    references: [referenceId('ozel-freire-2016-neutron-stars'), referenceId('riley-2019-nicer')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('chandrasekhar-limit'),
+    title: 'Add mass and it gets smaller',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'The white dwarf mass–radius relation computed from the degenerate equation of state, interpolating between the non-relativistic limit where radius scales as the inverse cube root of mass and the ultra-relativistic limit where the radius goes to zero at a finite mass. The limiting mass of about 1.44 solar masses for a composition with two nucleons per electron is a first-principles result, not a fit. Measured white dwarfs are plotted for comparison.',
+    description:
+      'A chart of white dwarf radius against mass. The curve falls as mass increases — the opposite of ordinary objects — and plunges toward zero radius as the mass approaches 1.44 solar masses, the Chandrasekhar limit, drawn as a vertical asymptote. Sirius B is marked at 1.02 solar masses and about 5,800 kilometres, smaller than the Earth. A mass slider moves along the curve and reports the radius, the mean density and the fraction of the limiting mass reached, and beyond the limit the readout states plainly that no stable configuration exists.',
+    references: [referenceId('chandrasekhar-1931'), referenceId('pons-2005-white-dwarf-cooling')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('chemical-enrichment'),
+    title: 'The recycling loop',
+    fidelity: 'schematic',
+    runtime: 'canvas2d',
+    interactive: true,
+    caption:
+      'A conceptual diagram of galactic chemical recycling. The metallicity rises with each generation according to a simple closed-box chemical evolution model, so the shape of the enrichment curve reflects real model behaviour — including its known failure to produce enough metal-poor stars, which is why the figure lets inflow be switched on. Timescales are compressed and the number of stars is a token handful.',
+    description:
+      'An animated loop. Gas collapses into stars; stars live and die, returning enriched material to the interstellar medium; that gas forms the next generation, which starts with a higher heavy-element content. A metallicity readout climbs with each cycle. Controls let fresh un-enriched gas flow in, which dilutes the metallicity and slows enrichment, and let supernova-driven outflow remove enriched gas entirely, which is what happens in small galaxies with weak gravity. The three settings produce visibly different enrichment histories from the same starting point.',
+    references: [referenceId('kobayashi-2020-origin-of-elements'), referenceId('kroupa-2001-imf')],
+    minimumQuality: 'low',
+  },
+  {
+    id: visualizationId('galaxy-assembly'),
+    title: 'Building a galaxy from smaller pieces',
+    fidelity: 'schematic',
+    runtime: 'canvas2d',
+    interactive: true,
+    caption:
+      'A conceptual diagram of hierarchical assembly. It is generated to resemble the output of cosmological simulations but is not one: no gravity is being integrated and no gas physics is solved. What it represents faithfully is the ordering — small halos first, merging into larger ones, with gas cooling into a disk while the dark matter stays extended. Timescales are compressed from billions of years into seconds.',
+    description:
+      'An animated diagram beginning with many small dark-matter halos scattered across the frame. They fall together and merge into progressively larger structures. Gas, drawn in a separate colour, cools and settles toward the centres of the halos, flattening into rotating disks in which stars light up — while the dark matter remains extended and roughly spherical throughout. A toggle hides the dark matter to show how little of the structure is visible in stars alone. A caption line states that this is a schematic of a process reconstructed from models and observations, not a recording.',
+    references: [
+      referenceId('somerville-dave-2015-galaxy-formation'),
+      referenceId('vogelsberger-2014-illustris'),
+    ],
+    minimumQuality: 'low',
+  },
+  {
+    id: visualizationId('galaxy-types'),
+    title: 'A classification that is really a continuum',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A conceptual diagram of galaxy morphology. The galaxy shapes are drawn representations rather than images, and the layout follows Hubble’s tuning fork for familiarity — while the figure’s purpose is to undercut the idea that the categories are boxes. The physical properties attached to each type are typical values from surveys, not properties of any individual galaxy.',
+    description:
+      'A tuning-fork layout with ellipticals along the handle, spirals and barred spirals along the two prongs, and lenticulars at the junction. Selecting a type reports its typical gas content, star-formation rate, dominant stellar age and how its stars move — rotation-supported for disks, dispersion-supported for spheroids. A slider labelled "classifier agreement" reveals that a substantial fraction of real galaxies sit between the drawn categories, and a note states that Hubble’s "early" and "late" terminology implies no evolutionary sequence.',
+    references: [
+      referenceId('hubble-1926-classification'),
+      referenceId('lintott-2008-galaxy-zoo'),
+      referenceId('vandenbergh-1999-galaxy-morphology'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('spiral-structure'),
+    title: 'Why arms do not wind up',
+    fidelity: 'schematic',
+    runtime: 'canvas2d',
+    interactive: true,
+    caption:
+      'A conceptual diagram contrasting two accounts of spiral arms. The differential rotation is computed from a flat rotation curve, so the winding of a material arm is a real consequence correctly shown. The density-wave pattern is imposed rather than derived from a dynamical calculation. Whether real arms are long-lived waves or transient recurrent features is still debated, and the figure shows the wave picture as the standard model rather than as settled fact.',
+    description:
+      'An animated disk of orbiting stars with a toggle between two interpretations. In the material-arm mode, stars in an arm keep their positions relative to the arm, and within a few rotations the arm winds into an unrecognisable tight coil — demonstrating the winding problem. In the density-wave mode, the arm pattern rotates at its own fixed speed while individual stars pass through it, slowing slightly inside and speeding up as they leave; the pattern persists indefinitely. In wave mode, gas entering the arm is compressed and lights up as new blue stars just downstream of the arm’s leading edge, reproducing the observed offset between gas, young stars and old stars.',
+    references: [
+      referenceId('lin-shu-1964-density-wave'),
+      referenceId('kennicutt-evans-2012-star-formation'),
+    ],
+    minimumQuality: 'low',
+  },
+  {
+    id: visualizationId('galaxy-merger'),
+    title: 'Two galaxies pass through each other',
+    fidelity: 'schematic',
+    runtime: 'canvas2d',
+    interactive: true,
+    caption:
+      'A restricted three-body calculation in the spirit of Toomre and Toomre (1972): stars are treated as massless test particles orbiting two point masses, with no self-gravity. That drastic simplification is the historically important one, because it reproduces the observed bridges and tails. It does not model the gas, the dark matter or the eventual merger dynamics, and the timescale is compressed from hundreds of millions of years.',
+    description:
+      'An animated encounter between two disk galaxies. As they approach, tidal forces stretch each into long curving tails and a bridge of stars between them. The stars visibly pass through one another without a single collision — a counter tracks the number of stellar collisions, which stays at zero — while the disks are progressively destroyed and the remnants settle into a single spheroidal system. Controls set the encounter geometry and the mass ratio, showing that a major merger destroys both disks while a minor one thickens the larger disk without destroying it. A note explains that gas, not modelled here, does collide directly and drives the starburst that accompanies real mergers.',
+    references: [referenceId('toomre-1972-mergers')],
+    minimumQuality: 'low',
+  },
+  {
+    id: visualizationId('star-formation-regions'),
+    title: 'More gas, disproportionately more stars',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'The relation between gas surface density and star-formation rate surface density, plotted on the logarithmic axes on which it is conventionally measured, with the observed power-law slope near 1.4 for total gas. The relation is empirical and holds across four orders of magnitude from quiet disks to extreme starbursts. Individual galaxy positions are representative of the observed distribution rather than a specific published sample.',
+    description:
+      'A logarithmic chart of star-formation rate per unit area against gas surface density per unit area, with a power-law relation of slope about 1.4 running through it. Regions are marked: outer spiral disks at low density, the Milky Way’s inner disk in the middle, and merger-driven starbursts several orders of magnitude higher. A toggle switches between total gas and molecular gas only, and the relation visibly tightens toward linear when only molecular gas is counted — which is the evidence that stars form from molecular clouds specifically. A readout gives the implied gas depletion time, showing that starbursts would exhaust their supply within tens of millions of years.',
+    references: [referenceId('kennicutt-evans-2012-star-formation')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('galactic-feedback'),
+    title: 'Why galaxies contain fewer stars than they should',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'The relationship between a galaxy’s stellar mass and the mass of its dark-matter halo, which peaks at only about 20 percent of the cosmic baryon fraction and falls steeply on both sides. The curve is derived by matching observed galaxy counts to simulated halo counts — an inference from two well-measured distributions rather than a direct measurement of any galaxy. The efficiency shortfall is the strongest general evidence that feedback is important.',
+    description:
+      'A chart of star-formation efficiency — the fraction of a halo’s available gas converted into stars — against halo mass, on logarithmic axes. The curve peaks near 10¹² solar masses at around 20 percent, and falls by one to two orders of magnitude toward both smaller and larger halos. The two falling wings are labelled with the mechanism usually invoked for each: supernova-driven winds escaping shallow potential wells at low mass, and energy from an accreting black hole at high mass. A toggle removes feedback and shows the far higher curve that gravity and cooling alone would produce, which is the discrepancy that has to be explained.',
+    references: [
+      referenceId('somerville-dave-2015-galaxy-formation'),
+      referenceId('fabian-2012-agn-feedback'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('milky-way-structure'),
+    title: 'Our Galaxy, mapped from inside it',
+    fidelity: 'reconstruction',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A scientific reconstruction, not an image. Nobody has photographed the Milky Way from outside and nobody will. The Sun’s galactocentric distance, the disk scale length and height, the bar length and angle, and the globular cluster distribution are measured quantities from the cited review; the spiral arm positions are the least certain element and are drawn following one common reconstruction among several that remain in contention.',
+    description:
+      'Two views of the Milky Way. Face-on: a barred spiral with a central bar at about 27 degrees to the Sun–centre line, spiral arms emerging from its ends, and the Sun marked 8.18 kiloparsecs from the centre in a minor spur between two major arms. Edge-on: a thin disk with a scale height of about 300 parsecs, a thicker older disk around it, a central bulge, and a sparse halo of globular clusters extending far above and below. A toggle adds the dark-matter halo, drawn to its inferred virial radius, which dwarfs everything visible. Labels state which parameters are measured and which — principally the arm structure — remain contested.',
+    references: [
+      referenceId('bland-hawthorn-gerhard-2016-milky-way'),
+      referenceId('gravity-2019-galactic-centre-distance'),
+      referenceId('harris-2010-globular-catalog'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('solar-neighbourhood'),
+    title: 'Why the night sky looks the way it does',
+    fidelity: 'schematic',
+    runtime: 'canvas2d',
+    interactive: true,
+    caption:
+      'A conceptual diagram connecting our position in the disk to the appearance of the sky. The geometry is correct — looking along the disk plane passes through far more stars than looking perpendicular to it — and the Sun’s position is at its measured galactocentric distance. Star positions are generated from a smooth disk model rather than a catalogue, so this is a diagram of why the band exists, not a star chart.',
+    description:
+      'A rotating view that begins looking down on the Galactic disk with the Sun marked partway out, then tilts into the Sun’s own viewpoint. From inside the disk, looking along the plane the sight lines pass through enormous numbers of stars and the view fills with a bright band; looking perpendicular to the plane, the sight lines leave the disk quickly and few stars appear. Dust lanes are drawn blocking parts of the band, as they do in reality. A control sweeps the viewing direction and a readout gives the number of stars along that sight line relative to looking straight out of the disk.',
+    references: [referenceId('bland-hawthorn-gerhard-2016-milky-way')],
+    minimumQuality: 'low',
+  },
+  {
+    id: visualizationId('galactic-centre-orbits'),
+    title: 'Stars orbiting something invisible',
+    fidelity: 'data-driven',
+    runtime: 'canvas2d',
+    interactive: true,
+    caption:
+      'The orbit of the star S2 around Sagittarius A*, computed from its published orbital elements — a 16.05-year period, a semi-major axis of about 970 astronomical units and an eccentricity of 0.88. The ellipse and the speed variation along it are therefore the real orbit, not an artistic path. The central object is drawn as a marker at the focus; its size is not to scale, and no image of it is implied.',
+    description:
+      'An animated view of the Galactic Centre with the star S2 tracing its 16-year elliptical orbit around a marked focus. The star sweeps rapidly through periapsis at about 120 astronomical units, where it reaches 7,650 kilometres per second — 2.6 percent of the speed of light — and crawls slowly through apoapsis. A control speeds up or slows the animation, and a readout gives the current separation, orbital speed, and the mass required at the focus by Kepler’s third law, which comes out at about 4.3 million solar masses. A note distinguishes the measurement, which is a mass inside a volume, from the inference that the object is a black hole.',
+    references: [
+      referenceId('gravity-2019-galactic-centre-distance'),
+      referenceId('genzel-2010-galactic-centre'),
+      referenceId('ghez-2008-galactic-centre'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('black-hole-galaxy-relation'),
+    title: 'A correlation across three orders of magnitude',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Black-hole mass against bulge stellar velocity dispersion, following the compilation and fitted relation from the cited review. The tightness of the relation is the observation; the mechanism behind it is not established, and the figure says so rather than implying causation. Individual galaxy positions are representative of the published sample distribution.',
+    description:
+      'A logarithmic chart of black-hole mass against bulge velocity dispersion, with measured galaxies scattered along a steep relation of slope between four and five and a scatter of only about a factor of two. Sagittarius A* is marked at 4.3 million solar masses and M87 at several billion. A readout emphasises the scale mismatch that makes the correlation puzzling: the black hole’s gravitational sphere of influence is of order ten parsecs, while the bulge whose properties it tracks is thousands of parsecs across. A panel presents the two competing explanations — self-regulation through feedback, and averaging through repeated mergers — as competing hypotheses rather than as a conclusion.',
+    references: [referenceId('kormendy-ho-2013'), referenceId('fabian-2012-agn-feedback')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('atom-origins-journey'),
+    title: 'The journey of your atoms',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'The composition of the human body by element, with each element’s dominant production site taken from a published galactic chemical evolution model. The body composition and the production attributions are both drawn from cited sources; what is illustrative is the journey diagram beneath, which represents a typical path rather than the history of any particular atom.',
+    description:
+      'A composition bar for the human body — about 65 percent oxygen, 18 percent carbon, 10 percent hydrogen, 3 percent nitrogen, with calcium, phosphorus and traces including iron — with each segment coloured by where that element was made. Selecting a segment traces its journey through five stages: origin, ejection into interstellar space, incorporation into the cloud that formed the Sun 4.6 billion years ago, condensation into the Earth, and uptake by living things. Hydrogen’s journey is visibly shorter than the others, because it begins in the first minutes of the Universe and never enters a star at all. A readout gives the approximate age of each element’s atoms.',
+    references: [
+      referenceId('kobayashi-2020-origin-of-elements'),
+      referenceId('cyburt-2016-bbn'),
+      referenceId('asplund-2021-solar-composition'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('stellar-generations'),
+    title: 'Each generation starts richer',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A conceptual diagram of stellar populations against metallicity, with the observed metallicity ranges of Population I and Population II stars marked from survey data. Population III is drawn as a predicted category with no confirmed members, which is the honest representation of its status. The enrichment curve follows a simple chemical evolution model rather than a measured history.',
+    description:
+      'A metallicity axis running from zero — the primordial composition — up to and beyond solar. Population III sits at exactly zero and is drawn as an empty outline with the label "predicted, never observed". Population II occupies the metal-poor range, with the most extreme measured stars marked below one ten-millionth of solar iron. Population I, including the Sun, occupies the enriched end. Above the axis, a panel shows what each generation could build: no planets at all at zero metallicity, rocky planets becoming possible as silicon and iron accumulate, and giant planets becoming common only at higher metallicity still.',
+    references: [
+      referenceId('beers-christlieb-2005-metal-poor'),
+      referenceId('frebel-norris-2015-first-stars'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('first-stars'),
+    title: 'How the first stars were different',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A conceptual comparison of primordial and present-day star formation. The temperature difference and its consequence for the minimum collapse mass are computed from the Jeans criterion, so that relationship is real. The predicted mass range for Population III stars comes from simulations and has shifted substantially as those simulations improved — the figure shows both the early and current estimates rather than only the latest.',
+    description:
+      'A side-by-side comparison. On the left, primordial gas: no dust, no heavy elements, cooling only via molecular hydrogen, reaching about 200 kelvin, and requiring hundreds of solar masses before it can collapse. On the right, present-day gas: dust and heavy-element cooling reaching 10 to 20 kelvin, requiring around one solar mass. A readout computes the Jeans mass for the selected temperature and density, making the factor of hundreds explicit. A timeline beneath shows how the predicted Population III mass range has been revised, from several hundred solar masses in early work to a broad distribution starting near ten in simulations that resolve disk fragmentation.',
+    references: [
+      referenceId('klessen-glover-2023-first-stars'),
+      referenceId('bromm-larson-2004-first-stars'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('cosmic-chemical-history'),
+    title: 'Reading the Galaxy’s chemistry off its stars',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'The alpha-element to iron ratio plotted against iron abundance — the standard diagnostic of a stellar population’s formation history. The characteristic plateau and downward bend are a robust observational result, and the bend’s position dates the onset of thermonuclear supernova enrichment. The plotted tracks are computed from a chemical evolution model with adjustable star-formation timescale rather than fitted to a specific survey.',
+    description:
+      'A chart of the oxygen-to-iron ratio against total iron abundance. The curve is flat and high at low iron — when only core-collapse supernovae had contributed — and then bends downward as thermonuclear supernovae begin delivering iron hundreds of millions of years later. A slider changes the star-formation timescale of the modelled population, and the bend moves left or right accordingly: a population that formed its stars quickly bends at low iron, one that formed them slowly bends at high iron. Markers show where the Milky Way’s halo, thick disk and thin disk fall, and where a typical dwarf galaxy falls, reading off four different histories from the same diagram.',
+    references: [
+      referenceId('kobayashi-2020-origin-of-elements'),
+      referenceId('beers-christlieb-2005-metal-poor'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('stellar-spectroscopy'),
+    title: 'Every element writes its name in light',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Absorption line positions computed from measured atomic transition wavelengths, shown against a Planck continuum at the selected temperature. The line positions are exact; the line depths are illustrative, since real depths depend on abundance, ionisation state and the structure of the stellar atmosphere in ways that require a model to compute.',
+    description:
+      'A spectrum strip with a smooth blackbody continuum crossed by dark absorption lines. An element selector adds or removes hydrogen, helium, sodium, calcium and iron, each contributing its own characteristic pattern at fixed wavelengths — hydrogen’s Balmer series at 656, 486, 434 and 410 nanometres, sodium’s bright yellow doublet at 589, and iron’s dense forest of lines. A temperature slider changes both the continuum shape and which lines are strong, demonstrating the point Payne established: hydrogen lines are weak in cool stars not because hydrogen is scarce but because most of it is unexcited.',
+    references: [
+      referenceId('fraunhofer-1817-lines'),
+      referenceId('payne-1925-stellar-atmospheres'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('stellar-parallax'),
+    title: 'Measuring distance with geometry alone',
+    fidelity: 'data-driven',
+    runtime: 'canvas2d',
+    interactive: true,
+    caption:
+      'The parallax shift is computed exactly from the geometry: the apparent angular displacement equals one astronomical unit divided by the distance. The angles are enormously exaggerated to be visible — the largest real stellar parallax, Proxima Centauri’s, is 0.77 arcseconds, about the angle a one-euro coin subtends at six kilometres, and would be a fraction of a pixel at true scale.',
+    description:
+      'An animated diagram of the Earth orbiting the Sun, with a nearby star and a distant background field. As the Earth moves from one side of its orbit to the other, the nearby star appears to shift back and forth against the background while the distant stars stay fixed. A distance slider moves the star further away and the shift visibly shrinks, following the inverse relationship exactly. A readout gives the parallax angle in arcseconds and the distance in parsecs, and marks where Gaia’s precision limit falls — showing that a star at a thousand parsecs still produces a measurable shift, which is what makes a billion-star survey possible.',
+    references: [referenceId('bessel-1838-parallax'), referenceId('gaia-2021-edr3-parallax')],
+    minimumQuality: 'low',
+  },
+  {
+    id: visualizationId('distance-ladder'),
+    title: 'Each rung calibrated on the one below',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'The distance ranges over which each technique operates, on a logarithmic scale. The ranges are real, as are the overlap regions where one method calibrates the next. The figure exists to make the dependency structure visible, because that structure is why a systematic error at a low rung propagates all the way up and does not average out.',
+    description:
+      'A logarithmic distance axis running from within the Solar System out to billions of light-years, with each technique drawn as a bar spanning the range it covers: radar ranging within the Solar System, stellar parallax to a few thousand parsecs, main-sequence fitting and Cepheid variables into nearby galaxies, the tip of the red giant branch, and Type Ia supernovae to cosmological distances. Overlap regions where one method calibrates the next are highlighted, and selecting a rung shows what it depends on beneath it. A note records that ladder-based and microwave-background-based measurements of the expansion rate currently disagree, and that this is why the ladder receives so much scrutiny.',
+    references: [
+      referenceId('leavitt-1912-cepheids'),
+      referenceId('gaia-2021-edr3-parallax'),
+      referenceId('riess-2022-sh0es'),
+      referenceId('freedman-2021-h0'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('stellar-temperature-colour'),
+    title: 'Colour is a thermometer',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Blackbody spectra computed from Planck’s law at each temperature, with the displayed colour derived from the spectrum rather than chosen. The peak wavelength follows Wien’s law exactly. What is approximate is the mapping from spectrum to screen colour, which is limited by what a display can reproduce, and the fact that real stars are not perfect blackbodies.',
+    description:
+      'A chart of blackbody spectra at several stellar temperatures, from 3,000 kelvin for an M dwarf to 40,000 kelvin for an O star, with the visible band marked. As temperature rises, the peak moves from infrared through the visible into the ultraviolet, and the rendered colour shifts from deep red through yellow-white to blue-white. A temperature slider reports the peak wavelength from Wien’s law and the total emitted power per unit area from the Stefan–Boltzmann law. A second control adds interstellar reddening, showing how dust removes blue light preferentially and makes a hot star masquerade as a cooler one — the main limitation of colour-based temperatures.',
+    references: [
+      referenceId('pecaut-mamajek-2013-stellar-scale'),
+      referenceId('planck-1901-radiation'),
+      referenceId('draine-2011-ism'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('binary-star-masses'),
+    title: 'Weighing stars with Kepler’s third law',
+    fidelity: 'data-driven',
+    runtime: 'canvas2d',
+    interactive: true,
+    caption:
+      'Two stars orbiting their common centre of mass, computed from Newtonian gravity with the masses set by the sliders. The orbital period follows Kepler’s third law exactly and the ratio of the two orbital radii equals the inverse ratio of the masses, so both relationships the technique depends on are computed rather than drawn. The stars are shown enormously oversized relative to the orbit.',
+    description:
+      'An animated binary system with both stars orbiting a marked centre of mass, the heavier one on a smaller ellipse. Mass sliders change both stars, and the orbits adjust: making one star heavier shrinks its own orbit and enlarges its companion’s, while the total mass sets the period. A readout gives the period, the separation and the derived total mass from Kepler’s third law, and shows how the mass ratio is read from the two orbital radii. A toggle switches to the eclipsing case, viewed edge-on, where a light curve appears beneath — dipping each time one star passes in front of the other, which is what removes the inclination ambiguity and makes these systems the source of the most accurate stellar masses known.',
+    references: [
+      referenceId('torres-2010-eclipsing-binaries'),
+      referenceId('kepler-1609-astronomia-nova'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('doppler-redshift'),
+    title: 'Two different reasons light gets redder',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Line shifts computed from the relativistic Doppler formula for motion through space, and from the ratio of cosmic scale factors for cosmological redshift. The distinction is the figure’s purpose: they are different physical effects, they agree only at small redshift, and converting a large cosmological redshift into a velocity via the Doppler formula produces a number that does not correspond to anything physical.',
+    description:
+      'A spectrum with identified absorption lines, shown at rest and then shifted. A mode switch selects between two causes. In Doppler mode, a velocity slider moves the source through space and the lines shift blueward or redward accordingly, with the readout giving the velocity directly. In cosmological mode, a redshift slider stretches the wavelengths by the factor by which space has expanded during the light’s journey, and the readout gives the redshift, the look-back time and the scale factor ratio — while explicitly declining to quote a velocity. A comparison panel shows the two agreeing below redshift 0.1 and diverging sharply above it.',
+    references: [
+      referenceId('slipher-1917-radial-velocities'),
+      referenceId('hubble-1929'),
+      referenceId('planck-2018-vi'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('spectrum-decoder'),
+    title: 'Six measurements from one spectrum',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A conceptual diagram of how different physical conditions imprint themselves on spectral lines. Each effect is modelled with the correct functional form — Doppler shift, thermal and rotational broadening, pressure-broadened wings, Zeeman splitting — but the line profile is synthetic rather than computed from a stellar atmosphere, so this shows the shapes of the signatures rather than a predicted spectrum.',
+    description:
+      'A single spectral line that responds to five independent controls. Motion shifts its centre. Rotation broadens it symmetrically with a distinctive flat-topped profile. Pressure, which depends on surface gravity, broadens its wings far more than its core. A magnetic field splits it into components whose separation gives the field strength. Temperature changes its depth relative to neighbouring lines of different excitation. Each effect has a visibly different shape, which is why a single spectrum can be decomposed into six separate measurements rather than one.',
+    references: [
+      referenceId('payne-1925-stellar-atmospheres'),
+      referenceId('asplund-2021-solar-composition'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('stellar-lifetimes'),
+    title: 'A million to one',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Main-sequence lifetimes against stellar mass, from published evolutionary model grids at solar metallicity. These are computed lifetimes: only the shortest have ever been checked against an observed population, and the predicted trillion-year lifetimes of red dwarfs cannot be tested, because the Universe is far too young for any of them to have aged appreciably.',
+    description:
+      'A logarithmic chart of main-sequence lifetime against mass, falling steeply from over a trillion years at a tenth of a solar mass to a few million years at sixty. The Sun is marked at about ten billion years. A horizontal line marks the current age of the Universe at 13.8 billion years, and everything to the left of where the curve crosses it has never had time to die — which is most stars by number. A mass slider reports the lifetime and how many such stars could have lived and died in sequence since the Big Bang.',
+    references: [referenceId('choi-2016-mist'), referenceId('chabrier-baraffe-2000-low-mass')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('observational-frontier'),
+    title: 'How far back we can actually see',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Cosmic time against redshift, computed from the standard cosmological model with measured parameters, marked with what has actually been observed at each epoch. The distinction the figure exists to draw is between observed galaxies at very high redshift, which is established, and observed first-generation stars, which have not been achieved and may not be achievable.',
+    description:
+      'A timeline running from the Big Bang to the present, marked with epochs and with what has been detected in each. The cosmic microwave background at 380,000 years is marked as directly observed. The predicted era of the first stars, around 100 to 250 million years, is marked as never observed, with a note that the claimed 21 cm detection at redshift 17 was not confirmed by an independent experiment. Spectroscopically confirmed galaxies above redshift 13 are marked at roughly 300 million years. A shaded band shows the gap between the earliest observed galaxies and the predicted first stars, and a panel lists what would count as a detection: a pair-instability supernova, a metal-free galaxy spectrum, or a confirmed 21 cm signal.',
+    references: [
+      referenceId('curtis-lake-2023-jwst'),
+      referenceId('robertson-2022-jwst-galaxies'),
+      referenceId('klessen-glover-2023-first-stars'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('stellar-uncertainties'),
+    title: 'Where stellar models are weakest',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A conceptual map of open problems in stellar physics, positioned by how well established each is and how much it affects predictions the field relies on. The placements are an editorial judgement informed by the cited reviews, not a computed quantity, and are presented as such. The purpose is to distinguish load-bearing uncertainties from ones that change little.',
+    description:
+      'A two-axis map. The horizontal axis runs from well understood to poorly understood; the vertical axis from low impact on predictions to high impact. Items are placed accordingly: convection appears as poorly understood and high impact, since a one-parameter recipe from 1958 sets predicted stellar ages and radii. Massive-star mass loss is similar, because final mass determines the remnant. The supernova explosion mechanism, neutron-star interior composition and binary interaction rates are placed nearby. Selecting an item gives what is established, what is not, and what evidence would settle it. A note states that these are gaps in specific mechanisms inside a framework that works, not doubt about the framework.',
+    references: [
+      referenceId('smith-2014-mass-loss'),
+      referenceId('sana-2012-binaries'),
+      referenceId('janka-2012-explosion-mechanism'),
+      referenceId('ozel-freire-2016-neutron-stars'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('galaxy-unknowns'),
+    title: 'What galaxy formation still cannot derive',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A conceptual diagram of the resolution gap that forces cosmological simulations to use calibrated recipes. The scales shown are real: cosmological volumes resolve hundreds of parsecs at best, while supernova remnants and black-hole accretion disks operate from a parsec down to microparsecs. That gap of many orders of magnitude is the reason feedback is parameterised rather than derived.',
+    description:
+      'A logarithmic scale axis spanning from the size of a cosmological simulation volume down to the scale of a black-hole accretion disk. The region a cosmological simulation can resolve is shaded, and the processes that actually matter — supernova remnant expansion, molecular cloud fragmentation, black-hole accretion — are marked well below it, in the unresolved region. Selecting a process shows what recipe stands in for it and what is calibrated. A panel lists the specific open problems that follow: the origin of supermassive black-hole seeds, the speed of quenching, and the dwarf-galaxy discrepancies that may reflect baryonic physics or may point elsewhere.',
+    references: [
+      referenceId('naab-ostriker-2017-galaxy-formation'),
+      referenceId('somerville-dave-2015-galaxy-formation'),
+      referenceId('vogelsberger-2014-illustris'),
     ],
     minimumQuality: 'low',
     layout: 'flow',

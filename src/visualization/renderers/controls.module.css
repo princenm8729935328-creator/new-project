@@ -22,6 +22,36 @@
   display: block;
 }
 
+/*
+ * A canvas inside a flow-layout figure.
+ *
+ * `.canvas` takes whatever height the fixed-aspect stage has left over, which
+ * works until a figure carries several control rows and a paragraph of prose:
+ * on a phone those can consume the entire stage and the canvas collapses to
+ * nothing. A figure in that position declares `layout: 'flow'`, so the stage
+ * no longer fixes a height, and the canvas sets its own instead of competing
+ * for the remainder.
+ */
+.flowCanvas {
+  inline-size: 100%;
+  aspect-ratio: 4 / 5;
+  flex: none;
+  display: block;
+  border-radius: var(--radius-md);
+}
+
+@media (min-width: 40rem) {
+  .flowCanvas {
+    aspect-ratio: 16 / 10;
+  }
+}
+
+@media (orientation: landscape) and (max-height: 30rem) {
+  .flowCanvas {
+    aspect-ratio: 16 / 9;
+  }
+}
+
 .controls {
   display: flex;
   align-items: center;
