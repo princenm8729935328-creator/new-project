@@ -27,11 +27,11 @@ describe('SectionPage', () => {
   });
 
   it('states plainly that an unbuilt section is unbuilt', () => {
-    // Quantum Physics filled this role until Phase 6 built it; Earth is the
-    // next section still on the roadmap.
-    renderAt('/earth');
+    // Quantum Physics filled this role until Phase 6 built it, and Earth until
+    // Phase 7; Human Evolution is the next section still on the roadmap.
+    renderAt('/human-evolution');
     expect(screen.getByText('Not built yet')).toBeInTheDocument();
-    expect(screen.getByText(/Scheduled for Phase 7/)).toBeInTheDocument();
+    expect(screen.getByText(/Scheduled for Phase 8/)).toBeInTheDocument();
   });
 
   it('falls back to the not-found page for an unknown slug', () => {

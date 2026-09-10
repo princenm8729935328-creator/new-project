@@ -20,6 +20,13 @@ import { RELATIVITY_RECAPS } from './relativity';
 import { BLACK_HOLE_RECAPS } from './blackHoles';
 import { QUANTUM_RECAPS } from './quantum';
 import { STARS_GALAXIES_RECAPS } from './starsGalaxies';
+import { EARTH_RECAPS } from './earth';
+import { LIFE_ORIGIN_RECAPS } from './lifeOrigin';
+import { LIFE_EARLY_RECAPS } from './lifeEarly';
+import { LIFE_EVOLUTION_RECAPS } from './lifeEvolution';
+import { LIFE_ECOLOGY_RECAPS } from './lifeEcology';
+import { LIFE_SYNTHESIS_RECAPS } from './lifeSynthesis';
+import { LIFE_QUESTIONS_RECAPS } from './lifeQuestions';
 
 export const RECAPS: RecapsByTopic = {
   ...UNIVERSE_RECAPS,
@@ -29,6 +36,13 @@ export const RECAPS: RecapsByTopic = {
   ...BLACK_HOLE_RECAPS,
   ...QUANTUM_RECAPS,
   ...STARS_GALAXIES_RECAPS,
+  ...EARTH_RECAPS,
+  ...LIFE_ORIGIN_RECAPS,
+  ...LIFE_EARLY_RECAPS,
+  ...LIFE_EVOLUTION_RECAPS,
+  ...LIFE_ECOLOGY_RECAPS,
+  ...LIFE_SYNTHESIS_RECAPS,
+  ...LIFE_QUESTIONS_RECAPS,
 };
 
 export function getRecap(id: TopicId): TopicRecap | undefined {

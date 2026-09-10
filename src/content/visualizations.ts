@@ -1908,4 +1908,1733 @@ export const VISUALIZATIONS: readonly VisualizationSpec[] = [
     minimumQuality: 'low',
     layout: 'flow',
   },
+  // Phase 7 — Earth
+  {
+    id: visualizationId('earth-accretion'),
+    title: 'Building a planet out of dust',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A stepped conceptual diagram of planetary accretion. Sizes and spacings are chosen for legibility and are not to scale — the disc is drawn a few hundred pixels wide where the real one spanned billions of kilometres, and the bodies at each stage differ in size by many orders of magnitude. The sequence and its causes are well established; the step from centimetre-sized pebbles to kilometre-sized planetesimals is the part still under active research, and the diagram says so rather than glossing it.',
+    description:
+      'Five steps a reader moves through with Back and Next buttons. Step one: a flattened disc of dust grains orbiting the young Sun. Step two: grains stick into pebbles, with a note that crossing the metre barrier is an unsolved problem because objects that size drift inward and shatter. Step three: a handful of Moon-to-Mars-sized embryos on crossing orbits. Step four: a giant impact between two embryos, drawn as a molten body with ejecta, captioned that the energy melts much of the planet. Step five: a differentiated Earth with an iron core drawn inside a silicate mantle, captioned that dense metal sank and light rock floated.',
+    references: [
+      referenceId('chambers-2004-accretion'),
+      referenceId('elkins-tanton-2012-magma-ocean'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('early-earth-cooling'),
+    title: 'How fast the Hadean surface cooled',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Modelled surface temperature across the first 700 million years, computed from a simple magma-ocean cooling law rather than measured — nothing survives from most of this interval. The one hard data point is marked: the 4.40-billion-year-old Jack Hills zircon whose oxygen isotope ratio indicates it formed in the presence of liquid water. The shaded bands, where rock is molten and where liquid water is possible, are the parts of the figure that carry real information; the exact shape of the curve does not.',
+    description:
+      'A line chart with time in billions of years across the bottom and modelled surface temperature in kelvin up the side. The curve starts above 2000 K, falls steeply through the first few million years, then flattens into a long tail. A red band across the top marks temperatures at which rock is molten; a blue band near the bottom marks the range in which liquid water is possible. A dashed green vertical line at 4.40 billion years ago marks the oldest zircon. A slider moves a marker along the curve, and a readout gives the modelled temperature in kelvin and celsius at that moment together with a sentence saying whether rock would be molten, whether water would be steam, or whether oceans were possible.',
+    references: [
+      referenceId('elkins-tanton-2012-magma-ocean'),
+      referenceId('wilde-2001-zircon'),
+      referenceId('valley-2014-hadean-zircon'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('moon-forming-impact'),
+    title: 'The giant impact that made the Moon',
+    fidelity: 'reconstruction',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A reconstruction, not a simulation. Real giant-impact models are three-dimensional hydrodynamic calculations; this is a cartoon of what they produce, with sizes and geometry chosen for clarity. The sequence — oblique collision, melting, a debris disc dominated by mantle material, rapid accretion of the Moon — is the standard model and is supported by the Moon’s low iron content and its depletion in volatile elements. The final panel carries the unresolved problem: Earth and Moon have nearly identical oxygen isotope ratios, which the classic version of the model does not naturally explain.',
+    description:
+      'Five steps with Back and Next. First, a Mars-sized body named Theia approaching the proto-Earth on a crossing orbit. Second, an oblique collision drawn as two molten bodies with ejecta thrown clear, captioned that both bodies largely melt. Third, a hot disc of debris orbiting the battered Earth, labelled as mostly mantle rock. Fourth, the Moon assembled from that disc, drawn much closer to Earth than today, with a note that models put its formation within decades to a century and that it has been receding ever since at about 3.8 centimetres a year. Fifth, two panels side by side giving the oxygen isotope composition of Earth and Moon as indistinguishable, with a note that Mars and asteroids differ measurably from both, and that this similarity is the open problem the model still struggles with.',
+    references: [
+      referenceId('canup-2004-moon'),
+      referenceId('canup-2012-moon-isotopes'),
+      referenceId('young-2016-oxygen-isotopes'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('atmosphere-evolution'),
+    title: 'Earth has had three atmospheres',
+    fidelity: 'reconstruction',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Composition drawn as proportions of three successive atmospheres. The modern figures are measured. The primary and secondary compositions are reconstructions from models and indirect evidence, and their percentages are indicative rather than measured — the carbon dioxide content of the secondary atmosphere in particular is actively debated. What the figure is for is the proportional story: carbon dioxide going from dominant to a trace, and oxygen going from absent to a fifth of the air.',
+    description:
+      'A stacked horizontal bar showing the composition of one atmosphere at a time, with a legend beneath naming each gas and its percentage. Three buttons switch between the primary atmosphere of about 4.5 billion years ago, dominated by hydrogen and helium captured from the solar nebula; the secondary atmosphere from roughly 4.4 to 2.4 billion years ago, dominated by volcanic carbon dioxide with nitrogen and water vapour; and the modern atmosphere of nitrogen, oxygen, argon and trace carbon dioxide. A note under each explains where that atmosphere came from and where it went — the primary lost to space, the secondary outgassed from the interior, and the modern one’s oxygen produced entirely by photosynthesis and requiring continuous resupply to persist.',
+    references: [
+      referenceId('catling-zahnle-2020-atmosphere'),
+      referenceId('zahnle-2007-early-earth'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('water-origin-isotopes'),
+    title: 'Where the oceans came from, read from one ratio',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Measured deuterium-to-hydrogen ratios in water from six sources, on a logarithmic scale. Water that formed further from the Sun carries more deuterium, so the ratio is a fingerprint of origin. Earth’s oceans match carbonaceous chondrites closely and most comets poorly — which is the strongest single constraint on where the water came from. The figure deliberately includes Hartley 2, a comet that does match, because comets turn out not to share a single ratio and the argument constrains the answer without closing it.',
+    description:
+      'Six labelled horizontal bars on a logarithmic axis of deuterium-to-hydrogen ratio, each tappable. The solar nebula sits lowest at about 21 parts per million; Earth’s oceans at 156; carbonaceous chondrites bracket Earth at roughly 120 to 170; comet Halley at 316; comet 67P, measured in place by Rosetta, at about 530; and comet Hartley 2 at 161, essentially matching Earth. Selecting a bar gives a paragraph on what that source is and what its ratio implies — that nebular gas cannot be the source, that chondrites are the leading candidate, that the Rosetta result weakened the comet hypothesis when it arrived in 2014, and that Hartley 2 shows comets are not uniform.',
+    references: [
+      referenceId('marty-2012-water-origin'),
+      referenceId('alexander-2012-chondrites'),
+      referenceId('hartogh-2011-hartley'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('earth-interior'),
+    title: 'Inside the Earth, with the radii to scale',
+    fidelity: 'to-scale',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A cross-section with layer radii in correct proportion, which is unusual — textbook diagrams almost always exaggerate the crust so it can be labelled. Drawn honestly, the crust is thinner than the line around the circle. Depths and temperatures are from the standard reference Earth model and from experimental work on core conditions; the temperature figures for the core carry uncertainties of several hundred kelvin.',
+    description:
+      'A circle divided into four concentric layers with radii proportional to the real ones: inner core to 1,220 km, outer core to 3,480 km, mantle to about 6,341 km, and crust to 6,371 km. Beside it, four tappable rows name each layer with its outer radius and temperature range. Selecting a layer highlights it in the cross-section and gives a paragraph on its state and, crucially, how it is known — Inge Lehmann finding the inner core in 1936 from seismic waves arriving where none should have been, the outer core identified because shear waves stop dead at its boundary since they cannot travel through liquid, and the mantle mapped by seismic tomography from thousands of earthquake arrival times.',
+    references: [
+      referenceId('dziewonski-anderson-1981-prem'),
+      referenceId('lehmann-1936-core'),
+      referenceId('hirose-2013-core'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('plate-tectonics'),
+    title: 'The three ways two plates can meet',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Conceptual cross-sections. Vertical scale is exaggerated enormously — the plates are drawn tens of pixels thick where they are a hundred kilometres against a planet 12,700 kilometres across — and the shapes are simplified. What the figure carries accurately is the direction of motion at each boundary and what is created or destroyed there, which is the distinction readers most often lose.',
+    description:
+      'One cross-section at a time, with three buttons switching between boundary types. Divergent: two plates pulling apart with mantle rising into the gap and freezing onto both edges, labelled with the Mid-Atlantic Ridge and the East African Rift, and a note that the Atlantic widens at roughly the rate fingernails grow. Convergent: one plate bending and sinking beneath another with a volcano drawn inland of the trench, labelled with the Andes, Japan and Cascadia, and a note that water carried down lowers the melting point of rock above. Transform: two plates sliding past each other along a vertical fault with arrows in opposite directions, labelled with the San Andreas and North Anatolian faults, and a note that the fault locks and then slips suddenly, producing large shallow earthquakes but few volcanoes.',
+    references: [
+      referenceId('wessel-muller-2007-tectonics'),
+      referenceId('vine-matthews-1963'),
+      referenceId('korenaga-2013-tectonics-history'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('carbon-cycle-thermostat'),
+    title: 'The thermostat that has kept Earth habitable',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A deliberately simple model of the Walker–Hays–Kasting silicate-weathering feedback, solved for its steady state. Weathering removal rises with temperature; temperature rises logarithmically with carbon dioxide; the intersection is where the system settles. The behaviour it reproduces is the one that matters — that raising the volcanic input raises the temperature far less than it raises the input — but the parameters are illustrative and the model is not a research tool. It also acts over hundreds of thousands of years, which the note states explicitly.',
+    description:
+      'A line chart with atmospheric carbon dioxide on a logarithmic axis across the bottom, in multiples of today, and global mean temperature in kelvin up the side. A curve shows the greenhouse relationship between them; a blue band marks temperatures below freezing; a dashed line marks today’s carbon dioxide level. A slider adjusts the volcanic carbon dioxide input from 0.2 to 5 times its present value, and a marker moves to the resulting steady state. A readout gives the settled carbon dioxide level and temperature, and points out the asymmetry: a fivefold change in input moves the temperature only about twenty degrees, because warming speeds up weathering, which removes carbon dioxide, which limits the warming.',
+    references: [referenceId('walker-1981-thermostat'), referenceId('berner-2003-carbon-cycle')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('magnetic-field'),
+    title: 'The magnetosphere, and the planet that lost one',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A conceptual diagram. The field-line geometry is schematic and symmetrical; a real magnetosphere is strongly asymmetric, compressed on the sunward side and drawn into a long tail on the night side, and it is turbulent. What the figure carries is the causal chain — convecting liquid iron, a self-generating dynamo, a field that deflects the solar wind — and the comparison with Mars, whose crustal magnetisation records a dynamo that stopped.',
+    description:
+      'One scene at a time, with three buttons. With field: Earth drawn with a liquid iron core, dipole field lines arcing from pole to pole, a bow shock on the sunward side, and solar wind arrows stopping at it. Without field: the same planet with no field lines, solar wind arrows reaching the atmosphere directly, and particles drawn escaping to space behind it. Mars: a smaller planet with a solidified core, the same stripping, and a note that its dynamo stopped because the small core cooled too fast to keep convecting. Accompanying text explains that aurorae are charged particles that leaked in and followed field lines to the poles, that atmospheric loss is slow on a human scale and decisive on a geological one, and that the MAVEN mission has measured the escape from Mars still happening.',
+    references: [
+      referenceId('glatzmaier-roberts-1995-dynamo'),
+      referenceId('tarduno-2015-early-dynamo'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('climate-energy-balance'),
+    title: 'Planetary temperature from one equation',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Absorbed sunlight set equal to emitted infrared, solved for temperature using the Stefan–Boltzmann law, with the greenhouse contribution added as an adjustable offset. The effective temperature is computed exactly; the greenhouse term is a simplification of a radiative transfer calculation, which is why it appears as a knob rather than as a derived quantity. Earth’s present values are albedo 0.30 and about +33 K, and the figure exists to show how large that second number has to be.',
+    description:
+      'A diagram of a planet receiving sunlight, with some reflected according to the chosen albedo and infrared radiated back out. Below it, two horizontal scales from 180 to 320 kelvin: one marking the effective temperature computed from absorbed sunlight alone, and one marking the surface temperature after the greenhouse offset. A dashed line marks 273 K, where water freezes. Three sliders control albedo from 0.05 to 0.8, greenhouse warming from 0 to 90 kelvin, and solar output from 0.7 to 1.15 times today. A readout gives both temperatures in kelvin and celsius and says whether the planet is frozen, temperate or hotter than anywhere on Earth, together with the note that Earth’s effective temperature without a greenhouse is 255 K and its oceans would be ice.',
+    references: [referenceId('ipcc-2021-ar6-wg1'), referenceId('sagan-mullen-1972-faint-sun')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('snowball-earth'),
+    title: 'Two stable planets, one set of conditions',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'An energy-balance model with a temperature-dependent albedo, iterated to its fixed point from two different starting states. It reproduces the qualitative behaviour that matters — bistability and hysteresis, so that the forcing needed to leave a frozen state is much lower than the forcing that would have prevented entering it — but it is a toy, and the real episodes involved ocean circulation, carbon chemistry and continental configuration it does not represent.',
+    description:
+      'A chart with forcing relative to today across the bottom and global mean surface temperature in kelvin up the side. Two curves are drawn: one traced by a planet starting warm and one by a planet starting frozen. Over a wide middle range both exist at the same forcing, which is the bistability. A blue band marks temperatures at which ice reaches the equator. A slider moves the forcing and a marker shows where the planet settles; a second control switches the starting state between warm and frozen so the reader can find the same forcing giving two different answers. The accompanying text explains that escaping a snowball took hundreds of millions of years of volcanic carbon dioxide accumulating with no rain to wash it out.',
+    references: [referenceId('hoffman-1998-snowball'), referenceId('hoffman-2017-snowball-review')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('supercontinent-cycle'),
+    title: 'Continents assembling and dispersing',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Schematic blobs, not palaeogeographic reconstructions. Detailed reconstructions exist and are far more accurate, but a reader who cannot recognise Laurentia gains nothing from an accurate outline; what the figure has to carry is the rhythm and the fact that the cycle is still running. The final step is explicitly a model projection rather than a reconstruction — the further plate motions are extrapolated forward, the wider the uncertainty.',
+    description:
+      'Five steps with Back and Next, each showing landmasses on an ocean. Rodinia at about 900 million years ago as a single mass, with a note that its break-up is a suspect in triggering the Snowball Earth episodes through increased weathering. Break-up between 750 and 600 million years ago into several fragments. Pangaea at about 300 million years ago, reassembled on the other side of the planet, coinciding with the end-Permian extinction. Today, with five separated masses and a note that the Atlantic is still widening and that the fit between African and South American coastlines is what started Wegener thinking. And a projected future supercontinent 200 to 300 million years ahead, variously called Amasia, Pangaea Proxima or Aurica depending on which ocean closes first.',
+    references: [
+      referenceId('wegener-1915'),
+      referenceId('wessel-muller-2007-tectonics'),
+      referenceId('hoffman-1998-snowball'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('prebiotic-environments'),
+    title: 'What the young planet actually had',
+    fidelity: 'reconstruction',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Four settings on the early Earth, drawn as places rather than as chemistry. Each is a reconstruction: the vent field is modelled on Lost City in the Atlantic, which is a modern analogue rather than a Hadean observation, and the surface pools depend on how much land existed, which is itself uncertain. The figure is not arguing that any of these hosted the origin of life — that argument belongs to the origin-of-life topics — only showing what the young planet physically offered.',
+    description:
+      'One scene at a time, with four buttons. Alkaline hydrothermal vents: porous mineral chimneys on a dark seafloor with warm fluid seeping through them, explained as the product of seawater reacting with mantle rock, each pore a compartment with a natural proton gradient across its wall. Volcanic pools: geothermal pools on land with unscreened ultraviolet light reaching them, explained as concentrating solutes by evaporation and driving polymerisation through wet–dry cycling, at the cost of the same light destroying products. Impact delivery: meteorites arriving at an ocean, with a note that the Murchison meteorite alone contains more than eighty amino acids, and that impacts both supplied and destroyed. Ice: crystals with unfrozen brine channels between them, explained as concentrating solutes and stabilising RNA, with the caveat that a cold early Earth conflicts with most reconstructions.',
+    references: [
+      referenceId('kelley-2005-lost-city'),
+      referenceId('deamer-2017-hot-springs'),
+      referenceId('alexander-2012-chondrites'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('earliest-life-evidence'),
+    title: 'The oldest traces, ranked by how contested they are',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Five claimed traces of early life with their ages and, next to each, a bar showing how widely the interpretation is accepted. That second bar is the honest part of the figure: a chart of ages alone would imply a settled record, and this one is not. The confidence values are the author’s summary of the state of the literature rather than a measured quantity, and every claim shown has a published rebuttal.',
+    description:
+      'Five tappable rows in order of decreasing age, each giving the claimed age in billions of years, what was found, and where. A 4.1-billion-year carbon inclusion in a Jack Hills zircon; 3.8-billion-year haematite tubes from Nuvvuagittuq in Canada; 3.7-billion-year layered structures from Isua in Greenland; 3.48-billion-year stromatolites from the Dresser Formation in Australia; and 3.43-billion-year stromatolites from Strelley Pool in the Pilbara. Beside each is a coloured confidence bar, red for the weakest claims and green for the strongest. Selecting a row gives a paragraph on why it is or is not accepted — a single inclusion in a single grain, a disputed host-rock age, a 2018 reinterpretation of the Isua structures as rock deformation, and the multiple independent lines of evidence supporting the two Australian cases.',
+    references: [
+      referenceId('bell-2015-biogenic-carbon'),
+      referenceId('dodd-2017-vent-fossils'),
+      referenceId('nutman-2016-stromatolites'),
+      referenceId('allwood-2018-isua-comment'),
+      referenceId('schopf-2018-microfossils'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('feedback-loops'),
+    title: 'The two shapes every feedback loop has',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Conceptual loop diagrams. The four examples are real mechanisms and the sign on each is correct; the diagram carries no quantities, because the whole point is the structure. Readers meet the phrase positive feedback and hear something good, and a ring with an explicit sign on it is the cheapest available correction: positive means self-amplifying, and a self-amplifying loop is what takes a planet from temperate to frozen.',
+    description:
+      'A ring of four labelled nodes with arrows running round it and a large plus or minus sign at the centre, together with the words self-amplifying or self-correcting. Four buttons switch between loops. Ice–albedo, positive: cooling leads to more ice, which reflects more sunlight, which absorbs less heat, which cools further. Silicate weathering, negative: warming speeds up rock weathering, which removes carbon dioxide, which reduces greenhouse warming. Permafrost, positive: warming thaws permafrost, releasing methane and carbon dioxide, causing further warming. Predator and prey, negative but delayed: more prey leads to more predators, which eat the prey down, which reduces predator numbers. Each carries a paragraph on what it does and, where relevant, how uncertain its magnitude is.',
+    references: [
+      referenceId('ipcc-2021-ar6-wg1'),
+      referenceId('hoffman-2017-snowball-review'),
+      referenceId('walker-1981-thermostat'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+
+  // Phase 7 — Origin of life
+  {
+    id: visualizationId('what-is-life-criteria'),
+    title: 'Every definition of life, against the awkward cases',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A grid rather than a list, because the point is the pattern rather than any single row: no criterion is passed by everything alive and failed by everything dead. The ticks and crosses reflect the standard treatment of each case in the literature, and the question marks mark cases where the answer genuinely depends on how the criterion is stated. This is a conceptual diagram, not data.',
+    description:
+      'A table with six criteria across the top — metabolism, growth, reproduction, response to stimuli, evolution, homeostasis — and six cases down the side, each tappable. A bacterium passes everything. A virus fails metabolism and independent reproduction while evolving vigorously. Fire passes almost everything except evolution. A crystal grows and templates copies but has no metabolism. A mule is alive and sterile. A dormant seed fails nearly every criterion while remaining alive. Selecting a row gives a paragraph on why it is awkward: that the virus argument has run for eighty years without resolving, that fire shows why heredity sits at the centre of most definitions, and that the mule shows reproduction cannot be a requirement for an individual, only for a lineage.',
+    references: [
+      referenceId('benner-2010-defining-life'),
+      referenceId('cleland-chyba-2002-life'),
+      referenceId('schrodinger-1944'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('life-nonlife-gradient'),
+    title: 'Where does non-life end and life begin?',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A slider along a continuum, chosen precisely because it cannot be snapped to a boundary. The eight positions are real classes of chemical system in roughly increasing order of the properties associated with life, but the spacing carries no quantitative meaning and the ordering is not a claim about historical sequence. Wherever the reader stops, the systems on either side differ by a little, and the figure never offers a place to draw a line, because the evidence does not offer one.',
+    description:
+      'A horizontal gradient bar running from plainly chemistry on the left to plainly alive on the right, with eight labelled positions marked along it: simple molecules, amino acids and sugars, polymers, self-templating molecules, autocatalytic sets, protocells, viruses, and cells. A slider moves a marker along the bar and the nearest position is highlighted, with a paragraph describing it — that a self-templating molecule has heredity and that calling it non-living is getting harder to justify, that a protocell has a boundary, an inside, heredity and a crude metabolism, and that viruses sit at the boundary from the other direction as simplified descendants of a world that already had cells. A line beneath states that there is no tick mark here that everyone agrees on.',
+    references: [
+      referenceId('cleland-chyba-2002-life'),
+      referenceId('joyce-szostak-2018-protocells'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('limits-of-life'),
+    title: 'How wide the habitable envelope actually is',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Measured tolerance ranges for known life against three physical variables, with the human range marked on each for comparison. The values are the current records from cultured organisms and are revised upward from time to time as new extremophiles are isolated; the ranges shown are the well-attested ones rather than the most extreme individual claims. What the figure carries is the ratio between what life in general tolerates and what the animals a reader is familiar with tolerate.',
+    description:
+      'One axis at a time, with three buttons. Temperature from minus 25 to 130 degrees celsius, with known life spanning minus 20 to 122, most life from minus 5 to 50, and humans a band around 20 to 40. Acidity from below pH 0 to pH 13, with known life spanning nearly the whole range, most life between 4 and 9, and human blood held within a tenth of a unit of 7.4. Pressure from 0 to 1200 atmospheres, with life growing at over 1,000 in the Mariana Trench and humans in a band near 1. Each carries a paragraph noting what sets the limit — for temperature it is liquid water in brine films at the cold end and protein stability at the hot end, and that thirteen pH units means thirteen orders of magnitude in hydrogen ion concentration.',
+    references: [referenceId('rothschild-mancinelli-2001-extremophiles')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('prebiotic-chemistry'),
+    title: 'What laboratory chemistry has actually achieved',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A ledger rather than a pathway diagram, and deliberately so. Drawing arrows from simple molecules to a cell would imply a route exists; what exists is a set of successful fragments with gaps between them, often under conditions that are not compatible with each other. Each row is marked demonstrated, partly demonstrated, or not demonstrated, and the two rows at the bottom are the ones that popular accounts routinely omit.',
+    description:
+      'Seven tappable rows, each with a coloured status dot and a label reading demonstrated, partly demonstrated or not demonstrated. Amino acids: demonstrated, from Miller and Urey in 1953 and from meteorites, with a note that the atmosphere Miller used is now thought to be wrong while the availability of the products is not in question. Sugars: partly, since the formose reaction produces a messy mixture in which ribose is minor and unstable. Nucleobases: demonstrated, adenine from concentrated hydrogen cyanide since 1961. Complete nucleotides: demonstrated, by Powner and Sutherland in 2009 along a route that never assembles the pieces separately. Long RNA chains: partly, reaching tens of units rather than the hundreds a functional ribozyme needs. Self-replicating RNA: not demonstrated, and named as the central unsolved problem. The whole route to a cell: not demonstrated.',
+    references: [
+      referenceId('miller-1953'),
+      referenceId('bada-2013-miller-legacy'),
+      referenceId('powner-2009-nucleotides'),
+      referenceId('patel-2015-cyanosulfidic'),
+      referenceId('joyce-szostak-2018-protocells'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('rna-world'),
+    title: 'Why RNA, and what the hypothesis still lacks',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Four conceptual panels: the chicken-and-egg problem, the proposed resolution, the evidence left behind in modern cells, and the objections. The molecular drawings are schematic — the ribosome panel shows RNA at the centre and proteins outside, which is the structural fact that matters, not its actual shape. The fourth panel exists because popular accounts routinely present the RNA world as established when it is a leading hypothesis with serious unresolved chemistry.',
+    description:
+      'One panel at a time, with four buttons. The problem: DNA and proteins drawn as two boxes with arrows each way, DNA needing proteins to be copied and proteins needing DNA to be made, captioned that neither can come first. The proposal: RNA drawn as one box doing both jobs, storing a sequence and catalysing reactions. The fossil: the ribosome drawn as an RNA core with proteins bolted around the outside, captioned that the chemical step joining amino acids is catalysed by RNA, established when the structure was solved in 2000, and that ATP, coenzyme A and NAD are also RNA-like. The trouble: three crossed-out statements — ribose is hard to make prebiotically and unstable once made, RNA degrades quickly in warm water, and no self-replicating ribozyme exists — with a line noting that some researchers propose a simpler genetic polymer preceded RNA.',
+    references: [
+      referenceId('gilbert-1986-rna-world'),
+      referenceId('kruger-1982-ribozyme'),
+      referenceId('nissen-2000-ribosome'),
+      referenceId('robertson-joyce-2012-rna-world'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('template-replication'),
+    title: 'Copying with errors, and the threshold that kills a lineage',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Eigen’s error threshold, computed exactly: the fraction of error-free copies is the per-base fidelity raised to the sequence length, and the threshold sits at roughly the reciprocal of the error rate. The mathematics is not in dispute. What is illustrative is the choice of fidelity range — real prebiotic copying fidelities are not measured, and the figure uses a plausible span to show the shape of the constraint rather than to quantify it.',
+    description:
+      'A curve of the fraction of error-free copies against sequence length in bases, with a slider controlling per-base copying fidelity between 95 and 99.9 percent. A dashed vertical line marks the error threshold at the reciprocal of the error rate, labelled with its value in bases. A readout gives the threshold length and the percentage of error-free copies for a 200-base sequence at the chosen fidelity, and explains the trap this creates for any RNA world: accurate copying needs a good catalyst, a good catalyst needs a long sequence, and a long sequence needs accurate copying. It notes that modern cells reach roughly 99.9999999 percent by using proteins to proofread.',
+    references: [
+      referenceId('joyce-szostak-2018-protocells'),
+      referenceId('robertson-joyce-2012-rna-world'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('autocatalytic-network'),
+    title: 'Metabolism first: the network is the replicator',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A conceptual diagram of a closed catalytic cycle, with five members standing in for what would be a large and messy real network. The idea is hard to picture precisely because nothing in the set is the replicator — the set as a whole is — so the second view removes one member and shows the loop opening. This is an illustration of a hypothesis, not of a demonstrated system: no autocatalytic set that could support open-ended evolution has been made.',
+    description:
+      'Three views selectable by buttons. Closed loop: five labelled molecules arranged in a ring, each with an arrow to the next, captioned that each catalyses the formation of the next and that the loop closing is what lets the set make more of itself. One removed: the same ring with one member crossed out and the connections either side dashed, captioned that nothing makes the next member and the whole set collapses. In a vent: a cross-section of a mineral wall separating cold alkaline seawater from hot vent fluid, with arrows showing a proton gradient across it, explained as the version of the hypothesis with the strongest chemical case, where mineral surfaces provide the catalysis and the gradient provides the energy without anything being encoded.',
+    references: [
+      referenceId('wachtershauser-1988-iron-sulfur'),
+      referenceId('martin-russell-2003-vents'),
+      referenceId('sojo-2016-vents'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('origin-settings'),
+    title: 'Four candidate birthplaces, scored honestly',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Each candidate setting gets the same three-part treatment: what it supplies, what it cannot supply, and what would count as evidence. There is no winner, and the figure must not manufacture one — the disagreement here is between serious researchers reading the same incomplete evidence differently, not between a consensus and some outliers.',
+    description:
+      'One setting at a time, with four buttons, each showing a list of what the setting supplies and a list of what it struggles with, plus a line stating what would settle the case for it. Alkaline vents supply a natural proton gradient, iron-sulphur catalysts and long-lived stability, and struggle with dilution, RNA instability in warm alkaline water, and having no demonstrated route to a genetic polymer. Warm pools supply concentration by evaporation, wet–dry cycling that drives polymerisation, and ultraviolet energy, and struggle with the same light destroying products and with the scarcity of land. Ice supplies concentration into brine channels and stabilises RNA, and struggles with slow reaction rates and a cold early Earth. Elsewhere supplies demonstrated meteoritic delivery of building blocks, and struggles with moving the problem rather than solving it.',
+    references: [
+      referenceId('martin-russell-2003-vents'),
+      referenceId('deamer-2017-hot-springs'),
+      referenceId('kelley-2005-lost-city'),
+      referenceId('alexander-2012-chondrites'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('membrane-self-assembly'),
+    title: 'A compartment that builds itself',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A conceptual diagram of amphiphile self-assembly. The molecules are drawn as a head and a tail and the vesicle as a single cross-section; real bilayers are three-dimensional, dynamic, and far more crowded. The critical concentration is real physics — below it molecules disperse, above it they aggregate — but the value here is arbitrary, since it depends on the specific amphiphile. Fatty acid vesicles have been shown to grow and divide; what has not been demonstrated is one that also copies its contents.',
+    description:
+      'A field of amphiphile molecules in water, each drawn as a blue head with a tail. A slider raises the concentration. Below the critical value the molecules drift separately and the caption says so. Above it they snap into a closed bilayer vesicle — two rings of molecules with tails facing each other and heads facing the water inside and outside — labelled inside, with a caption that the sheet closes into a sphere because an edge would expose tails. Accompanying text explains that nothing assembles this, that the arrangement follows from the shape of the molecule alone, that the result is an inside and an outside which is the minimum requirement for a cell, and that fatty acid vesicles have been shown to grow and divide when fed more material.',
+    references: [
+      referenceId('szostak-2001-protocells'),
+      referenceId('chen-walde-2010-vesicles'),
+      referenceId('deamer-2017-hot-springs'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('chemistry-to-biology'),
+    title: 'The whole route, with the gaps left visible',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A stepped diagram in which each step carries a progress bar showing how much of it has actually been achieved in a laboratory. Almost every popular version of this figure draws a continuous arrow; marking the achieved fraction turns the same picture into an honest one, with solid ends and a middle that is not. The bar lengths are the author’s summary of the state of the field, not a measured quantity.',
+    description:
+      'Five steps a reader moves through with Back and Next, each showing a chemical transformation and a progress bar labelled demonstrated, partly demonstrated, or not demonstrated. Simple molecules to building blocks: full, demonstrated repeatedly since 1953. Building blocks to chains: about half, with chains of tens of units achieved and hundreds not. Chains that copy themselves: nearly empty, named as the central gap, with a note that ribozymes copying templates exist but none copies itself with the required accuracy. Contents inside a boundary: about half, since vesicles grow, divide and can encapsulate RNA but not with replicating contents. A population that evolves: nearly empty, with a note that nothing has been carried across this line from scratch and that the route drawn is a research programme rather than a description of what happened.',
+    references: [
+      referenceId('powner-2009-nucleotides'),
+      referenceId('joyce-szostak-2018-protocells'),
+      referenceId('szostak-2001-protocells'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+
+  // Phase 7 — Early life
+  {
+    id: visualizationId('complexity-timeline'),
+    title: 'Four billion years, drawn linearly',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A linear time axis, which is the whole argument. Every logarithmic version of this figure makes the last few hundred million years look like most of the story; drawn honestly, the microbial stretch occupies three quarters of the bar. Dates are the current consensus values and carry uncertainties of tens of millions of years for the older events; the contested nature of the earliest life claims is marked explicitly.',
+    description:
+      'A horizontal bar spanning 4,540 million years ago to the present, with tick marks every billion years and eleven event markers a reader can tap. Earth forms; liquid water at 4.40 billion years from zircon evidence; contested traces of life at 3.7 billion; accepted microbial mats at 3.43 billion; oxygen in the air at 2.4 billion; complex cells at 1.8 billion; large organisms at 575 million; the Cambrian diversification at 538 million; life on land at 470 million; the end-Cretaceous impact at 66 million; and modern humans at 300,000 years, whose marker is thinner than the line drawing it. Selecting any marker gives its date and a paragraph on what it was and how confidently it is known.',
+    references: [
+      referenceId('schopf-2018-microfossils'),
+      referenceId('lyons-2014-oxygen-rise'),
+      referenceId('knoll-2011-eukaryotes'),
+      referenceId('erwin-2011-cambrian'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('luca-timeline-gap'),
+    title: 'LUCA is not the first organism',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A schematic timeline, not to scale in its proportions — the width of the interval between the origin of life and LUCA is unknown, and drawing it as a definite length is a convenience. What the figure carries is a structural point: LUCA is the most recent common ancestor of everything that survived, so lineages that existed before it and left no descendants are real life that the genetic record cannot reach.',
+    description:
+      'A horizontal bar with two marked points: life begins, and LUCA. The interval between them is shaded orange and carries several short branches that end without reaching the present, labelled as other lineages — real life, no survivors, no fossils. To the right of LUCA the bar is shaded green and three branches run to the present, labelled Bacteria, Archaea and Eukarya. A caption states that LUCA is the most recent common ancestor of survivors rather than the first organism, and accompanying text explains that genetics can reconstruct LUCA because every living thing carries evidence of it but cannot reach anything before it, and that current estimates place LUCA somewhere around 4.2 to 3.9 billion years ago with real uncertainty.',
+    references: [
+      referenceId('weiss-2016-luca'),
+      referenceId('moody-2024-luca'),
+      referenceId('woese-1990-three-domains'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('first-cell-anatomy'),
+    title: 'What a reconstruction of LUCA does and does not contain',
+    fidelity: 'reconstruction',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A reconstruction with every part colour-coded by how confidently it is inferred. The usual illustration of the first cell presents a complete organism, and the genetics supports nothing of the kind: roughly 350 gene families can be traced to LUCA against several thousand in a modern bacterium, and two of the most basic features — its membrane and its DNA replication machinery — are genuinely unknown because bacteria and archaea use unrelated versions of both.',
+    description:
+      'A dashed cell outline with six labelled features placed inside and around it, each coloured green for confidently inferred, amber for likely, or red for genuinely unknown, and each tappable. The genetic code, ribosomes and ATP as an energy currency are green, with explanations that these are essentially identical across all life. Hydrogen-based metabolism is amber, pointing towards a hydrothermal setting but depending on contested assumptions about horizontal gene transfer. Membrane lipids and DNA replication machinery are red, because bacteria and archaea build both from unrelated components — meaning either LUCA had no proper membrane or both lineages replaced it, and neither answer is comfortable.',
+    references: [
+      referenceId('weiss-2016-luca'),
+      referenceId('moody-2024-luca'),
+      referenceId('mitchell-1961-chemiosmosis'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('tree-of-life'),
+    title: 'The tree, drawn twice',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A three-branch simplification of a tree that published versions resolve to thousands of lineages. The first view shows relationships; the second scales each branch by its share of known lineage diversity, which is where the figure earns its place — animals become a twig on a twig. The percentages are approximate and shift as environmental sequencing continues; the 2016 tree that added the candidate phyla radiation roughly doubled recognised bacterial diversity in one paper.',
+    description:
+      'A branching diagram from a root marked LUCA to three tips labelled Bacteria, Archaea and Eukarya, each tappable. A toggle switches between two views: one in which the branches are drawn at equal thickness to show relationships, and one in which thickness is proportional to each domain’s share of known lineages — roughly 72 percent bacteria, 16 percent archaea and 12 percent eukaryotes — with a small marked twig indicating where animals sit within the eukaryote branch. Selecting a branch gives a paragraph on it, and accompanying text notes that horizontal gene transfer between distant branches means the deepest relationships are better described as a network than a clean tree.',
+    references: [
+      referenceId('hug-2016-tree-of-life'),
+      referenceId('woese-1990-three-domains'),
+      referenceId('doolittle-1999-lateral'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('cellular-energy'),
+    title: 'How a cell actually gets energy',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Conceptual diagrams of fermentation, respiration and ATP synthase. The membrane, the complexes and the rotor are drawn schematically and are not to scale relative to each other. The mechanism is well established — Mitchell proposed chemiosmosis in 1961 and spent a decade being disbelieved because everyone was looking for a chemical intermediate rather than a gradient, and the rotation of ATP synthase was eventually filmed directly.',
+    description:
+      'One scene at a time, with three buttons. Fermentation: glucose broken down partway with two ATP produced and ethanol or lactate discarded, captioned that most of the chemical energy remains in the waste. Respiration: a membrane with four numbered complexes embedded in it, electrons entering at one end and oxygen accepting them at the other, with arrows showing protons pumped across at each step and a note that about thirty ATP are produced per glucose. The turbine: protons flowing back through ATP synthase, drawn as a rotor spanning the membrane, with a note that it turns at several hundred revolutions per second and each turn assembles ATP.',
+    references: [
+      referenceId('mitchell-1961-chemiosmosis'),
+      referenceId('lane-martin-2010-energetics'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('photosynthesis'),
+    title: 'Two kinds of photosynthesis, and the electron source that separates them',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Conceptual diagrams of anoxygenic and oxygenic photosynthesis, with the third panel comparing their consequences. The photosystems are drawn as boxes rather than as structures. What the figure carries accurately is why two of them are needed to split water and only one to split hydrogen sulphide, and why that difference is the reason one version reshaped the planet. The estimate of the productivity increase spans two to three orders of magnitude in the literature.',
+    description:
+      'One panel at a time, with three buttons. Anoxygenic: hydrogen sulphide giving up electrons to a single photosystem driven by light, producing sugar with sulphur as waste, captioned that this works but only where hydrogen sulphide is available. Oxygenic: water giving up electrons to two photosystems in series, each absorbing light, producing sugar with oxygen as waste, captioned that two photons per electron pay the extra energy cost of splitting water and that this appears to have evolved exactly once. Why it mattered: two bars comparing global primary production in an anoxygenic world with an oxygenic one, differing by two to three orders of magnitude, with a note that the constraint changed from where the chemical fuel is to where there is water and light.',
+    references: [
+      referenceId('blankenship-2010-photosynthesis'),
+      referenceId('fischer-2016-oxygenic'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('oxygen-tolerance'),
+    title: 'Oxygen as poison and as opportunity',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Two illustrative response curves against atmospheric oxygen on a logarithmic axis. The shapes are conceptual rather than measured — real tolerance and performance curves vary enormously between organisms — but the crossing is the point, and it is real: the same molecule that was straightforwardly toxic for two billion years became the largest energy source available once enzymes existed to neutralise it.',
+    description:
+      'A chart with atmospheric oxygen as a fraction of today’s level on a logarithmic axis across the bottom and relative performance up the side. Two curves cross: anaerobes, doing well at very low oxygen and collapsing as it rises, and aerobes, unable to function below a threshold and improving steadily above it. A slider moves a marker along both curves and a readout gives each value. Accompanying text explains that oxygen is a highly reactive molecule that damages proteins, membranes and DNA, that what changed was not oxygen but the appearance of enzymes that neutralise it, and that anaerobes did not disappear but retreated into sediment, deep rock and animal guts where they remain enormously abundant.',
+    references: [referenceId('lyons-2014-oxygen-rise'), referenceId('holland-2006-goe')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('eukaryote-origin'),
+    title: 'Where eukaryotes sit, and how that answer changed',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Two trees, thirty years apart. This is one of the few places where a genuine shift in scientific consensus can be shown directly rather than described, so both are drawn. Branch positions are schematic. The current two-domain picture, with eukaryotes nested inside the archaea and the mitochondrion contributed separately by a bacterium, is now widely though not universally accepted, and the branching order within the Asgard group is still being argued.',
+    description:
+      'One tree at a time, with a toggle. The 1977 picture: a root labelled LUCA with three branches of equal standing to Bacteria, Archaea and Eukarya. The current picture: the same root, with Bacteria branching off first and Eukarya emerging from within the archaeal branch alongside the Asgard archaea, plus a dashed line from the bacterial branch to Eukarya marking the separate contribution of the mitochondrion. Accompanying text explains that Woese established the three domains from ribosomal RNA in 1977, that metagenomic sequencing of Arctic seafloor sediment turned up Lokiarchaeum carrying genes previously thought eukaryote-specific in 2015, and that an Asgard archaeon was finally cultured in 2020 after twelve years.',
+    references: [
+      referenceId('woese-1990-three-domains'),
+      referenceId('spang-2015-lokiarchaeota'),
+      referenceId('imachi-2020-prometheoarchaeum'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('endosymbiosis'),
+    title: 'A merger, and the evidence it left behind',
+    fidelity: 'reconstruction',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A stepped reconstruction. The mechanism by which one cell ended up inside another is genuinely unknown — engulfment without digestion, parasitism, and a metabolic partnership growing progressively closer are all argued for — and the second step says so rather than picking one. The fourth step is the part that is not reconstruction but observation: the specific features of mitochondria that are bacterial rather than eukaryotic.',
+    description:
+      'Five steps with Back and Next. Two separate organisms, an archaeal host and an aerobic bacterium. One ending up inside the other, with an explicit note that how is not known. The two becoming inseparable as most of the guest’s genes migrate to the host genome or are lost. The evidence left behind, listed as five items: own circular DNA, bacterial-type ribosomes, a double membrane, division by splitting rather than assembly, and maternal inheritance — with a note that antibiotics targeting bacterial ribosomes affect mitochondria too. And a fifth step showing a later separate merger that brought a photosynthetic cyanobacterium into a eukaryote to produce chloroplasts, with a note that some algae acquired theirs by swallowing other algae that had already done it.',
+    references: [
+      referenceId('sagan-margulis-1967-endosymbiosis'),
+      referenceId('roger-2017-mitochondria'),
+      referenceId('spang-2015-lokiarchaeota'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('cell-complexity-scaling'),
+    title: 'Energy available per gene',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Energy available per gene for four cell types on a logarithmic scale, from Lane and Martin’s 2010 analysis. The bars span four orders of magnitude, which is why the axis is logarithmic and says so. The strong form of the argument — that mitochondria were a prerequisite for complexity rather than merely helpful — is disputed, on the grounds that the result depends on how the comparison is normalised and that some bacteria maintain extensive internal membranes. The correlation between acquiring mitochondria and expanding the genome is not disputed, and the caption says which is which.',
+    description:
+      'Four tappable horizontal bars on a logarithmic axis of energy available per gene relative to a bacterium: E. coli as the baseline, a large bacterium at roughly 0.3 times, yeast at about 4,700 times, and an amoeba at about 100,000 times. Selecting a bar gives a paragraph explaining it — that a bacterium generates energy across its single outer membrane whose area grows with the square of size while costs grow with the cube, so getting larger makes its budget worse; and that a eukaryote escapes this because energy generation happens on hundreds or thousands of internal mitochondrial membranes each with its own small genome controlling it locally.',
+    references: [
+      referenceId('lane-martin-2010-energetics'),
+      referenceId('lane-2015-vital-question'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+
+  // Phase 7 — Evolution, part one
+  {
+    id: visualizationId('multicellularity'),
+    title: 'Why sticking together works',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A conceptual diagram of the simplest selective advantage of multicellularity: being too large for a predator with a fixed mouth size. Sizes are schematic, and the cluster radius grows as the cube root of cell number, which is correct scaling. The underlying result is experimental — adding a filter-feeding predator to populations of single-celled green algae has repeatedly produced heritable multicellular colonies within a few hundred generations.',
+    description:
+      'A cluster of cells beside a filter-feeding predator whose mouth gape is marked with a dashed line. A slider raises the number of cells in the cluster from 1 to 64, and the cluster grows as the cube root of that number. A label above says whether the cluster is small enough to be eaten or too big. A readout gives the cluster radius as a multiple of a single cell’s and notes that nothing worked anything out — the clusters were simply the ones still there. It also records that Ratcliff and colleagues evolved snowflake-shaped yeast clusters in about sixty transfers by repeatedly keeping whatever settled fastest, and that some cells within them were dying in a programmed way that helped the cluster reproduce.',
+    references: [
+      referenceId('ratcliff-2012-multicellularity'),
+      referenceId('knoll-2011-multicellularity'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('cell-cooperation'),
+    title: 'A body is a truce, and cancer is what breaks it',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'An illustrative diagram of somatic cells accumulating a defecting lineage. It is a schematic, not a model of tumour progression: real cancers require several mutations acquired in sequence, and the growth here is a single adjustable parameter. What it carries is the structural point — that a body is a population of genetically near-identical cells, and that when mutation breaks that identity, natural selection operates inside the organism over years.',
+    description:
+      'A grid of cells representing a tissue, all initially green and cooperating. A slider advances the number of accumulated rounds of cell division, and a growing number of cells turn red and are described as no longer stopping and dividing faster than their neighbours. Accompanying text explains that cooperation is stable because all cells in a body descend from one fertilised egg and share the same genes, that a cell which stops obeying the stop signal out-reproduces its neighbours from that moment, and that this is why the body carries so much machinery whose only job is to suppress its own cells — checkpoints, programmed cell death, division limits and immune surveillance.',
+    references: [referenceId('szathmary-smith-1995-transitions')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('cell-specialisation'),
+    title: 'One genome, many kinds of cell',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A switchboard diagram. The gene names are illustrative rather than a real expression profile, chosen to be recognisable — the concept being shown is that the same set of genes is present in every cell and different subsets are switched on. That fact was settled by cloning experiments in which a nucleus from a differentiated adult cell directed the development of an entire animal, which is the strongest possible demonstration that the information was never lost.',
+    description:
+      'A grid with six gene names across the top and four cell types down the side, each tappable, and a row of switches for each cell type showing which genes are expressed in green and which are present but silent in grey. A neuron expresses housekeeping genes and ion channels; a muscle cell adds myosin; a red blood cell expresses haemoglobin and little else; a skin cell expresses keratin. Selecting a row gives a paragraph on what that specialisation costs and buys — that a mammalian red blood cell ejects its own nucleus to make room for haemoglobin and so can no longer make proteins, and that the outer surface of skin is made of dead specialised cells doing their job posthumously.',
+    references: [referenceId('knoll-2011-eukaryotes')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('cambrian-explosion'),
+    title: 'The explosion, and what makes it look larger than it was',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'First-appearance dates from the fossil record compared with divergence times estimated from molecular clocks, for five animal phyla. The fossil dates are observations; the molecular dates are model-dependent estimates with substantial uncertainty, and the two disagree by tens of millions of years. Both are real, and the gap between them is where the argument lives — the figure shows both rather than choosing.',
+    description:
+      'A time axis from 700 to 460 million years ago with the Cambrian interval shaded, and five horizontal lines for arthropods, molluscs, chordates, echinoderms and annelids. Three views selectable by buttons. Fossil record: each line begins at its first unambiguous fossil, clustered tightly in the early Cambrian. Molecular clocks: each line begins much earlier, in the Ediacaran or before, with the interval between the molecular and fossil dates drawn dashed and labelled as inferred from genetics with no fossils. Why the difference: text explaining that animals began making mineralised skeletons largely in response to predation, and that oxygen rose enough to support larger bodies — so the record shows a genuine ecological revolution and also an artefact of what could be preserved.',
+    references: [referenceId('erwin-2011-cambrian'), referenceId('marshall-2006-cambrian')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('diversity-radiation'),
+    title: 'Why diversity compounds',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A schematic branching diagram of repeated lineage splitting. It is a diagram of a logic, not a phylogeny: real diversification does not double indefinitely, rates decline as niches fill, and mass extinctions have repeatedly cut the total back by most of itself. The caption states all three limits, because a doubling tree left unqualified would badly misrepresent the fossil record.',
+    description:
+      'A tree that branches into two at each step, with a slider controlling the number of rounds from zero to four and a running count of lineages. Accompanying text explains that each split happens because a population became isolated — a river moved, a forest fragmented, a few individuals reached an island — and that what makes the process compound rather than merely repeat is that each new organism is itself an environment: once there are trees, there is room for things that eat leaves, bore into wood, live in bark, and eat the things that eat leaves. It also states plainly that this is a schematic of the logic rather than a real phylogeny and that diversification rates decline as niches fill.',
+    references: [referenceId('mora-2011-species'), referenceId('erwin-2011-cambrian')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('population-shift'),
+    title: 'Evolution changes a population, not an individual',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A distribution of a heritable trait moving under directional selection, with the starting distribution left visible behind it. The distributions are illustrative normal curves rather than plotted field data, but the phenomenon is measured: Peter and Rosemary Grant recorded exactly this shift in beak depth on Daphne Major across drought years, and watched it reverse when the rains returned and small seeds came back.',
+    description:
+      'A histogram of beak depth across a finch population, with a slider advancing the number of generations of selection during a drought in which only large hard seeds are available. As generations pass the distribution shifts towards deeper beaks and narrows slightly, while the original distribution stays visible behind it in grey. A readout gives the mean beak depth and states explicitly what did not happen: no bird’s beak grew. Birds with deeper beaks cracked the seeds, survived and had offspring, and the population changed because its membership changed.',
+    references: [referenceId('grant-grant-2002-finches'), referenceId('darwin-1859')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('selection-ingredients'),
+    title: 'The three things natural selection needs',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A conceptual diagram in which each of the three requirements can be switched off. Natural selection is often taught as a fact to accept; it is better taught as a consequence, in that given variation, heredity and differential reproduction the outcome follows whether or not anyone believes in it. Removing each ingredient in turn shows that all three are load-bearing.',
+    description:
+      'Three labelled rows — variation, heredity, differential reproduction — each showing a tick or a cross, and a summary row beneath reading either adaptation accumulates or nothing accumulates. Four buttons switch between all three present and each one removed. Accompanying text explains each case: with all three, change accumulates and nothing else is required, not a designer, not a goal, not any tendency towards improvement. Without variation there is nothing to select between, which is the danger of an inbred population. Without heredity nothing is transmitted, which is why fire does not evolve. Without differential reproduction the mix cannot change through selection, though drift still operates.',
+    references: [
+      referenceId('darwin-1859'),
+      referenceId('wallace-1858'),
+      referenceId('lenski-2015-ltee'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('natural-selection-lab'),
+    title: 'Selection with the knobs exposed',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A deterministic model of allele frequency change under constant selection, computed exactly from the standard recursion. It ignores genetic drift entirely, which in small populations can override selection — a limitation stated in the accompanying text and addressed by the companion figure on drift. What it reproduces correctly is the S-shape and the fact that advantages that sound trivially small still sweep through a population given time.',
+    description:
+      'A chart of the frequency of a favoured variant against generations, with two sliders: the selective advantage per generation from 0.5 to 40 percent, and the starting frequency from 0.1 to 20 percent. The curve is S-shaped, and a dashed vertical line marks the generation at which the variant reaches 99 percent, labelled with that number. A readout gives the advantage, the starting share and the time to near-fixation, and points out that the curve is slow while the variant is rare, fast in the middle, and slow again at the end because there is less and less left to replace.',
+    references: [referenceId('lenski-2015-ltee'), referenceId('blount-2008-citrate')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('allele-fixation'),
+    title: 'Drift against selection',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Five independent stochastic simulations from fixed random seeds, so that the runs do not change between views — a figure that reshuffled on every render would make the reader think the noise was the interface rather than the biology. Reproduction is modelled by a normal approximation to binomial sampling. The qualitative result is standard population genetics: in small populations chance dominates, and beneficial mutations are lost far more often than intuition suggests.',
+    description:
+      'A chart of allele frequency against generations showing five coloured trajectories from independent populations, all starting at 0.5. Two sliders control population size from 10 to 100,000 on a logarithmic scale and the selective advantage from 0 to 15 percent. At small population sizes the trajectories scatter widely and several hit zero or one within a few hundred generations; at large sizes they follow the deterministic curve closely. A readout counts how many of the five reached fixation and how many were lost, and explains that this is why effective population size matters so much in conservation.',
+    references: [referenceId('lenski-2015-ltee')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('selection-not-choice'),
+    title: 'Nature does not choose',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Two accounts of the same outcome, drawn side by side. The left panel is the story most people carry — that nature notices what is needed and provides it — and the right panel is the mechanism. Both end with the same population, which is exactly why the wrong version survives: it predicts correctly and explains wrongly. The peppered moth case is used because it is well documented, including the field experiments that were repeated after the original work was criticised.',
+    description:
+      'One panel at a time, with a toggle. The intuition: an oval labelled Nature drawn with a dashed outline, an arrow down from it, and text saying it sees that dark moths are needed and selects them — with a line beneath stating that there is no such agent and no such step. What happens: three rows of moths. The first row shows a population that already varies, some dark and some pale, with a note that nothing new appears. The second shows soot darkening the trees and the pale moths crossed out as visible to birds. The third shows the next generation, now mostly dark. Accompanying text states that industrial pollution did not create the dark moths, that birds ate the ones they could see, and that nothing at any point evaluated, decided or intended.',
+    references: [referenceId('darwin-1859'), referenceId('mayr-1982-growth-biology')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+
+  // Phase 7 — Evolution, part two
+  {
+    id: visualizationId('fitness-landscape'),
+    title: 'Why selection gets stuck',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A one-dimensional fitness landscape, which is a caricature. Real landscapes have thousands of dimensions, where valleys are far easier to route around than a two-dimensional picture suggests, and intuitions drawn from this figure often fail. What it carries correctly is the one constraint that matters: selection cannot move downhill, so a population can end on a lower peak and stay there permanently.',
+    description:
+      'A curve with three peaks of different heights over an axis labelled as some heritable trait. A slider sets where the population starts, and a marker climbs uphill from there to whichever peak it can reach, coloured green if that is the highest peak and red if it is not. Accompanying text explains that reaching a better solution would require passing through worse ones, and gives two consequences visible in real anatomy: the vertebrate eye has its wiring in front of the light-sensitive cells, producing a blind spot, and the nerve serving a giraffe’s larynx runs the length of the neck and back up. Both would be fixed by a redesign and neither can be reached from where those lineages are.',
+    references: [
+      referenceId('gould-lewontin-1979-spandrels'),
+      referenceId('stearns-1989-tradeoffs'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('tree-not-ladder'),
+    title: 'The march of progress against the actual topology',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Two pictures containing the same organisms. The ladder is not a scientific diagram and is drawn here only to be dismantled; the tree is schematic in its branch positions but correct in the one respect that matters, which is that every living tip sits at the same right-hand edge because every lineage has had exactly the same amount of evolutionary time.',
+    description:
+      'One picture at a time, with a toggle. The ladder: six figures in a line from a bacterium to a human, each larger than the last and stepping upward, with a line beneath stating plainly that this is not what the evidence shows. The tree: a root branching to seven tips — bacteria, fungi, plants, insects, fish, birds and humans — all reaching a dashed vertical line at the right labelled all equally recent, with the human branch highlighted. Accompanying text explains that the line in the first picture is produced by choosing, at each branch point, the side that leads to us and discarding the rest, and that drawing the same line to a hummingbird gives something equally continuous and equally arbitrary.',
+    references: [referenceId('gould-1996-full-house'), referenceId('hug-2016-tree-of-life')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('biomass-pyramid'),
+    title: 'The pyramid, and where it stands on its head',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Three trophic pyramids drawn from representative figures rather than from one dataset. The inverted marine pyramid is the reason the figure exists: it looks like a violation of the ten percent rule and is not, which makes it the best available way to force the distinction between a standing stock and a rate. The third view shows the same ocean system measured as energy flow, where the pyramid is the right way up and steeper than the grassland.',
+    description:
+      'Three stacked bars forming a pyramid, with widths proportional to the values shown, and three buttons. Grassland: a wide band of grass, a narrower band of grazers, a very narrow band of predators. Open ocean by biomass: phytoplankton narrower than the zooplankton above them, an inverted pyramid. Open ocean by rate: the same system measured as energy flow per year, right way up and steeper than the grassland. Accompanying text explains that phytoplankton are tiny and divide in hours, so a small standing crop is replaced continuously and the flow through it is enormous, and that what must obey the ten percent rule is the rate rather than the amount sitting there at any instant.',
+    references: [referenceId('lindeman-1942-trophic'), referenceId('bar-on-2018-biomass')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('passive-vs-driven-trend'),
+    title: 'A rising maximum is not a trend upward',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A simulation of Gould’s drunkard’s walk with a fixed random seed: 220 lineages taking random steps in complexity, with a hard lower bound. Run without bias it still raises the maximum while leaving the mean pinned near the wall. Run with a bias it moves the whole distribution. This is a simulation of an argument, not a measurement of the fossil record, and the caption says so.',
+    description:
+      'A histogram of how many lineages have each level of complexity, with a red bar at the left marking the minimum possible. A toggle switches between a passive model with no bias and a driven model with an upward bias, and a slider advances the simulation from zero to 120 steps. A dashed line marks the mean and a readout gives the mean and the maximum. In the passive model the maximum rises steadily while the mean stays near the wall; in the driven model both rise together. Accompanying text notes that the real biosphere looks like the first case, since the maximum has risen for four billion years while the mode of the distribution has stayed on bacteria.',
+    references: [referenceId('gould-1996-full-house'), referenceId('mcshea-brandon-2010-ztfel')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('reductive-evolution'),
+    title: 'Genomes that got smaller',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Measured genome sizes for four organisms on a logarithmic scale, spanning nearly three orders of magnitude. These are real published values. The figure exists to make quantitatively what anecdotes about blind cave fish make only impressionistically: an endosymbiont with 160 kilobases is not a degenerate bacterium, it is an extremely specialised organism whose specialisation consists almost entirely of subtraction.',
+    description:
+      'Four tappable horizontal bars on a logarithmic genome-size axis: E. coli at about 4,600 kilobases and 4,300 genes; Buchnera, which lives inside aphids, at about 640 kilobases and 580 genes; Carsonella ruddii at about 160 kilobases and 180 genes; and the human mitochondrion at 16.6 kilobases and 37 genes. Selecting a bar gives a paragraph on what has been lost and why. Accompanying text explains the two forces at work — relaxed selection on functions the host supplies, and small effective population sizes in vertically transmitted symbionts letting drift fix slightly harmful changes — and states that the process is essentially irreversible and is not decline.',
+    references: [
+      referenceId('wolfe-li-2003-genome-reduction'),
+      referenceId('douglas-2010-symbiosis'),
+      referenceId('roger-2017-mitochondria'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('life-history-tradeoffs'),
+    title: 'One budget, spent three ways',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A conceptual allocation diagram in which the total cannot be increased. That constraint is the entire content of the trade-off idea, and a control that steals from one category to feed another teaches it faster than examples alone — though examples are needed too, and the accompanying text supplies them. The three-way split is a simplification of a continuous allocation problem.',
+    description:
+      'A single bar divided into three coloured segments — growth, reproduction, maintenance and repair — with two sliders that adjust the first two, the third taking whatever remains. Beneath, three separate bars show each allocation with its percentage. A readout names the resulting strategy and gives real organisms that follow it: heavy reproduction as a mayfly, an annual weed or a mouse, which works where mortality is high and unpredictable; heavy maintenance as a tortoise, an albatross or a bristlecone pine, which works where adults survive well; and heavy growth as a large tree or a whale, buying safety and competitive advantage at the cost of years before any offspring.',
+    references: [
+      referenceId('stearns-1989-tradeoffs'),
+      referenceId('gould-lewontin-1979-spandrels'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('niche-space'),
+    title: 'A niche is a region, not a place',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Two axes of a space that formally has as many dimensions as there are relevant conditions, drawn in two because more cannot be drawn. The distinction between the fundamental and realised niche is the part that matters and is demonstrated experimentally: remove a competitor and a species expands into zones it never occupies naturally, which Connell showed directly with barnacles on Scottish shores.',
+    description:
+      'A rectangle with temperature across the bottom and moisture up the side, with a note that further axes exist — food size, time of day, and more. A toggle switches between two views. What it could tolerate: a single dashed ellipse labelled fundamental niche, the full range of conditions under which the species could survive with nothing else in the way. Where it actually lives: the same ellipse plus an overlapping ellipse for a competitor, with a smaller solid region labelled realised niche where the species is actually found. Accompanying text explains that the fundamental niche is a property of the organism and can be measured in the laboratory, while the realised niche depends on who else is present.',
+    references: [referenceId('hutchinson-1957-niche'), referenceId('elton-1927-animal-ecology')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('fitness-is-context'),
+    title: 'Fitness is a relationship, not a property',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Three hypothetical organisms ranked in three environments, with the ranking changing completely between them. The performance values are illustrative rather than measured — the figure is making a conceptual point about what the word fitness means, and inventing plausible numbers is the honest way to make it, provided the caption says they are invented.',
+    description:
+      'Three ranked bars showing relative reproductive success for a large slow well-defended organism, a heat-tolerant specialist, and a small fast-breeding generalist, with three buttons switching the environment between cold and stable, hot and dry, and disturbed and unpredictable. The ordering changes entirely between environments. Accompanying text explains why in each case, and notes that this is why survival of the fittest misleads — it sounds like a statement about which organisms are best and is really a statement about which happen to leave more offspring under conditions currently in force. It also records that Darwin did not coin the phrase; Herbert Spencer did.',
+    references: [referenceId('stearns-1989-tradeoffs'), referenceId('vanvalen-1973-red-queen')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('nested-similarity'),
+    title: 'The nested pattern that common ancestry predicts',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Nested boxes showing groups within groups, with the trait that defines each level named. Similarity alone proves nothing — convergence produces plenty of it — so what needs explaining is that the similarities nest strictly, with no crossing, and that anatomy, genetics and development produce the same nesting despite being gathered by different methods over two centuries.',
+    description:
+      'Five rectangles drawn strictly inside one another and labelled vertebrates, tetrapods, amniotes, mammals and primates, each carrying the trait that defines it. A toggle switches the traits between three kinds of evidence: anatomy, giving backbone, four limbs, amniotic egg, hair and milk, and grasping hands; genetics, giving the shared Hox cluster, limb-patterning genes, the keratin gene family, casein genes and trichromatic opsins; and development, giving notochord, limb buds, extraembryonic membranes, mammary ridge and prolonged brain growth. Accompanying text notes that every box sits entirely inside the next with none overlapping partway, that descent with modification explains this exactly, and that a designer under no obligation to reuse parts could have produced any arrangement.',
+    references: [referenceId('darwin-1859'), referenceId('hug-2016-tree-of-life')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('extinction-record'),
+    title: 'Extinction intensity through the Phanerozoic',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A curve of extinction intensity over the last 540 million years with the big five marked. The shape is illustrative of the Sepkoski-derived compilations rather than a reproduction of any one dataset, and the background variation is stylised. The percentages given for each event are the standard published estimates and carry real uncertainty. The feature the figure exists to carry is that the line never reaches zero — extinction is continuous, and the famous events are spikes on top of a process that never stops.',
+    description:
+      'A line chart of percentage of genera lost against time from 540 million years ago to the present, with five marked spikes a reader can tap. End-Ordovician at 444 million years, around 85 percent, attributed to rapid glaciation draining the shallow shelf seas. Late Devonian at 372 million, around 75 percent, a series of pulses with widespread ocean anoxia possibly driven by nutrient runoff from newly forested continents. End-Permian at 252 million, around 90 percent, the Siberian Traps erupting through coal deposits. End-Triassic at 201 million, around 76 percent, removing most crocodile-line archosaurs and letting dinosaurs expand. End-Cretaceous at 66 million, around 76 percent, the Chicxulub impact with the Deccan Traps erupting across the same interval.',
+    references: [
+      referenceId('raup-sepkoski-1982-extinctions'),
+      referenceId('alvarez-1980-impact'),
+      referenceId('burgess-2014-permian'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+
+  // Phase 7 — Ecology, part one
+  {
+    id: visualizationId('convergent-evolution'),
+    title: 'The same solution, reached independently',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Four cases drawn as two lineages converging on one solution from a distant shared ancestor that had nothing like it. The branch diagrams are schematic. What convergence shows is that the space of workable solutions is narrower than the space of possible ones; what it does not show is that any particular outcome was bound to happen, and the caption keeps those two claims apart because they are routinely conflated.',
+    description:
+      'A branching diagram from a distant ancestor to two lineages that then converge on a common outcome drawn at the right, with four buttons switching the case. Eyes: vertebrates and octopuses arriving at a camera eye from an ancestor 600 million years back that had at most a light-sensitive patch, with the note that the vertebrate retina is wired backwards and has a blind spot while the octopus one is not and does not. Flight: birds and bats arriving at a powered wing built from completely different material. Body shape: sharks and dolphins arriving at the same streamlined form, with the tail giving the ancestry away since fish beat side to side and mammals up and down. Agriculture: leafcutter ants and termites independently evolving fungus farming, showing that behaviour converges too.',
+    references: [
+      referenceId('conway-morris-2003-convergence'),
+      referenceId('losos-2011-convergence'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('replay-the-tape'),
+    title: 'Replaying the tape, as actually performed',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Gould’s thought experiment became a real one when Lenski froze samples every 500 generations and could restart from any point. The figure shows the published result: one population of twelve gained the ability to use citrate, and replays from late samples reproduced it while replays from early ones never did. The bar lengths in the second view are illustrative of the reported pattern rather than exact replicate frequencies.',
+    description:
+      'Two views selectable by buttons. Twelve populations: twelve horizontal lines representing the long-term evolution experiment, eleven grey and one highlighted, with a marker at about 31,500 generations where that population evolved the ability to use citrate in the presence of oxygen — something E. coli is essentially defined by not doing. Replaying the tape: four bars showing how often restarts from frozen samples at 5,000, 15,000, 20,000 and 30,000 generations reproduced the innovation, running from never to sometimes. Accompanying text explains that something had happened in the interim which made the innovation reachable — a potentiating mutation with no visible effect of its own — and that this is contingency demonstrated rather than argued.',
+    references: [
+      referenceId('blount-2008-citrate'),
+      referenceId('lenski-2015-ltee'),
+      referenceId('gould-1989-wonderful-life'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('ecosystem-flows'),
+    title: 'Energy passes through; matter goes round',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Two conceptual diagrams with deliberately different shapes: an arrow that passes through and leaves, and a ring that closes. Confusing these two is the most common error in thinking about ecosystems, and drawing them differently is the cheapest correction available. Neither carries quantities; the companion carbon-cycle figure does that.',
+    description:
+      'One diagram at a time, with a toggle. Energy: sunlight entering at the left, passing through boxes for plants, grazers, predators and decomposers, with an arrow leaving each box downward labelled heat, and a caption that energy passes through once and cannot be reused. Matter: four circles arranged in a ring — plants, animals, dead matter, and soil, air and water — connected by a closed dashed loop, captioned that the same atoms go round indefinitely and that the carbon in a leaf becomes carbon in a bird. Accompanying text explains that the second law forbids recycling energy, which is why cutting off sunlight collapses an ecosystem from the bottom within months, and that what limits an ecosystem is the rate at which decomposers release elements back into usable form.',
+    references: [
+      referenceId('lindeman-1942-trophic'),
+      referenceId('falkowski-2008-microbial-engines'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('energy-pyramid'),
+    title: 'The ten percent rule, and why food chains are short',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Energy at successive trophic levels computed from an adjustable transfer efficiency. Real efficiencies average around ten percent and range from roughly two to twenty depending on the taxa involved, and the slider spans that range. Making the number adjustable turns a memorised figure into a consequence: chain length is arithmetic, not a fact about ecology that has to be learned separately.',
+    description:
+      'Five stacked bars forming a pyramid — producers, herbivores, small carnivores, large carnivores and top predators — with widths proportional to the logarithm of the energy reaching each, and each labelled with its value. A slider adjusts transfer efficiency between 2 and 25 percent. Levels that fall below the energy needed to sustain a population are greyed out and labelled as such. A readout gives how many levels the chain supports at the chosen efficiency and explains where the losses come from: material never eaten, material eaten and not digested, and energy burned staying alive, which leaves as heat. It notes that warm-blooded animals sit at the low end because so much goes into maintaining body temperature.',
+    references: [
+      referenceId('lindeman-1942-trophic'),
+      referenceId('estes-2011-trophic-downgrading'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('food-web'),
+    title: 'A chain is a path; a web is the actual thing',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A simplified North Pacific kelp system with eight nodes. Real webs contain hundreds of species and connections whose strengths differ by orders of magnitude; this is a sketch of the logic rather than a survey. The consequences described when a species is removed are drawn from documented cases, including the collapse and recovery of kelp forests with the loss and protection of sea otters.',
+    description:
+      'A network diagram with eight species — kelp, plankton, urchins, crabs, fish, sea otters, seals and orcas — connected by arrows running from consumer to what it eats. Tapping any species removes it and dims every connection that depended on it. A paragraph then describes what follows. Removing sea otters lets urchin numbers explode, and urchins graze kelp to bare rock, taking with them the fish, invertebrates and seabirds that lived in the forest — even though otters never touched the kelp, which is a documented case from the North Pacific fur trade that reversed when otters were protected. Removing less connected species produces modest local effects, and the contrast is the point.',
+    references: [referenceId('estes-2011-trophic-downgrading'), referenceId('paine-1966-keystone')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('niche-partitioning'),
+    title: 'Five warblers dividing one tree',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Feeding zones for five warbler species in the same spruce trees, after MacArthur’s observations in Maine. The zone boundaries are schematic representations of his results rather than exact reproductions of his data. The second view is a counterfactual — what complete overlap would imply — and is drawn as such, since competitive exclusion means it is not a state that persists.',
+    description:
+      'A spruce tree drawn beside a vertical axis from base to top, with five coloured bands showing where each warbler species feeds: Cape May at the very top, then Blackburnian, black-throated green, bay-breasted, and myrtle towards the base, each overlapping its neighbours slightly. A toggle switches to a view in which all five occupy the full height, labelled as complete overlap in which one species would exclude the rest. Accompanying text explains that MacArthur recorded where each species spent its time, that they also differ in timing and in which insects they take, and that coexistence requires species to differ somewhere — while noting that the differences are not always found even when species clearly do coexist, a long-running puzzle sometimes called the paradox of the plankton.',
+    references: [referenceId('hutchinson-1957-niche'), referenceId('elton-1927-animal-ecology')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('competition-outcomes'),
+    title: 'Two competitors, three possible outcomes',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'The Lotka–Volterra competition model, integrated forward from equal small starting populations. It is deliberately simple and ignores space, time-varying conditions and any third species, all of which can permit coexistence it forbids. What it produces correctly is the general rule, which is not obvious: two species coexist when each suppresses itself more than it suppresses the other.',
+    description:
+      'A chart of two population trajectories against time, with two sliders controlling how strongly each species suppresses the other relative to itself, from 0.1 to 1.8. A label names the outcome as coexistence, species A excluding species B, or species B excluding species A. Accompanying text states the rule that falls out of the model — coexistence when both competition coefficients are below one — and explains what it means biologically: that coexistence is not about being equally matched but about the competitors being different enough that each runs out of its own limiting resources before exhausting the other’s.',
+    references: [referenceId('hutchinson-1957-niche'), referenceId('tilman-2014-biodiversity')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('predator-prey-cycles'),
+    title: 'Lynx and hare, in time and in phase',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'The Lotka–Volterra predator–prey model, integrated forward and shown both as time series and in the phase plane. It is simpler than any real system: the Hudson’s Bay Company fur records show the pattern over nearly two centuries, but the real hare cycle is now known to involve food supply and stress physiology as well as predation. The phase-plane view is included because a closed loop there is what an oscillation in time actually is.',
+    description:
+      'Two views selectable by buttons, with a slider controlling how efficiently predators catch prey. Over time: two curves oscillating out of phase, hares peaking before lynx. Phase plane: the same run plotted with hares across and lynx up, tracing a closed loop that does not settle to a point. Accompanying text explains the sequence — hares increase, lynx increase after a delay, hares are eaten down, lynx starve, hares recover — and that the predator peak always follows the prey peak because predators need time to convert food into offspring, which is why the system oscillates rather than settling at a balance point.',
+    references: [referenceId('elton-1927-animal-ecology'), referenceId('vanvalen-1973-red-queen')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('arms-race'),
+    title: 'Both sides improve; neither gets ahead',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Two illustrative performance curves rising together with a constant gap. The curves are schematic, not measured — real arms races hit physical and energetic limits and do not run indefinitely. The result they carry is the counter-intuitive one that makes the Red Queen hypothesis worth stating: enormous absolute change producing no net advantage on either side.',
+    description:
+      'A chart of absolute performance against rounds of coevolution, with two curves — predator speed and prey speed — climbing together from a common baseline while the gap between them stays flat. A slider advances the number of rounds, and a readout gives both performance values, the gap, and notes that the gap is essentially where it started. Accompanying text explains that Leigh Van Valen called this the Red Queen hypothesis after the character who has to run to stay in the same place, and proposed it to explain why extinction risk in the fossil record does not appear to fall as a lineage persists: the environment that matters most is other organisms, and they keep adapting.',
+    references: [referenceId('vanvalen-1973-red-queen'), referenceId('vermeij-1994-arms-race')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('cooperation-payoff'),
+    title: 'Why cooperation is a puzzle, and three resolutions',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A payoff matrix stating the puzzle precisely, followed by the three standard mechanisms that resolve it. The payoff numbers are the conventional prisoner’s dilemma values used for exposition rather than measured quantities. The three mechanisms are presented separately because each has a different signature in nature, and treating cooperation as simply resolved would lose that.',
+    description:
+      'Four panels selectable by buttons. The problem: a two-by-two payoff matrix showing that defecting pays better whatever the other individual does, with a line noting that two self-interested players end up with 1 each instead of the 3 each they could have had. Kinship: Hamilton’s rule written out, with relatedness values for siblings, cousins and bee sisters, explaining sterile worker castes. Repetition: a row of interaction rounds with one defection marked, explaining that defecting once costs cooperation in every round after and citing vampire bats regurgitating blood preferentially for roost-mates that have fed them. Reputation: a ring of individuals with one defector visible to all, explaining that this requires recognising individuals and remembering what they did.',
+    references: [
+      referenceId('douglas-2010-symbiosis'),
+      referenceId('bronstein-2015-mutualism'),
+      referenceId('szathmary-smith-1995-transitions'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+
+  // Phase 7 — Ecology, part two
+  {
+    id: visualizationId('symbiosis-spectrum'),
+    title: 'Mutualism, commensalism and parasitism on one axis',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A continuum rather than three categories, which is the correction the figure exists to make. The position of a given relationship is not fixed: mycorrhizal fungi help plants take up phosphorus and are repaid in sugar, but when soil phosphorus is abundant the plant gains little and the fungus becomes closer to a cost. Nothing about the organisms changes; the context does.',
+    description:
+      'A horizontal gradient bar running from partner B harmed on the left through unaffected in the middle to partner B benefits on the right, with a marker the reader can slide along it. The label above the marker changes between parasitism, commensalism and mutualism, and a paragraph gives an example of each: the fig and its wasp, where neither exists without the other and the relationship is about 75 million years old; barnacles on a whale, where true neutrality is hard to demonstrate and careful measurement often turns apparent commensalism into slight benefit or cost; and tapeworms and parasitic wasps, with a note that a successful parasite usually does not kill quickly. A line beneath records that gut bacteria are helpful in the gut and dangerous in the bloodstream.',
+    references: [referenceId('douglas-2010-symbiosis'), referenceId('bronstein-2015-mutualism')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('mutualism-stability'),
+    title: 'How mutualisms survive cheating',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Three mechanisms drawn as a host allocating resources to three partners, one of which cheats. The diagram is conceptual; what makes it worth drawing is that each mechanism produces a visibly different allocation pattern. Each is supported by a specific experiment named in the accompanying text, including the argon experiment on legume nodules that demonstrated sanctions directly.',
+    description:
+      'A host organism connected to three partners, two giving and one cheating, with the connection lines drawn thick where resources flow and dashed where they are withheld. Three buttons switch the mechanism. Sanctions: the host withholds from the cheat, illustrated by legume plants cutting oxygen supply to root nodules supplied with argon instead of nitrogen so the bacteria could not fix any. Vertical transmission: all connections stay thick, because a symbiont passed from parent to offspring has its reproductive future bound to the host’s, as in aphid endosymbionts. Partner choice: the host withholds from the cheat and both sides preferentially allocate to good partners, as plants and mycorrhizal fungi do in a market rather than a punishment.',
+    references: [referenceId('bronstein-2015-mutualism'), referenceId('douglas-2010-symbiosis')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('virulence-tradeoff'),
+    title: 'Why parasites do not become as harmful as possible',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Two opposing curves and their product, computed from illustrative functional forms rather than measured trade-off functions, which vary by system and are weak or absent for some parasites. The result the model produces is the one worth having: the optimum is at an intermediate level of harm, not at zero — which is why the folk claim that parasites always evolve towards harmlessness is wrong.',
+    description:
+      'A chart with how much damage the parasite does across the bottom and relative performance up the side. Two dashed curves rise and fall against each other — transmission per day increasing with damage, and days the host survives decreasing with it — and a solid curve shows their product, total transmission, peaking at an intermediate value marked with a dashed line labelled best for the parasite. A slider adjusts how easily the parasite spreads between hosts. Accompanying text explains the prediction this yields: where a parasite can spread without the host moving, through water, a vector, or a hospital ward, the cost of disabling the host falls and higher virulence is favoured, with cholera and malaria as the standard examples.',
+    references: [referenceId('vanvalen-1973-red-queen'), referenceId('douglas-2010-symbiosis')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('coevolution-matching'),
+    title: 'Darwin’s orchid and the predicted moth',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A schematic of an orchid nectar spur and a hawkmoth proboscis, with lengths linked. The drawings are simplified — the real spur is coiled and the real moth far less tidy — and the linear relationship between them is illustrative. The case itself is documented history: Darwin predicted the moth in 1862 from the flower alone, it was described in 1903, and its feeding on the orchid was filmed in 1992.',
+    description:
+      'An orchid drawn with an adjustable nectar spur beside a hawkmoth whose proboscis extends to match. A slider sets the spur length from 4 to 40 centimetres and the proboscis follows. Accompanying text recounts that Darwin received a Madagascan orchid with a spur about 30 centimetres long and wrote that there must be a moth with a proboscis of comparable length, that the suggestion was ridiculed, and that the moth was named praedicta — the predicted one. It explains that the escalation runs both ways, since a longer spur forces the moth to press harder against the pollen so flowers with longer spurs are pollinated better, and neither partner is trying to escalate.',
+    references: [referenceId('darwin-1859'), referenceId('bronstein-2015-mutualism')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('rarity-advantage'),
+    title: 'Why no species takes over everything',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Two straight fitness lines crossing, which is the simplest possible statement of negative frequency dependence: whichever species is common does worse, so the system is pushed back towards the middle from either side. The linear form is a schematic. The mechanisms behind it are real and specific, and are named in the accompanying text rather than left as an abstraction.',
+    description:
+      'A chart with the share of the population that is species A across the bottom and reproductive success up the side, showing two lines crossing at the midpoint. A slider moves a marker along both, and a readout says which species is currently increasing. Accompanying text names the mechanisms: the commonest prey is the one predators learn to recognise, the commonest host is the one parasites are adapted to, and the commonest plant depletes the nutrients it needs while accumulating the pathogens that attack it. It records that Janzen and Connell proposed the last of these to explain why tropical forests hold hundreds of tree species, since seedlings near a parent tree die from that species’ accumulated enemies.',
+    references: [referenceId('tilman-2014-biodiversity'), referenceId('paine-1966-keystone')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('biodiversity-levels'),
+    title: 'Diversity is three things',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Three conceptual panels. A reader who thinks biodiversity means a species count will misread almost every conservation argument, so genetic, species and ecosystem diversity are separated and each given a case where it is the one that matters. The panels are illustrative diagrams and carry no data.',
+    description:
+      'One panel at a time, with three buttons. Genetic: twenty-four circles of one colour in varying shades, representing variants within a single species, with the Irish potato famine given as the case — nearly all potatoes grown were a single clone with no resistance to Phytophthora — and cheetahs, so genetically uniform after a bottleneck that unrelated individuals accept skin grafts. Species: twenty-four circles of many colours and sizes, with a note that a count treats every species as equivalent, which is why measures weighted by evolutionary distinctness are increasingly used. Ecosystem: four blocks representing forest, wetland, grassland and reef, each with its own community, with a note that a landscape of one habitat type loses everything to a single event.',
+    references: [referenceId('tilman-2014-biodiversity'), referenceId('mora-2011-species')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('keystone-removal'),
+    title: 'Paine’s starfish, and what removing it did',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'The outcome of Robert Paine’s removal experiment on a rocky shore in Washington State: fifteen species before, eight after. The species names shown are representative of an intertidal community rather than his exact list. The result is the one that mattered — removing a predator reduced diversity, which is the opposite of what intuition predicts, and it is where the word keystone comes from.',
+    description:
+      'A grid of fifteen species tiles representing a rocky intertidal community, each with a coloured marker. A toggle switches between with the starfish, where all fifteen are present, and starfish removed, where seven tiles including the starfish itself are greyed out and a caption states that mussels have taken the rock. Accompanying text explains that Paine removed the starfish from one plot by hand, repeatedly, for years, that mussels were the best competitors for space and had previously been held in check, and that diversity fell from fifteen species to eight. It adds that the concept has since been overused: keystone status is a property of a species in a particular system, not a label it carries everywhere.',
+    references: [referenceId('paine-1966-keystone'), referenceId('estes-2011-trophic-downgrading')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('alternative-states'),
+    title: 'Two stable states, and the gap between the thresholds',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A hysteresis diagram for a shallow lake flipping between clear and turbid. The threshold values are illustrative, and the state depends on which direction the reader approaches from — which is the whole point. The gap between the tipping-in and tipping-back thresholds is why reducing nutrient input to where it was before so often fails to restore a degraded lake.',
+    description:
+      'A chart with nutrient input across the bottom and water clarity up the side, showing an upper branch for a clear lake, a lower branch for a turbid one, and a dashed unstable branch between them. Two dashed vertical lines mark the thresholds: a higher one where a clear lake tips over, and a lower one where a turbid lake recovers. A slider moves the nutrient level and a marker follows the branch the system is currently on, so raising the nutrients past the upper threshold flips it and lowering them back does not flip it back. Accompanying text explains that the turbid state is stabilised by its own feedbacks — algae shade out bottom plants, the plants die, the sediment they held is stirred up — and that the same structure describes Snowball Earth, coral reefs turning to algal rock, and grassland turning to scrub.',
+    references: [referenceId('hoffman-2017-snowball-review'), referenceId('ipcc-2021-ar6-wg1')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('extinction-vortex'),
+    title: 'Why small populations keep getting smaller',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A conceptual loop diagram with an illustrative risk estimate attached. The risk figures are not a population viability analysis — real ones are built species by species from measured demographic rates — and are there to show the direction and steepness of the relationship rather than to quantify any particular case. Extinction is usually pictured as an external blow; for most species it is a spiral.',
+    description:
+      'A ring of four stages with arrows running round it — population falls, fewer mates and more inbreeding, lower survival and fertility, chance events hit harder — and a rotation symbol at the centre. Beneath, a bar showing modelled extinction risk over a hundred years. A slider sets the number of breeding individuals from 20 to 2,000, and the risk bar responds. Accompanying text explains the three things that worsen together as a population shrinks: inbreeding exposing harmful recessives, genetic variation lost to drift so the population cannot adapt, and random events ceasing to average out. It notes that the northern white rhinoceros is now at two individuals, both female.',
+    references: [
+      referenceId('tilman-2014-biodiversity'),
+      referenceId('raup-sepkoski-1982-extinctions'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('extinction-recovery'),
+    title: 'What recovery actually looks like',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Schematic diversity curves through and after two mass extinctions, showing the collapse, the interval dominated by a few tolerant generalists, and the long climb back. The curves are representations of the published pattern rather than plots from a specific dataset. The point they carry is that the curve returns and the composition does not: recovery is real, restoration is not.',
+    description:
+      'A curve of diversity against time with a sharp drop and a long asymptotic recovery, with the collapse shaded red and the aftermath shaded amber and labelled disaster taxa dominate. A dashed horizontal line marks the pre-extinction level. A toggle switches between the end-Permian and the end-Cretaceous. Accompanying text describes the aftermath in each case — the clam Claraia and the burrower Lystrosaurus dominating end-Permian beds, and mammals expanding from small nocturnal animals into whales and bats within about ten million years after the end-Cretaceous — and states that brachiopods never regained their Palaeozoic position and that what returned was never what had been lost.',
+    references: [
+      referenceId('burgess-2014-permian'),
+      referenceId('raup-sepkoski-1982-extinctions'),
+      referenceId('schulte-2010-chicxulub'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+
+  // Phase 7 — Life and the planet
+  {
+    id: visualizationId('biosphere-biomass'),
+    title: 'What the biosphere is actually made of',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'The 2018 global biomass census, in gigatonnes of carbon, shown on both a linear and a logarithmic scale. Both are offered because either alone misleads: the linear view hides the structure and the log view hides the magnitude. Uncertainties are asymmetric and largest for the deep subsurface biosphere, where estimates have been revised downward substantially as sampling improved — so read the plant and animal figures as well constrained and the microbial ones as approximate.',
+    description:
+      'Seven tappable horizontal bars giving biomass in gigatonnes of carbon: plants at about 450, bacteria at about 70, fungi at about 12, archaea at about 7, protists at about 4, animals at about 2, and humans at about 0.06. A toggle switches between linear and logarithmic scales. Selecting a bar gives a paragraph on that group — that almost all plant biomass is wood, that most bacteria are in deep soil and sediment rather than anywhere visible, that fungi outweigh all animals by roughly six to one, that arthropods are about half of animal biomass, and that human livestock now outweigh all wild mammals by more than an order of magnitude.',
+    references: [
+      referenceId('bar-on-2018-biomass'),
+      referenceId('falkowski-2008-microbial-engines'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('planetary-oxygen-budget'),
+    title: 'Why oxygen took so long to reach the air',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A conceptual budget in arbitrary units, not a quantitative reconstruction. The sink capacities are illustrative. What the figure makes intelligible is the delay: cyanobacteria produced oxygen for a long time before any of it accumulated, because dissolved iron, volcanic gases and exposed rock consumed it as fast as it was made. The Great Oxidation Event is the moment production exceeded the sinks, not the moment production began.',
+    description:
+      'A bar at the top showing oxygen production, controlled by a slider. Beneath it, three sink bars — dissolved iron in the oceans, volcanic gases, and weathering of exposed rock — filling in order as production rises, each labelled saturated once full. At the bottom, a bar showing what is left over for the atmosphere, which stays empty until all three sinks are saturated. Accompanying text explains that banded iron formations are the record of the largest sink being paid off, that the iron ore industrial civilisation is built from is the waste product of a microbial revolution two billion years old, and that how long the delay lasted is actively argued.',
+    references: [
+      referenceId('lyons-2014-oxygen-rise'),
+      referenceId('holland-2006-goe'),
+      referenceId('fischer-2016-oxygenic'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('biological-carbon-cycle'),
+    title: 'The fast loop and the slow loop',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Carbon fluxes with arrow width proportional to magnitude, which is what makes the point: the geological arrows are hundreds of times thinner than the biological ones. Figures are approximate and vary between assessments. Reading the carbon cycle correctly means holding two timescales at once — a huge, nearly balanced biological exchange, and a tiny, unbalanced geological one that actually sets the atmosphere over millions of years.',
+    description:
+      'A diagram with the atmosphere as a bar across the top, labelled with its carbon content, and reservoirs beneath it — plants and soil, the surface ocean, and rock — connected by arrows whose widths are proportional to annual flux. Three buttons show the fast biological loop alone, the slow geological loop alone, or both together. The biological arrows carry about 120 gigatonnes of carbon a year out of the air and about 118 back; the geological arrows carry about 0.3 each way. Accompanying text explains that the seasonal wobble in atmospheric carbon dioxide records is northern forests breathing, that the tiny fraction of organic carbon escaping decay is why there is oxygen in the air, and that fossil fuel burning currently adds about 10 gigatonnes a year.',
+    references: [
+      referenceId('berner-2003-carbon-cycle'),
+      referenceId('falkowski-2008-microbial-engines'),
+      referenceId('ipcc-2021-ar6-wg1'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('life-environment-feedback'),
+    title: 'Four biological feedbacks, with their confidence marked',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Four loop diagrams, each with a bar showing how well established it is. That bar is the honest part: the Amazon moisture loop is well documented, while the plankton–cloud loop is real chemistry whose planetary magnitude has been argued about for three decades and is now generally thought modest. Presenting them as equally solid would be the easy mistake here, and the confidence values are the author’s summary of the literature rather than a measured quantity.',
+    description:
+      'A ring of four labelled steps with a plus or minus at the centre marking whether the loop amplifies or corrects, plus a confidence bar beneath. Four buttons switch between loops. Forest rain, positive: the Amazon recycling a large fraction of its own rainfall, well documented, with the threshold for savannisation not. Plankton and clouds, negative: dimethyl sulphide seeding cloud droplets, real chemistry with contested climatic magnitude. Peat, positive: bogs maintaining the waterlogged conditions that stop their own material decaying. Weathering, negative: the best-established stabilising loop, and the reason Earth stayed habitable while the Sun brightened, acting over hundreds of thousands of years.',
+    references: [
+      referenceId('kirchner-2002-gaia'),
+      referenceId('ipcc-2021-ar6-wg1'),
+      referenceId('berner-2003-carbon-cycle'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('niche-construction'),
+    title: 'The beaver and its pond',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A stepped conceptual diagram. The beaver case is the standard one because the constructed environment obviously outlives the constructor, which is what makes ecological inheritance visible. The final step extends the idea to planetary scale and carries the warning the concept most needs: a constructed niche is not necessarily a better one.',
+    description:
+      'Five steps with Back and Next. A stream with trees along the bank. The beaver felling trees and building a dam, described as a modification of the environment rather than an adaptation to it. A pond, with the flooded trees dead, different plants growing, and amphibians and waterfowl arriving. The offspring inheriting the pond, with an explanation that the dam outlasts its builder and that what is passed on is a changed set of conditions rather than anything acquired being written into DNA. And the same thing at planetary scale, with Earth drawn inside a green atmospheric ring, captioned that cyanobacteria oxygenating the air is niche construction with the whole planet as the pond — and that the oxygen released was lethal to most of the world that existed at the time.',
+    references: [referenceId('odling-smee-2003-niche-construction')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('gaia-daisyworld'),
+    title: 'Daisyworld, next to the same planet without daisies',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'The Daisyworld model integrated to its steady state, plotted against the bare-rock control. The comparison is essential: on its own the model looks like proof that life regulates planets, and next to the control it is clearly a demonstration that one specific coupling can regulate. Its regulation works because the trait under selection, colour, happens to be the trait that controls the planetary variable, albedo, and to act in the right direction. Later analyses showed the result is sensitive to assumptions, with cheaters and herbivores destroying it in some versions.',
+    description:
+      'Two views selectable by buttons, with a slider controlling solar output from 0.6 to 1.6 times today. Temperature: two curves against solar output, one for a bare planet rising steeply and one for the daisy planet staying far closer to constant, with markers on both at the chosen output. Daisy cover: a bar showing the proportion of the surface covered by black daisies, white daisies and bare ground at that output, with a line stating that no daisy is regulating anything — each simply grows where it grows best. A readout gives both temperatures and explains that this is a demonstration of possibility rather than evidence about Earth.',
+    references: [
+      referenceId('lovelock-margulis-1974-gaia'),
+      referenceId('kirchner-2002-gaia'),
+      referenceId('doolittle-2019-gaia'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('complexity-costs'),
+    title: 'What complexity costs, measured three ways',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Three separate comparisons on logarithmic scales: time to maturity, offspring per lifetime, and metabolic cost per gram of tissue. The values are representative published figures rather than a single consistent dataset. Each is an independent argument for the same conclusion, which is why all three are offered — a single chart would be easier to dismiss.',
+    description:
+      'Four tappable bars at a time on a logarithmic axis, with three buttons switching the measure. Time to maturity: a bacterium at about twenty minutes, a fruit fly at ten days, a mouse at six weeks, a human at fifteen years. Offspring per lifetime: a cod at about five million eggs, a frog at twenty thousand, a mouse at sixty, a human at four. Energy per gram: bone at 0.3 relative, resting muscle at 1, liver at about 13 times muscle, and brain at about 15. Selecting a bar gives a paragraph on it, including that the human brain is about 2 percent of body mass and around 20 percent of resting energy use, that most of that goes on pumping ions back across neuron membranes, and that the expensive-tissue hypothesis has not been supported by broad comparative tests.',
+    references: [
+      referenceId('aiello-wheeler-1995-expensive-tissue'),
+      referenceId('herculano-houzel-2009-neurons'),
+      referenceId('stearns-1989-tradeoffs'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('success-metrics'),
+    title: 'Better at what?',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Five groups ranked on five measures that biology actually uses, on logarithmic scales. The scores are normalised comparative estimates rather than a single dataset, and are there so the reader can switch metrics and watch the ranking stay essentially the same. On abundance, habitat range, metabolic repertoire and duration, prokaryotes win; on biomass, plants do; animals win nothing.',
+    description:
+      'Five ranked horizontal bars on a logarithmic axis, with five buttons switching the measure between abundance, biomass, habitats, metabolism and duration. The contenders are prokaryotes, plants, fungi, animals and humans, and the bars re-sort with each measure. Accompanying text gives the numbers behind each: around 10 to the thirtieth prokaryotic cells against 10 to the tenth humans; plants at roughly 80 percent of biomass and animals under half a percent; prokaryotes growing above 100 degrees celsius, below pH 0 and kilometres into rock; and prokaryotes alone able to fix atmospheric nitrogen, which is why removing them collapses the biosphere within a few generations while removing all eukaryotes merely alters it.',
+    references: [
+      referenceId('bar-on-2018-biomass'),
+      referenceId('falkowski-2008-microbial-engines'),
+      referenceId('rothschild-mancinelli-2001-extremophiles'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('diversity-vs-complexity'),
+    title: 'Diversity as insurance',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A simple model of two communities put through the same drought: one with twelve species spanning a range of tolerances, one with twelve species sharing nearly the same tolerance. The model is schematic. The empirical result behind it is not: the Cedar Creek grassland experiments have run for decades and diverse plots produce more biomass and, more importantly, vary less from year to year, losing far less productivity in drought and recovering faster.',
+    description:
+      'Twelve species tiles that survive or fail as a drought slider is raised, with a productivity bar beneath and a count of survivors. A toggle switches between a diverse community, whose species have tolerances spread across the range, and a uniform one, whose species share nearly the same tolerance. The uniform community is unaffected until the drought passes its shared tolerance and then fails entirely; the diverse one loses species progressively and keeps functioning. Accompanying text extends the argument to evolutionary time: after each mass extinction, what rebuilt the world was whichever surviving lineages happened to suit the new conditions, and the more lineages there were, the better the odds that something did.',
+    references: [referenceId('tilman-2014-biodiversity')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('diversity-turnover'),
+    title: 'Diversity as the balance of two rates',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A simple exponential model of standing diversity as origination minus extinction. It is deliberately crude — real rates are neither constant nor independent of standing diversity — and its job is to make one structural point: diversity is not a total that accumulates but the difference between two processes, both of which run all the time. Once that is visible, extinction stops looking like the opposite of evolution.',
+    description:
+      'A curve of the number of species alive against time, with two sliders controlling the origination and extinction rates independently. A label states whether diversity is rising, falling or steady, and a dashed line marks the starting level. A readout gives the final diversity as a multiple of the start and the average species lifespan implied by the extinction rate. Accompanying text notes that over 99 percent of species that have ever lived are extinct and that the typical species in the fossil record persists a few million years, and that mass extinctions differ from ordinary extinction not just in rate but in which traits help you survive.',
+    references: [referenceId('raup-sepkoski-1982-extinctions'), referenceId('mora-2011-species')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+
+  // Phase 7 — History and the bridge
+  {
+    id: visualizationId('precambrian-timeline'),
+    title: 'Two billion years of very little happening',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'The Proterozoic on a linear axis, zoomed in from the four-billion-year view where this whole interval is a smear. Dates are consensus values with uncertainties of tens of millions of years. The impression the figure is meant to leave is the correct one: complex cells were in place for well over a billion years before anything made of many of them became common, and the cause of that delay is not settled.',
+    description:
+      'A horizontal bar from 2,500 to 500 million years ago with seven tappable markers. The Great Oxidation Event at 2,400 million years, after which oxygen stayed at perhaps one percent of today for well over a billion years. The oldest accepted eukaryote fossils at 1,800 million. Multicellular red algae at 1,200 million, showing the oldest known evidence of sexual reproduction. Snowball Earth beginning at 720 million. Ice retreating at 635 million. The Ediacaran biota at 575 million, with a note that many forms are unlike anything alive and most disappear before the Cambrian. And the Cambrian beginning at 538 million. Selecting any marker gives its date and a paragraph on what it was.',
+    references: [
+      referenceId('lyons-2014-oxygen-rise'),
+      referenceId('knoll-2011-eukaryotes'),
+      referenceId('hoffman-2017-snowball-review'),
+      referenceId('erwin-2011-cambrian'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('major-transitions'),
+    title: 'The transitions, with the conflict each had to suppress',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Maynard Smith and Szathmáry’s list, with a third column that turns it from a chronology into a structural claim: for each transition, the mechanism that stops the combined units competing with each other. The list is usually given in chronological order, which makes it look like rungs on a ladder, and the caption says explicitly that it is not — most lineages have been through only the first of these.',
+    description:
+      'Six tappable rows, each showing what was separate before, what it became, and the mechanism that suppressed lower-level competition. Separate replicating molecules to chromosomes, suppressed by linkage. Independent genes to fair meiosis, suppressed by giving each copy an equal chance. Separate cells to complex cells, suppressed by uniparental inheritance of mitochondria. Single cells to multicellular bodies, suppressed by clonal development. Solitary individuals to eusocial colonies, suppressed by a single queen and worker policing. Individual learning to cultural inheritance, marked as still in progress. Selecting a row gives a paragraph including the cases where suppression fails — meiotic drive, selfish mitochondria causing male sterility in plants, cancer, and workers destroying each other’s eggs.',
+    references: [
+      referenceId('szathmary-smith-1995-transitions'),
+      referenceId('roger-2017-mitochondria'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('move-to-land'),
+    title: 'What water was doing, and how limbs appeared',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Two conceptual panels. The first lists the services water provides free and what has to be built to replace each on land, which is what makes the transition feel as hard as it was. The second gives the Devonian tetrapod sequence, which carries the more important lesson: the equipment appeared before there was any use for it on land, and the fossils show limbs with digits in animals that still had gills and tail fins.',
+    description:
+      'One panel at a time, with a toggle. What water was doing: six paired rows, each with what water supplied on the left and what must be built on the right — holding the body up against a skeleton strong enough for gravity, keeping everything wet against waterproof skin or cuticle, delivering dissolved oxygen against lungs, carrying away waste against kidneys, carrying gametes together against internal fertilisation or the amniotic egg, and buffering temperature against behaviour or insulation. How limbs appeared: five stages from lobe-finned fish with robust jointed fin skeletons and lungs, through Tiktaalik with a neck and sturdy propping fins, Acanthostega with true limbs and eight digits while still living in water, Ichthyostega with stronger limbs and ribs, to early tetrapods where digits settle at five.',
+    references: [
+      referenceId('clack-2009-tetrapods'),
+      referenceId('kenrick-crane-1997-land-plants'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('continental-greening'),
+    title: 'Plants rebuilding the continents',
+    fidelity: 'reconstruction',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A stepped reconstruction of the Devonian and Carboniferous. The landscapes are schematic. The detail worth carrying is the river channel: braided sheets before rooted plants and stable meandering channels after, a change recorded in sedimentary rock and one of the clearest demonstrations that life is a geological force. The atmospheric figures are model-derived and carry substantial uncertainty in their magnitude, particularly the biotic weathering enhancement.',
+    description:
+      'Four steps with Back and Next. Before plants: bare rock with water running in wide braided sheets, captioned that soil is largely made and held by living things. First land plants around 470 million years ago: small low forms without roots, arriving in partnership with fungi. Roots and wood: trees with root systems drawn splitting the rock, and a single stable meandering channel replacing the braided sheets. The atmosphere changes: a panel showing carbon dioxide falling roughly ten-fold and oxygen rising to perhaps 35 percent, with a buried black layer labelled as the Carboniferous coal measures, and a note that the classic explanation for the coal — that lignin-degrading fungi had not yet evolved — has been substantially revised.',
+    references: [
+      referenceId('kenrick-crane-1997-land-plants'),
+      referenceId('berner-2003-carbon-cycle'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('animals-reshape'),
+    title: 'The Cambrian substrate revolution',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Two cross-sections of a seafloor, before and after burrowing animals. A cross-section is the only way to show this change; a species list would not. The vertical scale is schematic. What it carries is that burrowing altered the physical and chemical structure of the sediment itself, not merely who was living on it.',
+    description:
+      'One cross-section at a time, with a toggle. Before animals: a seafloor covered by a thick layered microbial mat, with sharply stratified anoxic sediment beneath, captioned that this persisted essentially undisturbed for hundreds of millions of years. After burrowers: the same seafloor with the mat gone, burrows drawn running metres down, the layering destroyed and the sediment churned, with animals living inside it. Accompanying text explains that burrowing pumps oxygen down and changes where chemical reactions happen, altering how phosphorus and sulphur cycle for the whole ocean, and that a class of organisms adapted to firm undisturbed mats disappeared while a class adapted to soft mud appeared.',
+    references: [referenceId('erwin-2011-cambrian'), referenceId('estes-2011-trophic-downgrading')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('mesozoic-timeline'),
+    title: 'The Mesozoic at true scale',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A linear time axis from the end-Permian to the Eocene, which is the correction the figure exists for: more time separates Stegosaurus from Tyrannosaurus than separates Tyrannosaurus from us, and no amount of saying so works as well as putting them on the same axis. Dates are standard published values.',
+    description:
+      'A horizontal bar from 252 to 40 million years ago with eight tappable markers. The end-Permian extinction clearing the way. The first dinosaurs at 233 million, as a modest group among many. The end-Triassic extinction at 201 million, removing most of their competitors. Stegosaurus and Archaeopteryx at 150 million. Flowering plants spreading at 130 million. Tyrannosaurus at 68 million, eighty-two million years after Stegosaurus. The Chicxulub impact at 66 million. Mammals expanding at 55 million. Selecting any marker gives its date and a paragraph, including that dinosaurs became dominant by inheritance after an extinction rather than by winning a contest, and that Archaeopteryx shows feathers and flight in an animal still plainly a small theropod dinosaur.',
+    references: [
+      referenceId('brusatte-2015-dinosaurs'),
+      referenceId('schulte-2010-chicxulub'),
+      referenceId('alvarez-1980-impact'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('impact-winter'),
+    title: 'The hours, months and years after the impact',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A stepped account of conditions after the Chicxulub impact, on a logarithmic time axis. Sunlight levels are illustrative of published model ranges rather than a specific simulation, and which phase did most of the killing — the thermal pulse, the darkness, the cold, or ocean acidification — is still argued, as is how much the Deccan Traps eruptions across the same interval contributed. The impact is now generally accepted as the proximate trigger.',
+    description:
+      'A scene showing sunlight reaching the ground, plants at the surface, and a readout of surface light as a percentage of normal, with a logarithmic slider running from the moment of impact to a century afterwards. Six phases are described as the slider passes them: the impact itself, releasing energy on the order of a hundred million megatons into sulphur-rich carbonate rock; hours, in which re-entering ejecta heats the upper atmosphere and being underground or underwater becomes decisive; weeks, in which aerosol and dust cut surface light by orders of magnitude and photosynthesis largely stops; months to years of sharp cooling; years, as aerosols settle and light returns to survivors that could live on detritus; and decades, in which released carbon dioxide leaves a warmer world than before.',
+    references: [referenceId('alvarez-1980-impact'), referenceId('schulte-2010-chicxulub')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('persistence-through-crises'),
+    title: 'Where life keeps most of itself',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Five depth bands of the biosphere, with each catastrophe applied to them in turn. The reach of each catastrophe is a qualitative judgement rather than a measured depth. The point the figure carries is structural: the visible biosphere is not where the biosphere mostly is, which is why events that eliminate every large animal barely register two kilometres down.',
+    description:
+      'Five stacked bands representing depth zones — above ground and canopy, surface and sunlit ocean, soil and shallow sediment, deep sediment, and crust kilometres down — each named with what lives there. Four buttons apply different catastrophes, and the bands each catastrophe reaches turn red and are labelled devastated while the rest stay green and are labelled largely unaffected. The catastrophes are an asteroid impact, a Snowball Earth glaciation, a hypothetical gamma-ray burst, and massive volcanism of the end-Permian kind. Accompanying text explains why each stops where it does, and notes the selection effect: we could only be observing from a planet where life persisted, so persistence alone is not evidence that it was likely.',
+    references: [
+      referenceId('bar-on-2018-biomass'),
+      referenceId('rothschild-mancinelli-2001-extremophiles'),
+      referenceId('hoffman-2017-snowball-review'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('learning-vs-instinct'),
+    title: 'When paying for a brain returns more than it costs',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Two illustrative performance curves against how fast the environment changes, in units of changes per lifetime on a logarithmic axis. The curves are schematic representations of the qualitative result from formal models rather than measured data. The non-obvious part is the right-hand end: when conditions change faster than an animal can learn, what it learned is already wrong and neither strategy works.',
+    description:
+      'A chart with how many times conditions change per lifetime on a logarithmic axis across the bottom and performance up the side, showing two crossing curves for inherited behaviour and for learning. A slider moves a marker along both and a readout says which strategy is doing better. Accompanying text explains that an inherited program is extremely efficient with no learning period and no brain tissue to feed, and that its weakness shows when the world moves — a digger wasp whose provisioning sequence is interrupted at the wrong point will restart it from the beginning repeatedly, because the program has no representation of the goal.',
+    references: [
+      referenceId('roth-dicke-2005-brains'),
+      referenceId('dunbar-shultz-2007-social-brain'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('brain-energy-budget'),
+    title: 'Two percent of the body, twenty percent of the energy',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Published figures for brain mass and resting energy share in four cases, drawn as a proportional pair of bars. The comparison across species carries the argument that this is expensive for everyone and that humans are at the extreme rather than in a category of their own. Neuron counts are from isotropic fractionator measurements. How hominin brain expansion was funded remains argued.',
+    description:
+      'Two horizontal bars, one for share of body mass and one for share of resting energy use, with the ratio between them stated beneath, plus a neuron count. Four buttons switch the case. A human adult at 2 percent of mass and 20 percent of energy with about 86 billion neurons. A human newborn at 10 percent of mass and 60 percent of energy, with a note that a brain which learns cannot be finished at birth and that long dependency is part of the price. A chimpanzee at 0.9 and 9 percent with about 28 billion neurons. A mouse at 1.6 and 6 percent with about 71 million. Accompanying text notes that nervous tissue cannot store fuel, cannot tolerate interruption, and does not reduce its demand at rest.',
+    references: [
+      referenceId('herculano-houzel-2009-neurons'),
+      referenceId('aiello-wheeler-1995-expensive-tissue'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+
+  // Phase 7 — Philosophy and the handover
+  {
+    id: visualizationId('intelligence-drivers'),
+    title: 'Three hypotheses about what drove large brains',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Each hypothesis is given the same two-part treatment: the evidence for it and the problem with it. They are not competing alternatives — current treatments regard them as jointly contributing — so presenting one as the answer would be wrong, and each panel carries its own counter-evidence rather than leaving it to a footnote.',
+    description:
+      'One hypothesis at a time, with three buttons, each showing a green panel of evidence and a red panel of problems. Ecological: species relying on patchy food have larger relative brains than close relatives eating abundant uniform food, with the problem that diet quality and brain size are entangled since a better diet also supplies the energy a bigger brain needs. Social: relative neocortex size correlates with group size across primates, with the problem that it does not generalise to some large-brained birds and cetaceans and that correlation cannot fix the direction of causation. Cultural: bigger brains let an individual acquire more of what the group already knows, evidenced by distinct tool-making traditions in New Caledonian crow populations, with the problem that this may amplify intelligence rather than start it.',
+    references: [
+      referenceId('dunbar-shultz-2007-social-brain'),
+      referenceId('roth-dicke-2005-brains'),
+      referenceId('herculano-houzel-2009-neurons'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('social-complexity'),
+    title: 'Why a social group is a harder problem than it looks',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A complete graph on an adjustable number of nodes, with the number of edges counted. The mathematics is exact: relationships grow as n times n minus one over two, so doubling the group roughly quadruples them. Drawing every edge at thirty individuals makes that visceral in a way the formula does not. The claim that animals track these relationships is empirical and is described in the accompanying text.',
+    description:
+      'A ring of individuals with a line drawn between every pair, and a slider setting the group size from 2 to 30. A readout gives the number of individuals and the number of pairwise relationships. Accompanying text explains that a chimpanzee or baboon demonstrably tracks who is dominant to whom, who groomed whom, and which two have been spending time together — and therefore what will happen if you challenge one of them. It notes that unlike a tree or a rock, every one of those individuals is also adapting to you, so the difficulty escalates rather than being learned once, and that the correlation with neocortex size does not generalise cleanly beyond primates.',
+    references: [referenceId('dunbar-shultz-2007-social-brain')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('humans-on-the-tree'),
+    title: 'One twig, and a very short one',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Two views: humans as one tip among many on a tree where every living lineage reaches the same right-hand edge, and lineage durations on a logarithmic scale. The durations are approximate first-appearance figures for the group as commonly defined. The second view is the one that does the work — a reader can accept being one twig among millions and still feel like the culmination until they see that sharks have been here a thousand times longer.',
+    description:
+      'One view at a time, with a toggle. One twig among many: a root branching into twenty-six lineages that all reach a dashed vertical line labelled today, with the human branch highlighted and labelled us. How long each has lasted: six horizontal bars on a logarithmic axis giving cyanobacteria at about 2,500 million years, horseshoe crabs at 445, sharks at 420, coelacanths at 400, crocodilians at 95, and modern humans at 0.3. Accompanying text notes that human populations are still evolving — lactase persistence, high-altitude adaptation and malaria resistance all spread within the last ten thousand years — and that there is no biological sense in which a lineage can be final short of extinction.',
+    references: [
+      referenceId('hug-2016-tree-of-life'),
+      referenceId('gould-1996-full-house'),
+      referenceId('lenski-2015-ltee'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('teleonomy-vs-teleology'),
+    title: 'Two arrows of causation',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'The distinction between teleonomy and teleology is entirely about which way the arrow points — from past events, or from a future goal — and drawing it that way makes a distinction that is hard to state in words almost trivial. A conceptual diagram with no quantities.',
+    description:
+      'Three boxes labelled past, now and future, showing who survived, a heart that pumps, and circulating blood. A toggle switches between two views. What actually happens: solid arrows running left to right, captioned that causation runs forward and that the heart has its function because of what happened before rather than because of what it will do. What the language implies: a dashed arrow running backwards from the future box, labelled with the phrase evolution developed a heart in order to circulate blood, and a line stating that this arrow points backwards from a goal and no such arrow exists. Accompanying text notes that Ernst Mayr called the first teleonomy, and that a process with foresight would leave a very different record — no vertebrate blind spot, no nerve running down a giraffe’s neck and back up.',
+    references: [referenceId('mayr-1982-growth-biology'), referenceId('darwin-1859')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('two-kinds-of-why'),
+    title: 'The word why doing two different jobs',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Three questions, each asked twice — once as a request for a mechanism and once as a request for a reason. Almost every confusion in this part of the section comes from sliding between the two, and separating them explicitly is the whole content of the figure. A conceptual diagram with no data.',
+    description:
+      'A question at the top and two panels beneath it, one headed by what process and one headed for what purpose, each containing the answer available under that reading. Three buttons switch the question. Why does it rain: only the mechanism reading makes sense, and nobody asking expects an intention. Why did she lie to me: only the reason reading makes sense, and the mechanical answer about air passing over vocal folds is true and answers nothing you were asking. Why did life begin: the mechanism reading is a hard scientific problem with real progress and no settled answer, and the reason reading is marked not available, because there is no evidence of an intention and science has no method for finding one. A verdict beneath each explains why that question behaves as it does.',
+    references: [referenceId('cleland-chyba-2002-life'), referenceId('mayr-1982-growth-biology')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('order-from-flow'),
+    title: 'Order appearing because energy is flowing',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A schematic of Bénard convection, in which a fluid heated from below and cooled from above organises into regular cells above a threshold. This is real physics and the transition is genuine; the threshold value here is arbitrary and the cells are drawn as simple rolls. The caption states the limit explicitly, because this figure explains self-organisation and not heredity, and treating the two as the same result is the most common overstatement in this area.',
+    description:
+      'A fluid layer heated from below and cooled from above, with a slider controlling the heating. Below the threshold the particles are drawn scattered and the caption reads disordered motion, heat conducted, no structure. Above it they snap into a row of regular convection cells with arrows showing circulation, captioned that nobody arranged them. Accompanying text explains that organised motion carries heat upward more effectively than random motion, that the structure persists for as long as the heating continues, and that order inside is paid for by disorder outside so the books balance — the answer Schrödinger gave in 1944 to the question of how an organism maintains itself.',
+    references: [referenceId('schrodinger-1944')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('consciousness-problem'),
+    title: 'The easy problems and the hard one',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Chalmers’ distinction drawn as two columns: a list of tractable functional questions with real progress, and one item that a complete answer to all of them still seems to leave untouched. The second view lists the leading theories without endorsing any, because none is accepted and adversarial collaborations have constrained predictions without settling the field.',
+    description:
+      'Two views selectable by buttons. The two problems: a green panel listing the easy problems — discriminating stimuli, integrating information, focusing attention, controlling behaviour, reporting internal states, and the difference between waking and anaesthesia — beside a red panel containing the single question of why any of that is accompanied by experience at all, with a note that a complete functional account seems compatible with there being none. Competing theories: four rows naming global workspace theory, integrated information theory, higher-order theories and predictive processing, each with a one-line statement of its claim, and a line beneath noting that none is accepted.',
+    references: [
+      referenceId('chalmers-1995-hard-problem'),
+      referenceId('seth-bayne-2022-consciousness'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('is-and-ought'),
+    title: 'The is–ought gap, in both directions',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Hume’s observation drawn as two boxes with a crossed-out arrow between them, and then the same invalid inference committed in both directions. Showing that the therefore-nothing-matters conclusion and the therefore-it-was-intended conclusion make the identical move is what keeps this figure from taking a side.',
+    description:
+      'Two views selectable by buttons. The structure: a box of factual statements — the Universe is 13.8 billion years old, all life shares one ancestor, selection has no goal, stars made your atoms — beside a box of evaluative statements, with a crossed-out dashed arrow between them and a line stating that no chain of facts entails a conclusion about value by logic alone. Both directions: two panels each quoting an inference and naming its hidden premise — evolution has no goal therefore nothing matters, whose hidden premise is that meaning requires a cosmic goal; and life is astonishing therefore it must have been intended, whose hidden premise is that astonishing things require an intender. A line beneath notes that the gap cuts both ways.',
+    references: [referenceId('cleland-chyba-2002-life'), referenceId('gould-1996-full-house')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('cosmic-chain'),
+    title: 'The whole chain, with its evidence marked',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A summary figure at the end of a section is dangerous, because it smooths a story with very different confidence at different points into one arc. So each link here carries its evidential status — established, inferred, or not understood — and the second view is an explicit refusal to read the chain as a destination.',
+    description:
+      'Two views selectable by buttons. The chain: six links running down the figure, each with a coloured dot and a status label. The Universe produced stars, established. Stars produced the elements, established. Earth assembled those elements into chemistry, established. Chemistry eventually produced life, not understood. Life began evolving, established. One branch became capable of asking where this came from, inferred. What it does not show: the same facts written the other way round — that the Universe produced stars, and among the outcomes on one small planet was a species that reconstructs its own history — labelled same facts, no destination, with a line noting that which version feels more natural is a fact about narrative preference rather than about the evidence.',
+    references: [
+      referenceId('hug-2016-tree-of-life'),
+      referenceId('weiss-2016-luca'),
+      referenceId('darwin-1859'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+
+  // Phase 7 — Ecology, addendum
+  {
+    id: visualizationId('interaction-network'),
+    title: 'An organism is a bundle of relationships',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A small interaction network centred on a bee, with everything it touches lit up and everything it does not dimmed. The network is a sketch of the kinds of relationship an organism has rather than a survey of any particular system. What it carries is that a bee’s tongue length, hair structure and colour vision are all statements about flowers, and none of them can be explained by studying a bee.',
+    description:
+      'Seven nodes connected by coloured edges, with green edges for mutual benefit, orange for consumption and violet for harm. The bee sits at the centre, connected to flowers, its gut microbes, birds that eat it, a fungal disease, a parasitic wasp, and other pollinators. Tapping any node dims everything not connected to it and gives a paragraph on that relationship — that the bee’s tongue matches the depth of the blossoms it visits and its colour vision is shifted into the ultraviolet where flowers advertise; that the flower’s colour, scent, shape and opening time are addressed to a pollinator; that bees carry a gut community which helps digest pollen and resists pathogens; and that the sting is why several harmless flies have evolved to look like bees.',
+    references: [
+      referenceId('douglas-2010-symbiosis'),
+      referenceId('estes-2011-trophic-downgrading'),
+      referenceId('bronstein-2015-mutualism'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
 ];

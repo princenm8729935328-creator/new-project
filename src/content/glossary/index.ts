@@ -567,6 +567,347 @@ export const GLOSSARY: readonly GlossaryTerm[] = [
       'The rotating disk of gas and dust left around a young star after its formation. Planets are built from its material, and rings and gaps have now been imaged directly in many such disks.',
     references: [referenceId('andrews-2018-dsharp')],
   },
+  // ---------------------------------------------------------------------------
+  // Phase 7 — Earth, and the Origin & Evolution of Life
+  // ---------------------------------------------------------------------------
+  {
+    id: glossaryTermId('accretion'),
+    term: 'Accretion',
+    short:
+      'The growth of a body by collecting smaller material — dust into pebbles, pebbles into boulders, boulders into planets. It is how Earth was assembled, and it took tens of millions of years.',
+    references: [referenceId('chambers-2004-accretion')],
+  },
+  {
+    id: glossaryTermId('planetesimal'),
+    term: 'Planetesimal',
+    short:
+      'A solid body roughly a kilometre or more across in a young planetary disk, large enough for its own gravity to matter. Planetesimals are the building blocks that collide to make planets.',
+    references: [referenceId('chambers-2004-accretion')],
+  },
+  {
+    id: glossaryTermId('differentiation'),
+    term: 'Differentiation',
+    short:
+      'The separation of a planet into layers by density — iron sinking to form a core, lighter silicates floating up to form a mantle and crust. It happens once a body is hot enough to melt.',
+    references: [referenceId('kleine-2009-hf-w')],
+  },
+  {
+    id: glossaryTermId('magma-ocean'),
+    term: 'Magma ocean',
+    short:
+      'A global layer of molten rock, hundreds of kilometres deep, produced on the early Earth by accretional heating and giant impacts. It is where differentiation happened.',
+    references: [referenceId('elkins-tanton-2012-magma-ocean')],
+  },
+  {
+    id: glossaryTermId('hadean'),
+    term: 'Hadean',
+    short:
+      'Earth’s first geological eon, from formation about 4.54 billion years ago to roughly 4.0 billion years ago. Named for its supposed hellishness, though the evidence now suggests it cooled faster than that name implies.',
+    references: [referenceId('wilde-2001-zircon')],
+  },
+  {
+    id: glossaryTermId('archean'),
+    term: 'Archean',
+    short:
+      'The eon from about 4.0 to 2.5 billion years ago: an Earth with oceans, continents and microbial life, but essentially no free oxygen in the air.',
+    references: [referenceId('catling-zahnle-2020-atmosphere')],
+  },
+  {
+    id: glossaryTermId('zircon'),
+    term: 'Zircon',
+    short:
+      'A tough crystal of zirconium silicate that survives when its parent rock does not, and that traps uranium while excluding lead — which makes it a precise clock. The oldest known zircons are 4.4 billion years old.',
+    references: [referenceId('valley-2014-hadean-zircon')],
+  },
+  {
+    id: glossaryTermId('outgassing'),
+    term: 'Outgassing',
+    short:
+      'The release of gases dissolved in molten rock as it rises and the pressure drops — the main way a young planet builds an atmosphere from the inside.',
+    references: [referenceId('zahnle-2007-early-earth')],
+  },
+  {
+    id: glossaryTermId('plate-tectonics'),
+    term: 'Plate tectonics',
+    short:
+      'The theory that Earth’s rigid outer shell is broken into plates that move over the hotter, slowly flowing mantle beneath, at speeds of a few centimetres a year.',
+    references: [referenceId('wessel-muller-2007-tectonics')],
+  },
+  {
+    id: glossaryTermId('subduction'),
+    term: 'Subduction',
+    short:
+      'The process by which one tectonic plate sinks beneath another and returns to the mantle. It is where deep earthquakes, most explosive volcanoes and the recycling of the seafloor happen.',
+    references: [referenceId('wessel-muller-2007-tectonics')],
+  },
+  {
+    id: glossaryTermId('mantle-convection'),
+    term: 'Mantle convection',
+    short:
+      'The slow overturning of Earth’s rocky mantle, which is solid but deforms like extremely stiff putty over millions of years. It is the engine that moves the plates.',
+    references: [referenceId('dziewonski-anderson-1981-prem')],
+  },
+  {
+    id: glossaryTermId('geodynamo'),
+    term: 'Geodynamo',
+    short:
+      'The mechanism that generates Earth’s magnetic field: convecting liquid iron in the outer core, stirred by heat and rotation, sustaining electric currents that sustain the field.',
+    references: [referenceId('glatzmaier-roberts-1995-dynamo')],
+  },
+  {
+    id: glossaryTermId('magnetosphere'),
+    term: 'Magnetosphere',
+    short:
+      'The region around Earth where its magnetic field dominates over the solar wind, deflecting most charged particles around the planet rather than into the atmosphere.',
+    references: [referenceId('glatzmaier-roberts-1995-dynamo')],
+  },
+  {
+    id: glossaryTermId('greenhouse-effect'),
+    term: 'Greenhouse effect',
+    short:
+      'The warming produced when atmospheric gases absorb outgoing infrared radiation and re-radiate part of it downward. Without it Earth’s surface would average about −18 °C rather than about +15 °C.',
+    references: [referenceId('ipcc-2021-ar6-wg1')],
+  },
+  {
+    id: glossaryTermId('albedo'),
+    term: 'Albedo',
+    short:
+      'The fraction of incoming sunlight a surface reflects. Fresh snow reflects most of it; open ocean reflects almost none — which is why ice and climate feed back on each other.',
+    references: [referenceId('ipcc-2021-ar6-wg1')],
+  },
+  {
+    id: glossaryTermId('silicate-weathering'),
+    term: 'Silicate weathering',
+    short:
+      'The chemical breakdown of rock by rain and dissolved carbon dioxide, which locks carbon into carbonate minerals. It runs faster when Earth is warm, which makes it a natural thermostat.',
+    references: [referenceId('walker-1981-thermostat')],
+  },
+  {
+    id: glossaryTermId('banded-iron-formation'),
+    term: 'Banded iron formation',
+    short:
+      'Layered sedimentary rock rich in iron oxides, laid down mostly between 2.5 and 1.8 billion years ago when dissolved iron in the oceans met the first free oxygen and precipitated out.',
+    references: [referenceId('holland-2006-goe')],
+  },
+  {
+    id: glossaryTermId('stromatolite'),
+    term: 'Stromatolite',
+    short:
+      'A layered mound built by mats of microbes trapping sediment. Living examples still form in a few places, which is what makes ancient ones interpretable — and still argued about.',
+    references: [referenceId('schopf-2018-microfossils')],
+  },
+  {
+    id: glossaryTermId('abiogenesis'),
+    term: 'Abiogenesis',
+    short:
+      'The origin of life from non-living chemistry. It refers to a historical event whose pathway is not known, and is a separate question from how life evolved once it existed.',
+    references: [referenceId('benner-2010-defining-life')],
+  },
+  {
+    id: glossaryTermId('prebiotic-chemistry'),
+    term: 'Prebiotic chemistry',
+    short:
+      'Chemistry that could plausibly have occurred on the early Earth before life, producing the molecules life uses. Showing a reaction is possible is not the same as showing it happened.',
+    references: [referenceId('patel-2015-cyanosulfidic')],
+  },
+  {
+    id: glossaryTermId('ribozyme'),
+    term: 'Ribozyme',
+    short:
+      'An RNA molecule that acts as a catalyst. Their discovery mattered because it showed one kind of molecule can both carry information and do chemistry.',
+    references: [referenceId('kruger-1982-ribozyme')],
+  },
+  {
+    id: glossaryTermId('rna-world'),
+    term: 'RNA world',
+    short:
+      'The hypothesis that an early stage of life used RNA for both heredity and catalysis, before DNA and proteins divided the labour. Strongly suggestive, not established.',
+    references: [referenceId('robertson-joyce-2012-rna-world')],
+  },
+  {
+    id: glossaryTermId('protocell'),
+    term: 'Protocell',
+    short:
+      'A simple compartment — typically a fatty-acid vesicle — that can grow and divide, used in the laboratory as a model of what the first cells might have been before biological machinery existed.',
+    references: [referenceId('joyce-szostak-2018-protocells')],
+  },
+  {
+    id: glossaryTermId('amphiphile'),
+    term: 'Amphiphile',
+    short:
+      'A molecule with a water-loving end and a water-avoiding end. Put enough of them in water and they arrange themselves into sheets and spheres without being told to — the basis of every membrane.',
+    references: [referenceId('chen-walde-2010-vesicles')],
+  },
+  {
+    id: glossaryTermId('chemiosmosis'),
+    term: 'Chemiosmosis',
+    short:
+      'Storing energy as a difference in proton concentration across a membrane, then letting protons flow back through a turbine-like enzyme to make ATP. Every domain of life does this.',
+    references: [referenceId('mitchell-1961-chemiosmosis')],
+  },
+  {
+    id: glossaryTermId('atp'),
+    term: 'ATP',
+    short:
+      'Adenosine triphosphate: the molecule cells use to carry energy from where it is released to where it is needed. A human body turns over roughly its own weight in ATP each day, recycling the same molecules constantly.',
+    references: [referenceId('mitchell-1961-chemiosmosis')],
+  },
+  {
+    id: glossaryTermId('luca'),
+    term: 'LUCA',
+    aliases: ['last universal common ancestor'],
+    short:
+      'The last universal common ancestor: the most recent organism from which all life alive today descends. Not the first life — an already-sophisticated cell with a genetic code, membranes and metabolism.',
+    references: [referenceId('weiss-2016-luca')],
+  },
+  {
+    id: glossaryTermId('prokaryote'),
+    term: 'Prokaryote',
+    short:
+      'A cell without a nucleus or membrane-bound organelles — bacteria and archaea. Prokaryotes are not primitive failures; they are the most abundant and metabolically inventive organisms on Earth.',
+    references: [referenceId('woese-1990-three-domains')],
+  },
+  {
+    id: glossaryTermId('eukaryote'),
+    term: 'Eukaryote',
+    short:
+      'A cell with a nucleus and internal compartments, including mitochondria. Every animal, plant, fungus and alga is one, and the whole group appears to descend from a single ancient merger.',
+    references: [referenceId('roger-2017-mitochondria')],
+  },
+  {
+    id: glossaryTermId('endosymbiosis'),
+    term: 'Endosymbiosis',
+    short:
+      'One cell living inside another and eventually becoming part of it. Mitochondria and chloroplasts were once free-living bacteria, and still carry their own DNA.',
+    references: [referenceId('sagan-margulis-1967-endosymbiosis')],
+  },
+  {
+    id: glossaryTermId('cyanobacteria'),
+    term: 'Cyanobacteria',
+    short:
+      'The bacteria that invented oxygen-producing photosynthesis. They changed the composition of the atmosphere, and their descendants became the chloroplasts inside every plant cell.',
+    references: [referenceId('fischer-2016-oxygenic')],
+  },
+  {
+    id: glossaryTermId('photosynthesis'),
+    term: 'Photosynthesis',
+    short:
+      'Using light energy to build sugars from carbon dioxide. The oxygen-producing version splits water and releases oxygen as waste — which is where nearly all the oxygen you breathe came from.',
+    references: [referenceId('blankenship-2010-photosynthesis')],
+  },
+  {
+    id: glossaryTermId('great-oxidation-event'),
+    term: 'Great Oxidation Event',
+    aliases: ['GOE'],
+    short:
+      'The rise of free oxygen in Earth’s atmosphere around 2.4 billion years ago — the largest chemical change in the planet’s history, and a by-product of one metabolic innovation.',
+    references: [referenceId('lyons-2014-oxygen-rise')],
+  },
+  {
+    id: glossaryTermId('natural-selection'),
+    term: 'Natural selection',
+    short:
+      'A process, not an agent: when inherited variants differ in how well they survive and reproduce in a given environment, the more successful variants become more common. Nothing chooses.',
+    references: [referenceId('darwin-1859')],
+  },
+  {
+    id: glossaryTermId('fitness'),
+    term: 'Fitness',
+    short:
+      'In evolutionary biology, expected reproductive success in a particular environment — not strength, health or superiority. A variant can be fit in one place and unfit a kilometre away.',
+    references: [referenceId('mayr-1982-growth-biology')],
+  },
+  {
+    id: glossaryTermId('adaptation'),
+    term: 'Adaptation',
+    short:
+      'A trait shaped by natural selection because it improved reproductive success. Not every useful trait is one, and not every trait is useful.',
+    references: [referenceId('gould-lewontin-1979-spandrels')],
+  },
+  {
+    id: glossaryTermId('common-ancestry'),
+    term: 'Common ancestry',
+    short:
+      'The observation that all known life shares descent from earlier populations, evidenced by a shared genetic code, shared molecular machinery and nested patterns of similarity.',
+    references: [referenceId('hug-2016-tree-of-life')],
+  },
+  {
+    id: glossaryTermId('convergent-evolution'),
+    term: 'Convergent evolution',
+    short:
+      'Unrelated lineages independently arriving at similar solutions — eyes, wings, streamlined bodies — because physics and ecology present the same problems repeatedly.',
+    references: [referenceId('losos-2011-convergence')],
+  },
+  {
+    id: glossaryTermId('ecological-niche'),
+    term: 'Ecological niche',
+    short:
+      'The full set of conditions and resources a species can use, and the role it plays in its community. Not a place — a way of making a living.',
+    references: [referenceId('hutchinson-1957-niche')],
+  },
+  {
+    id: glossaryTermId('trophic-level'),
+    term: 'Trophic level',
+    short:
+      'A position in a food chain, counted by how many steps removed from the original energy source an organism feeds. Roughly ninety percent of the energy is lost at each step.',
+    references: [referenceId('lindeman-1942-trophic')],
+  },
+  {
+    id: glossaryTermId('keystone-species'),
+    term: 'Keystone species',
+    short:
+      'A species whose effect on its ecosystem is far larger than its abundance suggests. Remove it and the community reorganises — which is how the concept was discovered, by removal experiments.',
+    references: [referenceId('paine-1966-keystone')],
+  },
+  {
+    id: glossaryTermId('coevolution'),
+    term: 'Coevolution',
+    short:
+      'Two or more species acting as each other’s selection pressure, so that change in one drives change in the other — in conflict, as with predators and prey, or in partnership.',
+    references: [referenceId('vermeij-1994-arms-race')],
+  },
+  {
+    id: glossaryTermId('symbiosis'),
+    term: 'Symbiosis',
+    short:
+      'A persistent close association between different species. It covers mutual benefit, one-sided benefit and outright parasitism — the term describes intimacy, not friendliness.',
+    references: [referenceId('douglas-2010-symbiosis')],
+  },
+  {
+    id: glossaryTermId('biodiversity'),
+    term: 'Biodiversity',
+    short:
+      'The variety of life at every level: genes within populations, species within communities, and ecosystems within regions. It is measured in several incompatible ways, which is worth knowing when comparing numbers.',
+    references: [referenceId('mora-2011-species')],
+  },
+  {
+    id: glossaryTermId('mass-extinction'),
+    term: 'Mass extinction',
+    short:
+      'A short interval in which a large fraction of species disappears worldwide and across many groups at once. Five are conventionally recognised in the last 540 million years.',
+    references: [referenceId('raup-sepkoski-1982-extinctions')],
+  },
+  {
+    id: glossaryTermId('biosphere'),
+    term: 'Biosphere',
+    short:
+      'The whole of Earth’s living matter together with the parts of the air, water and rock it occupies and exchanges material with. It is thin, and it is chemically enormous in its effects.',
+    references: [referenceId('bar-on-2018-biomass')],
+  },
+  {
+    id: glossaryTermId('niche-construction'),
+    term: 'Niche construction',
+    short:
+      'Organisms altering their own environment — burrows, dams, oxygen, soil — and thereby altering the selection pressures acting on themselves and their descendants.',
+    references: [referenceId('odling-smee-2003-niche-construction')],
+  },
+  {
+    id: glossaryTermId('horizontal-gene-transfer'),
+    term: 'Horizontal gene transfer',
+    short:
+      'Genes moving between organisms other than from parent to offspring. It is common among microbes, and it is why the deepest part of the tree of life is better described as a network.',
+    references: [referenceId('doolittle-1999-lateral')],
+  },
 ];
 
 const BY_ID = new Map(GLOSSARY.map((term) => [term.id, term]));

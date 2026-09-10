@@ -45,12 +45,12 @@ describe('recap coverage across every phase', () => {
     expect(missing).toEqual([]);
   });
 
-  it('covers all six content phases', () => {
+  it('covers all seven content phases', () => {
     const phases = new Set(
       publishedTopics().map((topic) => getSectionById(topic.sectionId)?.phase),
     );
-    // Phase 1 is the timeline, which has no topics; the topic sections span 2–6.
-    expect([...phases].sort()).toEqual([2, 3, 4, 5, 6]);
+    // Phase 1 is the timeline, which has no topics; the topic sections span 2–7.
+    expect([...phases].sort()).toEqual([2, 3, 4, 5, 6, 7]);
   });
 
   it('writes a distinct summary for every topic rather than one generic one', () => {
