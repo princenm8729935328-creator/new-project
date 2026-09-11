@@ -45,7 +45,7 @@ export const LENS_META: Readonly<Record<LensId, LensMeta>> = {
     question: 'What does it mean to be human?',
     description:
       'Questions no excavation settles. Answers here are arguments, held to be clear and honest rather than confirmed, and they never borrow the authority of the evidence next door.',
-    status: 'planned',
+    status: 'published',
   },
 };
 

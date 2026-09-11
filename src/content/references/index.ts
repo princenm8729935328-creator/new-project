@@ -11,6 +11,7 @@
  * citation without reading the whole paper.
  */
 import { referenceId, type Reference } from '../schema/reference';
+import { PHILOSOPHY_REFERENCES } from './philosophy';
 
 export const REFERENCES: readonly Reference[] = [
   {
@@ -5473,6 +5474,8 @@ export const REFERENCES: readonly Reference[] = [
     doi: '10.1038/ng1435',
     supports: 'Clinal variation, and why ancestry and race are not the same variable.',
   },
+
+  ...PHILOSOPHY_REFERENCES,
 ];
 
 const BY_ID = new Map(REFERENCES.map((reference) => [reference.id, reference]));

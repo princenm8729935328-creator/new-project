@@ -88,21 +88,29 @@ describe('the Human Evolution lens selector', () => {
     expect(scientific).toBeChecked();
   });
 
-  it('reports the unwritten lens as unwritten while the built one lists topics', async () => {
+  it('gives each lens its own reading list, with no overlap', async () => {
     const user = userEvent.setup();
     renderAt('/human-evolution');
 
-    // Phase 8 step 2 built the Scientific Lens, so it now has a reading list.
+    // Both lenses are now written, so neither shows the unbuilt notice.
     expect(screen.queryByText('Not built yet')).not.toBeInTheDocument();
-    expect(screen.getByRole('list')).toBeInTheDocument();
+    const scientificTitles = within(screen.getByRole('list'))
+      .getAllByRole('listitem')
+      .map((item) => item.textContent);
+    expect(scientificTitles.length).toBeGreaterThan(50);
 
     await user.click(screen.getByRole('radio', { name: /Philosophical Lens/ }));
-    expect(screen.getByText('Not built yet')).toBeInTheDocument();
-    expect(
-      screen.getByText(/Philosophical Lens of Human Evolution have not been written yet/),
-    ).toBeInTheDocument();
-    // The unwritten lens must not borrow the other one's topic list.
-    expect(screen.queryByRole('list')).not.toBeInTheDocument();
+    expect(screen.queryByText('Not built yet')).not.toBeInTheDocument();
+    const philosophicalTitles = within(screen.getByRole('list'))
+      .getAllByRole('listitem')
+      .map((item) => item.textContent);
+    expect(philosophicalTitles.length).toBeGreaterThan(50);
+
+    // The whole point of the two-lens structure: switching lenses swaps the
+    // curriculum entirely rather than filtering one list.
+    for (const title of philosophicalTitles) {
+      expect(scientificTitles).not.toContain(title);
+    }
   });
 
   it('leaves every other section without a lens selector', () => {
@@ -128,12 +136,29 @@ describe('the lens content model', () => {
     expect(LENS_META.scientific.question).not.toBe(LENS_META.philosophical.question);
   });
 
-  it('carries scientific content and no philosophical content', () => {
-    // The lenses are independent by construction. Philosophical topics are a
-    // later step, and nothing here should have been written ahead of it.
+  it('carries both curricula, each numbered in its own range', () => {
+    // The lenses are independent by construction: each list is contiguous
+    // within its own range, so neither renumbers when the other grows.
     const lensed = TOPICS.filter((topic) => topic.lens !== undefined);
-    expect(lensed.length).toBeGreaterThan(50);
-    expect(lensed.every((topic) => topic.lens === 'scientific')).toBe(true);
-    expect(TOPICS.filter((topic) => topic.lens === 'philosophical')).toEqual([]);
+    const scientific = lensed.filter((topic) => topic.lens === 'scientific');
+    const philosophical = lensed.filter((topic) => topic.lens === 'philosophical');
+
+    expect(scientific.length).toBeGreaterThan(50);
+    expect(philosophical.length).toBeGreaterThan(50);
+    expect(scientific.length + philosophical.length).toBe(lensed.length);
+
+    // Every topic in a lensed section declares which lens it belongs to.
+    const humanEvolution = SECTIONS.find((section) => section.slug === 'human-evolution');
+    const inSection = TOPICS.filter((topic) => topic.sectionId === humanEvolution?.id);
+    expect(inSection.every((topic) => topic.lens !== undefined)).toBe(true);
+
+    const orders = (list: typeof lensed): number[] =>
+      list.map((t) => t.order).sort((a, b) => a - b);
+    expect(Math.max(...orders(scientific))).toBeLessThan(Math.min(...orders(philosophical)));
+  });
+
+  it('marks both lenses published now that each has content', () => {
+    expect(LENS_META.scientific.status).toBe('published');
+    expect(LENS_META.philosophical.status).toBe('published');
   });
 });

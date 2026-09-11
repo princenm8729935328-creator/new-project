@@ -7,6 +7,7 @@
  */
 import { glossaryTermId, type GlossaryTerm } from '../schema/glossary';
 import { referenceId } from '../schema/reference';
+import { PHILOSOPHY_GLOSSARY } from './philosophy';
 
 export const GLOSSARY: readonly GlossaryTerm[] = [
   {
@@ -1189,6 +1190,8 @@ export const GLOSSARY: readonly GlossaryTerm[] = [
       'Estimating when two lineages split from how many differences have accumulated between them. It is a clock whose rate must itself be measured, and revisions to that rate move the dates.',
     references: [referenceId('scally-durbin-2012-mutation-rate')],
   },
+
+  ...PHILOSOPHY_GLOSSARY,
 ];
 
 const BY_ID = new Map(GLOSSARY.map((term) => [term.id, term]));

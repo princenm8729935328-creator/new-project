@@ -4792,4 +4792,605 @@ export const VISUALIZATIONS: readonly VisualizationSpec[] = [
     minimumQuality: 'low',
     layout: 'flow',
   },
+
+  // Phase 8 — Human Evolution, Philosophical Lens.
+  // Every figure below is a conceptual model of an argument or a position.
+  // None of them plots data, and each caption says so.
+  {
+    id: visualizationId('appearance-and-reality'),
+    title: 'From a thing to an experience of it',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A conceptual model of the steps between an object and your experience of it. It is not a measurement, and it does not claim the experience is unlike the object — it shows where the question arises.',
+    description:
+      'Five boxes in a vertical sequence joined by arrows: something is there, a narrow band of light leaves it, three receptor types respond, the brain builds a stable scene, and you see a world. Selecting any box gives a note explaining what happens at that step. The final note says that noticing the chain does not show the world is unlike what you see.',
+    references: [referenceId('descartes-meditations'), referenceId('sep-skepticism')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('platos-cave'),
+    title: 'The elements of the cave',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A conceptual diagram of the parts of an allegory. It separates the image from the claim the image is used to support, so that the claim can be examined rather than absorbed.',
+    description:
+      'Six selectable rows listing the elements of Plato\u2019s allegory: prisoners who have never faced anything else, shadows taken for things, a fire with objects carried before it, one prisoner released and climbing out, the return and disbelief, and finally the claim that there is a reality behind appearances, tagged as the argument. Each row expands to a note; the last note says the image makes the claim vivid without establishing it.',
+    references: [referenceId('plato-republic')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('doubt-ladder'),
+    title: 'Stages of Cartesian doubt',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A conceptual diagram of an argument, showing how much each stage of doubt removes. It is not a psychological claim about what anyone actually believes.',
+    description:
+      'Five numbered boxes joined by downward arrows: the senses sometimes mislead, nothing marks waking off from dreaming, even reasoning could be interfered with, something is doing the doubting, and an objection asking how much that survivor amounts to. Selecting a box gives a note; the final note reports the standard objection that what survives may be only that thinking is occurring.',
+    references: [referenceId('descartes-meditations'), referenceId('sep-descartes-epistemology')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('induction-gap'),
+    title: 'What is observed and what is concluded',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A conceptual comparison with a dashed break marking where the inference is supposed to cross. Nothing here is measured; the rows are illustrations of a single logical gap.',
+    description:
+      'Two columns separated by a dashed line. Left column: observations — every recorded sunrise, bread nourishing everyone so far, measurements matching a law where tested, nature uniform so far. Right column: the corresponding conclusions about unobserved cases. Selecting a row gives a note. The last row shows that the assumption which would close the gap is itself an inference from past cases, which is the circle at the heart of the problem.',
+    references: [referenceId('hume-enquiry'), referenceId('sep-induction-problem')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('kants-lens'),
+    title: 'Kant\u2019s reversal',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A conceptual model of a philosophical proposal, presented as a sequence of moves. It is a diagram of an argument, not a diagram of the mind.',
+    description:
+      'Five numbered boxes joined by arrows: the problem inherited from Hume, reverse the question, space and time as conditions of experiencing, the result that we know appearances rather than things in themselves, and an objection asking what a thing in itself could then be. Each box expands to a note; the last records that how to interpret the distinction is still contested among Kant scholars.',
+    references: [
+      referenceId('kant-critique-pure-reason'),
+      referenceId('sep-kant-transcendental-idealism'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('identity-over-time'),
+    title: 'Candidate criteria for being the same person',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A conceptual comparison of rival criteria. None is marked correct, because none is settled; each row names the criterion and the case that gives it trouble.',
+    description:
+      'Six selectable rows: same matter (tagged as failing), same body continuously, same brain, continuity of memory, overlapping psychological chains, and the reductionist view that there is no further fact to settle. Each row expands to a note giving the criterion and its difficulty.',
+    references: [referenceId('sep-identity-personal'), referenceId('parfit-reasons-persons')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('cogito-structure'),
+    title: 'Two readings of the cogito',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A conceptual comparison of two live interpretations of one argument. Neither column is labelled correct; both are positions philosophers defend.',
+    description:
+      'Two columns, the usual reading beside what critics say the argument shows. Rows pair "I exist" with "thinking is occurring", "I am a thing that persists" with "this moment of thinking is occurring", "I am essentially a thinking thing" with "whatever is thinking is thinking", and "a foundation for all knowledge" with "a very small, very secure floor". Selecting a row gives a note explaining the objection.',
+    references: [referenceId('descartes-meditations'), referenceId('sep-descartes-epistemology')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('memory-chain'),
+    title: 'Reid\u2019s objection to the memory criterion',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A conceptual diagram of an objection and the repair it forced. The three stages are an illustrative example, not a case history.',
+    description:
+      'Five numbered boxes joined by arrows: a boy flogged for stealing fruit, a young officer who remembers being that boy, an old general who remembers being that officer, the general who has no memory of the boy (tagged as the problem), and the repair using chains of overlapping links. Selecting a box gives a note; the problem note explains that identity is transitive and the memory relation as stated is not.',
+    references: [referenceId('locke-essay'), referenceId('sep-identity-personal')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('bundle-search'),
+    title: 'Looking inward for a self',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A conceptual model of an introspective argument. It reports what Hume says he finds and does not find, and then states what such a failure can and cannot establish.',
+    description:
+      'Six selectable rows: a sensation of warmth or cold, a patch of light or shade, a pleasure or pain or mood, the self that has all of these (tagged as not found), what the failure does show, and what it does not show (tagged as an objection). The final note gives Kant\u2019s reply that a subject of experience would not itself be another item in experience.',
+    references: [referenceId('hume-treatise')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('teletransporter-branches'),
+    title: 'Parfit\u2019s cases, one variable at a time',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A conceptual thought experiment, not a technology and not a prediction. Each step changes exactly one feature of the previous one so that the reader can see which feature their answer depends on.',
+    description:
+      'Five numbered boxes joined by arrows: scanned on Earth and rebuilt on Mars with the original destroyed; the same but with the original destroyed an hour later; the scan used twice so that two people step out; Parfit\u2019s conclusion that identity may not be what matters; and the objection that the cases show the concept has limits. Selecting a box gives a note.',
+    references: [referenceId('parfit-reasons-persons'), referenceId('sep-identity-personal')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('anatta-aggregates'),
+    title: 'The five aggregates, each put to the same test',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A conceptual model of an argument from early Buddhist texts. It is a diagram of a philosophical procedure, not a description of anatomy or psychology.',
+    description:
+      'Six selectable rows: form, feeling, perception, formations, consciousness, and a final row stating that the conclusion is not that nothing exists. Each of the first five expands to a note applying the same test — does this change without consent, and can it be commanded. The final note records that early Buddhist texts reject annihilationism explicitly and treat it as an error on a par with belief in a permanent self.',
+    references: [
+      referenceId('bodhi-2000-connected-discourses'),
+      referenceId('sep-mind-indian-buddhism'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('sources-of-a-self'),
+    title: 'Inputs nobody selects for themselves',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A conceptual list rather than a measured breakdown. No proportions are given, because none have been measured and the argument does not require any.',
+    description:
+      'Six selectable rows: a genome inherited entire, the century you were born into, the place and language and religion around you, the people who raised you, accidents such as a teacher or an illness or a book, and finally what you did with all of it, tagged as not settled. The last note says that everything above is uncontroversial and that whether anything is left over that counts as yours is the open question.',
+    references: [referenceId('sep-personal-autonomy')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('belief-inheritance'),
+    title: 'A belief and how it arrived',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A conceptual comparison of two different questions about one belief. It is not a debunking: the final row states that origin does not settle truth.',
+    description:
+      'Two columns, a belief beside a plausible account of how it arrived. Rows cover food disgust, political conviction, religious framework, moral norms that shifted within living memory, and a final row pairing "therefore the belief is false" with "this does not follow". Selecting a row gives a note; the last explains the genetic fallacy.',
+    references: [referenceId('sep-personal-autonomy')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('authorship-degrees'),
+    title: 'Ways of holding a belief',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A conceptual range, not a scale anyone measures. The positions along it are illustrative degrees, and no numerical value attaches to any of them.',
+    description:
+      'A horizontal line running from absorbed to worked on, with five selectable marks: never noticed, stated but untested, defended against objections, best opposing case understood, and revised under pressure. Selecting a mark gives a note; the last asks whether revision amounts to authorship or only to a longer causal chain.',
+    references: [referenceId('sep-personal-autonomy')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('determinism-branching'),
+    title: 'Readings of "I could have done otherwise"',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A conceptual analysis of a sentence, not a claim about physics. The final row states plainly that whether our world is deterministic is not settled.',
+    description:
+      'Five selectable rows: nobody stopped me; if I had wanted to, I would have; I had the capacity and it was working; the world could have gone two ways from exactly here (tagged as the sharp one); and a final row asking whether our world is deterministic. The last note records that quantum mechanics has both deterministic and indeterministic interpretations that are empirically equivalent so far.',
+    references: [referenceId('sep-determinism-causal'), referenceId('sep-compatibilism')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('free-will-positions'),
+    title: 'Positions on free will',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A conceptual map of logical options, not a survey of what anyone believes and not a ranking. The two axes are the questions that generate the positions.',
+    description:
+      'A two-axis plot. The horizontal axis runs from "free will needs indeterminism" to "free will is compatible with determinism"; the vertical from "we do not have free will" to "we do have free will". Six numbered points are plotted with a numbered key below: hard determinism, libertarianism, compatibilism, hard incompatibilism, revisionism, and the view that free will is a useful illusion. Selecting a point or its key entry gives a note stating the position and its main difficulty.',
+    references: [referenceId('sep-freewill'), referenceId('sep-compatibilism')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('randomness-problem'),
+    title: 'The luck objection',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A conceptual model of an argument. The last two steps are replies that are actively defended, not a verdict that the objection succeeds.',
+    description:
+      'Five numbered boxes joined by arrows: if my choice was fully determined; if it was not fully determined; then what settled it was not me either (tagged as the pincer); the reply that indeterminism in the right place can help; and the agent-causal reply. Selecting a box gives a note including the standard objection to each reply.',
+    references: [
+      referenceId('sep-incompatibilism-arguments'),
+      referenceId('kane-significance-free-will'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('compatibilist-conditions'),
+    title: 'Proposed conditions on a free action',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A conceptual model of a position together with the case that gives it the most trouble. It does not present the conditions as established.',
+    description:
+      'Five selectable rows: not physically forced or coerced; not compelled from inside; the will you act on is one you endorse; responsive to reasons had there been any; and a final row asking what if all of that was installed, tagged as an objection. The final note describes the manipulation argument and the division among compatibilists about how to answer it.',
+    references: [
+      referenceId('sep-compatibilism'),
+      referenceId('frankfurt-1971-freedom-of-the-will'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('readiness-potential-interpretations'),
+    title: 'One finding, four readings',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A conceptual diagram of how an experimental result has been interpreted. It is not a plot of experimental data, and it does not report effect sizes.',
+    description:
+      'Five selectable rows. The first states the finding: in Libet\u2019s paradigm a slow build-up of scalp-recorded activity begins before the reported urge to move. Three readings follow — that the brain decides and then informs you, that the introspective timing is unreliable, and that the build-up is not a decision at all but an artefact of averaging fluctuating activity. The last row states what none of the readings settles, noting that the paradigm concerns an unmotivated flick over a fraction of a second.',
+    references: [
+      referenceId('libet-1983-readiness-potential'),
+      referenceId('schurger-2012-accumulator'),
+      referenceId('mele-effective-intentions'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('basic-argument-regress'),
+    title: 'Galen Strawson\u2019s regress',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A conceptual diagram of an argument. The stepped indentation is the argument: each step applies the same reasoning again to whatever the previous step produced.',
+    description:
+      'Five boxes stepping progressively to the right, ending with the line "and there is no first step". The steps are: you act as you do because of how you are; so to be ultimately responsible you must be responsible for how you are; to be responsible for how you are you must have made yourself that way; but you made yourself using the self you already had; so you would need to be responsible for that earlier self too. Selecting a box gives a note.',
+    references: [referenceId('strawson-g-1994-impossibility')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('moral-theory-lenses'),
+    title: 'One case, three frameworks',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A conceptual comparison, not a ranking. The same ordinary case is put to three moral frameworks so that the reader can see where they actually diverge.',
+    description:
+      'Five selectable rows. The first sets up the case: a friend asks whether you saw them humiliate themselves, and telling them will hurt and change nothing. Three rows then apply consequences, duty and character to it. The last row identifies where the frameworks actually come apart — when outcomes are good and the rule is bad, or the act is permissible and the disposition is not.',
+    references: [
+      referenceId('mill-utilitarianism'),
+      referenceId('kant-groundwork'),
+      referenceId('aristotle-nicomachean-ethics'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('universalizability-test'),
+    title: 'Kant\u2019s test applied to one maxim',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A conceptual model of a procedure. It separates the contradiction test from the consequence test the procedure is usually confused with.',
+    description:
+      'Five numbered boxes joined by arrows: state what you would actually be doing; imagine it as a rule everyone follows; ask whether the act would still be possible (tagged as the real test); if it defeats itself the maxim is impermissible; and an objection that the description of the maxim does the work. Selecting a box gives a note; the third explains that the false promise defeats itself rather than merely having bad results.',
+    references: [referenceId('kant-groundwork')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('virtue-mean'),
+    title: 'Courage between two failures',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A conceptual model, not a measured scale. The last mark states explicitly that the mean is not the midpoint, which is Aristotle\u2019s own position.',
+    description:
+      'A horizontal line from "too little" to "too much" with five selectable marks: cowardice, excessive caution, courage, rashness, and a final mark headed "not the midpoint". Selecting a mark gives a note; the last records that the mean is relative to the person and situation and that no formula locates it.',
+    references: [referenceId('aristotle-nicomachean-ethics'), referenceId('sep-ethics-virtue')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('metaethics-map'),
+    title: 'Metaethical positions',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A conceptual map of options, not a measurement of anything and not a ranking. The axes split a question that is commonly run together.',
+    description:
+      'A two-axis plot. The horizontal axis runs from "moral claims do not state facts" to "moral claims state facts"; the vertical from "no mind-independent moral truths" to "mind-independent moral truths". Six numbered points with a key below: moral realism, error theory, expressivism, relativism, constructivism, and moral naturalism. Selecting a point gives a note stating the position and its hardest problem.',
+    references: [referenceId('sep-moral-realism'), referenceId('sep-moral-anti-realism')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('genealogy-of-values'),
+    title: 'What a genealogy of a value does',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A conceptual model of a method. It distinguishes Nietzsche\u2019s method from his historical claims, and states directly what his position is not.',
+    description:
+      'Five numbered boxes joined by arrows: the value feels timeless; ask when and among whom it arose; his hypothesis of two ways of evaluating; the point that a value can be a symptom; and what genealogy cannot establish, tagged as an objection. The final note gives the genetic fallacy, states that Nietzsche is not claiming anything goes or that cruelty is good, and records that he was contemptuous of the nationalists and antisemites who later claimed him.',
+    references: [referenceId('nietzsche-genealogy'), referenceId('sep-nietzsche-moral-political')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('is-ought-gap'),
+    title: 'Where the inference is supposed to cross',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A conceptual diagram of one logical gap. The final row exists to prevent the usual overcorrection — facts remain decisive for almost every real moral question.',
+    description:
+      'Two columns separated by a dashed line, "what is the case" beside "what ought to be done". Rows pair suffering with a prohibition, evolved behaviour with rightness, widespread practice with permissibility, and "suffering is bad" with the observation that this is itself an ought. A final row pairs "so facts do not matter?" with "they matter enormously" and explains that the gap concerns where values come from, not whether evidence is relevant.',
+    references: [referenceId('hume-treatise'), referenceId('sep-hume-moral')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('open-question-test'),
+    title: 'Moore\u2019s test on candidate definitions',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A conceptual model of an argument, presented together with the rebuttal that has made most philosophers stop treating it as decisive.',
+    description:
+      'Five selectable rows: good equals whatever is pleasant; good equals whatever we desire; good equals what we evolved to approve of; good equals what conduces to flourishing; and the test\u2019s own weakness, tagged as an objection. The last note gives the water and H2O case showing that a definition can be true without being obvious.',
+    references: [referenceId('moore-principia-ethica'), referenceId('sep-naturalism-moral')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('situation-vs-character'),
+    title: 'What predicts behaviour',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A conceptual comparison, not a data plot. No effect sizes are shown, and the final row states what the studies do not license.',
+    description:
+      'Two columns, what people expect to matter beside what moved behaviour in studies. Rows cover obedience to an apparent authority, hurry affecting helping, conformity to a unanimous group, and a final row pairing "therefore character is a myth" with "this is not what follows". The final note records that several of these literatures have had replication problems and that contested effect sizes do not settle the philosophical question.',
+    references: [
+      referenceId('milgram-1963-obedience'),
+      referenceId('darley-batson-1973-jerusalem'),
+      referenceId('doris-lack-of-character'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('moral-luck-cases'),
+    title: 'Pairs identical in what the agent controlled',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A conceptual comparison. Each pair holds the agent\u2019s contribution fixed and varies only luck, so that any difference in judgement has nowhere to come from except luck.',
+    description:
+      'Two columns of paired cases. Rows cover resultant luck (drunk driving with and without a victim), circumstantial luck (living somewhere calm versus somewhere that demanded collaboration), constitutive luck (an even temperament versus a volatile one), and a final row setting the two main responses against each other. Selecting a row gives a note naming the kind of luck and what each response costs.',
+    references: [
+      referenceId('sep-moral-luck'),
+      referenceId('williams-moral-luck'),
+      referenceId('nagel-mortal-questions'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('punishment-justifications'),
+    title: 'Justifications and their hard cases',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A conceptual comparison. Every justification is paired with the case it handles worst, because a list without the difficulties reads as a menu.',
+    description:
+      'Six selectable rows: desert, deterrence, protection, reform, communication, and a final row noting that most real systems mix several. Each expands to a note giving the justification and the case that embarrasses it — for instance that deterrence alone would justify punishing someone known to be innocent if the public believed them guilty.',
+    references: [
+      referenceId('sep-legal-punishment'),
+      referenceId('hart-punishment-responsibility'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('responsibility-conditions'),
+    title: 'Conditions ordinary practice already checks',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A conceptual model read off everyday and legal practice rather than off a theory. It does not claim that the practice is justified.',
+    description:
+      'Six selectable rows: did they do it; did they know what they were doing; could they have done otherwise in the ordinary sense; were they able to respond to reasons at all; responsibility comes in degrees; and what none of this settles, tagged as open. The final note records that a hard incompatibilist can accept every condition as a description of what we do while denying that anyone ultimately deserves the blame that follows.',
+    references: [
+      referenceId('sep-moral-responsibility'),
+      referenceId('hart-punishment-responsibility'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('hard-problem-gap'),
+    title: 'Two kinds of question about the mind',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A conceptual comparison. "Easy" is Chalmers\u2019s own ironic term — the distinction drawn here is in the kind of answer required, not in difficulty.',
+    description:
+      'Two columns separated by a dashed line, questions answerable by a mechanism beside questions not obviously answered by one. Rows pair discriminating red from green with why there is something it is like to see red; directing attention with why attending is felt; reporting one\u2019s own states with why the reports are about anything. A final row states that the left column is being answered and the right is disputed at the root, with no consensus in either direction.',
+    references: [
+      referenceId('chalmers-1995-facing-up'),
+      referenceId('sep-consciousness'),
+      referenceId('nagel-1974-bat'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('marys-room'),
+    title: 'The knowledge argument and its replies',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A conceptual model of a thought experiment, not a study. The setup is idealised deliberately, and the replies given are ones philosophers actively defend.',
+    description:
+      'Six numbered boxes joined by arrows: Mary knows every physical fact about colour vision; she leaves the room and sees a red tomato; if she learns something then physical facts were not all the facts (tagged as the argument); the reply that she gains an ability; the reply that she learns an old fact in a new way; and the reply that she learns nothing. The last note records that Jackson, who devised the argument, later came to reject its conclusion.',
+    references: [
+      referenceId('jackson-1982-epiphenomenal-qualia'),
+      referenceId('sep-qualia'),
+      referenceId('dennett-consciousness-explained'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('other-minds-inference'),
+    title: 'The step from behaviour to inner life',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A conceptual model of an inference. The conclusion is not that other minds are doubtful, but that a belief nobody seriously doubts rests on a step that is hard to justify.',
+    description:
+      'Five numbered boxes joined by arrows: in my case this feeling goes with this behaviour; others behave the same way; so they feel the same way too (tagged as the weak step); the reply that it is an inference to the best explanation; and where the problem still bites. The final note gives the cases where the inference has no agreed footing — an octopus, an insect, a person with total locked-in syndrome, a system producing fluent reports about its own states.',
+    references: [referenceId('sep-other-minds')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('consciousness-positions'),
+    title: 'Positions on consciousness',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A conceptual map of options, not a ranking and not a survey. None of the positions is marked correct, because none is established.',
+    description:
+      'A two-axis plot. The horizontal axis runs from "everything is physical" to "something beyond the physical"; the vertical from "the hard problem is a confusion" to "the hard problem is real". Six numbered points with a key below: reductive physicalism, illusionism, mysterianism, property dualism, panpsychism, and formal theories. Selecting a point gives a note stating the position and its main difficulty, including that the formal theories disagree with each other and are contested over whether they address the hard problem at all.',
+    references: [
+      referenceId('sep-consciousness'),
+      referenceId('chalmers-conscious-mind'),
+      referenceId('sep-panpsychism'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('this-person-question'),
+    title: 'Readings of "why am I this person?"',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A conceptual analysis of a question rather than an answer to it. Whether the question survives analysis is itself disputed, and the figure does not decide.',
+    description:
+      'Five selectable rows: how did this person come to exist; why is this person this person; why did I get this one out of all of them (tagged as the tempting one); why is this one the one experienced from inside; and finally whether there is a real question here, tagged as open. Selecting a row gives a note; the last records that some philosophers hold the question dissolves and others take the residue seriously.',
+    references: [referenceId('sep-identity-personal'), referenceId('nagel-mortal-questions')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('meaning-views'),
+    title: 'Families of answer about meaning',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A conceptual comparison, not a verdict. The nihilist option is included and stated as a position with serious defenders rather than dismissed.',
+    description:
+      'Five selectable rows: meaning comes from outside as a purpose we were given; meaning is objective but not supernatural; meaning is whatever you find meaningful; both engagement and worth are needed; and there is no meaning to be had. Each expands to a note giving the view and its standard objection.',
+    references: [referenceId('sep-life-meaning'), referenceId('wolf-meaning-in-life')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('meaning-sources'),
+    title: 'Two conditions on a meaningful life',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A conceptual model of one proposal. The middle rows are the failure cases that make it testable against intuition rather than merely plausible.',
+    description:
+      'Two columns, "does it grip you?" beside "is it worth gripping?". Rows cover both conditions met, engagement without worth, worth without engagement, and a final row asking who decides what is worth it. Selecting a row gives a note; the last states plainly that the proposal inherits the objectivist\u2019s hardest problem and does not solve it.',
+    references: [referenceId('wolf-meaning-in-life'), referenceId('sep-life-meaning')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('how-to-live-traditions'),
+    title: 'Answers that have been argued for',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A conceptual comparison, not a recommendation and not a complete list. Each answer is given with the cost its critics press, and the final row states that none is offered here as the answer.',
+    description:
+      'Seven selectable rows: become a certain kind of person; sort what is yours from what is not; act only as anyone could; reduce suffering and count everyone equally; make values rather than inherit them; live without resolving it; and a final row stating that none of these is offered here as the answer. Each expands to a note naming the tradition and the cost of the position.',
+    references: [
+      referenceId('aristotle-nicomachean-ethics'),
+      referenceId('epictetus-discourses'),
+      referenceId('kant-groundwork'),
+      referenceId('camus-sisyphus'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
 ];

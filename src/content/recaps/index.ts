@@ -31,6 +31,10 @@ import { HUMAN_ORIGINS_RECAPS } from './humanOrigins';
 import { HUMAN_FOSSIL_RECAPS } from './humanFossils';
 import { HUMAN_CULTURE_RECAPS } from './humanCulture';
 import { HUMAN_PRESENT_RECAPS } from './humanPresent';
+import { PHILOSOPHY_REALITY_RECAPS } from './philosophyReality';
+import { PHILOSOPHY_FREEDOM_RECAPS } from './philosophyFreedom';
+import { PHILOSOPHY_MORALITY_RECAPS } from './philosophyMorality';
+import { PHILOSOPHY_MIND_RECAPS } from './philosophyMind';
 
 export const RECAPS: RecapsByTopic = {
   ...UNIVERSE_RECAPS,
@@ -51,6 +55,10 @@ export const RECAPS: RecapsByTopic = {
   ...HUMAN_FOSSIL_RECAPS,
   ...HUMAN_CULTURE_RECAPS,
   ...HUMAN_PRESENT_RECAPS,
+  ...PHILOSOPHY_REALITY_RECAPS,
+  ...PHILOSOPHY_FREEDOM_RECAPS,
+  ...PHILOSOPHY_MORALITY_RECAPS,
+  ...PHILOSOPHY_MIND_RECAPS,
 };
 
 export function getRecap(id: TopicId): TopicRecap | undefined {

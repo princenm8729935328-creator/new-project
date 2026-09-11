@@ -97,8 +97,25 @@ describe('the Scientific Lens curriculum', () => {
     expect(slugs[slugs.length - 1]).toBe('how-a-primate-became-homo-sapiens');
   });
 
-  it('leaves no philosophical content anywhere in the registry', () => {
-    expect(TOPICS.filter((t) => t.lens === 'philosophical')).toEqual([]);
+  it('keeps philosophical content out of the scientific curriculum', () => {
+    // The Philosophical Lens exists now. What must stay true is that no
+    // philosophical topic sits inside the scientific reading list, and that
+    // the two order ranges never overlap — which is what stops one curriculum
+    // renumbering when the other grows.
+    const philosophical = TOPICS.filter((t) => t.lens === 'philosophical');
+    expect(philosophical.length).toBeGreaterThan(50);
+    expect(philosophical.every((t) => t.sectionId === SECTION?.id)).toBe(true);
+
+    const highestScientific = Math.max(...SCIENTIFIC.map((t) => t.order));
+    expect(Math.min(...philosophical.map((t) => t.order))).toBeGreaterThan(highestScientific);
+
+    // And no scientific topic reaches into the other lens.
+    for (const topic of SCIENTIFIC) {
+      const targets = topic.related ?? [];
+      for (const target of targets) {
+        expect(philosophical.some((p) => p.id === target)).toBe(false);
+      }
+    }
   });
 });
 

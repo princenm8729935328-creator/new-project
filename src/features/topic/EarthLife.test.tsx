@@ -182,13 +182,16 @@ describe('Phase 7 topic coverage', () => {
     }
   });
 
-  it('leaves the Human Evolution philosophical lens unbuilt', () => {
-    // Phase 8 step 2 built the Scientific Lens of this section. The
-    // Philosophical Lens is a separate later step and must stay empty.
+  it('keeps the two Human Evolution lenses separate and both populated', () => {
+    // Phase 8 built both lenses of this section in two independent steps.
+    // Every published topic there must declare which lens it belongs to, so
+    // that neither curriculum can leak into the other's reading list.
     const humanEvolution = getSectionBySlug('human-evolution');
     const topics = publishedTopics().filter((topic) => topic.sectionId === humanEvolution?.id);
     expect(topics.length).toBeGreaterThan(0);
-    expect(topics.filter((topic) => topic.lens === 'philosophical')).toHaveLength(0);
+    expect(topics.every((topic) => topic.lens !== undefined)).toBe(true);
+    expect(topics.filter((topic) => topic.lens === 'scientific').length).toBeGreaterThan(50);
+    expect(topics.filter((topic) => topic.lens === 'philosophical').length).toBeGreaterThan(50);
   });
 });
 
