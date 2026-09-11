@@ -95,3 +95,27 @@
   padding-block-start: var(--space-5);
   border-block-start: 1px solid var(--surface-hairline);
 }
+
+/* The body of whichever lens is selected. Indented from the selector by a
+   single hairline on the inline start, so the panel reads as belonging to the
+   choice above it without being boxed in. */
+.lensPanel {
+  display: grid;
+  gap: var(--space-4);
+  padding-inline-start: var(--space-4);
+  border-inline-start: 1px solid var(--surface-hairline);
+}
+
+.lensQuestion {
+  font-family: var(--font-display);
+  font-size: var(--step-2);
+  line-height: var(--leading-snug);
+  color: var(--text-primary);
+}
+
+.lensDescription {
+  font-size: var(--step-0);
+  line-height: var(--leading-body);
+  color: var(--text-tertiary);
+  max-width: var(--measure);
+}

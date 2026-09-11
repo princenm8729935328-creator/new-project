@@ -160,6 +160,10 @@ export const SECTIONS: readonly Section[] = [
     status: 'planned',
     icon: 'human',
     timelineSpan: { fromLogSeconds: 17.63, toLogSeconds: 17.64 },
+    // The only section read through two lenses. "How did we become human" and
+    // "what does it mean to be human" are different questions with different
+    // standards of evidence, and the reader chooses which one they are asking.
+    lenses: ['scientific', 'philosophical'],
   },
   {
     id: sectionId('dark-universe'),

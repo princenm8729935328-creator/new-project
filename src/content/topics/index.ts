@@ -7,6 +7,7 @@
  * and none of them needs to know a new section exists.
  */
 import type { Topic, TopicId } from '../schema/topic';
+import type { LensId } from '../schema/lens';
 import type { SectionId } from '../schema/section';
 import { UNIVERSE_TOPICS } from './universe';
 import { GRAVITY_TOPICS } from './gravity';
@@ -38,6 +39,17 @@ export function getTopicById(id: TopicId): Topic | undefined {
 
 export function getTopicsForSection(sectionId: SectionId): readonly Topic[] {
   return TOPICS.filter((topic) => topic.sectionId === sectionId).sort((a, b) => a.order - b.order);
+}
+
+/**
+ * The topics of one lens within a section, in reading order.
+ *
+ * Separate from `getTopicsForSection` rather than a parameter on it, so that
+ * the sections without lenses — which is all of them but one — keep the exact
+ * call they have always made.
+ */
+export function getTopicsForLens(sectionId: SectionId, lens: LensId): readonly Topic[] {
+  return getTopicsForSection(sectionId).filter((topic) => topic.lens === lens);
 }
 
 export function getTopicBySlug(sectionId: SectionId, slug: string): Topic | undefined {

@@ -8,6 +8,7 @@
 import type { ContentBlock } from './blocks';
 import type { DepthText } from './depth';
 import type { GlossaryTermId } from './glossary';
+import type { LensId } from './lens';
 import type { ReferenceId } from './reference';
 import type { SectionId } from './section';
 
@@ -40,4 +41,13 @@ export interface Topic {
   readonly furtherReading?: readonly ReferenceId[];
   /** ISO date of the last scientific review of this topic's content. */
   readonly reviewedOn?: string;
+  /**
+   * Which lens this topic belongs to, in a section that declares lenses.
+   *
+   * Required for topics in such a section and meaningless everywhere else. It
+   * is what keeps the two curricula independent: a scientific topic never has
+   * to know a philosophical one exists, and neither list renumbers when the
+   * other grows.
+   */
+  readonly lens?: LensId;
 }

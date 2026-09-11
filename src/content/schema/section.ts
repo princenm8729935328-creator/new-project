@@ -7,6 +7,7 @@
  * routing, navigation or layout code changes. See PROJECT_PLAN.md
  * § Extending the platform.
  */
+import type { LensId } from './lens';
 import type { ContentStatus } from './topic';
 
 export type SectionId = string & { readonly __brand: 'SectionId' };
@@ -63,4 +64,13 @@ export interface Section {
     readonly fromLogSeconds: number;
     readonly toLogSeconds: number;
   };
+  /**
+   * The lenses this section is read through, when it has more than one.
+   *
+   * Almost every section has a single body of thought and leaves this
+   * undefined, which is the behaviour the platform has always had. Declaring
+   * lenses splits the section's topic list by `Topic.lens` and offers the
+   * reader a choice between them; the first entry is the default.
+   */
+  readonly lenses?: readonly LensId[];
 }
