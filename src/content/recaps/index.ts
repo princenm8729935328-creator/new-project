@@ -27,6 +27,10 @@ import { LIFE_EVOLUTION_RECAPS } from './lifeEvolution';
 import { LIFE_ECOLOGY_RECAPS } from './lifeEcology';
 import { LIFE_SYNTHESIS_RECAPS } from './lifeSynthesis';
 import { LIFE_QUESTIONS_RECAPS } from './lifeQuestions';
+import { HUMAN_ORIGINS_RECAPS } from './humanOrigins';
+import { HUMAN_FOSSIL_RECAPS } from './humanFossils';
+import { HUMAN_CULTURE_RECAPS } from './humanCulture';
+import { HUMAN_PRESENT_RECAPS } from './humanPresent';
 
 export const RECAPS: RecapsByTopic = {
   ...UNIVERSE_RECAPS,
@@ -43,6 +47,10 @@ export const RECAPS: RecapsByTopic = {
   ...LIFE_ECOLOGY_RECAPS,
   ...LIFE_SYNTHESIS_RECAPS,
   ...LIFE_QUESTIONS_RECAPS,
+  ...HUMAN_ORIGINS_RECAPS,
+  ...HUMAN_FOSSIL_RECAPS,
+  ...HUMAN_CULTURE_RECAPS,
+  ...HUMAN_PRESENT_RECAPS,
 };
 
 export function getRecap(id: TopicId): TopicRecap | undefined {

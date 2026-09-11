@@ -27,11 +27,12 @@ describe('SectionPage', () => {
   });
 
   it('states plainly that an unbuilt section is unbuilt', () => {
-    // Quantum Physics filled this role until Phase 6 built it, and Earth until
-    // Phase 7; Human Evolution is the next section still on the roadmap.
-    renderAt('/human-evolution');
+    // Quantum Physics filled this role until Phase 6 built it, Earth until
+    // Phase 7, and Human Evolution until Phase 8. Dark Matter & Dark Energy is
+    // the next section still on the roadmap.
+    renderAt('/dark-universe');
     expect(screen.getByText('Not built yet')).toBeInTheDocument();
-    expect(screen.getByText(/Scheduled for Phase 8/)).toBeInTheDocument();
+    expect(screen.getByText(/Scheduled for Phase 9/)).toBeInTheDocument();
   });
 
   it('falls back to the not-found page for an unknown slug', () => {

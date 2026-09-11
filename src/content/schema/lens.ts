@@ -37,7 +37,7 @@ export const LENS_META: Readonly<Record<LensId, LensMeta>> = {
     question: 'How did we become human?',
     description:
       'Fossils, genomes, tools and dates, and what can be inferred from them. Answers here are provisional and stand or fall on evidence.',
-    status: 'planned',
+    status: 'published',
   },
   philosophical: {
     id: 'philosophical',

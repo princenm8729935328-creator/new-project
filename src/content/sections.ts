@@ -157,7 +157,7 @@ export const SECTIONS: readonly Section[] = [
     accent: 'human',
     order: 11,
     phase: 8,
-    status: 'planned',
+    status: 'published',
     icon: 'human',
     timelineSpan: { fromLogSeconds: 17.63, toLogSeconds: 17.64 },
     // The only section read through two lenses. "How did we become human" and

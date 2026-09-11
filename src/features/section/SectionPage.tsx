@@ -4,7 +4,7 @@ import { getSectionBySlug } from '@/content/sections';
 import { getTopicsForLens, getTopicsForSection } from '@/content/topics';
 import { DEFAULT_LENS, LENS_META, type LensId } from '@/content/schema/lens';
 import type { Section } from '@/content/schema/section';
-import type { Topic } from '@/content/schema/topic';
+import type { ContentStatus, Topic } from '@/content/schema/topic';
 import { BackLink } from '@/design-system/components/BackLink';
 import { PhaseNotice } from '@/design-system/components/PhaseNotice';
 import { useReaderPreferences } from '@/app/providers/useReaderPreferences';
@@ -98,7 +98,15 @@ function LensedBody({
           {lens.question}
         </h2>
         <p className={styles.lensDescription}>{lens.description}</p>
-        <SectionBody section={section} topics={topics} lensLabel={lens.label} />
+        <SectionBody
+          section={section}
+          topics={topics}
+          lensLabel={lens.label}
+          // The section as a whole is published once either lens has content,
+          // so an unwritten lens has to report its own status rather than
+          // inheriting one that would describe it as finished.
+          status={lens.status}
+        />
       </section>
     </>
   );
@@ -109,10 +117,12 @@ function SectionBody({
   section,
   topics,
   lensLabel,
+  status,
 }: {
   section: Section;
   topics: readonly Topic[];
   lensLabel?: string;
+  status?: ContentStatus;
 }): ReactNode {
   const { depth } = useReaderPreferences();
   const subject = lensLabel ? `the ${lensLabel} of ${section.title}` : section.title;
@@ -120,7 +130,7 @@ function SectionBody({
   if (topics.length === 0) {
     return (
       <PhaseNotice
-        status={section.status}
+        status={status ?? section.status}
         phase={section.phase}
         // Not the overview — that is already above. This says what is
         // missing, which is a different thing from what the section is.

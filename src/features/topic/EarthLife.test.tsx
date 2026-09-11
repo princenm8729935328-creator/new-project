@@ -182,12 +182,13 @@ describe('Phase 7 topic coverage', () => {
     }
   });
 
-  it('stops short of building human evolution, which is Phase 8', () => {
+  it('leaves the Human Evolution philosophical lens unbuilt', () => {
+    // Phase 8 step 2 built the Scientific Lens of this section. The
+    // Philosophical Lens is a separate later step and must stay empty.
     const humanEvolution = getSectionBySlug('human-evolution');
-    expect(humanEvolution?.status).toBe('planned');
-    expect(
-      publishedTopics().filter((topic) => topic.sectionId === humanEvolution?.id),
-    ).toHaveLength(0);
+    const topics = publishedTopics().filter((topic) => topic.sectionId === humanEvolution?.id);
+    expect(topics.length).toBeGreaterThan(0);
+    expect(topics.filter((topic) => topic.lens === 'philosophical')).toHaveLength(0);
   });
 });
 

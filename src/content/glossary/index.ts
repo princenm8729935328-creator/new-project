@@ -908,6 +908,287 @@ export const GLOSSARY: readonly GlossaryTerm[] = [
       'Genes moving between organisms other than from parent to offspring. It is common among microbes, and it is why the deepest part of the tree of life is better described as a network.',
     references: [referenceId('doolittle-1999-lateral')],
   },
+
+  // Phase 8 — Human Evolution, Scientific Lens.
+  {
+    id: glossaryTermId('hominin'),
+    term: 'Hominin',
+    aliases: ['hominins', 'Hominini'],
+    short:
+      'Humans and every extinct species closer to us than to chimpanzees. It is a statement about which side of a branching point a species falls on, not about how human-like it looked.',
+    references: [referenceId('wood-boyle-2016-hominin-taxonomy')],
+  },
+  {
+    id: glossaryTermId('hominid'),
+    term: 'Hominid',
+    aliases: ['hominids', 'Hominidae'],
+    short:
+      'The great ape family: orangutans, gorillas, chimpanzees, bonobos and humans, living and extinct. Older books use it to mean what "hominin" means now, which is a common source of confusion.',
+    references: [referenceId('wood-boyle-2016-hominin-taxonomy')],
+  },
+  {
+    id: glossaryTermId('bipedalism'),
+    term: 'Bipedalism',
+    aliases: ['bipedal', 'obligate bipedalism'],
+    short:
+      'Habitual walking on two legs. Many animals do it occasionally; the hominin version is obligate, meaning the skeleton has been rebuilt around it and is no longer efficient on four limbs.',
+    references: [referenceId('lovejoy-2005-pelvis')],
+  },
+  {
+    id: glossaryTermId('mosaic-evolution'),
+    term: 'Mosaic evolution',
+    short:
+      'Different parts of an organism changing at different rates, so a single fossil can have a modern-looking foot and an ape-like shoulder. It is the normal pattern, and it is why "transitional form" is a misleading phrase.',
+    references: [referenceId('kivell-2011-sediba-hand')],
+  },
+  {
+    id: glossaryTermId('taphonomy'),
+    term: 'Taphonomy',
+    short:
+      'The study of what happens to remains between death and discovery. It is how a fossil assemblage is corrected for the fact that most bodies leave no trace at all.',
+    references: [referenceId('behrensmeyer-1978-taphonomy')],
+  },
+  {
+    id: glossaryTermId('endocast'),
+    term: 'Endocast',
+    short:
+      'A cast of the inside of a braincase, natural or digital. It records brain size and the coarse shape of the surface, and almost nothing about internal organisation.',
+    references: [referenceId('neubauer-2018-globularity')],
+  },
+  {
+    id: glossaryTermId('encephalization'),
+    term: 'Encephalization',
+    aliases: ['encephalization quotient', 'EQ'],
+    short:
+      'Brain size relative to what body size predicts. Useful for comparing species of different sizes, and routinely over-read: it is a ratio, not a measure of capability.',
+    references: [referenceId('isler-vanschaik-2009-expensive-brain')],
+  },
+  {
+    id: glossaryTermId('knapping'),
+    term: 'Knapping',
+    aliases: ['flintknapping', 'flaking'],
+    short:
+      'Striking stone to detach sharp flakes. Doing it deliberately requires reading the geometry of the core, and the debris it leaves is often more informative than the finished tool.',
+    references: [referenceId('stout-2011-toolmaking-brain')],
+  },
+  {
+    id: glossaryTermId('oldowan'),
+    term: 'Oldowan',
+    short:
+      'The earliest widely recognised stone technology: cores struck to produce sharp flakes, from about 2.6 million years ago. Simple in form, and not simple to make.',
+    references: [referenceId('semaw-1997-gona')],
+  },
+  {
+    id: glossaryTermId('acheulean'),
+    term: 'Acheulean',
+    aliases: ['Acheulian'],
+    short:
+      'The stone industry defined by large bifacially worked handaxes, from about 1.76 million years ago. It persisted with remarkably little change for over a million years.',
+    references: [referenceId('lepre-2011-acheulean')],
+  },
+  {
+    id: glossaryTermId('middle-stone-age'),
+    term: 'Middle Stone Age',
+    aliases: ['MSA'],
+    short:
+      'The African technological period from roughly 300,000 to 30,000 years ago, associated with prepared-core methods, pigment use and the earliest known ornaments.',
+    references: [referenceId('brooks-2018-olorgesailie')],
+  },
+  {
+    id: glossaryTermId('introgression'),
+    term: 'Introgression',
+    aliases: ['archaic introgression'],
+    short:
+      'Genetic material entering one population from another through interbreeding and then persisting. Several human populations carry Neanderthal and Denisovan sequence this way.',
+    references: [referenceId('sankararaman-2014-neandertal-ancestry')],
+  },
+  {
+    id: glossaryTermId('admixture'),
+    term: 'Admixture',
+    short:
+      'The mixing of previously separated populations. It is the normal condition of human history rather than an exception to it.',
+    references: [referenceId('mallick-2016-simons')],
+  },
+  {
+    id: glossaryTermId('ancient-dna'),
+    term: 'Ancient DNA',
+    aliases: ['aDNA'],
+    short:
+      'DNA recovered from remains or sediment rather than from a living organism. It is short, chemically damaged and easily contaminated, and that damage pattern is what authenticates it.',
+    references: [referenceId('dabney-2013-adna-methods')],
+  },
+  {
+    id: glossaryTermId('pseudogene'),
+    term: 'Pseudogene',
+    short:
+      'A gene that has been inactivated by mutation but is still recognisable in the genome. Shared broken genes in the same broken way are strong evidence of shared ancestry.',
+    references: [referenceId('chou-1998-cmah')],
+  },
+  {
+    id: glossaryTermId('endogenous-retrovirus'),
+    term: 'Endogenous retrovirus',
+    aliases: ['ERV'],
+    short:
+      'The remains of a viral genome inserted into a germline cell and inherited ever since. Two species carrying the same insertion at the same position inherited it from a common ancestor.',
+    references: [referenceId('johnson-2019-endogenous-retroviruses')],
+  },
+  {
+    id: glossaryTermId('genetic-drift'),
+    term: 'Genetic drift',
+    short:
+      'Change in how common a gene variant is, caused by the randomness of who reproduces rather than by any advantage. It matters most in small populations, where chance easily outweighs selection.',
+    references: [referenceId('stearns-2010-measuring-selection')],
+  },
+  {
+    id: glossaryTermId('gene-flow'),
+    term: 'Gene flow',
+    short:
+      'Genes moving between populations as individuals move and have children. Sustained gene flow keeps populations from diverging; its absence is what lets them.',
+    references: [referenceId('rosenberg-2002-population-structure')],
+  },
+  {
+    id: glossaryTermId('founder-effect'),
+    term: 'Founder effect',
+    short:
+      'The loss of variation when a new population starts from a small number of individuals. Repeated over and over, it is why genetic diversity declines with distance from Africa.',
+    references: [referenceId('ramachandran-2005-serial-founder')],
+  },
+  {
+    id: glossaryTermId('selective-sweep'),
+    term: 'Selective sweep',
+    short:
+      'The signature left when a strongly favoured variant spreads quickly, dragging neighbouring stretches of chromosome with it. It is how recent selection is detected in living genomes.',
+    references: [referenceId('sabeti-2007-genome-wide-selection')],
+  },
+  {
+    id: glossaryTermId('lactase-persistence'),
+    term: 'Lactase persistence',
+    short:
+      'Continuing to produce the enzyme that digests milk sugar into adulthood. It evolved independently several times, and the majority of adults worldwide do not have it.',
+    references: [referenceId('tishkoff-2007-lactase')],
+  },
+  {
+    id: glossaryTermId('cumulative-culture'),
+    term: 'Cumulative culture',
+    aliases: ['ratchet effect'],
+    short:
+      'Knowledge that accumulates across generations because each one starts from what the last achieved rather than from scratch. It requires high-fidelity transmission, which is the rare part.',
+    references: [referenceId('boyd-richerson-1985-culture')],
+  },
+  {
+    id: glossaryTermId('social-learning'),
+    term: 'Social learning',
+    short:
+      'Acquiring behaviour by observing others rather than by individual trial and error. Widespread among animals; what differs in humans is how accurately it copies.',
+    references: [referenceId('whiten-2011-social-learning')],
+  },
+  {
+    id: glossaryTermId('gene-culture-coevolution'),
+    term: 'Gene–culture coevolution',
+    aliases: ['dual inheritance'],
+    short:
+      'Culture changing the environment in which genes are selected, and the resulting genetic change feeding back into what culture can do. Dairying and lactase persistence are the standard example.',
+    references: [referenceId('laland-2000-gene-culture')],
+  },
+  {
+    id: glossaryTermId('exaptation'),
+    term: 'Exaptation',
+    short:
+      'A structure that now serves a function it was not shaped for. Limbs with digits evolved in water and were later walked on; the term exists to stop us reading current use as original purpose.',
+    references: [referenceId('gould-lewontin-1979-spandrels')],
+  },
+  {
+    id: glossaryTermId('vestigial-structure'),
+    term: 'Vestigial structure',
+    short:
+      'A structure reduced from a larger ancestral version. It means diminished relative to an ancestor, not useless: several vestigial structures in humans do measurable work.',
+    references: [referenceId('smith-2017-appendix')],
+  },
+  {
+    id: glossaryTermId('dental-microwear'),
+    term: 'Dental microwear',
+    short:
+      'Microscopic scratches and pits on a tooth surface, formed in the last days or weeks of life. It records what an individual actually ate, which is often not what its teeth were built for.',
+    references: [referenceId('ungar-sponheimer-2011-diets')],
+  },
+  {
+    id: glossaryTermId('stable-isotope-analysis'),
+    term: 'Stable isotope analysis',
+    short:
+      'Reading diet and environment from the ratios of carbon, nitrogen or oxygen isotopes locked into tissue as it formed. In hominins it distinguishes tree-based foods from grass-based ones.',
+    references: [referenceId('sponheimer-2013-isotopes')],
+  },
+  {
+    id: glossaryTermId('radiometric-dating'),
+    term: 'Radiometric dating',
+    short:
+      'Dating material by the steady decay of an unstable isotope within it. Different isotope systems cover different time ranges, and each carries its own assumptions and error bars.',
+    references: [referenceId('walker-2005-quaternary-dating')],
+  },
+  {
+    id: glossaryTermId('obstetrical-dilemma'),
+    term: 'Obstetrical dilemma',
+    short:
+      'The proposal that human birth is difficult because a pelvis narrow enough for efficient walking conflicts with a head large enough to be born. The conflict is real; this explanation of it is disputed.',
+    references: [referenceId('haeusler-2021-obstetrical-dilemma')],
+  },
+  {
+    id: glossaryTermId('life-history'),
+    term: 'Life history',
+    short:
+      'The schedule of an organism’s life: how fast it grows, when it reproduces, how long it lives. Humans are unusual for a long childhood, late maturity and a long post-reproductive period.',
+    references: [referenceId('dean-2001-enamel')],
+  },
+  {
+    id: glossaryTermId('altriciality'),
+    term: 'Altriciality',
+    short:
+      'Being born underdeveloped and dependent. Human infants are helpless for far longer than other ape infants, which shifts a great deal of development into a social environment.',
+    references: [referenceId('dunsworth-2012-eem')],
+  },
+  {
+    id: glossaryTermId('domestication'),
+    term: 'Domestication',
+    short:
+      'A population becoming genetically shaped by living with humans. It is a long mutual process, not an act performed on a species at a moment in time.',
+    references: [referenceId('larson-2014-domestication-review')],
+  },
+  {
+    id: glossaryTermId('zoonosis'),
+    term: 'Zoonosis',
+    aliases: ['zoonotic disease'],
+    short:
+      'A disease that crossed into humans from another animal. Most of the great historical epidemic diseases did so after people began living alongside livestock in dense settlements.',
+    references: [referenceId('wolfe-2007-zoonoses')],
+  },
+  {
+    id: glossaryTermId('population-structure'),
+    term: 'Population structure',
+    short:
+      'The pattern of how genetic variation is distributed geographically. In humans it is real, gradual and continuous, with no boundaries where one group ends and another begins.',
+    references: [referenceId('rosenberg-2002-population-structure')],
+  },
+  {
+    id: glossaryTermId('clade'),
+    term: 'Clade',
+    short:
+      'An ancestor and all of its descendants, with nothing left out. Groups that leave descendants out — "reptiles" without birds, "apes" without humans — are conveniences, not evolutionary units.',
+    references: [referenceId('hug-2016-tree-of-life')],
+  },
+  {
+    id: glossaryTermId('incomplete-lineage-sorting'),
+    term: 'Incomplete lineage sorting',
+    short:
+      'Why different genes in the same genome can give different family trees: variation present in an ancestral population gets sorted between descendant species at random.',
+    references: [referenceId('prufer-2012-bonobo')],
+  },
+  {
+    id: glossaryTermId('molecular-clock'),
+    term: 'Molecular clock',
+    short:
+      'Estimating when two lineages split from how many differences have accumulated between them. It is a clock whose rate must itself be measured, and revisions to that rate move the dates.',
+    references: [referenceId('scally-durbin-2012-mutation-rate')],
+  },
 ];
 
 const BY_ID = new Map(GLOSSARY.map((term) => [term.id, term]));

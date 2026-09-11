@@ -88,18 +88,20 @@ describe('the Human Evolution lens selector', () => {
     expect(scientific).toBeChecked();
   });
 
-  it('states that each lens is unwritten rather than inventing content', async () => {
+  it('reports the unwritten lens as unwritten while the built one lists topics', async () => {
     const user = userEvent.setup();
     renderAt('/human-evolution');
 
-    expect(screen.getByText('Not built yet')).toBeInTheDocument();
-    expect(screen.getByText(/Scientific Lens of Human Evolution have not been written yet/));
+    // Phase 8 step 2 built the Scientific Lens, so it now has a reading list.
+    expect(screen.queryByText('Not built yet')).not.toBeInTheDocument();
+    expect(screen.getByRole('list')).toBeInTheDocument();
 
     await user.click(screen.getByRole('radio', { name: /Philosophical Lens/ }));
     expect(screen.getByText('Not built yet')).toBeInTheDocument();
-    expect(screen.getByText(/Philosophical Lens of Human Evolution have not been written yet/));
-
-    // No topic list exists under either lens yet, so neither may claim one.
+    expect(
+      screen.getByText(/Philosophical Lens of Human Evolution have not been written yet/),
+    ).toBeInTheDocument();
+    // The unwritten lens must not borrow the other one's topic list.
     expect(screen.queryByRole('list')).not.toBeInTheDocument();
   });
 
@@ -126,9 +128,12 @@ describe('the lens content model', () => {
     expect(LENS_META.scientific.question).not.toBe(LENS_META.philosophical.question);
   });
 
-  it('has no lens content in the registry yet, of either kind', () => {
-    // Step one is the structure. A topic carrying a lens here would mean
-    // curriculum has been written ahead of the step that should write it.
-    expect(TOPICS.filter((topic) => topic.lens !== undefined)).toEqual([]);
+  it('carries scientific content and no philosophical content', () => {
+    // The lenses are independent by construction. Philosophical topics are a
+    // later step, and nothing here should have been written ahead of it.
+    const lensed = TOPICS.filter((topic) => topic.lens !== undefined);
+    expect(lensed.length).toBeGreaterThan(50);
+    expect(lensed.every((topic) => topic.lens === 'scientific')).toBe(true);
+    expect(TOPICS.filter((topic) => topic.lens === 'philosophical')).toEqual([]);
   });
 });

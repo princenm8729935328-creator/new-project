@@ -3637,4 +3637,1159 @@ export const VISUALIZATIONS: readonly VisualizationSpec[] = [
     minimumQuality: 'low',
     layout: 'flow',
   },
+
+  // Phase 8 — Human Evolution, Scientific Lens
+  {
+    id: visualizationId('nested-ancestry'),
+    title: 'The groups a human is inside',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Drawn as boxes inside boxes rather than as a list, because the commonest misreading of "humans are apes" is to hear it as a category beside us rather than one we are within. Nesting makes that reading unavailable. Dates are approximate divergence estimates with real uncertainty.',
+    description:
+      'Six nested rectangles, largest to smallest: Animals, Vertebrates, Mammals, Primates, Apes, Humans. Tapping any box selects it and shows what that level added and roughly when it appeared — many cells and nerves around 800 million years ago; a backbone and skull around 530 million; hair, milk and constant body temperature around 210 million; grasping hands, forward-facing eyes and colour vision around 65 million; loss of the tail and freely rotating shoulders around 25 million; habitual bipedalism and later a much larger brain around 7 million. A caption notes that each box is inside all the boxes around it, and that a box further in is not better, only more recent and more specific.',
+    references: [
+      referenceId('chimpanzee-consortium-2005'),
+      referenceId('wood-boyle-2016-hominin-taxonomy'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('ape-relationships'),
+    title: 'The great ape tree, and what a rotation does to it',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Two views of one tree. The second has two branches rotated around their joins, which changes nothing about what the tree asserts — a demonstration that left-to-right order on the page carries no information. Divergence dates are molecular estimates with wide uncertainty.',
+    description:
+      'A branching diagram of orangutans, gorillas, humans, chimpanzees and bonobos, with branch points marked at approximately 16, 9, 7 and 2 million years ago along a time axis running to the present. Humans are highlighted. The second view redraws the identical tree with sister branches rotated so the tip order is reversed, demonstrating that humans, chimpanzees and bonobos still meet at the same branch point and gorillas still join below it. Text labels the first view as drawn conventionally and the second as the same tree with two branches rotated.',
+    references: [referenceId('prufer-2012-bonobo'), referenceId('chimpanzee-consortium-2005')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('divergence-dating'),
+    title: 'Why the divergence date has a range',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Two sliders set the mutation rate and generation time; the sequence difference is fixed. The date swings by millions of years, which is why published estimates for the human–chimpanzee split span roughly 6.5 to 9 million years. Values illustrate the sensitivity rather than reproducing any single published estimate.',
+    description:
+      'A horizontal axis from 2 to 14 million years with the current published range 6.5 to 9 shaded. A marker shows the date computed from two sliders: mutation rate, from 0.6 to 2.5 times ten to the minus eight per base pair per generation, and generation time from 15 to 32 years. The fixed input, 1.25% of positions differing, and the implied number of generations are displayed. A note flags that rates below about 0.9 correspond to the older fossil-calibrated value that gave the 1990s answer, and that direct sequencing of parents and children roughly halved the measured rate and thereby roughly doubled the dates.',
+    references: [
+      referenceId('scally-durbin-2012-mutation-rate'),
+      referenceId('langergraber-2012-generation-times'),
+      referenceId('moorjani-2016-divergence'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('cousins-not-ancestors'),
+    title: 'The ladder against the record',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'The first view reproduces the 1965 march-of-progress illustration, labelled as wrong. The second plots the same species against their dated ranges. Bar edges are softer than drawn, and poorly sampled species certainly have ranges too short.',
+    description:
+      'Two views. The ladder: four figures in a left-to-right line with arrows between them, captioned as a single line with each replacing the last, and marked as the familiar and incorrect image. The record: horizontal bars for Australopithecus afarensis, Au. africanus, Paranthropus boisei, Homo habilis, H. erectus, H. naledi, H. neanderthalensis and H. sapiens plotted against a time axis from 4 million years ago to the present, with Homo sapiens highlighted as the only surviving lineage. A dashed line at 2 million years ago is annotated as the point when at least four species were alive simultaneously. A note states that the figure shows when species existed, not who descended from whom.',
+    references: [
+      referenceId('wood-boyle-2016-hominin-taxonomy'),
+      referenceId('anton-2014-evolution-of-homo'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('reading-a-tree'),
+    title: 'How to read an evolutionary tree',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'An abstract five-tip tree with four questions the reader can check against it. The questions target the specific errors that survive verbal explanation: reading tip order as ranking, reading adjacency as relationship, and reading one living tip as the ancestor of another.',
+    description:
+      'A branching diagram with five unlabelled tips A to E and four branch points marked as orange dots. Four selectable questions with answers: whether D is more closely related to E than to A (yes, because they meet at a nearer node); whether E is more advanced than A because it is drawn further right (no, horizontal position is drawing rather than data and branches can be rotated at any node); whether A evolved into B (no, both are tips and neither descends from the other); and whether B and C are each other closest relatives because they are drawn adjacent (no, B joins at a deeper node). A caption states that the orange dots are the only information in the diagram.',
+    references: [referenceId('hug-2016-tree-of-life')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('genome-similarity'),
+    title: 'The same two genomes, three ways of counting',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Three legitimate measurements of the same comparison, giving 98.8%, about 95.5%, and no single figure at all. The point is that a percentage without a stated method is not a measurement — and that similarity does not predict how different two organisms are.',
+    description:
+      'A bar showing the proportion of identical positions between the human and chimpanzee genomes under three selectable counting methods. Single letters only, counting substitutions in alignable regions, gives 98.8%. Including insertions and deletions gives 95.5%. Whole genomes, including duplications and rearrangements, gives no single percentage: the bar is replaced by irregular blocks and text explaining that duplicated and rearranged regions cannot be paired off one to one. Comparison figures are given for human versus gorilla at about 98.2% and human versus mouse coding regions at about 85%, with a closing line that similarity is not a measure of how different two organisms are.',
+    references: [
+      referenceId('chimpanzee-consortium-2005'),
+      referenceId('varki-altheide-2005-genome-comparison'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('shared-errors'),
+    title: 'Three shared genomic errors',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Positions in the viral-insertion view are schematic; the finding is that the coordinates match between species, not where they fall on the chromosome. The chromosome 2 view shows relative structure rather than true scale.',
+    description:
+      'Three selectable views. Chromosome 2: two chimpanzee chromosomes drawn with telomere repeats at their four ends and one centromere each, above a single human chromosome carrying telomere repeats at an internal position and a second inactivated centromere, with both annotated. Viral insertions: three bars for human, chimpanzee and gorilla with retroviral remains marked at identical positions across species and one insertion absent in gorilla, annotated to explain that insertion sites are effectively random across three billion letters so sharing a position implies sharing an ancestor. Broken genes: the GULO vitamin C gene shown working in most mammals and disabled by the same lesions in human, chimpanzee and macaque.',
+    references: [
+      referenceId('ijdo-1991-chromosome-2'),
+      referenceId('johnson-2019-endogenous-retroviruses'),
+      referenceId('chou-1998-cmah'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('bipedal-balance'),
+    title: 'Standing on one leg',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A slider sets the hip abductor lever arm, the single measurement that most separates a human pelvis from an ape one. The required muscle force and the resulting pelvic tilt follow from it. Geometry is simplified and the force figures are approximate; the inverse relationship is the real constraint.',
+    description:
+      'A simplified figure in single-leg stance, with the pelvis, trunk and both legs drawn. Body weight acts at the midline, marked with a dashed line, while the supporting foot is offset to the side. A slider from 1 to 9 centimetres sets the distance from the hip joint to where the abductor muscles pull. As the lever shortens, the required muscle force rises and the whole upper body visibly tilts towards the unsupported side, with a status readout switching between pelvis stays level and pelvis drops, lurching gait. A note explains that the human pelvis is short and curls laterally to give those muscles a lever, while an ape pelvis is tall and flat and cannot.',
+    references: [
+      referenceId('lovejoy-2005-pelvis'),
+      referenceId('sockol-2007-chimpanzee-locomotion'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('skeleton-comparison'),
+    title: 'The rebuilt skeleton, part by part',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Schematic outlines rather than accurate skeletal drawings: the figure carries one comparison at a time, and anatomical detail would bury it. Each part is described in words in the accompanying note.',
+    description:
+      'Side-by-side simplified skeletons of a chimpanzee and a human with a dividing line between them. Five selectable parts highlight in both figures: pelvis, spine, femur, knee and foot. For each, the accompanying text gives the ape condition, the human condition and the mechanical reason — a short bowl-shaped pelvis putting the hip muscles where they stop the pelvis tipping, an S-curved spine placing trunk weight over the hip joints, an inward-slanting femur bringing the knees under the midline, an asymmetrical knee that locks straight, and a stiff arched foot that acts as a spring instead of a grasping organ. A closing note frames all five as trades rather than improvements.',
+    references: [
+      referenceId('lovejoy-2005-pelvis'),
+      referenceId('lovejoy-2005-knee-foot'),
+      referenceId('ward-2011-arch'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('bipedalism-hypotheses'),
+    title: 'Four explanations for bipedalism',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Two bars per hypothesis — evidence for and evidence against — because presenting these as a ranked list would misrepresent a field where none is clearly ahead. Bar lengths summarise the state of the argument and are not a measurement.',
+    description:
+      'Four rows, each with a green bar for supporting evidence and an orange bar for problems: energy efficiency, carrying, heat load and postural feeding. Selecting a row gives the claim, what supports it and what undercuts it. Energy is measured directly but compares two modern species; carrying explains why free hands pay but not what the first bipeds were carrying; heat requires open habitat that carbon isotopes in ancient soils say was not there; feeding fits the woodland setting but explains standing rather than travelling. A caption notes the bars represent a reading of the literature rather than data.',
+    references: [
+      referenceId('sockol-2007-chimpanzee-locomotion'),
+      referenceId('rodman-mchenry-1980-bipedalism-energetics'),
+      referenceId('wheeler-1991-thermoregulation'),
+      referenceId('cerling-2011-woodland'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('mosaic-body'),
+    title: 'Mosaic evolution, species by species',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A body diagram with regions coloured by whether they had changed for walking or were still built for climbing. Different species split differently, which is the argument against reading any of them as part-way along a line. Region positions are schematic.',
+    description:
+      'A simplified body outline with six labelled regions — shoulder, arm, hand, pelvis, leg and foot — coloured green where derived for walking and amber where retained for climbing. Four selectable species: Ardipithecus ramidus at 4.4 million years with only the pelvis derived and a grasping foot retained; Australopithecus afarensis at 3.2 million with pelvis, leg and foot derived and the upper body retained; Au. sediba at 2.0 million with pelvis and hand derived; and Homo erectus at 1.5 million with everything except the hand derived. Text notes that Au. afarensis persisted for roughly 900,000 years and that whether retained features were still used or simply not yet lost is unresolved.',
+    references: [
+      referenceId('kivell-2011-sediba-hand'),
+      referenceId('white-2009-ardipithecus'),
+      referenceId('skinner-2015-trabecular-hand'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('hand-proportions'),
+    title: 'Why the human hand can pinch',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A slider morphs hand proportions between chimpanzee-like and human-like. No bones are added or removed along the way — only lengths change — which is the point. Ratios quoted are real; the drawing is a schematic rather than an anatomical figure.',
+    description:
+      'A simplified hand with palm, four fingers and a thumb. A slider morphs between chimpanzee-like proportions, with a thumb-to-finger length ratio around 0.41, and human-like proportions around 0.72. A dashed arc shows how far the thumb pad can reach towards the index fingertip; it meets the fingertip above a ratio of about 0.58 and falls short below it, with the status text switching between thumb pad reaches fingertip pad and thumb falls short. Accompanying text explains that the same bones, joints and muscles are present throughout, and that internal bone structure shows australopith hands already being loaded in this way before the oldest confidently attributed stone tools.',
+    references: [referenceId('tocheri-2008-wrist'), referenceId('skinner-2015-trabecular-hand')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('cooling-systems'),
+    title: 'Heat, not legs, sets the limit',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Core temperature against time under sustained effort for a panting quadruped and a sweating human, with air temperature as a slider. The curves are illustrative of a well-established asymmetry between the two cooling routes rather than measured physiology for any species.',
+    description:
+      'A line chart of core temperature rise in degrees Celsius against minutes of sustained effort, from zero to 120 minutes. Two curves: a panting quadruped in orange and a sweating human in green. A shaded band marks a four-degree rise as the collapse threshold. A slider sets air temperature from 18 to 42 degrees; as it rises, the panting curve steepens far faster because respiratory cooling is capped and is mechanically locked to stride in a galloping gait, while sweating scales further and is independent of breathing. A readout states the time at which each must stop. Text notes that humans have roughly ten times the eccrine gland density of other primates.',
+    references: [
+      referenceId('bramble-lieberman-2004-endurance-running'),
+      referenceId('kamberov-2018-eccrine'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('diet-evidence'),
+    title: 'Three ways of reading a tooth',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Tooth shape, surface wear and enamel chemistry record different timescales and frequently disagree. Paranthropus boisei is the case that matters: the anatomy says hard objects and the other two say otherwise.',
+    description:
+      'Three stacked panels for a selected species — tooth shape, recording what the lineage was equipped for; surface microwear, recording the last days or weeks of life; and enamel carbon isotopes, recording years while the crown formed. A footer states whether the three readings agree. Australopithecus afarensis: broadly consistent generalist. Paranthropus boisei: massive flat molars and a crest for jaw muscles, but fine scratches rather than the pitting of a hard-object feeder, and roughly 75 to 80% grass- or sedge-derived carbon — the readings disagree. Early Homo: reduced chewing apparatus with variable wear and mixed isotopes.',
+    references: [
+      referenceId('ungar-sponheimer-2011-diets'),
+      referenceId('sponheimer-2013-isotopes'),
+      referenceId('teaford-ungar-2000-diet'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('birth-canal'),
+    title: 'Why a human infant turns on the way out',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Three cross-sections through the pelvis with the head outline rotating between them. A stepper rather than an animation, so the reader can stop on the quarter-turn. Outlines are schematic and do not represent measured pelvic dimensions.',
+    description:
+      'A three-stage sequence, each showing a cross-section through the pelvis viewed from above with an oval head outline inside it. At the inlet the canal is widest side to side and the head enters turned sideways. At mid-canal the cross-section changes shape and the head has rotated 45 degrees. At the outlet the widest direction is front to back and the head has rotated by about ninety degrees in total, emerging facing the mother back. Accompanying text explains that the shape change follows from the pelvis having been reshaped for walking, and that human birth is usually attended because the infant emerges facing away and cannot easily be guided out by the mother.',
+    references: [
+      referenceId('rosenberg-trevathan-2002-birth'),
+      referenceId('haeusler-2021-obstetrical-dilemma'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('growth-schedules'),
+    title: 'Life-history milestones, read from teeth',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Weaning, first molar eruption and maturity plotted for apes and hominins. Eruption ages come from counting daily enamel increments in fossil teeth. Values are representative means; individual variation within every species shown is substantial.',
+    description:
+      'Six horizontal tracks — macaque, chimpanzee, Australopithecus afarensis, Homo erectus, Neanderthal and modern human — against a years-from-birth axis running to twenty. Three markers on each track show weaning, first permanent molar eruption and adulthood, with the selected milestone enlarged. First molar eruption runs from about 1.4 years in macaques through 4.0 in chimpanzees and Au. afarensis to 4.5 in H. erectus, 5.6 in Neanderthals and 6.2 in modern humans. Text explains that enamel is deposited in daily increments so a fossil tooth records how many days its crown took to form, and that a disturbance line marks the moment of birth.',
+    references: [
+      referenceId('dean-2001-enamel'),
+      referenceId('smith-2010-neanderthal-development'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('body-archive'),
+    title: 'Inherited structures in the human body',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Six structures on a simplified body outline, each stating what it is inherited from and what it does now. Several do measurable work, which is the correction this figure exists to make: vestigial means reduced relative to an ancestor, not useless.',
+    description:
+      'A simplified human body outline with six tappable markers connected by leader lines to labels: ear muscles, blind spot, wisdom teeth, goosebumps, appendix and coccyx. Selecting each gives the ancestral structure it derives from and its current function. The ear muscles do almost nothing mechanically; the blind spot is a structural consequence of the inverted vertebrate retina, absent in octopuses whose eyes are wired the other way; wisdom teeth follow from a developmental cascade in which each molar suppresses the next; goosebump muscles anchor hair follicles; the appendix is dense in lymphoid tissue and appears to act as a bacterial refuge; and the coccyx anchors pelvic floor muscles, with ape tail loss traced to a transposable element insertion in the TBXT gene.',
+    references: [
+      referenceId('smith-2017-appendix'),
+      referenceId('lamb-2007-eye-evolution'),
+      referenceId('xia-2024-tail-loss'),
+      referenceId('evans-2016-dental-proportions'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('fossil-filter'),
+    title: 'What has to happen for a fossil to be found',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A funnel with survivor counts at each stage. The survival probabilities are illustrative rather than measured and vary enormously between environments; the shape is the finding, and its direction is towards East Africa and away from wet forest.',
+    description:
+      'Six narrowing bars representing stages between death and discovery, with a running survivor count on the right and a starting population set by a slider from ten thousand to a billion. The stages are dying somewhere burial is possible, being buried before scavengers finish, groundwater chemistry preserving rather than dissolving bone, the deposit surviving erosion and burial, exposure at the surface now, and somebody standing there. Selecting a stage explains it. A footer gives the expected number recovered, which for most settings is far below one. Text notes that the Rift Valley dominates the record because it combines burial, datable volcanic ash and continuous exposure.',
+    references: [
+      referenceId('behrensmeyer-1978-taphonomy'),
+      referenceId('walker-2005-quaternary-dating'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('earliest-candidates'),
+    title: 'Three candidate earliest hominins',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Each row states how much material the claim rests on alongside the claim itself. Bar lengths summarise the state of the argument rather than measuring anything, and all three cases remain disputed among specialists.',
+    description:
+      'Three rows for Sahelanthropus at about 7 million years from Chad, Orrorin at about 6 million from Kenya, and Ardipithecus at 4.4 million from Ethiopia. Each shows a bar for the strength of the bipedalism case and a line stating the surviving material — one distorted skull, fragments of thigh bone, or a substantial partial skeleton. Selecting a candidate gives the anatomical argument and the published objection: foramen magnum position in a crushed cranium, femoral neck internal architecture read differently by different groups, and a disputed pelvic reconstruction alongside a foot with a grasping big toe.',
+    references: [
+      referenceId('brunet-2002-sahelanthropus'),
+      referenceId('senut-2001-orrorin'),
+      referenceId('white-2009-ardipithecus'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('brain-before-body'),
+    title: 'Bipedalism first, brains much later',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A smoothed trend through scattered specimens rather than a measured trajectory. The shaded interval marks roughly two million years of upright walking with brain size essentially unchanged — the ordering that Piltdown was manufactured to contradict.',
+    description:
+      'A line of endocranial volume in cubic centimetres against time from 4.5 million years ago to the present, rising from about 400 at the earliest points through Lucy at about 420 to roughly 1350 today. Below it, a continuous green bar marks habitual bipedal walking as established throughout the whole period. A shaded region between 4.2 and 2.0 million years is annotated as approximately two million years upright with the brain unchanged. Accompanying text explains that the Piltdown forgery, which combined a human braincase with an ape jaw, convinced the field that a large brain came first, and that the Taung Child was dismissed for nearly thirty years as a result.',
+    references: [
+      referenceId('johanson-taieb-1976-lucy'),
+      referenceId('anton-2014-evolution-of-homo'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('lucy-completeness'),
+    title: 'A skeleton and a trackway',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Two independent kinds of evidence for the same conclusion, with different failure modes. Skeletal element positions are schematic; the recovered-versus-missing split is approximately right. Neither view alone would close the argument.',
+    description:
+      'Two views. The skeleton: a simplified layout of AL 288-1 with recovered elements filled and missing elements outlined in dashes, annotated to note that the pelvis and knee are present so the anatomy indicates upright walking, but that anatomy shows capability rather than habit. The trackway: seven footprint impressions in two alternating trails, with heel strike, arch and an in-line big toe labelled, annotated to note that behaviour is preserved directly but that no fossils were found in the ash so the maker species is an inference. Text explains that experimental reproduction of the print depth profile supports an extended-limb gait.',
+    references: [
+      referenceId('johanson-taieb-1976-lucy'),
+      referenceId('leakey-1979-laetoli'),
+      referenceId('raichlen-2010-laetoli'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('robust-skull'),
+    title: 'Two contemporaries, two strategies',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Skull outlines are schematic rather than accurate drawings; the duration bars beneath are to scale with each other. Paranthropus persisted roughly five times as long as Homo sapiens has so far, which is why "dead end" is a judgement rather than a finding.',
+    description:
+      'A schematic skull that switches between Paranthropus boisei and early Homo. The Paranthropus view adds a sagittal crest for jaw muscles, widely flared cheekbones, a heavily buttressed face and molars about four times the area of ours, all labelled. The early Homo view shows a lighter face, smaller teeth and a larger braincase. Below, two duration bars drawn to the same scale compare Paranthropus at roughly 1.5 million years with Homo sapiens at roughly 0.3 million so far. Text notes that microwear and enamel chemistry indicate grasses and sedges rather than hard objects, and that hand bones attributed to Paranthropus robustus suggest it may have made tools.',
+    references: [
+      referenceId('constantino-wood-2007-paranthropus'),
+      referenceId('ungar-sponheimer-2011-diets'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('genus-boundary'),
+    title: 'Change the rule, change the genus',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Four proposed criteria for membership of Homo applied to the same seven specimens. The membership changes each time. This is what a definitional dispute looks like from the inside, and it is not a gap awaiting a better fossil.',
+    description:
+      'Seven specimens — Australopithecus afarensis, Au. garhi, the Ledi-Geraru jaw LD 350-1, Homo habilis, H. rudolfensis, H. erectus and H. naledi — each shown with its age and endocranial volume, sorted either side of a dividing line into inside or outside the genus Homo. Four selectable criteria move them: brain volume above 600 cubic centimetres, manufacture of stone tools, modern body proportions, and reduced teeth and jaws. Each criterion produces a different membership, and the accompanying text explains why each has failed — including that Leakey lowered the brain-size threshold to admit Homo habilis in 1964.',
+    references: [
+      referenceId('wood-collard-1999-homo'),
+      referenceId('spoor-2015-habilis'),
+      referenceId('villmoare-2015-ledi-geraru'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('erectus-body'),
+    title: 'Limb proportions and commitment to the ground',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'The intermembral index — arm length as a percentage of leg length — is a simple real measurement that separates these three cleanly. Figures are schematic and the index values are approximate published means.',
+    description:
+      'A simplified standing figure with arms and legs scaled to the selected form, alongside a bar showing arm length as a percentage of leg length. Chimpanzee: index about 106, arms longer than legs. Australopithecus afarensis: about 89, intermediate. Homo erectus: about 74, essentially the modern human ratio. Height and brain volume are listed for each. Accompanying text describes the Turkana Boy skeleton, an individual who died at perhaps eight to ten years old and would have passed 1.8 metres as an adult, and notes that body size, leg length, gut size, brain size and the Acheulean handaxe all change around the same time without the causal ordering being established.',
+    references: [
+      referenceId('anton-2014-evolution-of-homo'),
+      referenceId('bramble-lieberman-2004-endurance-running'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('first-dispersal'),
+    title: 'The first exit from Africa',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A schematic route strip rather than a map: positions show sequence, not geography, because real coastlines at this scale would imply a precision the record does not have. The argument is about dates and equipment.',
+    description:
+      'A curved band representing the route from Africa through western Asia to eastern Asia, with four dated sites marked along it: Turkana in Kenya at 1.9 million years, Dmanisi in Georgia at 1.85 million, Shangchen in China at 2.12 million, and Sangiran in Java at 1.5 million. Selecting a site shows its brain size range and tool assemblage. Dmanisi is annotated with brain volumes of 546 to 730 cubic centimetres and simple flakes rather than handaxes, with no evidence of fire. Text explains that the five Dmanisi crania come from one place within a few thousand years and differ from each other as much as specimens assigned to separate species elsewhere.',
+    references: [
+      referenceId('ferring-2011-dmanisi'),
+      referenceId('lordkipanidze-2013-dmanisi'),
+      referenceId('zhu-2018-shangchen'),
+      referenceId('brown-2004-floresiensis'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('tree-uncertainty'),
+    title: 'Three published arrangements of the same fossils',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Solid lines mark relationships that are well supported; dashed lines mark hypotheses. All three arrangements have been published and defended. Museum diagrams disagree with each other, and this is why.',
+    description:
+      'A branching diagram connecting Australopithecus afarensis, Au. africanus, Au. sediba, Homo habilis, H. rudolfensis, H. erectus and H. sapiens, redrawn under three selectable arrangements. The habilis-first arrangement runs afarensis to habilis to erectus to sapiens. The sediba arrangement routes through africanus and sediba instead, making habilis a side branch. The deep-rooted arrangement has habilis and rudolfensis as contemporaneous lineages with the ancestry of erectus unresolved between them. Text explains that phylogenetic methods identify sister groups rather than ancestors, because being an ancestor is not a feature that can be scored on a bone.',
+    references: [
+      referenceId('wood-boyle-2016-hominin-taxonomy'),
+      referenceId('spoor-2015-habilis'),
+      referenceId('berger-2015-naledi'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('brain-energy-cost'),
+    title: 'What a brain costs',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Share of body mass against share of resting energy, for three cases. The childhood figure is the one that matters: the peak coincides with the period of slowest body growth, which looks like the trade it probably is.',
+    description:
+      'Two bars per case showing share of body mass and share of resting energy use. Human adult: about 2% of mass, about 22% of energy. Human child at five years: about 6% of mass, about 43% of energy. Chimpanzee adult: about 0.9% and about 9%. A reference bar shows 2% drawn to scale for comparison. Text explains that brain tissue burns energy about eleven times faster per gram than the body average and never idles, that the classic gut-versus-brain trade-off found no support across about a hundred mammal species, and that humans expend several hundred more calories per day than other apes and carry far more fat.',
+    references: [
+      referenceId('aiello-wells-2002-energetics'),
+      referenceId('navarrete-2011-brain-size-fat'),
+      referenceId('pontzer-2016-metabolic-acceleration'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('brain-size-record'),
+    title: 'Endocranial volume against time',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Plotted as individual points rather than a trend line, deliberately: a curve through these would conceal that brain expansion was not something every hominin lineage was doing. One representative value per group; within-species variation is large.',
+    description:
+      'A scatter plot of endocranial volume in cubic centimetres against time from 3.5 million years ago to the present, with points coloured by lineage. Australopiths cluster near 420 to 510; early Homo and Dmanisi near 610 to 640; Homo erectus rising from about 870 to 1050; Neanderthals at about 1450; early and present-day Homo sapiens at 1400 and 1350. Homo floresiensis at about 420 and Homo naledi at about 500 sit far below the trend at very recent dates. Selecting a point names it. Text notes parallel increase in the Neanderthal and sapiens lineages and the disputed 5 to 10% Holocene decline in average volume.',
+    references: [
+      referenceId('neubauer-2018-globularity'),
+      referenceId('dirks-2017-naledi-age'),
+      referenceId('brown-2004-floresiensis'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('brain-shape'),
+    title: 'Shape changing while volume holds still',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A slider moves along the Homo sapiens endocranial trajectory from 300,000 years ago to the present while the volume readout stays put. Outlines are schematic, derived from published shape analyses rather than drawn from any individual specimen.',
+    description:
+      'An endocranial outline that morphs as a slider moves from 300 thousand years ago to the present, elongating at the rear at the old end and becoming rounded with parietal and cerebellar bulging at the recent end. A dashed reference outline shows the earliest Homo sapiens form. Two panels below state that volume remains around 1400 cubic centimetres throughout while shape changes. Text explains that the globular modern braincase develops gradually between roughly 100 and 35 thousand years ago, after brain size had stopped increasing, and that Neanderthal brains averaged slightly larger than ours with a different shape and developmental path.',
+    references: [
+      referenceId('neubauer-2018-globularity'),
+      referenceId('gunz-2010-neandertal-brain'),
+      referenceId('semendeferi-2002-prefrontal'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('brain-hypotheses'),
+    title: 'Four explanations, four findings against',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Each hypothesis is paired with the specific evidence that weakened it. Several were textbook consensus within the last fifteen years. Bar lengths summarise the state of the argument and are not a measurement.',
+    description:
+      'Four selectable rows — social, ecological, energetic and cultural — each with a one-line claim and a bar indicating current standing. Selecting one gives what supports it and what challenges it. The social brain hypothesis is paired with a study of over 140 primate species finding brain size predicted by diet rather than sociality; the ecological account with the caution that a model fit is not a measurement; the energetic account with the objection that it explains what made expansion possible rather than what made it worth paying for; and the cultural account with the difficulty that the cultural half is archaeologically invisible and that it must explain a million years of Acheulean stasis.',
+    references: [
+      referenceId('decasien-2017-primate-brain-diet'),
+      referenceId('gonzalez-forero-gardner-2018-ecological'),
+      referenceId('powell-2017-brain-size-hypotheses'),
+      referenceId('dunbar-shultz-2007-social-brain'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('cognition-battery'),
+    title: 'Matched on the physical world, separated on the social',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Domain scores from the Primate Cognition Test Battery, split rather than averaged. A single intelligence bar would hide the finding entirely. Values approximate the published domain means.',
+    description:
+      'A two-column bar chart showing the proportion of trials solved in physical and social cognition domains for two-and-a-half-year-old children, adult chimpanzees and adult orangutans. Physical tasks covering space, quantities and causality give roughly 68%, 68% and 59%. Social tasks covering learning from others, communication and reading intentions give roughly 74%, 33% and 36%. Sample sizes of 105 children, 106 chimpanzees and 32 orangutans are stated. Accompanying text describes shared intentionality and notes the limitation that children were tested by adults of their own species using familiar conventions while the apes were not.',
+    references: [
+      referenceId('herrmann-2007-cultural-intelligence'),
+      referenceId('tomasello-2005-shared-intentionality'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('transmission-fidelity'),
+    title: 'Why copying accuracy decides whether skill accumulates',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A two-parameter model, not a simulation of any real population. Raising the invention rate while fidelity stays low barely moves the ceiling, which is the point: transmission rather than individual cleverness is the limiting factor.',
+    description:
+      'A line chart of accumulated skill against forty generations, with two sliders setting copying fidelity from 40 to 98% and invention rate per generation. The curve rises to an equilibrium at invention divided by one minus fidelity, marked by a dashed ceiling line where it falls within range. At high fidelity no ceiling appears in range and knowledge keeps accumulating; at low fidelity the curve flattens almost immediately. A status line describes the regime. Text explains that human children copy actions including visibly unnecessary ones, which preserves steps whose purpose is invisible, and that this threshold behaviour means archaeological regressions need not imply reduced intelligence.',
+    references: [
+      referenceId('boyd-richerson-1985-culture'),
+      referenceId('derex-2013-group-size-cultural'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('language-evidence'),
+    title: 'Every proxy proposed for the origin of language',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Six proposed lines of evidence, colour-coded by whether they held up. Most were announced as settling the question. Laying out the failures calibrates how to read the next such announcement.',
+    description:
+      'Six selectable rows with status markers: hypoglossal canal size, vocal tract reconstruction and FOXP2 marked as not holding up; hyoid morphology marked as true but uninformative; ear anatomy and archaeological inference marked as suggestive but not decisive. Selecting each gives the original claim and what happened to it — canal size varying too much among living primates to be diagnostic, vocal tract reconstructions depending on soft tissue assumptions, FOXP2 being a regulatory gene active in many tissues and species with its reported selective sweep not surviving larger samples, and Neanderthal ear anatomy indicating sensitivity across the frequency band that carries most information in human speech.',
+    references: [
+      referenceId('fisher-scharff-2009-foxp2'),
+      referenceId('atkinson-2018-foxp2-revisited'),
+      referenceId('conde-valverde-2021-hearing'),
+      referenceId('dediu-levinson-2013-neandertal-language'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('symbolic-record'),
+    title: 'The earliest evidence for symbolic behaviour',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Dates are minimum ages from the cited excavations, and each marks the oldest surviving example rather than the first occurrence. Almost all symbolic behaviour — body paint, song, anything of wood, fibre or skin — leaves no trace at all.',
+    description:
+      'A deep-time bar from 350 thousand years ago to the present with eight events marked and selectable: Olorgesailie pigment and long-distance obsidian transport at 320 thousand; perforated shells at Skhul and Qafzeh at 115 thousand; Taforalt beads at 82 thousand; Blombos engraved ochre at 77 thousand and an ochre drawing at 73 thousand; disputed Iberian cave markings at 65 thousand; the Sulawesi painted panel at 44 thousand; and Chauvet at 36 thousand. Each carries a detailed note including the strength of the evidence and, for the Iberian markings, the unresolved dating dispute.',
+    references: [
+      referenceId('brooks-2018-olorgesailie'),
+      referenceId('henshilwood-2002-blombos'),
+      referenceId('henshilwood-2018-drawing'),
+      referenceId('bouzouggar-2007-beads'),
+      referenceId('hoffmann-2018-uranium-cave-art'),
+      referenceId('aubert-2019-sulawesi'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('knapping-mechanics'),
+    title: 'The window a knapper has to hit',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Two sliders set the platform angle and the force of the blow; most combinations fail. The mechanics are simplified, but the narrowness of the window is real, and it is why Oldowan assemblages stop looking crude once you know what the failures look like.',
+    description:
+      'A stone core drawn in section with a striking platform edge, and a hammerstone whose approach angle and size follow two sliders. Platform angle runs from 30 to 110 degrees and force from 10 to 100. Inside a window of roughly 55 to 85 degrees with force in a mid band, a clean flake detaches; outside it the figure shows a shattered core, a crushed platform, a bounced blow or a step termination, with the outcome named in a status bar. Text explains that stone fractures along a cone of force rather than where it is struck, that the internal structure has to be read from the outside, and that raw material at Oldowan sites was often selected and carried several kilometres.',
+    references: [
+      referenceId('semaw-1997-gona'),
+      referenceId('stout-2011-toolmaking-brain'),
+      referenceId('harmand-2015-lomekwi'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('technological-stasis'),
+    title: 'How long each technology lasted',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A logarithmic axis, which understates the contrast rather than exaggerating it. The Acheulean ran for roughly a hundred thousand generations without a noticeable improvement, while brains were growing throughout.',
+    description:
+      'Six horizontal bars on a logarithmic duration axis: a disputed Lomekwian at about 700 thousand years, the Oldowan at about 900 thousand, the Acheulean at about 1.5 million, the Middle Stone Age at about 260 thousand, the Upper Palaeolithic at about 33 thousand, and the period since farming at about 12 thousand. Each is selectable with a note on what defines it. The Acheulean note explains that the handaxe requires the final shape to be planned before starting and then persists essentially unchanged across three continents, and lists the competing explanations for the stasis: lossy transmission, small scattered populations, simple adequacy, or invisible perishable technologies that may have changed while the stone did not.',
+    references: [
+      referenceId('lepre-2011-acheulean'),
+      referenceId('semaw-1997-gona'),
+      referenceId('powell-2009-demography-culture'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('toolmaking-cognition'),
+    title: 'What a brain recruits to make each tool',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A schematic lateral view with approximate zone positions, from functional imaging of trained modern knappers. The limitation is the finding here too: this is a modern brain shaped by a lifetime of language doing the task, not a fossil brain.',
+    description:
+      'A simplified lateral outline of a brain with five labelled zones — visual, motor and sensory, parietal, ventral premotor and inferior frontal — highlighted according to whether the selected task recruits them. Oldowan flaking lights the visual, motor and parietal zones. Acheulean handaxe production adds the ventral premotor and inferior frontal zones in a contrasting colour, marked as recruited for the handaxe and not the flake. Accompanying text explains that these additional regions are associated with organising actions into hierarchies of sub-goals, that some have counterparts on the other side of the brain involved in syntax, and that overlapping activation is weak evidence for a shared mechanism.',
+    references: [
+      referenceId('stout-2011-toolmaking-brain'),
+      referenceId('morgan-2015-teaching-tools'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('fire-evidence'),
+    title: 'Three achievements that all get called control of fire',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Sites plotted on a logarithmic time axis and colour-coded by whether in-situ heating was demonstrated, the evidence is contested, or fire is absent where it should survive. The gap between first use and habitual use is the load-bearing feature.',
+    description:
+      'A time axis from 1.6 million to 125 thousand years ago with five entries marked and selectable: Koobi Fora burnt patches at 1.6 million, contested; Wonderwerk Cave at 1 million, strong; Gesher Benot Yaaqov at 790 thousand, strong; most European sites at 500 thousand, marked as showing no fire evidence where it should have been preserved; and habitual European use from about 350 thousand, strong. A legend distinguishes in-situ heating demonstrated, could be natural fire, and no fire evidence where it should survive. Three definitions are listed at the top: using a fire that started itself, keeping one alight, and making one from nothing.',
+    references: [
+      referenceId('berna-2012-wonderwerk'),
+      referenceId('goren-inbar-2004-gesher'),
+      referenceId('roebroeks-villa-2011-fire'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('cooking-energy'),
+    title: 'Chewing hours and usable energy',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Four processing regimes compared on chewing time and energy yield. Figures are illustrative of measured directions rather than precise values, and real yields vary enormously by food and preparation.',
+    description:
+      'Four bars of daily chewing hours — raw and unprocessed at 6.0, sliced and pounded at 4.3, cooked at 1.5, and cooked and ground at 0.8 — with a second bar below showing usable energy from the same food for the selected regime, from 100% to 140%. Selecting a regime gives the supporting evidence: measured chewing force reductions of around 17% for slicing and pounding, feeding trials showing greater mass maintenance on cooked than raw diets, and the observation that modern humans are obligate cooks. Text sets out the chronological problem for the cooking hypothesis, that the anatomical changes it explains happen around 1.9 million years ago while the earliest solid fire evidence is around one million.',
+    references: [
+      referenceId('carmody-wrangham-2009-cooking'),
+      referenceId('zink-lieberman-2016-food-processing'),
+      referenceId('wrangham-2009-catching-fire'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('behaviour-feedback'),
+    title: 'When evolution stops being one-way',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A straight arrow against a loop, on the same layout. The loop is not a different theory; it is the same one with an extra edge, and the examples underneath are cases where that edge has been measured.',
+    description:
+      'Two views. One-way: three boxes — environment, selection, bodies — connected by arrows running left to right, captioned that the world sets the problems and nothing points backwards. The loop: four boxes — behaviour, environment, selection and bodies — with arrows completing a circuit so that bodies feed back into behaviour, captioned that the population is now altering the world it is being tested against. Three selectable examples give what was built and what got selected: food processing reducing teeth and jaws, dairying selecting lactase persistence at least five times independently, and dense settlement producing epidemic diseases that left some of the strongest recent selection signals at immune loci.',
+    references: [
+      referenceId('laland-2000-gene-culture'),
+      referenceId('odling-smee-2003-niche-construction'),
+      referenceId('richerson-boyd-2005-not-by-genes'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('cultural-ratchet'),
+    title: 'Toolkit complexity against connected population',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Complexity plotted against the number of people a learner can learn from, with four real cases marked. The curve is illustrative rather than fitted. Tasmania is the case this figure exists for: a toolkit that got simpler with nobody getting less capable.',
+    description:
+      'A logarithmic axis of connected population size from 500 to 100,000 with a rising curve of expected toolkit complexity, four marked cases, and a slider that moves a highlighted point along it. The cases are post-isolation Tasmania at about 4,000 people, small Oceanian islands at about 1,500, large Oceanian islands at about 20,000, and Upper Palaeolithic Europe at about 60,000. Selecting the nearest case gives its detail, including that Tasmanian isolation was followed by the disappearance of bone tools, fishing and hafted implements from the record, and that controlled transmission experiments reproduce the effect with group size as the only manipulated variable.',
+    references: [
+      referenceId('henrich-2004-tasmania'),
+      referenceId('kline-boyd-2010-population-size'),
+      referenceId('derex-2013-group-size-cultural'),
+      referenceId('powell-2009-demography-culture'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('lactase-coevolution'),
+    title: 'Dairying and the gene, in that order',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Two curves on one axis: when milk was being consumed and when the allele spread. They are thousands of years apart, which is the finding that reframed the textbook story. Trajectories are schematic summaries of published reconstructions.',
+    description:
+      'Two views. The lag: a chart of frequency against time from 9 thousand years ago to the present showing milk consumption rising first and the lactase persistence allele following thousands of years later, with the intervening period shaded and labelled as dairying without the gene. Independent origins: three selectable regions — Europe with the minus 13910 T variant, East Africa with minus 14010 C, and the Middle East with minus 13915 G — each associated with separate pastoralist histories. Text explains the episodic selection account, in which the advantage is decisive during famine and diarrhoeal epidemics rather than in routine nutrition.',
+    references: [
+      referenceId('tishkoff-2007-lactase'),
+      referenceId('bersaglieri-2004-lct'),
+      referenceId('evershed-2022-lactase'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('sapiens-origins'),
+    title: 'Modern traits appearing in different combinations',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A trait grid across four African sites. No site has everything, and the combinations differ — which is what a structured population looks like, and why the single-cradle model was replaced.',
+    description:
+      'A grid of four sites against three traits, with ticks and crosses. Jebel Irhoud in Morocco at 315 thousand years has a modern face and reduced teeth but not a globular braincase. Florisbad in South Africa at 260 thousand has the face only. Omo Kibish at 195 thousand and Herto at 160 thousand, both in Ethiopia, have all three. Selecting a site gives its detail, including that the Jebel Irhoud material was long assumed to be about 40 thousand years old and was redated by thermoluminescence on heated flints from the same layers. A footer states that no site has everything and the combinations differ.',
+    references: [
+      referenceId('hublin-2017-jebel-irhoud'),
+      referenceId('richter-2017-irhoud-age'),
+      referenceId('scerri-2018-african-multiregional'),
+      referenceId('mcdougall-2005-omo'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('neanderthal-profile'),
+    title: 'Cold-adapted body, capable behaviour',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Two views, because two separate misconceptions are in play. Body proportions are schematic. The capability bars summarise how firmly each behaviour is established rather than measuring anything, and two of them are genuinely unresolved.',
+    description:
+      'A body view comparing simplified Neanderthal and Homo sapiens figures, the Neanderthal with shorter limbs and a broader trunk, annotated as less surface per unit volume by the same rule that shapes cold-adapted mammals generally. A behaviour view lists seven capabilities with bars for how firmly each is established: prepared-core tools, compound adhesives and fire near certain; care of injured individuals strong; pigment use moderate; cave markings and intentional burial low and marked as disputed. Selecting each gives the evidence, including that several skeletons show disabling injuries healed long before death.',
+    references: [
+      referenceId('prufer-2014-altai'),
+      referenceId('wadley-2009-compound-adhesives'),
+      referenceId('rendu-2014-chapelle'),
+      referenceId('dibble-2015-burial-critique'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('denisovan-discovery'),
+    title: 'A population known from almost nothing',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Two columns: the entire fossil record of a human population against what its DNA established. The asymmetry is the point — this is the first human group characterised in detail before anyone knew what its face looked like.',
+    description:
+      'Two selectable columns. What we have: the Denisova 3 finger bone fragment about the size of a grain of rice, isolated large molars, the Denisova 11 fragment from a first-generation hybrid, and the Xiahe mandible from the Tibetan Plateau identified by ancient proteins. What it told us: a lineage diverging from Neanderthals around 390 to 440 thousand years ago, 3 to 5% Denisovan ancestry in Papuan and Aboriginal Australian populations, interbreeding with Neanderthals and modern humans and at least one unidentified archaic population, and the Tibetan high-altitude EPAS1 variant. A footer notes they formally still have no species name.',
+    references: [
+      referenceId('reich-2010-denisova'),
+      referenceId('meyer-2012-denisovan'),
+      referenceId('slon-2018-denisova-11'),
+      referenceId('chen-2019-xiahe'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('introgression-map'),
+    title: 'Archaic ancestry, and where it is missing',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Population percentages are approximate published values that vary with method and reference panel. In the genome view, block positions are schematic; the depletion pattern on the X chromosome and near fertility genes is the finding.',
+    description:
+      'Two views. By population: stacked bars of Neanderthal and Denisovan ancestry for sub-Saharan African, European, East Asian, South Asian and Papuan populations, with Papuan highest at about 6% combined. Across the genome: four chromosome bars with introgressed blocks marked, the X chromosome showing a large marked desert spanning a substantial fraction of its length. Text explains that the depletion on the X and near genes expressed in the testes matches hybrid incompatibility patterns seen in other hybridising species, that some introgressed variants were instead useful, and that the admixture is dated from segment lengths to roughly 50 to 60 thousand years ago.',
+    references: [
+      referenceId('green-2010-neandertal-genome'),
+      referenceId('sankararaman-2014-neandertal-ancestry'),
+      referenceId('vernot-akey-2014-resurrecting'),
+      referenceId('fu-2014-ust-ishim'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('ancient-dna-damage'),
+    title: 'The damage that authenticates the DNA',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Three quantities move together as a slider ages the sample. Values are schematic and vary enormously with burial conditions; the relationship is what matters. Modern contaminating DNA has none of these signatures.',
+    description:
+      'Three bars driven by a sample-age slider from 1 to 120 thousand years: typical fragment length falling from around 400 bases to under 50, the proportion of DNA actually from the individual falling from tens of percent to a fraction of one percent, and damage at fragment ends rising towards about 40%. A status panel switches between damage pattern present, so sequences can be authenticated as ancient, and too little damage to distinguish from modern contamination. Text explains that the chemical change accumulating at broken fragment ends is what certifies a sequence as genuinely old, and that DNA survival is strongly temperature-dependent, producing a bias opposite to the fossil record.',
+    references: [
+      referenceId('dabney-2013-adna-methods'),
+      referenceId('orlando-2021-ancient-dna-primer'),
+      referenceId('vernot-2021-sediment-dna'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('sapiens-dispersal'),
+    title: 'Presence against ancestry',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Two tracks on one time axis: who was present, from fossils, and who left descendants who are still alive, from genomes. The records appeared to contradict each other and answer different questions.',
+    description:
+      'A time axis from 200 thousand years ago to the present with two parallel tracks. The fossil track marks Misliya in the Levant at 180 thousand, Skhul and Qafzeh at 120 thousand, and disputed southern Chinese teeth at 100 thousand. The genetic track marks the successful expansion at 60 thousand, Neanderthal admixture at 55 thousand, and the Ust-Ishim genome at 45 thousand. A view selector shows either track alone or both. Text explains that a population can be present for tens of thousands of years and contribute nothing measurable to anyone alive, and that repeated founder effects during the expansion produced the observed decline of genetic diversity with distance from Africa.',
+    references: [
+      referenceId('nielsen-2017-human-dispersals'),
+      referenceId('fu-2014-ust-ishim'),
+      referenceId('ramachandran-2005-serial-founder'),
+      referenceId('mallick-2016-simons'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('peopling-timeline'),
+    title: 'Every habitable continent, in under fifty thousand years',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Arrival dates with real uncertainty, several actively disputed. The compression is the argument: every climate zone on Earth occupied far too fast for biological adaptation, using knowledge and equipment instead.',
+    description:
+      'A deep-time bar from 70 thousand years ago to the present with seven selectable events: the expansion from Africa at 60 thousand, Australia and New Guinea at 50 thousand, Europe at 45 thousand, northern Siberia at 40 thousand, Beringian isolation at 20 thousand, the Americas at 15 thousand, and the remote Pacific at 3 thousand. Each carries detail, including that Sahul was never joined to Asia so arrival required deliberate open-water crossings of at least 70 to 100 kilometres, that Madjedbebe gives about 65 thousand years with the artefact association disputed, and that the Americas entry route and timing remain actively contested.',
+    references: [
+      referenceId('clarkson-2017-madjedbebe'),
+      referenceId('willerslev-meltzer-2021-americas'),
+      referenceId('nielsen-2017-human-dispersals'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('last-humans-standing'),
+    title: 'Six kinds of human, then one',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Species ranges over the last half-million years, then four explanations for why only one remains. Bar ends are current best estimates and several have moved substantially on redating; explanation bars summarise the argument rather than measuring it.',
+    description:
+      'Two views. Who was alive: horizontal bars for Homo sapiens, H. neanderthalensis, Denisovans, H. naledi, H. floresiensis, H. luzonensis and Javanese H. erectus against a time axis from 520 thousand years ago to the present, with a dashed line at 50 thousand annotated as at least six coexisting. Why only one remains: four selectable explanations with standing bars — we were better, marked lowest; demographic bad luck, marked highest; absorption through interbreeding; and climate. Text notes that population viability modelling shows demographic factors alone sufficient without any competitive disadvantage.',
+    references: [
+      referenceId('vaesen-2021-neanderthal-extinction'),
+      referenceId('higham-2014-neanderthal-disappearance'),
+      referenceId('dirks-2017-naledi-age'),
+      referenceId('detroit-2019-luzonensis'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('bead-inference'),
+    title: 'What a shell has to pass to be a bead',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Five tests in a chain, each of which can fail. Drawing them as a chain shows why archaeological claims about symbolism are more fragile than they sound when summarised — and what makes the Taforalt assemblage convincing.',
+    description:
+      'A vertical chain of five linked tests, each selectable: whether the shell travelled from where its species lives, whether the perforation was made by a person rather than by a predatory mollusc or abrasion, whether wear at the perforation margins shows a cord passed through it, whether a tight species and size range implies deliberate selection, and whether it clusters with ochre residue, burials or repeated occurrence. Each gives the failure mode it rules out. A footer records that the Taforalt assemblage in Morocco at about 82 thousand years passes all five. Text notes that pigment is a weaker case because ochre has practical uses.',
+    references: [referenceId('bouzouggar-2007-beads'), referenceId('henshilwood-2002-blombos')],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('cave-art-record'),
+    title: 'Dated cave art, including the disputed entry',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Sites plotted by minimum age, with the disputed Iberian dates drawn as dashed and marked as such. A chart showing only the accepted dates would misrepresent the field; one showing Iberia unqualified would misrepresent the evidence.',
+    description:
+      'A time axis from 70 thousand years ago to the present with six sites marked: Iberian markings at 65 thousand shown dashed and flagged as disputed, the Sulawesi hunting scene at 44 thousand, Borneo animal figures at 40 thousand, El Castillo discs at 41 thousand, Chauvet at 36 thousand and Lascaux at 17 thousand. Selecting each gives its detail, including the technical objection to the Iberian dating concerning open-system behaviour in the carbonate crust. A closing note explains that art survives only in deep chambers with stable conditions, so the record samples what happened to be durable rather than what was made.',
+    references: [
+      referenceId('hoffmann-2018-uranium-cave-art'),
+      referenceId('aubert-2019-sulawesi'),
+      referenceId('henshilwood-2018-drawing'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('burial-criteria'),
+    title: 'One deposit, two careful readings',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A schematic section of the La Chapelle-aux-Saints deposit that redraws according to which interpretation is selected, with four criteria scored both ways. Neither published team has persuaded the other.',
+    description:
+      'A simplified section through a cave floor with a skeleton in a depression, the depression outline drawn solid for the intentional burial reading and dashed for the natural deposit reading. Four selectable criteria — pit geometry, sediment fill, preservation and repetition — each give the argument for deliberate digging and the argument against. The preservation criterion notes that rapid covering is not the same as a grave, since roof collapse or a body settling in a natural hollow produce the same result. Text mentions the Shanidar flower burial, where pollen around a skeleton was most likely introduced by burrowing rodents.',
+    references: [
+      referenceId('rendu-2014-chapelle'),
+      referenceId('dibble-2015-burial-critique'),
+      referenceId('pettitt-2011-burial'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('exchange-distance'),
+    title: 'How far stone travelled',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Source-to-find distance by period on a logarithmic scale. Obsidian carries an outcrop-level chemical fingerprint, so the distance is a measurement; what it implies about relationships between groups is a well-constrained inference.',
+    description:
+      'Five bars on a logarithmic distance axis: Oldowan at about 3 kilometres, Acheulean at about 8, early Middle Stone Age at about 60, later Middle Stone Age at about 120, and Upper Palaeolithic at about 400. Each is selectable with a reading. The early Middle Stone Age entry records obsidian at Olorgesailie sourced from 25 to 95 kilometres away alongside processed pigment. Text explains that a group ranging over a hundred kilometres would leave other traces, that exchange between groups requires meeting without violence and some notion of reciprocity, and that connected groups behave like a much larger population for the purposes of retaining techniques.',
+    references: [
+      referenceId('brooks-2018-olorgesailie'),
+      referenceId('kline-boyd-2010-population-size'),
+      referenceId('powell-2009-demography-culture'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('farming-origins'),
+    title: 'Eleven inventions in a few thousand years',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Independent centres plotted by date against a shaded glacial period. The clustering after two hundred thousand years in which nobody farmed is the thing that needs explaining, and it points at conditions rather than people.',
+    description:
+      'A time axis from 14 thousand years ago to the present with the glacial period shaded and the start of the Holocene marked. Eight independent centres are plotted: the Fertile Crescent at 11.5 thousand, the Chinese Yangtze at 9, the Yellow River at 8, New Guinea at 7, Mesoamerica at 6.5, the Andes at 5, eastern North America at 4.5 and West Africa at 4. Each is selectable with its crop package and detail. Text explains that the last glacial was violently unstable with temperatures shifting several degrees within decades, that cultivation is a bet on conditions holding, and that Holocene stability changed the odds without being the proximate trigger.',
+    references: [
+      referenceId('larson-2014-domestication-review'),
+      referenceId('zeder-2011-domestication'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('domestication-selection'),
+    title: 'Selection with nobody choosing',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'A two-parameter model run forward generation by generation. Nobody in it intends anything: a rare non-shattering mutant goes to fixation purely because of how harvesting works. Archaeobotanical sequences show roughly this timescale.',
+    description:
+      'A line chart of the share of a crop that does not shatter, against up to 60 harvest-and-sow cycles, starting from 1%. Two sliders set harvest efficiency, the share of a non-shattering plant seed reaching the store, and the number of generations elapsed, with a marker reading off the current frequency. At realistic harvest efficiencies the curve rises to near fixation within a few dozen cycles. Text explains that wild wheat shatters to disperse its seed, that a non-shattering mutant is disadvantaged in the wild and is the only plant whose seed reaches the basket, and that animals show a correlated suite of changes from selection on tameness alone.',
+    references: [
+      referenceId('zeder-2011-domestication'),
+      referenceId('larson-2014-domestication-review'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('farming-health'),
+    title: 'More people, worse lives',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Five skeletal health markers before and after the transition, alongside the population curve over the same period. Both facts are true and they are not in conflict once fertility and wellbeing are separated. Magnitudes are schematic; the direction is well established.',
+    description:
+      'Two views. Individual health: five paired bars comparing foragers and early farmers on adult stature, dental caries, enamel defects, anaemia markers and infection markers, with stature falling and all four pathology markers rising. Each is selectable with an explanation of what the marker records. Population: a rising curve with the adoption of farming marked, annotated as more people, each of them on average worse off. Text explains that settled life allows shorter birth intervals and earlier weaning, that the proportion of juvenile skeletons rises across the transition indicating increased fertility rather than better survival, and that the transition is a ratchet.',
+    references: [
+      referenceId('mummert-2011-stature'),
+      referenceId('larsen-1995-bioarchaeology-agriculture'),
+      referenceId('bocquet-appel-2011-demographic-transition'),
+      referenceId('larsen-2019-catalhoyuk'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('ancient-selection'),
+    title: 'Allele frequencies measured through time',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Trajectories are schematic summaries of published European ancient-DNA time series. The distinction that matters is between observing a frequency change at successive dates and inferring one from patterns in living genomes.',
+    description:
+      'A chart of allele frequency against time from 8 thousand years ago to the present, with four selectable trajectories drawn as points joined by lines. LCT for lactase persistence rises late and steeply to about 70%. SLC24A5 for lighter pigmentation rises early to near fixation. The FADS cluster for fatty-acid metabolism rises through the Neolithic. Immune loci rise more gradually. Each selection gives detail, including that milk residues in pottery precede the LCT rise by thousands of years. Text explains that a study of 230 ancient Eurasians identified genome-wide significant selection at loci for lactase persistence, fatty-acid metabolism, vitamin D, pigmentation, immunity and height.',
+    references: [
+      referenceId('mathieson-2015-selection-ancient'),
+      referenceId('evershed-2022-lactase'),
+      referenceId('perry-2007-amylase'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('selection-components'),
+    title: 'Where the fitness differences sit',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Two sliders set survival to adulthood and variation in family size. Pushing survival to 100% does not empty the bar — it changes which component carries the variance. Proportions illustrate the logic rather than estimating any real population.',
+    description:
+      'A single stacked bar splitting the differences in reproductive success between surviving to adulthood and fertility and timing, driven by two sliders: survival from 50 to 100%, and variation in family size from 0 to 1. As survival approaches 100% the survival share collapses and the fertility share takes the whole bar, with percentages read out below. A status panel states whether evolution is happening or whether there are no heritable differences left to select on. A footer notes that mutation introduces new variation every generation and drift changes frequencies by chance in any finite population, regardless.',
+    references: [
+      referenceId('stearns-2010-measuring-selection'),
+      referenceId('byars-2010-framingham'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('measured-selection'),
+    title: 'How small ongoing selection actually is',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Effect sizes drawn against the range of normal variation rather than magnified for legibility, because the smallness is the finding. Bar magnitudes illustrate relative scale rather than reproducing exact published coefficients.',
+    description:
+      'A wide reference bar representing how much people already differ from each other, above four much smaller bars for measured per-decade shifts: age at first birth, total cholesterol and height from the Framingham Heart Study, and education-associated variants from Icelandic genealogical and genomic data. A footer projects the selected finding over ten generations — a few months earlier first birth, a few milligrams per decilitre lower cholesterol, one to two centimetres shorter. Text cautions that the Icelandic result indexes a population- and context-specific statistical association rather than any intrinsic capacity, and that its magnitude is trivial beside changes in education systems.',
+    references: [
+      referenceId('byars-2010-framingham'),
+      referenceId('kong-2017-iceland-selection'),
+      referenceId('stearns-2010-measuring-selection'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('altitude-adaptation'),
+    title: 'One problem, three genetic solutions',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Haemoglobin concentration separates these populations, and it goes the counter-intuitive way in Tibetans. Values are representative published means and individuals vary considerably.',
+    description:
+      'Four horizontal bars of blood haemoglobin concentration in grams per decilitre: a sea-level visitor acclimatising at 4,000 metres at about 19.5, a Tibetan resident at about 15.6, an Andean resident at about 18.5, and an Ethiopian highlander at about 15.9, with high values coloured differently from near-sea-level ones. Selecting each names the genes involved and explains the physiology — Tibetans compensating by faster breathing and better tissue delivery rather than thicker blood, Andeans carrying elevated haemoglobin with adaptations at different loci. Text records that the Tibetan EPAS1 variant matches Denisovan sequence and entered our species by interbreeding.',
+    references: [
+      referenceId('huerta-sanchez-2014-epas1'),
+      referenceId('yi-2010-tibetan-exome'),
+      referenceId('beall-2010-epas1-tibet'),
+      referenceId('crawford-2017-andean'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('variation-structure'),
+    title: 'How human variation is actually distributed',
+    fidelity: 'data-driven',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Two views for two separate misconceptions: that most variation distinguishes groups, and that the variation which does is partitioned rather than graded. Both are answered by measurement rather than by preference.',
+    description:
+      'Two views. Within versus between: a single bar showing roughly 85 to 90% of human genetic variation occurring within any one population and 10 to 15% between populations, with a note that most of the genetic difference between any two humans anywhere is already present between two people from the same village, and a panel explaining that African populations retain more variation than all non-African populations combined. Across space: a smooth colour gradient along a transect from Portugal to Beijing with evenly spaced sample points, annotated that there is no point along the walk where one group ends and another begins, and that cluster counts in such analyses are chosen by the analyst.',
+    references: [
+      referenceId('lewontin-1972-apportionment'),
+      referenceId('rosenberg-2002-population-structure'),
+      referenceId('jorde-wooding-2004-variation'),
+      referenceId('yudell-2016-taking-race'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('changing-pressures'),
+    title: 'Pressures removed against pressures created',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Two columns, because the removals are famous and the additions are better measured. A reader who only hears about relaxed selection gets a one-sided picture of what is actually happening.',
+    description:
+      'Two columns of selectable items. Removed: severe myopia, childhood infection and congenital conditions, each with an explanation of how medicine relaxed selection against the variants involved and why the resulting frequency change is very slow. Created: metabolic mismatch, immune mismatch, new pathogens and reproductive timing, each with an explanation of how modern environments made previously neutral variants harmful or shifted which component of fitness carries the variance. A footer states that selection is redirected rather than abolished, and the accompanying text notes the ugly history of degeneration arguments.',
+    references: [
+      referenceId('stearns-2010-measuring-selection'),
+      referenceId('byars-2010-framingham'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('evolutionary-futures'),
+    title: 'What can be projected, and what cannot',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Claims sorted into two columns rather than extrapolated, because extrapolating a trend is exactly the error the topic warns against. The dividing line is whether the selective regime is stable and measurable.',
+    description:
+      'Two columns of selectable claims. Can be projected: continued gene flow between populations reducing differences between them, drift in finite populations, continued selection by pathogens, and local adaptation where conditions remain extreme. Cannot: larger brains, weaker bodies, the species splitting, and directed genetic change. Each gives its reasoning — brain size has if anything declined slightly over the Holocene; reduced skeletal robusticity tracks physical activity and is reversible within a generation; speciation requires isolation and human populations are becoming less isolated; and germline modification is a matter of law and politics rather than biology.',
+    references: [
+      referenceId('stearns-2010-measuring-selection'),
+      referenceId('hawks-2007-acceleration'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
+  {
+    id: visualizationId('the-whole-chain'),
+    title: 'The chain, and the loop that closes it',
+    fidelity: 'schematic',
+    runtime: 'svg',
+    interactive: true,
+    caption:
+      'Every box is a topic the reader has been through, so this is a synthesis rather than a summary. Dashed boxes mark the steps whose cause is not established. The feedback arrow is the part that matters.',
+    description:
+      'Nine linked boxes arranged in three rows with arrows running between them: upright walking, free hands, tools and processing, higher-quality diet, more energy available, larger brain, long childhood, learning and teaching, and cumulative culture. A green return arrow runs from cumulative culture back to the start, labelled that culture reshapes the environment. The energy and brain boxes are drawn dashed to mark them as the steps whose cause is not established. Selecting any box gives its detail and its evidential status. Text notes that at every step there were hominin species that did something else and are not here.',
+    references: [
+      referenceId('anton-2014-evolution-of-homo'),
+      referenceId('richerson-boyd-2005-not-by-genes'),
+      referenceId('laland-2000-gene-culture'),
+    ],
+    minimumQuality: 'low',
+    layout: 'flow',
+  },
 ];

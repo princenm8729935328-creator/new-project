@@ -18,6 +18,7 @@ import { QUANTUM_TOPICS } from './quantum';
 import { STARS_GALAXIES_TOPICS } from './starsGalaxies';
 import { EARTH_TOPICS } from './earth';
 import { LIFE_TOPICS } from './life';
+import { HUMAN_EVOLUTION_TOPICS } from './humanEvolution';
 
 export const TOPICS: readonly Topic[] = [
   ...UNIVERSE_TOPICS,
@@ -29,6 +30,7 @@ export const TOPICS: readonly Topic[] = [
   ...STARS_GALAXIES_TOPICS,
   ...EARTH_TOPICS,
   ...LIFE_TOPICS,
+  ...HUMAN_EVOLUTION_TOPICS,
 ];
 
 const BY_ID = new Map<TopicId, Topic>(TOPICS.map((topic) => [topic.id, topic]));
